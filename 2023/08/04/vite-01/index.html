@@ -16,16 +16,16 @@
   <meta name="author" content="liu shun">
   <meta name="keywords" content="博客,前端,git">
   
-    <meta name="description" content="Vite 的特性直接放官网上的 、 Vite 为什么快首先要说明的是，Vite 是在开发环境下比较快，原因：  浏览器支持 ESM，Vite 在开发阶段采用 esbuild 依赖预构建，实现了按需加载，而不用整体对项目进行打包， esbuild 采用 Go 语言开发，Go 是编译型语言  依赖预构建Vite 在执行前会先进行预构建，首先找到依赖模块，将其转换成 ESM 规范，最后生成的预构建产物放">
+    <meta name="description" content="Vite 的特性直接放官网上的 、 Vite 为什么快首先要说明的是，Vite 是在开发环境下比较快，原因：  浏览器支持 ESM，Vite 在开发阶段采用 esbuild 依赖预构建，实现了按需加载，而不用整体对项目进行打包。 esbuild 采用 Go 语言开发，Go 是编译型语言，代码直接被编译为原生机器码，不需要像 JavaScript 还要解析成字节码再转成机器码。  依赖预构建Vite">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Vite-初识Vite">
 <meta property="og:url" content="https://l1ushun.github.io/2023/08/04/vite-01/index.html">
 <meta property="og:site_name" content="liu的博客">
-<meta property="og:description" content="Vite 的特性直接放官网上的 、 Vite 为什么快首先要说明的是，Vite 是在开发环境下比较快，原因：  浏览器支持 ESM，Vite 在开发阶段采用 esbuild 依赖预构建，实现了按需加载，而不用整体对项目进行打包， esbuild 采用 Go 语言开发，Go 是编译型语言  依赖预构建Vite 在执行前会先进行预构建，首先找到依赖模块，将其转换成 ESM 规范，最后生成的预构建产物放">
+<meta property="og:description" content="Vite 的特性直接放官网上的 、 Vite 为什么快首先要说明的是，Vite 是在开发环境下比较快，原因：  浏览器支持 ESM，Vite 在开发阶段采用 esbuild 依赖预构建，实现了按需加载，而不用整体对项目进行打包。 esbuild 采用 Go 语言开发，Go 是编译型语言，代码直接被编译为原生机器码，不需要像 JavaScript 还要解析成字节码再转成机器码。  依赖预构建Vite">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://l1ushun.github.io/img/vite-logo.png">
 <meta property="article:published_time" content="2023-08-04T08:35:37.000Z">
-<meta property="article:modified_time" content="2023-08-09T06:08:58.801Z">
+<meta property="article:modified_time" content="2023-08-09T07:57:31.467Z">
 <meta property="article:author" content="liu shun">
 <meta property="article:tag" content="Vite">
 <meta name="twitter:card" content="summary_large_image">
@@ -221,7 +221,7 @@
         
         
         
-          53 分钟
+          54 分钟
         
       </span>
     
@@ -267,8 +267,8 @@
 <p><img src="/img/vite-idea.png" srcset="/img/loading.gif" lazyload alt="vite特性.png">、</p>
 <h1 id="Vite-为什么快"><a href="#Vite-为什么快" class="headerlink" title="Vite 为什么快"></a>Vite 为什么快</h1><p>首先要说明的是，Vite 是在开发环境下比较快，原因：</p>
 <ol>
-<li>浏览器支持 ESM，Vite 在开发阶段采用 esbuild 依赖预构建，实现了按需加载，而不用整体对项目进行打包，</li>
-<li>esbuild 采用 Go 语言开发，Go 是编译型语言</li>
+<li>浏览器支持 ESM，Vite 在开发阶段采用 esbuild 依赖预构建，实现了按需加载，而不用整体对项目进行打包。</li>
+<li>esbuild 采用 Go 语言开发，Go 是编译型语言，代码直接被编译为原生机器码，不需要像 JavaScript 还要解析成字节码再转成机器码。</li>
 </ol>
 <h1 id="依赖预构建"><a href="#依赖预构建" class="headerlink" title="依赖预构建"></a>依赖预构建</h1><p>Vite 在执行前会先进行预构建，首先找到依赖模块，将其转换成 ESM 规范，最后生成的预构建产物放在 node_modules 下的 .vite文件夹，在构建时会将第三方库的多个文件打包成一个文件 如引入 lodash 打包时，会将 lodash 包内的文件打包成一个文件。另外打包后会将第三方库的引用路径进行重写，使用我们预构建后的路径。对于依赖请求结果会进行强缓存，再次请求直接读取缓存。</p>
 <h2 id="关于缓存"><a href="#关于缓存" class="headerlink" title="关于缓存"></a>关于缓存</h2><p>Vite 对于已构建的的依赖进行了 <strong>文件系统缓存</strong>（存储在 node_modules&#x2F;.vite 中） 和 <strong>浏览器缓存</strong>（使用 HTTP 头 max-age&#x3D;31536000, immutable 进行强缓存），当缓存后，再次请求直接读取缓存来提高性能。</p>
