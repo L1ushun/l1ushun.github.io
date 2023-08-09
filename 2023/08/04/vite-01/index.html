@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://l1ushun.github.io/img/vite-logo.png">
 <meta property="article:published_time" content="2023-08-04T08:35:37.000Z">
-<meta property="article:modified_time" content="2023-08-09T03:35:19.548Z">
+<meta property="article:modified_time" content="2023-08-09T06:08:58.801Z">
 <meta property="article:author" content="liu shun">
 <meta property="article:tag" content="Vite">
 <meta name="twitter:card" content="summary_large_image">
@@ -270,8 +270,8 @@
 <li>浏览器支持 ESM，Vite 在开发阶段采用 esbuild 依赖预构建，实现了按需加载，而不用整体对项目进行打包，</li>
 <li>esbuild 采用 Go 语言开发，Go 是编译型语言</li>
 </ol>
-<h1 id="依赖预构建"><a href="#依赖预构建" class="headerlink" title="依赖预构建"></a>依赖预构建</h1><p>Vite 在执行前会先进行预构建，首先找到依赖模块，将其转换成 ESM 规范，最后生成的预构建产物放在 node_modules 下的 .vite<br>文件夹，在构建时会将第三方库的<br>多个文件打包成一个文件 如引入 lodash 打包时，会将 lodash<br>包内的文件打包成一个文件。另外打包后会将第三方库的引用路径进行重写，使用我们预构建后的路径。<br>对于依赖请求结果会进行强缓存，再次请求直接读取缓存。</p>
-<h2 id="关于缓存"><a href="#关于缓存" class="headerlink" title="关于缓存"></a>关于缓存</h2><p>Vite 对于已构建的的依赖进行了 <strong>文件系统缓存</strong>（存储在 node_modules&#x2F;.vite 中） 和 <strong>浏览器缓存</strong>（使用 HTTP 头<br>max-age&#x3D;31536000, immutable 进行强缓存），当缓存后，再次请求直接读取缓存来提高性能。</p>
+<h1 id="依赖预构建"><a href="#依赖预构建" class="headerlink" title="依赖预构建"></a>依赖预构建</h1><p>Vite 在执行前会先进行预构建，首先找到依赖模块，将其转换成 ESM 规范，最后生成的预构建产物放在 node_modules 下的 .vite文件夹，在构建时会将第三方库的多个文件打包成一个文件 如引入 lodash 打包时，会将 lodash 包内的文件打包成一个文件。另外打包后会将第三方库的引用路径进行重写，使用我们预构建后的路径。对于依赖请求结果会进行强缓存，再次请求直接读取缓存。</p>
+<h2 id="关于缓存"><a href="#关于缓存" class="headerlink" title="关于缓存"></a>关于缓存</h2><p>Vite 对于已构建的的依赖进行了 <strong>文件系统缓存</strong>（存储在 node_modules&#x2F;.vite 中） 和 <strong>浏览器缓存</strong>（使用 HTTP 头 max-age&#x3D;31536000, immutable 进行强缓存），当缓存后，再次请求直接读取缓存来提高性能。</p>
 <h2 id="手动开启预构建"><a href="#手动开启预构建" class="headerlink" title="手动开启预构建"></a>手动开启预构建</h2><p>默认情况下，Vite 会自动帮我们开启预构建，如果不希望使用本地缓存，还可以手动清除缓存，然后手动进行预构建</p>
 <ol>
 <li>删除 node_modules&#x2F;.vite</li>
@@ -299,10 +299,10 @@
 <p>其中 index.html 是入口文件</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs html"><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;root&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;module&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;/src/main.tsx&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
 
-<p>该文件除了 id 为 root 的 div 作为根节点外，还有一个 script 标签，该标签 type 为 “module”，标志着使用的是 ESM，另外还指向一个<br>main.tsx 文件</p>
+<p>该文件除了 id 为 root 的 div 作为根节点外，还有一个 script 标签，该标签 type 为 “module”，标志着使用的是 ESM，另外还指向一个 main.tsx 文件</p>
 <figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs tsx"><span class="hljs-keyword">import</span> <span class="hljs-title class_">React</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;react&#x27;</span><br><span class="hljs-keyword">import</span> <span class="hljs-title class_">ReactDOM</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;react-dom/client&#x27;</span><br><span class="hljs-keyword">import</span> <span class="hljs-title class_">App</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./App.tsx&#x27;</span><br><span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;./index.css&#x27;</span><br><br><span class="hljs-title class_">ReactDOM</span>.<span class="hljs-title function_">createRoot</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;root&#x27;</span>)!).<span class="hljs-title function_">render</span>(<br>    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">React.StrictMode</span>&gt;</span></span><br><span class="language-xml">        <span class="hljs-tag">&lt;<span class="hljs-name">App</span>/&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">React.StrictMode</span>&gt;</span></span>,<br>)<br></code></pre></td></tr></table></figure>
 
-<p>首先，正常情况下我们写 html 文件，是无法引入 .tsx 文件的，浏览器根本不会识别，但在这里，Vite 对 .tsx 和 .jsx 通过 esbuild<br>进行了编译，返回浏览器可以识别的代码。<br>这里就体现了 Vite 的 no-bundle 特性，使用 ESM 进行按需加载，对比 Webpack 需要将项目整体进行打包后加载，显然 Vite<br>省掉了复杂的打包过程，这也是它在开发环境更快的原因之一。</p>
+<p>首先，正常情况下我们写 html 文件，是无法引入 .tsx 文件的，浏览器根本不会识别，但在这里，Vite 对 .tsx 和 .jsx 通过 esbuild 进行了编译，返回浏览器可以识别的代码。这里就体现了 Vite 的 no-bundle 特性，使用 ESM 进行按需加载，对比 Webpack 需要将项目整体进行打包后加载，显然 Vite 省掉了复杂的打包过程，这也是它在开发环境更快的原因之一。</p>
 <h2 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h2><p>在 package.json 中我们可以看到生成项目时，已经帮我们安装了 react、react-dom、eslint 等一系列包。主要看下 scripts 我们执行的命令有哪些</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;scripts&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;dev&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;vite&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;build&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;tsc &amp;&amp; vite build&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;lint&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;preview&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;vite preview&quot;</span><br>  <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
 
@@ -471,9 +471,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/08/04/vite-%E9%85%8D%E7%BD%AE/" title="Vite-配置项（更新中...）">
+                      <a href="/2023/08/07/vite-02/" title="Vite-优化篇">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Vite-配置项（更新中...）</span>
+                        <span class="hidden-mobile">Vite-优化篇</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -481,8 +481,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/07/31/react-flow/" title="React流程图（完善ing...）">
-                        <span class="hidden-mobile">React流程图（完善ing...）</span>
+                      <a href="/2023/08/04/vite-%E9%85%8D%E7%BD%AE/" title="Vite-配置项（更新中...）">
+                        <span class="hidden-mobile">Vite-配置项（更新中...）</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
