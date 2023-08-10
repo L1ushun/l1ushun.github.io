@@ -16,16 +16,16 @@
   <meta name="author" content="liu shun">
   <meta name="keywords" content="博客,前端,git">
   
-    <meta name="description" content="图片压缩如果项目存在图片的静态文件，在打包时一定会增加包的大小，一般情况下我们需要在打包时对图片进行压缩处理 一个 Vite 插件 vite-plugin-imagemin 可以帮我们来做这件事 安装 1pnpm i vite-plugin-imagemin -D  配置 123456789101112131415161718192021222324252627export default def">
+    <meta name="description" content="esbuild 插件开发举一个官网上的插件例子 123456789101112131415161718192021let envPlugin &#x3D; &amp;#123;  name: &amp;#x27;env&amp;#x27;,  setup(build) &amp;#123;    build.onResolve(&amp;#123; filter: &#x2F;^env$&#x2F; &amp;#125;, args &#x3D;&gt; (&amp;#123;      p">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Vite-优化篇">
-<meta property="og:url" content="https://l1ushun.github.io/2023/08/07/vite-02/index.html">
+<meta property="og:title" content="vite-03">
+<meta property="og:url" content="https://l1ushun.github.io/2023/08/10/vite-03/index.html">
 <meta property="og:site_name" content="liu的博客">
-<meta property="og:description" content="图片压缩如果项目存在图片的静态文件，在打包时一定会增加包的大小，一般情况下我们需要在打包时对图片进行压缩处理 一个 Vite 插件 vite-plugin-imagemin 可以帮我们来做这件事 安装 1pnpm i vite-plugin-imagemin -D  配置 123456789101112131415161718192021222324252627export default def">
+<meta property="og:description" content="esbuild 插件开发举一个官网上的插件例子 123456789101112131415161718192021let envPlugin &#x3D; &amp;#123;  name: &amp;#x27;env&amp;#x27;,  setup(build) &amp;#123;    build.onResolve(&amp;#123; filter: &#x2F;^env$&#x2F; &amp;#125;, args &#x3D;&gt; (&amp;#123;      p">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://l1ushun.github.io/img/vite-logo.png">
-<meta property="article:published_time" content="2023-08-07T11:38:17.000Z">
-<meta property="article:modified_time" content="2023-08-08T07:45:04.433Z">
+<meta property="article:published_time" content="2023-08-10T03:25:42.000Z">
+<meta property="article:modified_time" content="2023-08-10T03:50:21.236Z">
 <meta property="article:author" content="liu shun">
 <meta property="article:tag" content="Vite">
 <meta name="twitter:card" content="summary_large_image">
@@ -33,7 +33,7 @@
   
   
   
-  <title>Vite-优化篇 - liu的博客</title>
+  <title>vite-03 - liu的博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -187,7 +187,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Vite-优化篇"></span>
+            <span id="subtitle" data-typed-text="vite-03"></span>
           
         </div>
 
@@ -198,8 +198,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-08-07 19:38" pubdate>
-          2023年8月7日 晚上
+        <time datetime="2023-08-10 11:25" pubdate>
+          2023年8月10日 上午
         </time>
       </span>
     
@@ -210,7 +210,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          725 字
+          658 字
         
       </span>
     
@@ -221,7 +221,7 @@
         
         
         
-          7 分钟
+          6 分钟
         
       </span>
     
@@ -258,34 +258,15 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Vite-优化篇</h1>
+            <h1 id="seo-header">vite-03</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="图片压缩"><a href="#图片压缩" class="headerlink" title="图片压缩"></a>图片压缩</h1><p>如果项目存在图片的静态文件，在打包时一定会增加包的大小，一般情况下我们需要在打包时对图片进行压缩处理</p>
-<p>一个 Vite 插件 vite-plugin-imagemin 可以帮我们来做这件事</p>
-<p>安装</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">pnpm <span class="hljs-selector-tag">i</span> vite-plugin-imagemin -D<br></code></pre></td></tr></table></figure>
+                <h1 id="esbuild-插件开发"><a href="#esbuild-插件开发" class="headerlink" title="esbuild 插件开发"></a>esbuild 插件开发</h1><p>举一个官网上的插件例子</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> envPlugin = &#123;<br>  <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;env&#x27;</span>,<br>  <span class="hljs-title function_">setup</span>(<span class="hljs-params">build</span>) &#123;<br>    build.<span class="hljs-title function_">onResolve</span>(&#123; <span class="hljs-attr">filter</span>: <span class="hljs-regexp">/^env$/</span> &#125;, <span class="hljs-function"><span class="hljs-params">args</span> =&gt;</span> (&#123;<br>      <span class="hljs-attr">path</span>: args.<span class="hljs-property">path</span>,<br>      <span class="hljs-attr">namespace</span>: <span class="hljs-string">&#x27;env-ns&#x27;</span>,<br>    &#125;))<br>      <br>    build.<span class="hljs-title function_">onLoad</span>(&#123; <span class="hljs-attr">filter</span>: <span class="hljs-regexp">/.*/</span>, <span class="hljs-attr">namespace</span>: <span class="hljs-string">&#x27;env-ns&#x27;</span> &#125;, <span class="hljs-function">() =&gt;</span> (&#123;<br>      <span class="hljs-attr">contents</span>: <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(process.<span class="hljs-property">env</span>),<br>      <span class="hljs-attr">loader</span>: <span class="hljs-string">&#x27;json&#x27;</span>,<br>    &#125;))<br>  &#125;,<br>&#125;<br><br><span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;esbuild&#x27;</span>).<span class="hljs-title function_">build</span>(&#123;<br>  <span class="hljs-attr">entryPoints</span>: [<span class="hljs-string">&#x27;app.js&#x27;</span>],<br>  <span class="hljs-attr">bundle</span>: <span class="hljs-literal">true</span>,<br>  <span class="hljs-attr">outfile</span>: <span class="hljs-string">&#x27;out.js&#x27;</span>,<br>  <span class="hljs-attr">plugins</span>: [envPlugin],<br>&#125;).<span class="hljs-title function_">catch</span>(<span class="hljs-function">() =&gt;</span> process.<span class="hljs-title function_">exit</span>(<span class="hljs-number">1</span>))<br></code></pre></td></tr></table></figure>
 
-<p>配置</p>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineConfig</span>(&#123;<br>    <span class="hljs-attr">plugins</span>: [<br>        <span class="hljs-comment">// ...</span><br>        <span class="hljs-title function_">viteImagemin</span>(&#123;<br>            <span class="hljs-comment">// 无损压缩配置</span><br>            <span class="hljs-attr">optipng</span>: &#123;<br>                <span class="hljs-attr">optimizationLevel</span>: <span class="hljs-number">7</span><br>            &#125;,<br>            <span class="hljs-comment">// 有损压缩配置</span><br>            <span class="hljs-attr">pngquant</span>: &#123;<br>                <span class="hljs-attr">quality</span>: [<span class="hljs-number">0.8</span>, <span class="hljs-number">0.9</span>],<br>            &#125;,<br>            <span class="hljs-comment">// svg 优化</span><br>            <span class="hljs-attr">svgo</span>: &#123;<br>                <span class="hljs-attr">plugins</span>: [<br>                    &#123;<br>                        <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;removeViewBox&quot;</span><br>                    &#125;,<br>                    &#123;<br>                        <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;removeEmptyAttrs&quot;</span>,<br>                        <span class="hljs-attr">active</span>: <span class="hljs-literal">false</span><br>                    &#125;<br>                ]<br>            &#125;<br>        &#125;)<br>    ],<br>&#125;);<br></code></pre></td></tr></table></figure>
-
-<p>然后执行 build</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">pmpm <span class="hljs-built_in">run</span> build<br></code></pre></td></tr></table></figure>
-<p><img src="/img/vite-console.png" srcset="/img/loading.gif" lazyload alt="控制台信息.png"></p>
-<p>控制台可以看到我们的配置生效了</p>
-<h1 id="gzip"><a href="#gzip" class="headerlink" title="gzip"></a>gzip</h1><p>gzip 可以对我们的代码体积进行压缩，提高性能</p>
-<ol>
-<li><p>安装插件</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">pnpm <span class="hljs-selector-tag">i</span> vite-plugin-compression -D<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>配置</p>
-</li>
-</ol>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">import</span> viteCompression <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vite-plugin-compression&quot;</span>;<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineConfig</span>(&#123;<br>	<span class="hljs-attr">plugins</span>: [<br>        <span class="hljs-comment">// ...</span><br>		<span class="hljs-title function_">viteCompression</span>()<br>	],<br>&#125;);<br></code></pre></td></tr></table></figure>
-
-<p><img src="/img/vite-gzip.png" srcset="/img/loading.gif" lazyload alt="控制台信息.png"></p>
+<h1 id="钩子函数"><a href="#钩子函数" class="headerlink" title="钩子函数"></a>钩子函数</h1><h3 id="onResolve"><a href="#onResolve" class="headerlink" title="onResolve"></a>onResolve</h3><p>第一个参数：{ filter: RegExp, namespace?: string }<br>    filter 是一个正则表达式，筛选需要过滤的文件<br>    namespace 作为标识<br>第二个参数：是一个回调函数</p>
 
                 
               </div>
@@ -331,8 +312,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Vite-优化篇</div>
-      <div>https://l1ushun.github.io/2023/08/07/vite-02/</div>
+      <div>vite-03</div>
+      <div>https://l1ushun.github.io/2023/08/10/vite-03/</div>
     </div>
     <div class="license-meta">
       
@@ -344,7 +325,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年8月7日</div>
+          <div>2023年8月10日</div>
         </div>
       
       
@@ -376,18 +357,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/08/10/vite-03/" title="vite-03">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">vite-03</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/08/04/vite-01/" title="Vite-初识Vite">
-                        <span class="hidden-mobile">Vite-初识Vite</span>
+                      <a href="/2023/08/07/vite-02/" title="Vite-优化篇">
+                        <span class="hidden-mobile">Vite-优化篇</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

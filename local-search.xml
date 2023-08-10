@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>vite-03</title>
+    <link href="/2023/08/10/vite-03/"/>
+    <url>/2023/08/10/vite-03/</url>
+    
+    <content type="html"><![CDATA[<h1 id="esbuild-插件开发"><a href="#esbuild-插件开发" class="headerlink" title="esbuild 插件开发"></a>esbuild 插件开发</h1><p>举一个官网上的插件例子</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> envPlugin = &#123;<br>  <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;env&#x27;</span>,<br>  <span class="hljs-title function_">setup</span>(<span class="hljs-params">build</span>) &#123;<br>    build.<span class="hljs-title function_">onResolve</span>(&#123; <span class="hljs-attr">filter</span>: <span class="hljs-regexp">/^env$/</span> &#125;, <span class="hljs-function"><span class="hljs-params">args</span> =&gt;</span> (&#123;<br>      <span class="hljs-attr">path</span>: args.<span class="hljs-property">path</span>,<br>      <span class="hljs-attr">namespace</span>: <span class="hljs-string">&#x27;env-ns&#x27;</span>,<br>    &#125;))<br>      <br>    build.<span class="hljs-title function_">onLoad</span>(&#123; <span class="hljs-attr">filter</span>: <span class="hljs-regexp">/.*/</span>, <span class="hljs-attr">namespace</span>: <span class="hljs-string">&#x27;env-ns&#x27;</span> &#125;, <span class="hljs-function">() =&gt;</span> (&#123;<br>      <span class="hljs-attr">contents</span>: <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(process.<span class="hljs-property">env</span>),<br>      <span class="hljs-attr">loader</span>: <span class="hljs-string">&#x27;json&#x27;</span>,<br>    &#125;))<br>  &#125;,<br>&#125;<br><br><span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;esbuild&#x27;</span>).<span class="hljs-title function_">build</span>(&#123;<br>  <span class="hljs-attr">entryPoints</span>: [<span class="hljs-string">&#x27;app.js&#x27;</span>],<br>  <span class="hljs-attr">bundle</span>: <span class="hljs-literal">true</span>,<br>  <span class="hljs-attr">outfile</span>: <span class="hljs-string">&#x27;out.js&#x27;</span>,<br>  <span class="hljs-attr">plugins</span>: [envPlugin],<br>&#125;).<span class="hljs-title function_">catch</span>(<span class="hljs-function">() =&gt;</span> process.<span class="hljs-title function_">exit</span>(<span class="hljs-number">1</span>))<br></code></pre></td></tr></table></figure><h1 id="钩子函数"><a href="#钩子函数" class="headerlink" title="钩子函数"></a>钩子函数</h1><h3 id="onResolve"><a href="#onResolve" class="headerlink" title="onResolve"></a>onResolve</h3><p>第一个参数：{ filter: RegExp, namespace?: string }<br>    filter 是一个正则表达式，筛选需要过滤的文件<br>    namespace 作为标识<br>第二个参数：是一个回调函数</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>技术博客</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Vite</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Vite-优化篇</title>
     <link href="/2023/08/07/vite-02/"/>
     <url>/2023/08/07/vite-02/</url>
