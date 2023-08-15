@@ -18,14 +18,14 @@
   
     <meta name="description" content="Vite 的特性直接放官网上的 、 Vite 为什么快首先要说明的是，Vite 是在开发环境下比较快，原因：  浏览器支持 ESM，Vite 在开发阶段采用 esbuild 依赖预构建，实现了按需加载，而不用整体对项目进行打包。 esbuild 采用 Go 语言开发，Go 是编译型语言，代码直接被编译为原生机器码，不需要像 JavaScript 还要解析成字节码再转成机器码。  依赖预构建Vite">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Vite-初识Vite">
+<meta property="og:title" content="Vite-快速入门">
 <meta property="og:url" content="https://l1ushun.github.io/2023/08/04/vite-01/index.html">
 <meta property="og:site_name" content="liu的博客">
 <meta property="og:description" content="Vite 的特性直接放官网上的 、 Vite 为什么快首先要说明的是，Vite 是在开发环境下比较快，原因：  浏览器支持 ESM，Vite 在开发阶段采用 esbuild 依赖预构建，实现了按需加载，而不用整体对项目进行打包。 esbuild 采用 Go 语言开发，Go 是编译型语言，代码直接被编译为原生机器码，不需要像 JavaScript 还要解析成字节码再转成机器码。  依赖预构建Vite">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://l1ushun.github.io/img/vite-logo.png">
 <meta property="article:published_time" content="2023-08-04T08:35:37.000Z">
-<meta property="article:modified_time" content="2023-08-09T07:57:31.467Z">
+<meta property="article:modified_time" content="2023-08-15T07:11:27.621Z">
 <meta property="article:author" content="liu shun">
 <meta property="article:tag" content="Vite">
 <meta name="twitter:card" content="summary_large_image">
@@ -33,7 +33,7 @@
   
   
   
-  <title>Vite-初识Vite - liu的博客</title>
+  <title>Vite-快速入门 - liu的博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -187,7 +187,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Vite-初识Vite"></span>
+            <span id="subtitle" data-typed-text="Vite-快速入门"></span>
           
         </div>
 
@@ -210,7 +210,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          6.4k 字
+          7.3k 字
         
       </span>
     
@@ -221,7 +221,7 @@
         
         
         
-          54 分钟
+          61 分钟
         
       </span>
     
@@ -258,7 +258,7 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Vite-初识Vite</h1>
+            <h1 id="seo-header">Vite-快速入门</h1>
             
             
               <div class="markdown-body">
@@ -382,6 +382,25 @@
 <h2 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h2><p>Vite 支持直接导入 JSON 文件</p>
 <figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs tsx"><span class="hljs-keyword">import</span> json <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;../package.json&#x27;</span><br><br><span class="hljs-keyword">import</span> &#123;config&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;../package.json&#x27;</span><br></code></pre></td></tr></table></figure>
 
+<h1 id="HMR"><a href="#HMR" class="headerlink" title="HMR"></a>HMR</h1><h2 id="什么是-HMR？"><a href="#什么是-HMR？" class="headerlink" title="什么是 HMR？"></a>什么是 HMR？</h2><p>Hot Module Replacement，也叫模板热替换，简单来说就是在页面发生变化时，进行局部更新和状态保存。</p>
+<h2 id="如何访问"><a href="#如何访问" class="headerlink" title="如何访问"></a>如何访问</h2><p>Vite 通过 import.meta.hot 暴露手动 HMR API，通过该属性访问 HMR 的属性和方法。另外在使用 HMR API 时，要先判断 import.meta.hot，因为该属性在生产环境中为 undefined 无需热更新，加判断可以在生产环境被 tree-shaking</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">if</span> (<span class="hljs-keyword">import</span>.<span class="hljs-property">meta</span>.<span class="hljs-property">hot</span>) &#123;<br>  <span class="hljs-comment">// HMR 代码</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>如果我们使用 Vite 创建 React &#x2F; Vue 项目，会看到 Vite 已经帮我们安了 react &#x2F; vue 的插件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// react</span><br><span class="hljs-attr">plugins</span>: [<br>   <span class="hljs-title function_">react</span>(),<br>]<br><span class="hljs-comment">// vue</span><br><span class="hljs-attr">plugins</span>: [<span class="hljs-title function_">vue</span>(), <span class="hljs-title function_">vueJsx</span>()]<br></code></pre></td></tr></table></figure>
+
+<p>插件默认会开启 HMR ，如果你想手动处理，通过 server 来配置。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js">server : &#123;<br>    <span class="hljs-attr">hmr</span>: <span class="hljs-literal">true</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h3 id="hot-accept-cb"><a href="#hot-accept-cb" class="headerlink" title="hot.accept(cb)"></a>hot.accept(cb)</h3><p>接收模块自身更新，参数是已更新模块的回调函数，接受的模块就是 HMR 的边界。简单来说就是通过该方法让我们手动 HMR，更新的 module 会作为 cb 的参数</p>
+<h3 id="hot-accept-deps-cb"><a href="#hot-accept-deps-cb" class="headerlink" title="hot.accept(deps, cb)"></a>hot.accept(deps, cb)</h3><p>接收依赖模块更新，deps 是依赖的路径，当依赖模块发生更新，会把更新后的新模块作为 cb 的参数。</p>
+<p>另外，deps 也可以是一个 Array，接收多个依赖模块更新，随之 cb 是一个和 deps 一一对应的 Array</p>
+<h3 id="hot-dispose-cb"><a href="#hot-dispose-cb" class="headerlink" title="hot.dispose(cb)"></a>hot.dispose(cb)</h3><p>在模块更新、旧模块需要销毁时需要做的一些事情，如果旧模块存在一些副作用，如定时器等，可以在这个方法内清除。</p>
+<h3 id="hot-data"><a href="#hot-data" class="headerlink" title="hot.data"></a>hot.data</h3><p>可以理解为模块更新中的持久化存储，在模块更新时，hot.data 内的数据会保留。</p>
+<h3 id="hot-prune-cb"><a href="#hot-prune-cb" class="headerlink" title="hot.prune(cb)"></a>hot.prune(cb)</h3><p>模块从页面上被删除时，使用此方法进行清理。</p>
+<h3 id="hot-invalidate-message-string"><a href="#hot-invalidate-message-string" class="headerlink" title="hot.invalidate(message?: string)"></a>hot.invalidate(message?: string)</h3><p>指定某个模块是不可热更新的。</p>
+<h3 id="hot-on-event-cb"><a href="#hot-on-event-cb" class="headerlink" title="hot.on(event, cb)"></a>hot.on(event, cb)</h3><p>监听 HMR 事件。</p>
+
                 
               </div>
             
@@ -426,7 +445,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Vite-初识Vite</div>
+      <div>Vite-快速入门</div>
       <div>https://l1ushun.github.io/2023/08/04/vite-01/</div>
     </div>
     <div class="license-meta">
