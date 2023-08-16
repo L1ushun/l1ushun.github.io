@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://l1ushun.github.io/img/vite-logo.png">
 <meta property="article:published_time" content="2023-08-07T11:38:17.000Z">
-<meta property="article:modified_time" content="2023-08-16T06:14:32.929Z">
+<meta property="article:modified_time" content="2023-08-16T07:52:18.464Z">
 <meta property="article:author" content="liu shun">
 <meta property="article:tag" content="Vite">
 <meta name="twitter:card" content="summary_large_image">
@@ -210,7 +210,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2k 字
+          2.9k 字
         
       </span>
     
@@ -221,7 +221,7 @@
         
         
         
-          17 分钟
+          24 分钟
         
       </span>
     
@@ -277,6 +277,16 @@
 <p>使用</p>
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">import</span> &#123; chunkSplitPlugin &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vite-plugin-chunk-split&quot;</span>;<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineConfig</span>(&#123;<br>    <span class="hljs-attr">plugins</span>: [<br>        <span class="hljs-title function_">chunkSplitPlugin</span>(&#123;<br>            <span class="hljs-comment">// 指定拆包策略</span><br>            <span class="hljs-attr">customSplitting</span>: &#123;<br>                <span class="hljs-comment">// 1. 支持填包名。</span><br>                <span class="hljs-string">&quot;react-vendor&quot;</span>: [<span class="hljs-string">&quot;react&quot;</span>, <span class="hljs-string">&quot;react-dom&quot;</span>],<br>                <span class="hljs-comment">// 2. 支持填正则表达式。src 中 components 和 utils 下的所有文件被会被打包为`component-util`</span><br>                <span class="hljs-string">&quot;components-util&quot;</span>: [<span class="hljs-regexp">/src\/components/</span>, <span class="hljs-regexp">/src\/utils/</span>],<br>                <span class="hljs-string">&quot;lodash&quot;</span>: [<span class="hljs-string">&quot;lodash-es&quot;</span>],<br>                <span class="hljs-string">&quot;library&quot;</span>: [<span class="hljs-string">&quot;antd&quot;</span>],<br>                <span class="hljs-string">&quot;moment&quot;</span>: [<span class="hljs-string">&quot;moment&quot;</span>]<br>            &#125;<br>        &#125;),<br>        <span class="hljs-comment">// ...</span><br>    ],<br>&#125;);<br></code></pre></td></tr></table></figure>
 
+<h1 id="语法降级-和-Polyfill"><a href="#语法降级-和-Polyfill" class="headerlink" title="语法降级 和 Polyfill"></a>语法降级 和 Polyfill</h1><p>简单来说就是低版本的浏览器对一些JS代码无法识别，需要对JS语法进行降级，详细定义：<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Glossary/Polyfill">Polyfill</a></p>
+<h2 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h2><p>安装官方插件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">pnpm i @vitejs/plugin-legacy -D<br></code></pre></td></tr></table></figure>
+<p>使用插件</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineConfig</span>(&#123;<br>    <span class="hljs-attr">plugins</span>: [<br>        <span class="hljs-title function_">chunkSplitPlugin</span>(&#123;<br>            <span class="hljs-comment">// 指定拆包策略</span><br>            <span class="hljs-attr">customSplitting</span>: &#123;<br>                <span class="hljs-comment">// 1. 支持填包名。`react` 和 `react-dom` 会被打包到一个名为`render-vendor`的 chunk 里面(包括</span><br>                <span class="hljs-string">&quot;react-vendor&quot;</span>: [<span class="hljs-string">&quot;react&quot;</span>, <span class="hljs-string">&quot;react-dom&quot;</span>],<br>                <span class="hljs-comment">// 2. 支持填正则表达式。src 中 components 和 utils 下的所有文件被会被打包为`component-util`</span><br>                <span class="hljs-string">&quot;components-util&quot;</span>: [<span class="hljs-regexp">/src\/components/</span>, <span class="hljs-regexp">/src\/utils/</span>],<br>                <span class="hljs-string">&quot;lodash&quot;</span>: [<span class="hljs-string">&quot;lodash-es&quot;</span>],<br>                <span class="hljs-string">&quot;library&quot;</span>: [<span class="hljs-string">&quot;antd&quot;</span>],<br>                <span class="hljs-string">&quot;moment&quot;</span>: [<span class="hljs-string">&quot;moment&quot;</span>]<br>            &#125;<br>        &#125;),<br>    ],<br>&#125;);<br></code></pre></td></tr></table></figure>
+<p>执行打包</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">pnpm run build<br></code></pre></td></tr></table></figure>
+<p>在 dist 目录下的 index.html 可以看到</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;module&quot;</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">nomodule</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>当使用现代浏览器时加载 type&#x3D;”module” 的 script，当使用低版本的浏览器加载 nomodule 的 script，这样就能够对低版本浏览器进行兼容了。</p>
 <h1 id="图片压缩"><a href="#图片压缩" class="headerlink" title="图片压缩"></a>图片压缩</h1><p>如果项目存在图片的静态文件，在打包时一定会增加包的大小，一般情况下我们需要在打包时对图片进行压缩处理</p>
 <p>一个 Vite 插件 vite-plugin-imagemin 可以帮我们来做这件事</p>
 <p>安装</p>
