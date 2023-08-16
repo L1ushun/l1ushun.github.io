@@ -16,16 +16,16 @@
   <meta name="author" content="liu shun">
   <meta name="keywords" content="博客,前端,git">
   
-    <meta name="description" content="代码分割单 chunk 打包存在的问题Vite 默认会将 js 打包到一个 index.js 文件中，即单 chunk 打包。这样其实会导致一些问题  包体积会很大，当前没使用的包也被打包进去了，没办法做到按需加载。 缓存复用率很低，单 chunk 打包基本上不会命中缓存，因为只要改动就重新打包，打包后的 url 改变，浏览器会当作新的资源去请求。  自定义拆包123456789101112131">
+    <meta name="description" content="代码分割单 chunk 打包存在的问题Vite 默认会将 js 打包到一个 index.js 文件中，即单 chunk 打包。这样其实会导致一些问题  包体积会很大，当前没使用的包也被打包进去了，没办法做到按需加载。 缓存复用率很低，单 chunk 打包基本上不会命中缓存，因为只要改动就重新打包，打包后的 url 改变，浏览器会当作新的资源去请求。  自定义拆包配置 manualChunks123">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Vite-优化篇">
 <meta property="og:url" content="https://l1ushun.github.io/2023/08/07/vite-02/index.html">
 <meta property="og:site_name" content="liu的博客">
-<meta property="og:description" content="代码分割单 chunk 打包存在的问题Vite 默认会将 js 打包到一个 index.js 文件中，即单 chunk 打包。这样其实会导致一些问题  包体积会很大，当前没使用的包也被打包进去了，没办法做到按需加载。 缓存复用率很低，单 chunk 打包基本上不会命中缓存，因为只要改动就重新打包，打包后的 url 改变，浏览器会当作新的资源去请求。  自定义拆包123456789101112131">
+<meta property="og:description" content="代码分割单 chunk 打包存在的问题Vite 默认会将 js 打包到一个 index.js 文件中，即单 chunk 打包。这样其实会导致一些问题  包体积会很大，当前没使用的包也被打包进去了，没办法做到按需加载。 缓存复用率很低，单 chunk 打包基本上不会命中缓存，因为只要改动就重新打包，打包后的 url 改变，浏览器会当作新的资源去请求。  自定义拆包配置 manualChunks123">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://l1ushun.github.io/img/vite-logo.png">
 <meta property="article:published_time" content="2023-08-07T11:38:17.000Z">
-<meta property="article:modified_time" content="2023-08-15T08:55:38.290Z">
+<meta property="article:modified_time" content="2023-08-16T06:14:32.929Z">
 <meta property="article:author" content="liu shun">
 <meta property="article:tag" content="Vite">
 <meta name="twitter:card" content="summary_large_image">
@@ -210,7 +210,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.4k 字
+          2k 字
         
       </span>
     
@@ -221,7 +221,7 @@
         
         
         
-          12 分钟
+          17 分钟
         
       </span>
     
@@ -268,10 +268,15 @@
 <li>包体积会很大，当前没使用的包也被打包进去了，没办法做到按需加载。</li>
 <li>缓存复用率很低，单 chunk 打包基本上不会命中缓存，因为只要改动就重新打包，打包后的 url 改变，浏览器会当作新的资源去请求。</li>
 </ol>
-<h2 id="自定义拆包"><a href="#自定义拆包" class="headerlink" title="自定义拆包"></a>自定义拆包</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-comment">// vite.config.ts</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineConfig</span>(&#123;<br>    <span class="hljs-comment">// ...</span><br>    <span class="hljs-attr">build</span>: &#123;<br>        <span class="hljs-attr">rollupOptions</span>: &#123;<br>            <span class="hljs-attr">output</span>: &#123;<br>                <span class="hljs-attr">manualChunks</span>: &#123;<br>                    <span class="hljs-comment">// React 相关库打包</span><br>                    <span class="hljs-string">&quot;react-vendor&quot;</span>: [<span class="hljs-string">&quot;react&quot;</span>, <span class="hljs-string">&quot;react-dom&quot;</span>],<br>                    <span class="hljs-comment">// Lodash 库打包</span><br>                    <span class="hljs-string">&quot;lodash&quot;</span>: [<span class="hljs-string">&quot;lodash-es&quot;</span>],<br>                    <span class="hljs-comment">// 组件库打包</span><br>                    <span class="hljs-string">&quot;library&quot;</span>: [<span class="hljs-string">&quot;antd&quot;</span>],<br>                    <span class="hljs-comment">// Moment 库打包</span><br>                    <span class="hljs-string">&quot;moment&quot;</span>: [<span class="hljs-string">&quot;moment&quot;</span>]<br>                &#125;,<br>            &#125;,<br>        &#125;<br>    &#125;,<br>&#125;);<br></code></pre></td></tr></table></figure>
+<h2 id="自定义拆包"><a href="#自定义拆包" class="headerlink" title="自定义拆包"></a>自定义拆包</h2><h3 id="配置-manualChunks"><a href="#配置-manualChunks" class="headerlink" title="配置 manualChunks"></a>配置 manualChunks</h3><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-comment">// vite.config.ts</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineConfig</span>(&#123;<br>    <span class="hljs-comment">// ...</span><br>    <span class="hljs-attr">build</span>: &#123;<br>        <span class="hljs-attr">rollupOptions</span>: &#123;<br>            <span class="hljs-attr">output</span>: &#123;<br>                <span class="hljs-attr">manualChunks</span>: &#123;<br>                    <span class="hljs-comment">// React 相关库打包</span><br>                    <span class="hljs-string">&quot;react-vendor&quot;</span>: [<span class="hljs-string">&quot;react&quot;</span>, <span class="hljs-string">&quot;react-dom&quot;</span>],<br>                    <span class="hljs-comment">// Lodash 库打包</span><br>                    <span class="hljs-string">&quot;lodash&quot;</span>: [<span class="hljs-string">&quot;lodash-es&quot;</span>],<br>                    <span class="hljs-comment">// 组件库打包</span><br>                    <span class="hljs-string">&quot;library&quot;</span>: [<span class="hljs-string">&quot;antd&quot;</span>],<br>                    <span class="hljs-comment">// Moment 库打包</span><br>                    <span class="hljs-string">&quot;moment&quot;</span>: [<span class="hljs-string">&quot;moment&quot;</span>]<br>                &#125;,<br>            &#125;,<br>        &#125;<br>    &#125;,<br>&#125;);<br></code></pre></td></tr></table></figure>
 <p>对 manualChunks 进行配置，key 代表 chunk 的名称， value 是第三方包的包名的数组。</p>
 <p><img src="/img/vite-build2.png" srcset="/img/loading.gif" lazyload alt="自定义拆包.png"></p>
 <p>可以清楚看到原来的一个大的 chunk 被拆分成多个 chunk ，当更新时，也只更新其中一个 chunk ，其他的 chunk 则会读取缓存，提高了缓存命中率。</p>
+<h3 id="使用插件"><a href="#使用插件" class="headerlink" title="使用插件"></a>使用插件</h3><p>首先安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">pnpm i vite-plugin-chunk-split -D<br></code></pre></td></tr></table></figure>
+<p>使用</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">import</span> &#123; chunkSplitPlugin &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vite-plugin-chunk-split&quot;</span>;<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineConfig</span>(&#123;<br>    <span class="hljs-attr">plugins</span>: [<br>        <span class="hljs-title function_">chunkSplitPlugin</span>(&#123;<br>            <span class="hljs-comment">// 指定拆包策略</span><br>            <span class="hljs-attr">customSplitting</span>: &#123;<br>                <span class="hljs-comment">// 1. 支持填包名。</span><br>                <span class="hljs-string">&quot;react-vendor&quot;</span>: [<span class="hljs-string">&quot;react&quot;</span>, <span class="hljs-string">&quot;react-dom&quot;</span>],<br>                <span class="hljs-comment">// 2. 支持填正则表达式。src 中 components 和 utils 下的所有文件被会被打包为`component-util`</span><br>                <span class="hljs-string">&quot;components-util&quot;</span>: [<span class="hljs-regexp">/src\/components/</span>, <span class="hljs-regexp">/src\/utils/</span>],<br>                <span class="hljs-string">&quot;lodash&quot;</span>: [<span class="hljs-string">&quot;lodash-es&quot;</span>],<br>                <span class="hljs-string">&quot;library&quot;</span>: [<span class="hljs-string">&quot;antd&quot;</span>],<br>                <span class="hljs-string">&quot;moment&quot;</span>: [<span class="hljs-string">&quot;moment&quot;</span>]<br>            &#125;<br>        &#125;),<br>        <span class="hljs-comment">// ...</span><br>    ],<br>&#125;);<br></code></pre></td></tr></table></figure>
+
 <h1 id="图片压缩"><a href="#图片压缩" class="headerlink" title="图片压缩"></a>图片压缩</h1><p>如果项目存在图片的静态文件，在打包时一定会增加包的大小，一般情况下我们需要在打包时对图片进行压缩处理</p>
 <p>一个 Vite 插件 vite-plugin-imagemin 可以帮我们来做这件事</p>
 <p>安装</p>
