@@ -16,16 +16,16 @@
   <meta name="author" content="liu shun">
   <meta name="keywords" content="博客,前端,git">
   
-    <meta name="description" content="root 更改入口文件位置通过root 可以指定根目录，也就是入口文件 index.html 所在目录 base 设置公共基础路径123456&#x2F;&#x2F; vite.config.tsconst isProduction &#x3D; process.env.NODE_ENV &#x3D;&#x3D;&#x3D; &amp;#x27;production&amp;#x27;;export default defineConfig(&amp;#123;    base:">
+    <meta name="description" content="Module Federation简单说就是提出一个模块作为“远程模块”，”本地模块“可以导入这个模块使用，同时”本地模块“也可以作为其他模块的”远程模块“ 优点 只是作为引用， 不会参与本地模块打包，减小产物体积 可以做到按需加载 每个模块单独存在，可以单独进行开发、测试等  实践首先说一下大概的流程：  新建 remote host 项目（官方是同vue，我们也是用vue） remote 作为">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Vite-配置项（更新中...）">
-<meta property="og:url" content="https://l1ushun.github.io/2023/08/04/vite-%E9%85%8D%E7%BD%AE/index.html">
+<meta property="og:title" content="vite-进阶篇">
+<meta property="og:url" content="https://l1ushun.github.io/2023/08/17/vite-05/index.html">
 <meta property="og:site_name" content="liu的博客">
-<meta property="og:description" content="root 更改入口文件位置通过root 可以指定根目录，也就是入口文件 index.html 所在目录 base 设置公共基础路径123456&#x2F;&#x2F; vite.config.tsconst isProduction &#x3D; process.env.NODE_ENV &#x3D;&#x3D;&#x3D; &amp;#x27;production&amp;#x27;;export default defineConfig(&amp;#123;    base:">
+<meta property="og:description" content="Module Federation简单说就是提出一个模块作为“远程模块”，”本地模块“可以导入这个模块使用，同时”本地模块“也可以作为其他模块的”远程模块“ 优点 只是作为引用， 不会参与本地模块打包，减小产物体积 可以做到按需加载 每个模块单独存在，可以单独进行开发、测试等  实践首先说一下大概的流程：  新建 remote host 项目（官方是同vue，我们也是用vue） remote 作为">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://l1ushun.github.io/img/vite-logo.png">
-<meta property="article:published_time" content="2023-08-04T08:35:37.000Z">
-<meta property="article:modified_time" content="2023-08-18T06:00:28.737Z">
+<meta property="article:published_time" content="2023-08-17T11:09:20.000Z">
+<meta property="article:modified_time" content="2023-08-18T03:20:13.172Z">
 <meta property="article:author" content="liu shun">
 <meta property="article:tag" content="Vite">
 <meta name="twitter:card" content="summary_large_image">
@@ -33,7 +33,7 @@
   
   
   
-  <title>Vite-配置项（更新中...） - liu的博客</title>
+  <title>vite-进阶篇 - liu的博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -187,7 +187,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Vite-配置项（更新中...）"></span>
+            <span id="subtitle" data-typed-text="vite-进阶篇"></span>
           
         </div>
 
@@ -198,8 +198,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-08-04 16:35" pubdate>
-          2023年8月4日 下午
+        <time datetime="2023-08-17 19:09" pubdate>
+          2023年8月17日 晚上
         </time>
       </span>
     
@@ -210,7 +210,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          319 字
+          1.2k 字
         
       </span>
     
@@ -221,7 +221,7 @@
         
         
         
-          3 分钟
+          11 分钟
         
       </span>
     
@@ -258,14 +258,36 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Vite-配置项（更新中...）</h1>
+            <h1 id="seo-header">vite-进阶篇</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="root-更改入口文件位置"><a href="#root-更改入口文件位置" class="headerlink" title="root 更改入口文件位置"></a>root 更改入口文件位置</h1><p>通过root 可以指定根目录，也就是入口文件 index.html 所在目录</p>
-<h1 id="base-设置公共基础路径"><a href="#base-设置公共基础路径" class="headerlink" title="base 设置公共基础路径"></a>base 设置公共基础路径</h1><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-comment">// vite.config.ts</span><br><span class="hljs-keyword">const</span> isProduction = process.<span class="hljs-property">env</span>.<span class="hljs-property">NODE_ENV</span> === <span class="hljs-string">&#x27;production&#x27;</span>;<br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineConfig</span>(&#123;<br>    <span class="hljs-attr">base</span>: isProduction ? <span class="hljs-string">&quot;xxxxx&quot;</span> : <span class="hljs-string">&quot;&quot;</span>,<br>    <span class="hljs-comment">// ...</span><br>&#125;);<br></code></pre></td></tr></table></figure>
-<p>在配置文件中，通过判断是否为生产环境，指定相应的资源前缀，在进行 pnpm run build 打包后，可以看到 dist 目录下的静态资源引用都加上了 ‘xxxxx’ 前缀。</p>
+                <h1 id="Module-Federation"><a href="#Module-Federation" class="headerlink" title="Module Federation"></a>Module Federation</h1><p>简单说就是提出一个模块作为“远程模块”，”本地模块“可以导入这个模块使用，同时”本地模块“也可以作为其他模块的”远程模块“</p>
+<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ol>
+<li>只是作为引用， 不会参与本地模块打包，减小产物体积</li>
+<li>可以做到按需加载</li>
+<li>每个模块单独存在，可以单独进行开发、测试等</li>
+</ol>
+<h2 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h2><p>首先说一下大概的流程：</p>
+<ol>
+<li>新建 remote host 项目（官方是同vue，我们也是用vue）</li>
+<li>remote 作为远程模块，我们通过打包，预览打包后的产物来模拟上线</li>
+<li>host 作为本地模块，引入远程模块使用</li>
+</ol>
+<h3 id="使用-vite-plugin-federation-插件"><a href="#使用-vite-plugin-federation-插件" class="headerlink" title="使用 vite-plugin-federation 插件"></a>使用 vite-plugin-federation 插件</h3><p>remote 和 host 分别安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">pnpm install @originjs/vite-plugin-federation -D<br></code></pre></td></tr></table></figure>
+
+<h3 id="处理-remote"><a href="#处理-remote" class="headerlink" title="处理 remote"></a>处理 remote</h3><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-comment">// vite.config.js</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineConfig</span>(&#123;<br>    <span class="hljs-attr">plugins</span>: [<br>        <span class="hljs-title function_">vue</span>(),<br>        <span class="hljs-title function_">federation</span>(&#123;<br>            <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;remote-app&#x27;</span>,<br>            <span class="hljs-attr">filename</span>: <span class="hljs-string">&#x27;remoteEntry.js&#x27;</span>,<br>            <span class="hljs-comment">// 需要暴露的模块</span><br>            <span class="hljs-attr">exposes</span>: &#123;<br>                <span class="hljs-string">&#x27;./App&#x27;</span>: <span class="hljs-string">&#x27;./src/App.vue&#x27;</span>,<br>            &#125;,<br>            <span class="hljs-attr">shared</span>: [<span class="hljs-string">&#x27;vue&#x27;</span>]<br>        &#125;)<br>    ],<br>    <span class="hljs-attr">build</span>: &#123;<br>        <span class="hljs-attr">target</span>: <span class="hljs-string">&quot;esnext&quot;</span>,<br>    &#125;,<br>&#125;)<br></code></pre></td></tr></table></figure>
+<p>执行打包</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">pnpm run build<br></code></pre></td></tr></table></figure>
+<p>预览,执行前先将 package.json 的 preview 设置为 “vite preview –port&#x3D;3030 –strictPort”</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">pnpm run preview<br></code></pre></td></tr></table></figure>
+
+<h3 id="处理-host"><a href="#处理-host" class="headerlink" title="处理 host"></a>处理 host</h3><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineConfig</span>(&#123;<br>    <span class="hljs-attr">plugins</span>: [<br>        <span class="hljs-title function_">vue</span>(),<br>        <span class="hljs-title function_">federation</span>(&#123;<br>            <span class="hljs-comment">// 远程模块声明</span><br>            <span class="hljs-attr">remotes</span>: &#123;<br>                <span class="hljs-attr">remote_app</span>: <span class="hljs-string">&quot;http://localhost:3030/assets/remoteEntry.js&quot;</span>,<br>            &#125;,<br>            <span class="hljs-comment">// 共享依赖声明</span><br>            <span class="hljs-attr">shared</span>: [<span class="hljs-string">&quot;vue&quot;</span>],<br>        &#125;),<br>    ],<br>    <span class="hljs-attr">build</span>: &#123;<br>        <span class="hljs-attr">target</span>: <span class="hljs-string">&quot;esnext&quot;</span>,<br>    &#125;,<br>&#125;)<br></code></pre></td></tr></table></figure>
+<p>使用远程模块</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;script setup&gt;<br>  import RemoteApp from &quot;remote_app/App&quot;;<br>&lt;/script&gt;<br><br>&lt;template&gt;<br>  &lt;div&gt;<br>    &lt;h1&gt;Host App&lt;/h1&gt;<br>    &lt;RemoteApp /&gt;<br>  &lt;/div&gt;<br>&lt;/template&gt;<br></code></pre></td></tr></table></figure>
+<p>启动后效果<br><img src="/img/mf.png" srcset="/img/loading.gif" lazyload alt="效果图.png"></p>
 
                 
               </div>
@@ -311,8 +333,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Vite-配置项（更新中...）</div>
-      <div>https://l1ushun.github.io/2023/08/04/vite-配置/</div>
+      <div>vite-进阶篇</div>
+      <div>https://l1ushun.github.io/2023/08/17/vite-05/</div>
     </div>
     <div class="license-meta">
       
@@ -324,7 +346,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年8月4日</div>
+          <div>2023年8月17日</div>
         </div>
       
       
@@ -351,6 +373,23 @@
 
 
 
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/08/12/vite-04/" title="vite-架构篇（Rollup）">
+                        <span class="hidden-mobile">vite-架构篇（Rollup）</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
               
             </div>
 
