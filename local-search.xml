@@ -279,31 +279,6 @@
   
   
   <entry>
-    <title>图片懒加载的几种方式</title>
-    <link href="/2022/12/21/lazy-image-loading/"/>
-    <url>/2022/12/21/lazy-image-loading/</url>
-    
-    <content type="html"><![CDATA[<h1 id="通过-img-标签"><a href="#通过-img-标签" class="headerlink" title="通过 img 标签"></a>通过 img 标签</h1><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs jsx">&lt;div style=&#123;&#123; <span class="hljs-attr">height</span>: <span class="hljs-string">&#x27;300px&#x27;</span>, <span class="hljs-attr">overflow</span>: <span class="hljs-string">&#x27;auto&#x27;</span>&#125;&#125;&gt;<br>    &#123;items.<span class="hljs-title function_">map</span>(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> (<br>        <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">key</span>=<span class="hljs-string">&#123;item.id&#125;</span>&gt;</span></span><br><span class="language-xml">            <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&#123;item.src&#125;</span> <span class="hljs-attr">loading</span>=<span class="hljs-string">&quot;lazy&quot;</span> <span class="hljs-attr">decoding</span>=<span class="hljs-string">&quot;async&quot;</span> /&gt;</span></span><br><span class="language-xml">        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>    ))&#125;<br>&lt;/div&gt;<br></code></pre></td></tr></table></figure><p>这里使用 react 来做实例，items 是一个图片数组，我们给 img 标签的 loading 属性设置 “lazy” 来开启懒加载。需要注意的是<a href="https://caniuse.com/loading-lazy-attr">该属性在浏览器的兼容性</a></p><h1 id=""><a href="#" class="headerlink" title=""></a></h1>]]></content>
-    
-    
-    <categories>
-      
-      <category>技术博客</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>JavaScript</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>手写集合</title>
     <link href="/2022/12/03/write/"/>
     <url>/2022/12/03/write/</url>
