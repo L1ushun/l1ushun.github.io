@@ -16,16 +16,16 @@
   <meta name="author" content="liu shun">
   <meta name="keywords" content="博客,前端,git">
   
-    <meta name="description" content="前置知识点数值精度丢失问题计算机在存数据时使用的二进制，并且有长度限制，我们通过 toPrecision 方法指定精度来查看我们写的数值对象的字符串表示 123Number(9).toPrecision(30) &#x2F;&#x2F; &amp;#x27;9.00000000000000000000000000000&amp;#x27;Number(9.55).toPrecision(30) &#x2F;&#x2F; &amp;#x27;9.55000000">
+    <meta name="description" content="前置知识点数值精度丢失问题Javascript 是使用二进制进行计算的，并且有长度限制。另外对于整数和小数转换成二进制的形式是不一样的。整数转换成二进制使用的是 除二取余 我们通过 toPrecision 方法指定精度来查看我们写的数值对象的字符串表示 123Number(9).toPrecision(30) &#x2F;&#x2F; &amp;#x27;9.00000000000000000000000000000&amp;#x2">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Javascript 精度问题的原因和解决方案">
 <meta property="og:url" content="https://l1ushun.github.io/2023/03/11/lodash-round/index.html">
 <meta property="og:site_name" content="liu的博客">
-<meta property="og:description" content="前置知识点数值精度丢失问题计算机在存数据时使用的二进制，并且有长度限制，我们通过 toPrecision 方法指定精度来查看我们写的数值对象的字符串表示 123Number(9).toPrecision(30) &#x2F;&#x2F; &amp;#x27;9.00000000000000000000000000000&amp;#x27;Number(9.55).toPrecision(30) &#x2F;&#x2F; &amp;#x27;9.55000000">
+<meta property="og:description" content="前置知识点数值精度丢失问题Javascript 是使用二进制进行计算的，并且有长度限制。另外对于整数和小数转换成二进制的形式是不一样的。整数转换成二进制使用的是 除二取余 我们通过 toPrecision 方法指定精度来查看我们写的数值对象的字符串表示 123Number(9).toPrecision(30) &#x2F;&#x2F; &amp;#x27;9.00000000000000000000000000000&amp;#x2">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://l1ushun.github.io/img/javascript.png">
 <meta property="article:published_time" content="2023-03-11T09:04:05.000Z">
-<meta property="article:modified_time" content="2023-09-11T10:02:11.578Z">
+<meta property="article:modified_time" content="2023-09-16T03:52:41.013Z">
 <meta property="article:author" content="liu shun">
 <meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary_large_image">
@@ -263,7 +263,8 @@
             
               <div class="markdown-body">
                 
-                <h1 id="前置知识点"><a href="#前置知识点" class="headerlink" title="前置知识点"></a>前置知识点</h1><h2 id="数值精度丢失问题"><a href="#数值精度丢失问题" class="headerlink" title="数值精度丢失问题"></a>数值精度丢失问题</h2><p>计算机在存数据时使用的二进制，并且有长度限制，我们通过 toPrecision 方法指定精度来查看我们写的数值对象的字符串表示</p>
+                <h1 id="前置知识点"><a href="#前置知识点" class="headerlink" title="前置知识点"></a>前置知识点</h1><h2 id="数值精度丢失问题"><a href="#数值精度丢失问题" class="headerlink" title="数值精度丢失问题"></a>数值精度丢失问题</h2><p>Javascript 是使用二进制进行计算的，并且有长度限制。另外对于整数和小数转换成二进制的形式是不一样的。<br>整数转换成二进制使用的是 除二取余</p>
+<p>我们通过 toPrecision 方法指定精度来查看我们写的数值对象的字符串表示</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-title class_">Number</span>(<span class="hljs-number">9</span>).<span class="hljs-title function_">toPrecision</span>(<span class="hljs-number">30</span>) <span class="hljs-comment">// &#x27;9.00000000000000000000000000000&#x27;</span><br><span class="hljs-title class_">Number</span>(<span class="hljs-number">9.55</span>).<span class="hljs-title function_">toPrecision</span>(<span class="hljs-number">30</span>) <span class="hljs-comment">// &#x27;9.55000000000000071054273576010&#x27;</span><br><span class="hljs-title class_">Number</span>(<span class="hljs-number">9.555</span>).<span class="hljs-title function_">toPrecision</span>(<span class="hljs-number">30</span>) <span class="hljs-comment">// &#x27;9.55499999999999971578290569596&#x27;</span><br></code></pre></td></tr></table></figure>
 <p>可以看到我们定义的小数，在用到这个值时实际取出的值是有偏差的，对此还有一个经典的问题：0.1 + 0.2 !&#x3D;&#x3D; 0.3</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-title class_">Number</span>(<span class="hljs-number">0.1</span>).<span class="hljs-title function_">toPrecision</span>(<span class="hljs-number">30</span>) <span class="hljs-comment">// &#x27;0.100000000000000005551115123126&#x27;</span><br><span class="hljs-title class_">Number</span>(<span class="hljs-number">0.2</span>).<span class="hljs-title function_">toPrecision</span>(<span class="hljs-number">30</span>) <span class="hljs-comment">// &#x27;0.200000000000000011102230246252&#x27;</span><br><span class="hljs-comment">// 以上两个值相加</span><br><span class="hljs-number">0.100000000000000005551115123126</span> + <span class="hljs-number">0.200000000000000011102230246252</span> <span class="hljs-comment">// 0.30000000000000004</span><br></code></pre></td></tr></table></figure>
