@@ -211,6 +211,73 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2023/05/29/redux-source/" target="_self">
+          <img src="/img/redux.png" srcset="/img/loading.gif" lazyload alt="Redux源码之createStore">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/05/29/redux-source/" target="_self">
+          Redux源码之createStore
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt " href="/2023/05/29/redux-source/" target="_self">
+        <div>
+          前言本文会按照 createStore 的源码，由上至下分别从参数、内部定义的变量、getState、subScribe订阅、dispatch派发、replaceReducer 替换 reducer 几个方面进行介绍。关于combineReducers applyMiddleware 的源码在快速入门Redux有进行说明。 参数处理1createStore(reducer, preloadedSt
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-05-29 18:46" pubdate>
+              2023-05-29
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2/" class="category-chain-item">技术博客</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Redux/">#Redux</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2023/05/26/create-redux/" target="_self">
           <img src="/img/redux.png" srcset="/img/loading.gif" lazyload alt="快速入门Redux">
         </a>
@@ -294,7 +361,7 @@
       
       <a class="index-excerpt " href="/2023/03/11/lodash-round/" target="_self">
         <div>
-          前置知识点数值精度丢失问题Javascript 是使用二进制进行计算的，并且有长度限制。另外对于整数和小数转换成二进制的形式是不一样的。整数转换成二进制使用的是 除二取余 我们通过 toPrecision 方法指定精度来查看我们写的数值对象的字符串表示 123Number(9).toPrecision(30) // &#x27;9.00000000000000000000000000000&#x2
+          前置知识点数值精度丢失问题Javascript 是使用二进制进行计算的，并且有长度限制。另外对于整数和小数转换成二进制的形式是不一样的。整数转换成二进制使用的是除二取余，小数转成二进制使用的是将小数乘以二取整 我们通过 toPrecision 方法指定精度来查看我们写的数值对象的字符串表示 123Number(9).toPrecision(30) // &#x27;9.00000000000000
         </div>
       </a>
 
