@@ -16,16 +16,16 @@
   <meta name="author" content="liu shun">
   <meta name="keywords" content="博客,前端,git">
   
-    <meta name="description" content="什么是策略模式 定义一系列的算法，把它们一个个封装起来，并且使它们可以相互替换。  简单说就是对于不同的场景，我们才采取不同的方式来应对。举几个简单的小例子：  我们要组装一台电脑，如果预算充足的话，那就可以什么都用顶配，如果预算不够，那就追求性价比，用最少的预算获得最高的性能，如果基本没有什么预算，那就只能楼下网吧对付一下了，对于不同的预算就需要不同的策略。 在网购过程中，我们买的东西越多，相应">
+    <meta name="description" content="什么是代理模式 为其他对象提供一种代理以控制对这个对象的访问。  简单理解就是你想使用一个东西，但是你不能直接用，你必须通过一个中间商来使用，就像你想要找老板加工资，但不让你直接见老板，而是需要去找老板的助理，通过助理反馈给老板让他给你加工资。 代理模式其实也很常见，我们在写页面时，一个父节点下有很多子节点，每次点击子节点都需要触发事件，我们肯定不会挨个子节点去添加事件，而是会在让他的父节点做代理">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaScript设计模式(二)：策略模式">
-<meta property="og:url" content="https://l1ushun.github.io/2023/10/10/design-strategy/index.html">
+<meta property="og:title" content="JavaScript设计模式(三)：代理模式">
+<meta property="og:url" content="https://l1ushun.github.io/2023/10/11/design-proxy/index.html">
 <meta property="og:site_name" content="liu的博客">
-<meta property="og:description" content="什么是策略模式 定义一系列的算法，把它们一个个封装起来，并且使它们可以相互替换。  简单说就是对于不同的场景，我们才采取不同的方式来应对。举几个简单的小例子：  我们要组装一台电脑，如果预算充足的话，那就可以什么都用顶配，如果预算不够，那就追求性价比，用最少的预算获得最高的性能，如果基本没有什么预算，那就只能楼下网吧对付一下了，对于不同的预算就需要不同的策略。 在网购过程中，我们买的东西越多，相应">
+<meta property="og:description" content="什么是代理模式 为其他对象提供一种代理以控制对这个对象的访问。  简单理解就是你想使用一个东西，但是你不能直接用，你必须通过一个中间商来使用，就像你想要找老板加工资，但不让你直接见老板，而是需要去找老板的助理，通过助理反馈给老板让他给你加工资。 代理模式其实也很常见，我们在写页面时，一个父节点下有很多子节点，每次点击子节点都需要触发事件，我们肯定不会挨个子节点去添加事件，而是会在让他的父节点做代理">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://l1ushun.github.io/img/javascript.png">
-<meta property="article:published_time" content="2023-10-10T11:14:25.000Z">
-<meta property="article:modified_time" content="2023-10-11T08:11:34.303Z">
+<meta property="article:published_time" content="2023-10-11T09:58:11.000Z">
+<meta property="article:modified_time" content="2023-10-12T09:52:09.430Z">
 <meta property="article:author" content="liu shun">
 <meta property="article:tag" content="JavaScript">
 <meta property="article:tag" content="设计模式">
@@ -34,7 +34,7 @@
   
   
   
-  <title>JavaScript设计模式(二)：策略模式 - liu的博客</title>
+  <title>JavaScript设计模式(三)：代理模式 - liu的博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -188,7 +188,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="JavaScript设计模式(二)：策略模式"></span>
+            <span id="subtitle" data-typed-text="JavaScript设计模式(三)：代理模式"></span>
           
         </div>
 
@@ -199,8 +199,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-10-10 19:14" pubdate>
-          2023年10月10日 晚上
+        <time datetime="2023-10-11 17:58" pubdate>
+          2023年10月11日 下午
         </time>
       </span>
     
@@ -211,7 +211,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.9k 字
+          1.6k 字
         
       </span>
     
@@ -222,7 +222,7 @@
         
         
         
-          17 分钟
+          14 分钟
         
       </span>
     
@@ -259,34 +259,37 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">JavaScript设计模式(二)：策略模式</h1>
+            <h1 id="seo-header">JavaScript设计模式(三)：代理模式</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="什么是策略模式"><a href="#什么是策略模式" class="headerlink" title="什么是策略模式"></a>什么是策略模式</h1><blockquote>
-<p><strong>定义一系列的算法，把它们一个个封装起来，并且使它们可以相互替换</strong>。</p>
+                <h1 id="什么是代理模式"><a href="#什么是代理模式" class="headerlink" title="什么是代理模式"></a>什么是代理模式</h1><blockquote>
+<p>为其他对象提供一种代理以控制对这个对象的访问。</p>
 </blockquote>
-<p>简单说就是对于不同的场景，我们才采取不同的方式来应对。举几个简单的小例子：</p>
-<ol>
-<li>我们要组装一台电脑，如果预算充足的话，那就可以什么都用顶配，如果预算不够，那就追求性价比，用最少的预算获得最高的性能，如果基本没有什么预算，那就只能楼下网吧对付一下了，对于不同的预算就需要不同的策略。</li>
-<li>在网购过程中，我们买的东西越多，相应的满减金额越多，能用的红包金额越大，省的钱越多。对于不同的金额，需要不同的计算策略。</li>
-<li>年底计算绩效，不同的评分队对应不同的等级，需要不同的计算策略。</li>
-</ol>
-<h1 id="传统的策略模式"><a href="#传统的策略模式" class="headerlink" title="传统的策略模式"></a>传统的策略模式</h1><p>传统的策略模式一般分成两个部分，一个是接受调用，然后委托给某个策略来完成相应的功能，另一个部分就是把一系列的算法封装成一个个策略类。</p>
-<h2 id="举个例子"><a href="#举个例子" class="headerlink" title="举个例子"></a>举个例子</h2><p>我们去某商场购物，如果拥有该商场的 vip 那么就能在总价的基础上进行打折，vip 分为 S 等级和 A 等级。</p>
-<p>首先我们把不同的等级的计算策略封装起来，S 等级的 vip 可以打8折，A 等级的 vip 可以打九折。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> <span class="hljs-title class_">VipS</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;&#125;;<br><br><span class="hljs-title class_">VipS</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">discount</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params">totalPrice</span>) &#123;<br>    <span class="hljs-keyword">return</span> totalPrice * <span class="hljs-number">0.8</span>;<br>&#125;<br><br><span class="hljs-keyword">const</span> <span class="hljs-title class_">VipA</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;&#125;;<br><br><span class="hljs-title class_">VipA</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">discount</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params">totalPrice</span>) &#123;<br>    <span class="hljs-keyword">return</span> totalPrice * <span class="hljs-number">0.9</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>然后再来写商品总价的类</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> <span class="hljs-title class_">GoodsPrice</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;&#125;;<br><br><span class="hljs-title class_">GoodsPrice</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">setTotalPrice</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params">totalPrice</span>) &#123;<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">totalPrice</span> = totalPrice;<br>&#125;<br><br><span class="hljs-title class_">GoodsPrice</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">setCalculateMethod</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params">obj</span>) &#123;<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">calculateMethod</span> = obj.<span class="hljs-property">discount</span>;<br>&#125;<br><br><span class="hljs-title class_">GoodsPrice</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">getActualAmount</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">calculateMethod</span> ? <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">calculateMethod</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">totalPrice</span>) : <span class="hljs-variable language_">this</span>.<span class="hljs-property">totalPrice</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>通过 setTotalPrice 方法来设置原价的金额，通过 setCalculateMethod 方法来设置我们要执行的策略，最后通过 getActualAmount 来计算出应付金额。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> goods = <span class="hljs-keyword">new</span> <span class="hljs-title class_">GoodsPrice</span>();<br>goods.<span class="hljs-title function_">setTotalPrice</span>(<span class="hljs-number">1000</span>);<br>goods.<span class="hljs-title function_">setCalculateMethod</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">VipS</span>());<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(goods.<span class="hljs-title function_">getActualAmount</span>())    <span class="hljs-comment">// 800</span><br></code></pre></td></tr></table></figure>
-
-<p>由于我们的场景逻辑比较单一，所以使用策略模式反而看起来反而把问题搞复杂了，但如果在复杂的逻辑场景，例如我们在以上的场景下增加更多更细致的优惠方案策略，使用策略模式能让我们的代码逻辑更加清晰。</p>
-<h1 id="Javascript-的策略模式"><a href="#Javascript-的策略模式" class="headerlink" title="Javascript 的策略模式"></a>Javascript 的策略模式</h1><p>在 Javascript 语言中，函数也是对象，我们可以把 n 个策略直接放到一个对象中。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> strategies = &#123;<br>    <span class="hljs-string">&#x27;vipS&#x27;</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">totalPrice</span>) &#123;<br>        <span class="hljs-keyword">return</span> totalPrice * <span class="hljs-number">0.8</span>;<br>    &#125;,<br>    <span class="hljs-string">&#x27;vipA&#x27;</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">totalPrice</span>) &#123;<br>        <span class="hljs-keyword">return</span> totalPrice * <span class="hljs-number">0.9</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> calculateActualAmount = <span class="hljs-keyword">function</span>(<span class="hljs-params"> level, price </span>)&#123;<br>    <span class="hljs-keyword">return</span> level ? strategies[ level ]( price ) : price;<br>&#125;;<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>( <span class="hljs-title function_">calculateActualAmount</span>( <span class="hljs-string">&#x27;vipS&#x27;</span>, <span class="hljs-number">1000</span> ) );<br></code></pre></td></tr></table></figure>
-<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>策略模式主要解决的就是很多相同的算法，我们一个个去使用 if…else… 去判断很麻烦，而且也不容易维护，代码可读性不高，所以我们把每个分支拆解成策略，避免使用多重判断。但还要注意的是如果策略过多的话，可能使用策略模式也并不那么合适，就需要考虑其他的设计模式来解决问题了。</p>
+<p>简单理解就是你想使用一个东西，但是你不能直接用，你必须通过一个中间商来使用，就像你想要找老板加工资，但不让你直接见老板，而是需要去找老板的助理，通过助理反馈给老板让他给你加工资。</p>
+<p>代理模式其实也很常见，我们在写页面时，一个父节点下有很多子节点，每次点击子节点都需要触发事件，我们肯定不会挨个子节点去添加事件，而是会在让他的父节点做代理，通过冒泡到父节点触发事件。</p>
+<h1 id="保护代理"><a href="#保护代理" class="headerlink" title="保护代理"></a>保护代理</h1><blockquote>
+<p>通过代理过滤掉一些根本不符合执行条件的情况。</p>
+</blockquote>
+<p>例如我们有个方法去请求一些数据，后面突然需要加一些判断条件，不满足条件的就没必要再发送一次无用的请求了，这里就可以通过保护代理的方式，将筛选条件放在代理中去过滤，原本的方法还是纯粹的请求数据逻辑。<br>这样处理的好处就是不会去破环原来的逻辑，把筛选的逻辑放在代理中单独处理也更方便定位问题，代码更加清晰。</p>
+<h1 id="虚拟代理：使用代理模式实现图片预加载"><a href="#虚拟代理：使用代理模式实现图片预加载" class="headerlink" title="虚拟代理：使用代理模式实现图片预加载"></a>虚拟代理：使用代理模式实现图片预加载</h1><blockquote>
+<p>通过代理，在真正需要执行方法的时候再触发。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> myImage = (<span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">var</span> imgNode = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Image</span>(<span class="hljs-number">500</span>,<span class="hljs-number">500</span>);<br>    <span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>.<span class="hljs-title function_">appendChild</span>(imgNode);<br>    <span class="hljs-keyword">return</span> &#123;<br>        <span class="hljs-attr">setSrc</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">src</span>) &#123;<br>            imgNode.<span class="hljs-property">src</span> = src;<br>        &#125;<br>    &#125;<br>&#125;)();<br></code></pre></td></tr></table></figure>
+<p>首先创建一个 Image 对象，把他的 setSrc 方法暴露出去。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> proxyImage = (<span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">var</span> img = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Image</span>(<span class="hljs-number">500</span>, <span class="hljs-number">500</span>);<br>    img.<span class="hljs-property">onload</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>        myImage.<span class="hljs-title function_">setSrc</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">src</span>);<br>    &#125;<br>    <span class="hljs-keyword">return</span> &#123;<br>        <span class="hljs-attr">setSrc</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">src</span>) &#123;<br>            myImage.<span class="hljs-title function_">setSrc</span>(<span class="hljs-string">&#x27;./loading.gif&#x27;</span>);<br>            img.<span class="hljs-property">src</span> = src;<br>        &#125;<br>    &#125;<br>&#125;)();<br></code></pre></td></tr></table></figure>
+<p>接着在定义一个代理对象，该方法同时也拥有 setSrc 方法，只不过在这里代理了设置原对象的方法，在真正的图片加载完成之前，会用其他图片代替展示，避免出现页面空白的情况。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">proxyImage.<span class="hljs-title function_">setSrc</span>(<span class="hljs-string">&#x27;https://www.bing.com/th?id=OHR.JohnDayFossil_EN-CN3221993722_tmb.jpg&#x27;</span>);<br></code></pre></td></tr></table></figure>
+<p>最后我们通过代理对象来设置图片的 src ，代理对象相当于拦截了对于真正对象的操作，在图片加载完成后才执行真正的赋值。</p>
+<h1 id="缓存代理：使用代理模式实做数据缓存"><a href="#缓存代理：使用代理模式实做数据缓存" class="headerlink" title="缓存代理：使用代理模式实做数据缓存"></a>缓存代理：使用代理模式实做数据缓存</h1><blockquote>
+<p>缓存代理主要就是对于一些计算开销比较的大的时候，通过代理实现缓存，减少重复计算。</p>
+</blockquote>
+<p>先实现一个计算斐波那契数列的方法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">fibonacci</span>(<span class="hljs-params">n</span>) &#123;<br>    <span class="hljs-keyword">if</span> (n &lt;= <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> n;<br>    <span class="hljs-keyword">let</span> fib = [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>];<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">2</span>; i &lt;= n; i++) &#123;<br>        fib[i] = fib[i - <span class="hljs-number">1</span>] + fib[i - <span class="hljs-number">2</span>];<br>    &#125;<br>    <span class="hljs-keyword">return</span> fib[n];<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>然后加入代理</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> proxyFibonacci = (<span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">let</span> cache = &#123;&#125;;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">function</span> (<span class="hljs-params">num</span>) &#123;<br>       <span class="hljs-keyword">if</span> (!cache[num]) &#123;<br>           cache[num] = <span class="hljs-title function_">fibonacci</span>(num);<br>       &#125;<br>       <span class="hljs-keyword">return</span> cache[num];<br>   &#125;<br>&#125;)()<br></code></pre></td></tr></table></figure>
+<p>在代理里面我们使用闭包，用 cache 来缓存计算值，这样计算过的值我们通过代理直接读取缓存即可，减少计算的过程，提高性能。这种方式在计算方法开销很大的情况下很有用。</p>
 
                 
               </div>
@@ -334,8 +337,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>JavaScript设计模式(二)：策略模式</div>
-      <div>https://l1ushun.github.io/2023/10/10/design-strategy/</div>
+      <div>JavaScript设计模式(三)：代理模式</div>
+      <div>https://l1ushun.github.io/2023/10/11/design-proxy/</div>
     </div>
     <div class="license-meta">
       
@@ -347,7 +350,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年10月10日</div>
+          <div>2023年10月11日</div>
         </div>
       
       
@@ -379,18 +382,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/10/11/design-proxy/" title="JavaScript设计模式(三)：代理模式">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">JavaScript设计模式(三)：代理模式</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/09/13/design-mode/" title="JavaScript设计模式(一)：单例模式、工厂模式">
-                        <span class="hidden-mobile">JavaScript设计模式(一)：单例模式、工厂模式</span>
+                      <a href="/2023/10/10/design-strategy/" title="JavaScript设计模式(二)：策略模式">
+                        <span class="hidden-mobile">JavaScript设计模式(二)：策略模式</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
