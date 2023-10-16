@@ -211,6 +211,75 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2023/10/13/design-observer/" target="_self">
+          <img src="/img/javascript.png" srcset="/img/loading.gif" lazyload alt="JavaScript设计模式(四)：发布-订阅模式、观察者模式">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/10/13/design-observer/" target="_self">
+          JavaScript设计模式(四)：发布-订阅模式、观察者模式
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt " href="/2023/10/13/design-observer/" target="_self">
+        <div>
+          定义我们暂且把发布订阅模式和观察者模式理解成相同的，是行为型模式的一种，定义了一种一对多的依赖关系，让多个观察者对象同时监听某一个主题对象。这个主题对象在状态变化时，会通知所有的观察者对象，使他们能够自动更新自己。在日常生活中也有例子，例如我们办理银行卡时，如果订阅了手机短信功能，那么每次消费后都会给我们发送短信。 简单实现我们先来简单模拟实现一个发布订阅模式。 12345678910111213
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-10-13 20:24" pubdate>
+              2023-10-13
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2/" class="category-chain-item">技术博客</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/JavaScript/">#JavaScript</a>
+            
+              <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">#设计模式</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2023/10/11/design-proxy/" target="_self">
           <img src="/img/javascript.png" srcset="/img/loading.gif" lazyload alt="JavaScript设计模式(三)：代理模式">
         </a>
@@ -365,7 +434,7 @@
       
       <a class="index-excerpt " href="/2023/09/13/design-mode/" target="_self">
         <div>
-          单例模式什么是单例模式呢使用单例模式保证了只存在一个实例，每次获取返回的都是这个实例，当我们对一个类通过 new 关键字生成多个对象，这些对象其实都是同一个，也就是第一次 new 创建的实例。 方式一123456789101112class Singleton &#123;    static getInstance = function () &#123;        if (!Singlet
+          设计模式原则 单一功能原则（Single Responsibility Principle） 开放封闭原则（Opened Closed Principle） 里式替换原则（Liskov Substitution Principle） 接口隔离原则（Interface Segregation Principle） 依赖反转原则（Dependency Inversion Principle）  单例模
         </div>
       </a>
 
@@ -779,73 +848,6 @@
             <i class="iconfont icon-date"></i>
             <time datetime="2023-07-31 11:42" pubdate>
               2023-07-31
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2/" class="category-chain-item">技术博客</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/React/">#React</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2023/07/21/diff/" target="_self">
-          <img src="/img/react-logo.png" srcset="/img/loading.gif" lazyload alt="React原理之diff流程">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/07/21/diff/" target="_self">
-          React原理之diff流程
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt " href="/2023/07/21/diff/" target="_self">
-        <div>
-          前言什么是 diff？我们写的 JSX 文件，会变成 vDom 也就是 React Element 实例，在 render 时进行调和变成 fiber，我们知道 React 采用了双缓存，正在页面中的是 current Fiber，本次渲染的是 workInProgress Fiber，在渲染时会用 workInProgress Fiber 直接替换 current Fiber，而 diff 做的
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-07-21 22:29" pubdate>
-              2023-07-21
             </time>
           </div>
         

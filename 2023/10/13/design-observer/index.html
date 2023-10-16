@@ -16,24 +16,25 @@
   <meta name="author" content="liu shun">
   <meta name="keywords" content="博客,前端,git">
   
-    <meta name="description" content="前言什么是 diff？我们写的 JSX 文件，会变成 vDom 也就是 React Element 实例，在 render 时进行调和变成 fiber，我们知道 React 采用了双缓存，正在页面中的是 current Fiber，本次渲染的是 workInProgress Fiber，在渲染时会用 workInProgress Fiber 直接替换 current Fiber，而 diff 做的">
+    <meta name="description" content="定义我们暂且把发布订阅模式和观察者模式理解成相同的，是行为型模式的一种，定义了一种一对多的依赖关系，让多个观察者对象同时监听某一个主题对象。这个主题对象在状态变化时，会通知所有的观察者对象，使他们能够自动更新自己。在日常生活中也有例子，例如我们办理银行卡时，如果订阅了手机短信功能，那么每次消费后都会给我们发送短信。 简单实现我们先来简单模拟实现一个发布订阅模式。 12345678910111213">
 <meta property="og:type" content="article">
-<meta property="og:title" content="React原理之diff流程">
-<meta property="og:url" content="https://l1ushun.github.io/2023/07/21/diff/index.html">
+<meta property="og:title" content="JavaScript设计模式(四)：发布-订阅模式、观察者模式">
+<meta property="og:url" content="https://l1ushun.github.io/2023/10/13/design-observer/index.html">
 <meta property="og:site_name" content="liu的博客">
-<meta property="og:description" content="前言什么是 diff？我们写的 JSX 文件，会变成 vDom 也就是 React Element 实例，在 render 时进行调和变成 fiber，我们知道 React 采用了双缓存，正在页面中的是 current Fiber，本次渲染的是 workInProgress Fiber，在渲染时会用 workInProgress Fiber 直接替换 current Fiber，而 diff 做的">
+<meta property="og:description" content="定义我们暂且把发布订阅模式和观察者模式理解成相同的，是行为型模式的一种，定义了一种一对多的依赖关系，让多个观察者对象同时监听某一个主题对象。这个主题对象在状态变化时，会通知所有的观察者对象，使他们能够自动更新自己。在日常生活中也有例子，例如我们办理银行卡时，如果订阅了手机短信功能，那么每次消费后都会给我们发送短信。 简单实现我们先来简单模拟实现一个发布订阅模式。 12345678910111213">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://l1ushun.github.io/img/react-logo.png">
-<meta property="article:published_time" content="2023-07-21T14:29:21.000Z">
-<meta property="article:modified_time" content="2023-10-12T09:56:19.036Z">
+<meta property="og:image" content="https://l1ushun.github.io/img/javascript.png">
+<meta property="article:published_time" content="2023-10-13T12:24:31.000Z">
+<meta property="article:modified_time" content="2023-10-16T03:43:52.579Z">
 <meta property="article:author" content="liu shun">
-<meta property="article:tag" content="React">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="设计模式">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://l1ushun.github.io/img/react-logo.png">
+<meta name="twitter:image" content="https://l1ushun.github.io/img/javascript.png">
   
   
   
-  <title>React原理之diff流程 - liu的博客</title>
+  <title>JavaScript设计模式(四)：发布-订阅模式、观察者模式 - liu的博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -181,13 +182,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/react-logo.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/javascript.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="React原理之diff流程"></span>
+            <span id="subtitle" data-typed-text="JavaScript设计模式(四)：发布-订阅模式、观察者模式"></span>
           
         </div>
 
@@ -198,8 +199,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-07-21 22:29" pubdate>
-          2023年7月21日 晚上
+        <time datetime="2023-10-13 20:24" pubdate>
+          2023年10月13日 晚上
         </time>
       </span>
     
@@ -210,7 +211,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.2k 字
+          2.1k 字
         
       </span>
     
@@ -314,7 +315,7 @@
       
         <a href="/2023/10/13/design-observer/" title="JavaScript设计模式(四)：发布-订阅模式、观察者模式"
            class="list-group-item list-group-item-action
-           ">
+           active">
           <span class="category-post">JavaScript设计模式(四)：发布-订阅模式、观察者模式</span>
         </a>
       
@@ -332,7 +333,7 @@
       
         <a href="/2023/07/21/diff/" title="React原理之diff流程"
            class="list-group-item list-group-item-action
-           active">
+           ">
           <span class="category-post">React原理之diff流程</span>
         </a>
       
@@ -454,70 +455,25 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">React原理之diff流程</h1>
+            <h1 id="seo-header">JavaScript设计模式(四)：发布-订阅模式、观察者模式</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><h2 id="什么是-diff？"><a href="#什么是-diff？" class="headerlink" title="什么是 diff？"></a>什么是 diff？</h2><p>我们写的 JSX 文件，会变成 vDom 也就是 React Element 实例，<strong>在 render 时进行调和变成 fiber</strong>，<br>我们知道 React 采用了双缓存，正在页面中的是 current Fiber，本次渲染的是 workInProgress Fiber，<br>在渲染时会用 workInProgress Fiber 直接替换 current Fiber，<strong>而 diff 做的就是比较 vDom 和 current Fiber 来生成 workInProgress Fiber，</strong><br>另外在<strong>初始化</strong>的时候，不存在 current Fiber ，也就<strong>不需要进行 diff</strong>。</p>
-<h1 id="三个设计思想"><a href="#三个设计思想" class="headerlink" title="三个设计思想"></a>三个设计思想</h1><ol>
-<li>永远只比较同层节点</li>
-<li>不同节点产生不同的树，如果节点改变了，直接删除原节点，创建新节点</li>
-<li>开发者通过 key 标记哪些是同个节点，在 diff 时会根据 key 进行判断（这也说明了key值必须唯一）</li>
+                <h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p>我们暂且把发布订阅模式和观察者模式理解成相同的，是行为型模式的一种，定义了一种一对多的依赖关系，让多个观察者对象同时监听某一个主题对象。这个主题对象在状态变化时，会通知所有的观察者对象，使他们能够自动更新自己。<br>在日常生活中也有例子，例如我们办理银行卡时，如果订阅了手机短信功能，那么每次消费后都会给我们发送短信。</p>
+<h1 id="简单实现"><a href="#简单实现" class="headerlink" title="简单实现"></a>简单实现</h1><p>我们先来简单模拟实现一个发布订阅模式。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> observer = (<span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">const</span> listeners = [];<br>    <span class="hljs-comment">// 订阅事件</span><br>    <span class="hljs-keyword">function</span> <span class="hljs-title function_">subscribe</span> (sub) &#123;<br>        listeners.<span class="hljs-title function_">push</span>(sub);<br>    &#125;<br>    <span class="hljs-comment">// 发布通知</span><br>    <span class="hljs-keyword">function</span> <span class="hljs-title function_">notify</span>(<span class="hljs-params">message</span>) &#123;<br>        listeners.<span class="hljs-title function_">forEach</span>(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> <span class="hljs-title function_">item</span>(message));<br>    &#125;<br>    <span class="hljs-keyword">return</span> &#123;<br>        subscribe,<br>        notify,<br>    &#125;;<br>&#125;)()<br><br>observer.<span class="hljs-title function_">subscribe</span>(<span class="hljs-keyword">function</span> (<span class="hljs-params">message</span>) &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;我订阅了了消息&quot;</span>, message)<br>&#125;)<br><br>observer.<span class="hljs-title function_">notify</span>(<span class="hljs-string">&#x27;发布了一条信息。。。&#x27;</span>)<br></code></pre></td></tr></table></figure>
+<p>以上代码通过 listeners 存放订阅信息，subscribe 方法来订阅信息，notify 方法来发布信息。</p>
+<h1 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h1><h2 id="EventBus"><a href="#EventBus" class="headerlink" title="EventBus"></a>EventBus</h2><p>EventBus 就是基于发布-订阅模式实现的，由三个主要元素构成，事件、发布者、订阅者。<br>实现一个简易的 EventBus 需要几个关键因素</p>
+<ol>
+<li>定义一个 tasks 来管理事件</li>
+<li>on 方法来订阅事件</li>
+<li>off 方法来退订</li>
+<li>once 方法只订阅一次<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">class</span> <span class="hljs-title class_">EventBus</span> &#123;<br>    <span class="hljs-title function_">constructor</span>(<span class="hljs-params"></span>) &#123;<br>        <span class="hljs-comment">// 初始化一个 tasks 存放事件名和对应的事件</span><br>        <span class="hljs-variable language_">this</span>.<span class="hljs-property">tasks</span> = &#123;&#125;;<br>    &#125;<br>    <span class="hljs-comment">// 订阅事件</span><br>    <span class="hljs-title function_">on</span>(<span class="hljs-params">type, event</span>) &#123;<br>        <span class="hljs-comment">// 第一次订阅前先初始化</span><br>        <span class="hljs-keyword">if</span> (!<span class="hljs-variable language_">this</span>.<span class="hljs-property">tasks</span>[type]) &#123;<br>            <span class="hljs-variable language_">this</span>.<span class="hljs-property">tasks</span>[type] = [];<br>        &#125;<br>        <span class="hljs-variable language_">this</span>.<span class="hljs-property">tasks</span>[type].<span class="hljs-title function_">push</span>(event);<br>    &#125;<br>    <span class="hljs-comment">// 发布</span><br>    <span class="hljs-title function_">emit</span>(<span class="hljs-params">type, ...rest</span>) &#123;<br>        <span class="hljs-keyword">if</span> (!<span class="hljs-variable language_">this</span>.<span class="hljs-property">tasks</span>[type]) <span class="hljs-keyword">return</span>;<br>        <span class="hljs-comment">// 循环执行所有回调</span><br>        <span class="hljs-variable language_">this</span>.<span class="hljs-property">tasks</span>[type].<span class="hljs-title function_">forEach</span>(<span class="hljs-function"><span class="hljs-params">event</span> =&gt;</span> <span class="hljs-title function_">event</span>(...rest));<br>    &#125;<br>    <span class="hljs-comment">// 取消订阅</span><br>    <span class="hljs-title function_">off</span>(<span class="hljs-params">type, event</span>) &#123;<br>        <span class="hljs-keyword">if</span> (!<span class="hljs-variable language_">this</span>.<span class="hljs-property">tasks</span>[type]) <span class="hljs-keyword">return</span>;<br>        <span class="hljs-comment">// 找到对应索引进行删除</span><br>        <span class="hljs-keyword">const</span> index = <span class="hljs-variable language_">this</span>.<span class="hljs-property">tasks</span>[type].<span class="hljs-title function_">indexOf</span>(event);<br>        <span class="hljs-keyword">if</span> (index !== -<span class="hljs-number">1</span>)&#123;<br>            <span class="hljs-variable language_">this</span>.<span class="hljs-property">tasks</span>[type].<span class="hljs-title function_">splice</span>(index, <span class="hljs-number">1</span>);<br>        &#125;<br>    &#125;<br>    <span class="hljs-comment">// 单次注册 执行完一次需要销毁</span><br>    <span class="hljs-title function_">once</span>(<span class="hljs-params">type, event</span>) &#123;<br>        <span class="hljs-keyword">const</span> that = <span class="hljs-variable language_">this</span>;<br>        <span class="hljs-comment">// 对原方法包装一下 在 _once 方法内执行 event 执行完就删除 订阅用的也是 _once 方法</span><br>        <span class="hljs-keyword">function</span> <span class="hljs-title function_">_once</span>(<span class="hljs-params">...rest</span>) &#123;<br>            event.<span class="hljs-title function_">apply</span>(...<span class="hljs-variable language_">arguments</span>);<br>            that.<span class="hljs-title function_">off</span>(type, _once);<br>        &#125;<br>        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">on</span>(type, _once);<br>    &#125;<br>&#125;<br><br><span class="hljs-keyword">const</span> tasks = <span class="hljs-keyword">new</span> <span class="hljs-title class_">EventBus</span>();<br><br>tasks.<span class="hljs-title function_">once</span>(<span class="hljs-string">&#x27;sayHello&#x27;</span>, <span class="hljs-function">() =&gt;</span> <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Hello World&quot;</span>))<br>tasks.<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;sayYes&#x27;</span>, <span class="hljs-function">()=&gt;</span> <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;yes&#x27;</span>))<br><br>tasks.<span class="hljs-title function_">emit</span>(<span class="hljs-string">&#x27;sayHello&#x27;</span>)<br>tasks.<span class="hljs-title function_">emit</span>(<span class="hljs-string">&#x27;sayYes&#x27;</span>)<br></code></pre></td></tr></table></figure></li>
 </ol>
-<h1 id="单节点-diff"><a href="#单节点-diff" class="headerlink" title="单节点 diff"></a>单节点 diff</h1><p><img src="/img/%E5%8D%95%E7%82%B9diff.png" srcset="/img/loading.gif" lazyload alt="单点diff.png"></p>
-<ul>
-<li>首先看上次更新时是否存在当前的DOM节点，如果没有证明进行了新增节点，直接创建新Fiber并返回</li>
-<li>然后比较 key 值是否相等，我们可以自定义 key 值来表明哪些节点是稳定的，如果连 key 值都不相同，说明进行了删除操作，直接打上删除的 tag，创建新的 Fiber 返回</li>
-<li>如果 key 相等，并且 type 也相等，证明该节点可以进行复用，直接返回即可。</li>
-<li>如果 key 相等，type 不等，证明该节点发生了更新，需要将该 fiber 和他的兄弟 fiber 全部标记删除</li>
-</ul>
-<h2 id="当-key-相等，type-不等时，为什么不仅标记该-fiber-删除，还要标记兄弟-fiber-呢？？"><a href="#当-key-相等，type-不等时，为什么不仅标记该-fiber-删除，还要标记兄弟-fiber-呢？？" class="headerlink" title="当 key 相等，type 不等时，为什么不仅标记该 fiber 删除，还要标记兄弟 fiber 呢？？"></a>当 key 相等，type 不等时，为什么不仅标记该 fiber 删除，还要标记兄弟 fiber 呢？？</h2><p>首先我们要清楚一点，这里是单节点 diff，也就是说我们当前只有一个节点，我们比较 type 前已经比较过了 key，证明了是同一个节点，如果 type 不相等的话，其他的节点根本没有比较的必要了。举个例子：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>  <br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">key</span>=<span class="hljs-string">&quot;1&quot;</span>&gt;</span>1<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>  <br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">key</span>=<span class="hljs-string">&quot;2&quot;</span>&gt;</span>2<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>  <br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>  <br> // 变成了<br><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>  <br>    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">key</span>=<span class="hljs-string">&quot;1&quot;</span>&gt;</span>1<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>  <br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br></code></pre></td></tr></table></figure>
-<p>在确定该节点是由 key &#x3D; “1” 的 div 更新而来的，因为只有 p 一个单节点，后续也不会有节点继续和 key&#x3D;”1”的兄弟节点进行比较了，所以直接打上删除标签就好了。</p>
-<h1 id="多节点-diff"><a href="#多节点-diff" class="headerlink" title="多节点 diff"></a>多节点 diff</h1><h2 id="第一阶段"><a href="#第一阶段" class="headerlink" title="第一阶段"></a>第一阶段</h2><p>第一阶段注主要处理更新的节点，步骤如下</p>
-<ul>
-<li>遍历 newChildren 和原来的 oldFiber ，首先比较 newChildren[i] 和 oldFiber，相同继续比较 newChildren[i+1] 和 oldFiber.sibling</li>
-<li>如果能复用就直接复用了</li>
-<li>不能复用有两种情况<ol>
-<li>key不同：直接跳出第一阶段的遍历</li>
-<li>key相同，type不同，说明发生了更新，遵循第二条思想，打上删除的 tag 继续遍历</li>
-</ol>
-</li>
-</ul>
-<p><strong>流程图</strong></p>
-<p><img src="/img/first-traverse.png" srcset="/img/loading.gif" lazyload alt="第一轮遍历.png"></p>
-<h2 id="第二阶段"><a href="#第二阶段" class="headerlink" title="第二阶段"></a>第二阶段</h2><p>当经过第一阶段的遍历后可能出现以下情况</p>
-<ul>
-<li>newChildren 和 oldFiber 都遍历完了，说明不再需要第二轮的遍历了</li>
-<li>newChildren 没遍历完，oldFiber 遍历完，说明新增了节点，这就需要再去遍历，标记上新增tag</li>
-<li>newChildren遍历完，oldFiber没遍历完，说明有删除节点，所以需要遍历剩下的oldFiber，依次标记删除tag</li>
-<li>newChildren与oldFiber都没遍历完，这说明有节点的位置发生了变化，举个例子</li>
-</ul>
-<blockquote>
-<p>oldFiber: abcd<br>newChildren: acbd</p>
-</blockquote>
-<p>在第一轮遍历之后，a 可以复用，oldFiber 剩余 bcd，newChildren 剩余 cbd，此时将未处理的 oldFiber 存入以 key 为 key，oldFiber 为 value 的 Map 中，遍历 newChildren，通过newChildren[i].key就能在existingChildren 中找到 key 相同的 oldFiber，索引为 oldIndex，通过 lastPlacedIndex 来进行处理。</p>
-<blockquote>
-<p>lastPlacedIndex 代表当前newChildren项在 oldFiber 中的索引<br>如果 oldIndex &gt;&#x3D; lastPlacedIndex 代表该可复用节点不需要移动<br>并将 lastPlacedIndex &#x3D; oldIndex;<br>如果 oldIndex &lt; lastplacedIndex 该可复用节点之前插入的位置索引小于这次更新需要插入的位置索引，代表该节点需要向右移动</p>
-</blockquote>
-<p><strong>流程</strong></p>
-<blockquote>
-<p>oldFiber: abcd<br>newChildren: acbd</p>
-</blockquote>
-<p>经过第一次阶段遍历</p>
-<blockquote>
-<p>oldFiber: bcd<br>newChildren: cbd<br>查找 newChildren 的 c 在 oldFiber 中的索引为 2 ，所以 lastPlacedIndex &#x3D; 2，无需换位</p>
-</blockquote>
-<p>第一次查找后</p>
-<blockquote>
-<p>oldFiber: bd<br>newChildren: bd<br>查找 newChildren 的 b 在 oldFiber 中的索引为 1 ，所以 lastPlacedIndex &#x3D; 1，需要向右移动</p>
-</blockquote>
-<p>第二次查找后</p>
-<blockquote>
-<p>oldFiber: d<br>newChildren: d<br>查找 newChildren 的 b 在 oldFiber 中的索引为 3 ，所以 lastPlacedIndex &#x3D; 3，无需换位</p>
-</blockquote>
-<p>至此，Diff流程结束。</p>
+<h2 id="Redux"><a href="#Redux" class="headerlink" title="Redux"></a>Redux</h2><p>我们常用的状态管理工具 <a href="https://l1ushun.github.io/2023/05/29/redux-source/">Redux</a> 中就使用到了观察者模式，使用 subscribe 进行订阅，dispatch 进行发布。</p>
+<h1 id="发布订阅模式和观察者模式的区别"><a href="#发布订阅模式和观察者模式的区别" class="headerlink" title="发布订阅模式和观察者模式的区别"></a>发布订阅模式和观察者模式的区别</h1><p>一句话简单解释就是<strong>发布订阅模式需要一个中间商，观察者模式不需要</strong>，形象化解释就是小组都需要一个文件，观察者模式就是领导直接把文件发送给你，发布订阅模式就是领导把文件放在某个公有文件夹中你自己去下载。另外如果是观察者模式，那么可能把所有文件都发给了你，而发布订阅模式，你就可以按需选择你用到的文件下载即可。</p>
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>发布-订阅模式应用的比较广泛，他帮助我们对模块间进行解耦，但同时也会会消耗空间内存，当你订阅了事件但从未触发，这个事件依旧占用着内存，造成浪费，所以合理使用也很重要。</p>
 
                 
               </div>
@@ -551,7 +507,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/React/" class="print-no-link">#React</a>
+        <a href="/tags/JavaScript/" class="print-no-link">#JavaScript</a>
+      
+        <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="print-no-link">#设计模式</a>
       
     </div>
   
@@ -563,8 +521,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>React原理之diff流程</div>
-      <div>https://l1ushun.github.io/2023/07/21/diff/</div>
+      <div>JavaScript设计模式(四)：发布-订阅模式、观察者模式</div>
+      <div>https://l1ushun.github.io/2023/10/13/design-observer/</div>
     </div>
     <div class="license-meta">
       
@@ -576,7 +534,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年7月21日</div>
+          <div>2023年10月13日</div>
         </div>
       
       
@@ -608,18 +566,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/07/31/react-flow/" title="React流程图（完善ing...）">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">React流程图（完善ing...）</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/07/12/ahooks-useVirtualList/" title="ahooks源码之useVirtualList">
-                        <span class="hidden-mobile">ahooks源码之useVirtualList</span>
+                      <a href="/2023/10/11/design-proxy/" title="JavaScript设计模式(三)：代理模式">
+                        <span class="hidden-mobile">JavaScript设计模式(三)：代理模式</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
