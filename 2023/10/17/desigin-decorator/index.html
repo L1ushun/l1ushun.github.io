@@ -16,16 +16,16 @@
   <meta name="author" content="liu shun">
   <meta name="keywords" content="博客,前端,git">
   
-    <meta name="description" content="定义我们暂且把发布订阅模式和观察者模式理解成相同的，是行为型模式的一种，定义了一种一对多的依赖关系，让多个观察者对象同时监听某一个主题对象。这个主题对象在状态变化时，会通知所有的观察者对象，使他们能够自动更新自己。在日常生活中也有例子，例如我们办理银行卡时，如果订阅了手机短信功能，那么每次消费后都会给我们发送短信。 简单实现我们先来简单模拟实现一个发布订阅模式。 12345678910111213">
+    <meta name="description" content="定义是一种结构型设计模式。在不改变原对象的基础上，通过对其进行包装拓展，使原有对象可以满足用户的更复杂需求。 装饰函数装饰函数可以让我们在不修改原方法的情况加对原函数进行包装，增加额外的功能。在日常开发中难免遇到原来的需求现在要增加新的功能，如果原来的代码是自己写的还好，如果是接手别人写的代码，直接修改源代码就很冒风险，甚至有可能导致其他功能异常。 保存原引用方法123456789function">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaScript设计模式(四)：发布-订阅模式、观察者模式">
-<meta property="og:url" content="https://l1ushun.github.io/2023/10/13/design-observer/index.html">
+<meta property="og:title" content="JavaScript设计模式(五)：装饰器模式">
+<meta property="og:url" content="https://l1ushun.github.io/2023/10/17/desigin-decorator/index.html">
 <meta property="og:site_name" content="liu的博客">
-<meta property="og:description" content="定义我们暂且把发布订阅模式和观察者模式理解成相同的，是行为型模式的一种，定义了一种一对多的依赖关系，让多个观察者对象同时监听某一个主题对象。这个主题对象在状态变化时，会通知所有的观察者对象，使他们能够自动更新自己。在日常生活中也有例子，例如我们办理银行卡时，如果订阅了手机短信功能，那么每次消费后都会给我们发送短信。 简单实现我们先来简单模拟实现一个发布订阅模式。 12345678910111213">
+<meta property="og:description" content="定义是一种结构型设计模式。在不改变原对象的基础上，通过对其进行包装拓展，使原有对象可以满足用户的更复杂需求。 装饰函数装饰函数可以让我们在不修改原方法的情况加对原函数进行包装，增加额外的功能。在日常开发中难免遇到原来的需求现在要增加新的功能，如果原来的代码是自己写的还好，如果是接手别人写的代码，直接修改源代码就很冒风险，甚至有可能导致其他功能异常。 保存原引用方法123456789function">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://l1ushun.github.io/img/javascript.png">
-<meta property="article:published_time" content="2023-10-13T12:24:31.000Z">
-<meta property="article:modified_time" content="2023-10-16T03:43:52.579Z">
+<meta property="article:published_time" content="2023-10-17T02:04:11.000Z">
+<meta property="article:modified_time" content="2023-10-17T06:46:25.013Z">
 <meta property="article:author" content="liu shun">
 <meta property="article:tag" content="JavaScript">
 <meta property="article:tag" content="设计模式">
@@ -34,7 +34,7 @@
   
   
   
-  <title>JavaScript设计模式(四)：发布-订阅模式、观察者模式 - liu的博客</title>
+  <title>JavaScript设计模式(五)：装饰器模式 - liu的博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -188,7 +188,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="JavaScript设计模式(四)：发布-订阅模式、观察者模式"></span>
+            <span id="subtitle" data-typed-text="JavaScript设计模式(五)：装饰器模式"></span>
           
         </div>
 
@@ -199,8 +199,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-10-13 20:24" pubdate>
-          2023年10月13日 晚上
+        <time datetime="2023-10-17 10:04" pubdate>
+          2023年10月17日 上午
         </time>
       </span>
     
@@ -211,7 +211,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.1k 字
+          2.6k 字
         
       </span>
     
@@ -222,7 +222,7 @@
         
         
         
-          18 分钟
+          22 分钟
         
       </span>
     
@@ -315,7 +315,7 @@
       
         <a href="/2023/10/17/desigin-decorator/" title="JavaScript设计模式(五)：装饰器模式"
            class="list-group-item list-group-item-action
-           ">
+           active">
           <span class="category-post">JavaScript设计模式(五)：装饰器模式</span>
         </a>
       
@@ -324,7 +324,7 @@
       
         <a href="/2023/10/13/design-observer/" title="JavaScript设计模式(四)：发布-订阅模式、观察者模式"
            class="list-group-item list-group-item-action
-           active">
+           ">
           <span class="category-post">JavaScript设计模式(四)：发布-订阅模式、观察者模式</span>
         </a>
       
@@ -464,25 +464,28 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">JavaScript设计模式(四)：发布-订阅模式、观察者模式</h1>
+            <h1 id="seo-header">JavaScript设计模式(五)：装饰器模式</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p>我们暂且把发布订阅模式和观察者模式理解成相同的，是行为型模式的一种，定义了一种一对多的依赖关系，让多个观察者对象同时监听某一个主题对象。这个主题对象在状态变化时，会通知所有的观察者对象，使他们能够自动更新自己。<br>在日常生活中也有例子，例如我们办理银行卡时，如果订阅了手机短信功能，那么每次消费后都会给我们发送短信。</p>
-<h1 id="简单实现"><a href="#简单实现" class="headerlink" title="简单实现"></a>简单实现</h1><p>我们先来简单模拟实现一个发布订阅模式。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> observer = (<span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">const</span> listeners = [];<br>    <span class="hljs-comment">// 订阅事件</span><br>    <span class="hljs-keyword">function</span> <span class="hljs-title function_">subscribe</span> (sub) &#123;<br>        listeners.<span class="hljs-title function_">push</span>(sub);<br>    &#125;<br>    <span class="hljs-comment">// 发布通知</span><br>    <span class="hljs-keyword">function</span> <span class="hljs-title function_">notify</span>(<span class="hljs-params">message</span>) &#123;<br>        listeners.<span class="hljs-title function_">forEach</span>(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> <span class="hljs-title function_">item</span>(message));<br>    &#125;<br>    <span class="hljs-keyword">return</span> &#123;<br>        subscribe,<br>        notify,<br>    &#125;;<br>&#125;)()<br><br>observer.<span class="hljs-title function_">subscribe</span>(<span class="hljs-keyword">function</span> (<span class="hljs-params">message</span>) &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;我订阅了了消息&quot;</span>, message)<br>&#125;)<br><br>observer.<span class="hljs-title function_">notify</span>(<span class="hljs-string">&#x27;发布了一条信息。。。&#x27;</span>)<br></code></pre></td></tr></table></figure>
-<p>以上代码通过 listeners 存放订阅信息，subscribe 方法来订阅信息，notify 方法来发布信息。</p>
-<h1 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h1><h2 id="EventBus"><a href="#EventBus" class="headerlink" title="EventBus"></a>EventBus</h2><p>EventBus 就是基于发布-订阅模式实现的，由三个主要元素构成，事件、发布者、订阅者。<br>实现一个简易的 EventBus 需要几个关键因素</p>
-<ol>
-<li>定义一个 tasks 来管理事件</li>
-<li>on 方法来订阅事件</li>
-<li>off 方法来退订</li>
-<li>once 方法只订阅一次<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">class</span> <span class="hljs-title class_">EventBus</span> &#123;<br>    <span class="hljs-title function_">constructor</span>(<span class="hljs-params"></span>) &#123;<br>        <span class="hljs-comment">// 初始化一个 tasks 存放事件名和对应的事件</span><br>        <span class="hljs-variable language_">this</span>.<span class="hljs-property">tasks</span> = &#123;&#125;;<br>    &#125;<br>    <span class="hljs-comment">// 订阅事件</span><br>    <span class="hljs-title function_">on</span>(<span class="hljs-params">type, event</span>) &#123;<br>        <span class="hljs-comment">// 第一次订阅前先初始化</span><br>        <span class="hljs-keyword">if</span> (!<span class="hljs-variable language_">this</span>.<span class="hljs-property">tasks</span>[type]) &#123;<br>            <span class="hljs-variable language_">this</span>.<span class="hljs-property">tasks</span>[type] = [];<br>        &#125;<br>        <span class="hljs-variable language_">this</span>.<span class="hljs-property">tasks</span>[type].<span class="hljs-title function_">push</span>(event);<br>    &#125;<br>    <span class="hljs-comment">// 发布</span><br>    <span class="hljs-title function_">emit</span>(<span class="hljs-params">type, ...rest</span>) &#123;<br>        <span class="hljs-keyword">if</span> (!<span class="hljs-variable language_">this</span>.<span class="hljs-property">tasks</span>[type]) <span class="hljs-keyword">return</span>;<br>        <span class="hljs-comment">// 循环执行所有回调</span><br>        <span class="hljs-variable language_">this</span>.<span class="hljs-property">tasks</span>[type].<span class="hljs-title function_">forEach</span>(<span class="hljs-function"><span class="hljs-params">event</span> =&gt;</span> <span class="hljs-title function_">event</span>(...rest));<br>    &#125;<br>    <span class="hljs-comment">// 取消订阅</span><br>    <span class="hljs-title function_">off</span>(<span class="hljs-params">type, event</span>) &#123;<br>        <span class="hljs-keyword">if</span> (!<span class="hljs-variable language_">this</span>.<span class="hljs-property">tasks</span>[type]) <span class="hljs-keyword">return</span>;<br>        <span class="hljs-comment">// 找到对应索引进行删除</span><br>        <span class="hljs-keyword">const</span> index = <span class="hljs-variable language_">this</span>.<span class="hljs-property">tasks</span>[type].<span class="hljs-title function_">indexOf</span>(event);<br>        <span class="hljs-keyword">if</span> (index !== -<span class="hljs-number">1</span>)&#123;<br>            <span class="hljs-variable language_">this</span>.<span class="hljs-property">tasks</span>[type].<span class="hljs-title function_">splice</span>(index, <span class="hljs-number">1</span>);<br>        &#125;<br>    &#125;<br>    <span class="hljs-comment">// 单次注册 执行完一次需要销毁</span><br>    <span class="hljs-title function_">once</span>(<span class="hljs-params">type, event</span>) &#123;<br>        <span class="hljs-keyword">const</span> that = <span class="hljs-variable language_">this</span>;<br>        <span class="hljs-comment">// 对原方法包装一下 在 _once 方法内执行 event 执行完就删除 订阅用的也是 _once 方法</span><br>        <span class="hljs-keyword">function</span> <span class="hljs-title function_">_once</span>(<span class="hljs-params">...rest</span>) &#123;<br>            event.<span class="hljs-title function_">apply</span>(...<span class="hljs-variable language_">arguments</span>);<br>            that.<span class="hljs-title function_">off</span>(type, _once);<br>        &#125;<br>        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">on</span>(type, _once);<br>    &#125;<br>&#125;<br><br><span class="hljs-keyword">const</span> tasks = <span class="hljs-keyword">new</span> <span class="hljs-title class_">EventBus</span>();<br><br>tasks.<span class="hljs-title function_">once</span>(<span class="hljs-string">&#x27;sayHello&#x27;</span>, <span class="hljs-function">() =&gt;</span> <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Hello World&quot;</span>))<br>tasks.<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;sayYes&#x27;</span>, <span class="hljs-function">()=&gt;</span> <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;yes&#x27;</span>))<br><br>tasks.<span class="hljs-title function_">emit</span>(<span class="hljs-string">&#x27;sayHello&#x27;</span>)<br>tasks.<span class="hljs-title function_">emit</span>(<span class="hljs-string">&#x27;sayYes&#x27;</span>)<br></code></pre></td></tr></table></figure></li>
-</ol>
-<h2 id="Redux"><a href="#Redux" class="headerlink" title="Redux"></a>Redux</h2><p>我们常用的状态管理工具 <a href="https://l1ushun.github.io/2023/05/29/redux-source/">Redux</a> 中就使用到了观察者模式，使用 subscribe 进行订阅，dispatch 进行发布。</p>
-<h1 id="发布订阅模式和观察者模式的区别"><a href="#发布订阅模式和观察者模式的区别" class="headerlink" title="发布订阅模式和观察者模式的区别"></a>发布订阅模式和观察者模式的区别</h1><p>一句话简单解释就是<strong>发布订阅模式需要一个中间商，观察者模式不需要</strong>，形象化解释就是小组都需要一个文件，观察者模式就是领导直接把文件发送给你，发布订阅模式就是领导把文件放在某个公有文件夹中你自己去下载。另外如果是观察者模式，那么可能把所有文件都发给了你，而发布订阅模式，你就可以按需选择你用到的文件下载即可。</p>
-<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>发布-订阅模式应用的比较广泛，他帮助我们对模块间进行解耦，但同时也会会消耗空间内存，当你订阅了事件但从未触发，这个事件依旧占用着内存，造成浪费，所以合理使用也很重要。</p>
+                <h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p>是一种结构型设计模式。在不改变原对象的基础上，通过对其进行包装拓展，使原有对象可以满足用户的更复杂需求。</p>
+<h1 id="装饰函数"><a href="#装饰函数" class="headerlink" title="装饰函数"></a>装饰函数</h1><p>装饰函数可以让我们在不修改原方法的情况加对原函数进行包装，增加额外的功能。在日常开发中难免遇到原来的需求现在要增加新的功能，如果原来的代码是自己写的还好，如果是接手别人写的代码，直接修改源代码就很冒风险，甚至有可能导致其他功能异常。</p>
+<h2 id="保存原引用方法"><a href="#保存原引用方法" class="headerlink" title="保存原引用方法"></a>保存原引用方法</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">method</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-comment">//...</span><br>&#125;<br><span class="hljs-keyword">const</span> _method = method1;<br><span class="hljs-keyword">function</span> <span class="hljs-title function_">newMethod</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-title function_">_method</span>();<br>    <span class="hljs-comment">// 新功能...</span><br>&#125;<br><span class="hljs-title function_">newMethod</span>();<br></code></pre></td></tr></table></figure>
+
+<p>以上我们通过中间变量保存原方法的引用，然后把它放进新方法中就可以做到既不修改原方法，还可以添加额外功能。但这种方式存在一些弊端。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> _getElementById = <span class="hljs-variable language_">document</span>.<span class="hljs-property">getElementById</span>;<br><span class="hljs-variable language_">document</span>.<span class="hljs-property">getElementById</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params">id</span>) &#123;<br>    <span class="hljs-comment">// ...</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-title function_">_getElementById</span>(id);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>document.getElementById 方法内部用到了 this 正常我们调用 document.getElementById 它的内部 this 指向 document<br>，但我们执行 _getElementById 时，this 指向了 window，这时就会发生报错。</p>
+<h2 id="使用-AOP-Aspect-Oriented-Programming"><a href="#使用-AOP-Aspect-Oriented-Programming" class="headerlink" title="使用 AOP(Aspect Oriented Programming)"></a>使用 AOP(Aspect Oriented Programming)</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> before = <span class="hljs-keyword">function</span> (<span class="hljs-params">fn, beforeFn</span>) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>        <span class="hljs-comment">// 指向正确的 this</span><br>        beforeFn.<span class="hljs-title function_">apply</span>(<span class="hljs-variable language_">this</span>, <span class="hljs-variable language_">arguments</span>);<br>        <span class="hljs-keyword">return</span> fn.<span class="hljs-title function_">apply</span>(<span class="hljs-variable language_">this</span>, <span class="hljs-variable language_">arguments</span>);<br>    &#125;<br>&#125;<br><span class="hljs-keyword">function</span> <span class="hljs-title function_">beforFn</span> () &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;before&#x27;</span>);<br>&#125;<br><span class="hljs-variable language_">document</span>.<span class="hljs-property">getElementById</span> = <span class="hljs-title function_">before</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-property">getElementById</span>, beforFn);<br><span class="hljs-keyword">const</span> button = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;button&#x27;</span>);<br></code></pre></td></tr></table></figure>
+
+<p>把新增的 beforeFn 通过 before 装饰起来，在 before 中会确保 this 指向正确。</p>
+<h1 id="使用装饰器模式做表单校验"><a href="#使用装饰器模式做表单校验" class="headerlink" title="使用装饰器模式做表单校验"></a>使用装饰器模式做表单校验</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> username = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;username&#x27;</span>);<br><span class="hljs-keyword">const</span> password = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;password&#x27;</span>);<br><span class="hljs-keyword">const</span> submit = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;submit&#x27;</span>);<br><span class="hljs-keyword">const</span> handleSubmit = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">if</span> ( username.<span class="hljs-property">value</span> === <span class="hljs-string">&#x27;&#x27;</span> )&#123;<br>        <span class="hljs-keyword">return</span> alert ( <span class="hljs-string">&#x27;用户名不能为空&#x27;</span> );<br>    &#125;<br>    <span class="hljs-keyword">if</span> ( password.<span class="hljs-property">value</span> === <span class="hljs-string">&#x27;&#x27;</span> )&#123;<br>        <span class="hljs-keyword">return</span> alert ( <span class="hljs-string">&#x27;密码不能为空&#x27;</span> );<br>    &#125;<br>    <span class="hljs-keyword">const</span> params = &#123;<br>        <span class="hljs-attr">username</span>: username.<span class="hljs-property">value</span>,<br>        <span class="hljs-attr">password</span>: password.<span class="hljs-property">value</span>,<br>    &#125;<br>    <span class="hljs-comment">//  提交 params ...</span><br>&#125;<br>submit.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;click&#x27;</span>, handleSubmit);<br></code></pre></td></tr></table></figure>
+<p>这是一个用户登录时的一个表单校验，在 handleSubmit 方法中进行了表单校验和整合数据最后提交的过程，这样写会让 handleSubmit 方法过于臃肿，尤其是在表单校验过多或者数据整合逻辑复杂的情况下。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> before = <span class="hljs-keyword">function</span> (<span class="hljs-params">fn, beforeFn</span>) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>        <span class="hljs-keyword">if</span> (!beforeFn.<span class="hljs-title function_">apply</span>(<span class="hljs-variable language_">this</span>, <span class="hljs-variable language_">arguments</span>)) <span class="hljs-keyword">return</span>;<br>        <span class="hljs-keyword">return</span> fn.<span class="hljs-title function_">apply</span>(<span class="hljs-variable language_">this</span>, <span class="hljs-variable language_">arguments</span>);<br>    &#125;<br>&#125;<br><span class="hljs-keyword">const</span> validate = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">if</span> ( username.<span class="hljs-property">value</span> === <span class="hljs-string">&#x27;&#x27;</span> )&#123;<br>        alert ( <span class="hljs-string">&#x27;用户名不能为空&#x27;</span> )<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>    &#125;<br>    <span class="hljs-keyword">if</span> ( password.<span class="hljs-property">value</span> === <span class="hljs-string">&#x27;&#x27;</span> )&#123;<br>        alert ( <span class="hljs-string">&#x27;密码不能为空&#x27;</span> )<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>&#125;<br><span class="hljs-keyword">let</span> handleSubmit = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">const</span> params = &#123;<br>        <span class="hljs-attr">username</span>: username.<span class="hljs-property">value</span>,<br>        <span class="hljs-attr">password</span>: password.<span class="hljs-property">value</span>,<br>    &#125;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(params)<br>    <span class="hljs-comment">//  提交 params ...</span><br>&#125;<br>handleSubmit = <span class="hljs-title function_">before</span>(handleSubmit, validate)<br></code></pre></td></tr></table></figure>
+<p>首先定义一个 before 用来将表单校验装饰进提交方法，然后把表单校验的过程抽离出来，这样更方便维护，提交方法只需要做提交的逻辑即可。</p>
+<h1 id="和代理模式的区别"><a href="#和代理模式的区别" class="headerlink" title="和代理模式的区别"></a>和代理模式的区别</h1><p>装饰器模式用起来感觉和代理模式很像，都是在访问或操作一个对象时通过这两种模式来进行一些额外的操作。但两者的目的就不相同，代理模式是因为不希望直接访问或者操作原对象，而是希望通过代理来使用，装饰器模式是原对象不满足我现在的使用需求，但又不好直接修改原对象，只能通过装饰对原对象进行扩展。</p>
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>装饰器模式在不改变原对象的情况下，给对象动态扩展额外的功能，这点比对象的继承更具优势。另外也更方便功能的移植，因为我们只是在个性化的场景使用装饰强化功能，基础功能不会受到任何影响。</p>
 
                 
               </div>
@@ -530,8 +533,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>JavaScript设计模式(四)：发布-订阅模式、观察者模式</div>
-      <div>https://l1ushun.github.io/2023/10/13/design-observer/</div>
+      <div>JavaScript设计模式(五)：装饰器模式</div>
+      <div>https://l1ushun.github.io/2023/10/17/desigin-decorator/</div>
     </div>
     <div class="license-meta">
       
@@ -543,7 +546,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年10月13日</div>
+          <div>2023年10月17日</div>
         </div>
       
       
@@ -575,18 +578,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/10/17/desigin-decorator/" title="JavaScript设计模式(五)：装饰器模式">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">JavaScript设计模式(五)：装饰器模式</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/10/11/design-proxy/" title="JavaScript设计模式(三)：代理模式">
-                        <span class="hidden-mobile">JavaScript设计模式(三)：代理模式</span>
+                      <a href="/2023/10/13/design-observer/" title="JavaScript设计模式(四)：发布-订阅模式、观察者模式">
+                        <span class="hidden-mobile">JavaScript设计模式(四)：发布-订阅模式、观察者模式</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
