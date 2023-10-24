@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://l1ushun.github.io/img/ahooks.png">
 <meta property="article:published_time" content="2023-07-11T08:50:21.000Z">
-<meta property="article:modified_time" content="2023-10-12T09:55:54.642Z">
+<meta property="article:modified_time" content="2023-10-24T08:46:40.013Z">
 <meta property="article:author" content="liu shun">
 <meta property="article:tag" content="ahooks">
 <meta name="twitter:card" content="summary_large_image">
@@ -545,7 +545,7 @@
 <h2 id="mutate"><a href="#mutate" class="headerlink" title="mutate"></a>mutate</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs ts">  <span class="hljs-title function_">mutate</span>(<span class="hljs-params">data ? : TData | ((oldData?: TData) =&gt; TData | <span class="hljs-literal">undefined</span>)</span>)<br>&#123;<br>    <span class="hljs-keyword">const</span> targetData = <span class="hljs-title function_">isFunction</span>(data) ? <span class="hljs-title function_">data</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">state</span>.<span class="hljs-property">data</span>) : data;<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">runPluginHandler</span>(<span class="hljs-string">&#x27;onMutate&#x27;</span>, targetData);<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setState</span>(&#123;<br>        <span class="hljs-attr">data</span>: targetData,<br>    &#125;);<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>修改 data 的值，传入的可以是个值，也可以是个函数。</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>我们来梳理一下 useRequest 到底做了什么，他本身返回的是 useRequestImplement 执行结果，传入了真正的请求方法，用户自定义配置，以及一个插件数组，<br>而 useRequestImplement 又依赖于 Fetch 这个构造方法。整个请求过程都有一条时间线，插件执行的结果就是每个时间节点对应要做的操作，通过<br>runPluginHandler<br>来统一触发执行，在有的节点允许用户自定义要执行的方法，关于请求的数据的被存在 Fetch 的 state 中，是不是有点像之前的 Redux<br>，最后再将用户操作和请求有关的数据暴露出去。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>我们来梳理一下 useRequest 到底做了什么，他本身返回的是 useRequestImplement 执行结果，传入了真正的请求方法，用户自定义配置，以及一个插件数组，而 useRequestImplement 又依赖于 Fetch 这个构造方法。整个请求过程都有一条时间线，插件执行的结果就是每个时间节点对应要做的操作，通过 runPluginHandler 统一触发执行，在有的节点允许用户自定义要执行的方法，关于请求的数据的被存在 Fetch 的 state 中，是不是有点像之前的 Redux，最后再将用户操作和请求有关的数据暴露出去。</p>
 
                 
               </div>
