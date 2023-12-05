@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://l1ushun.github.io/img/typescript.png">
 <meta property="article:published_time" content="2023-10-31T02:04:11.000Z">
-<meta property="article:modified_time" content="2023-12-05T06:35:25.561Z">
+<meta property="article:modified_time" content="2023-12-05T07:07:01.077Z">
 <meta property="article:author" content="liu shun">
 <meta property="article:tag" content="TypeScript">
 <meta name="twitter:card" content="summary_large_image">
@@ -210,7 +210,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          5k 字
+          5.1k 字
         
       </span>
     
@@ -221,7 +221,7 @@
         
         
         
-          42 分钟
+          43 分钟
         
       </span>
     
@@ -512,7 +512,12 @@
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Person</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">IPerson</span> &#123;<br>    <span class="hljs-attr">age</span>: <span class="hljs-built_in">number</span>;<br>    <span class="hljs-attr">email</span>: <span class="hljs-built_in">string</span>;<br>    <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 <h3 id="接口索引签名"><a href="#接口索引签名" class="headerlink" title="接口索引签名"></a>接口索引签名</h3><p>当遇到一个对象有多个属性，并且属性名不确定的情况，可以通过索引签名来处理未知的属性</p>
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">IPerson</span> &#123;<br>    [<span class="hljs-attr">prop</span>: <span class="hljs-built_in">string</span>]: <span class="hljs-built_in">string</span>;<br>&#125;<br><span class="hljs-keyword">const</span> <span class="hljs-attr">person</span>: <span class="hljs-title class_">IPerson</span> = &#123;<br>    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;john&#x27;</span>,<br>    <span class="hljs-attr">phone</span>: <span class="hljs-string">&#x27;xxxxxx&#x27;</span>,<br>&#125;<br></code></pre></td></tr></table></figure>
-
+<h3 id="interface-和-type-区别"><a href="#interface-和-type-区别" class="headerlink" title="interface 和 type 区别"></a>interface 和 type 区别</h3><ol>
+<li>type 能描述所有数据，interface 描述对象</li>
+<li>interface 可以同名（视为扩展），type 不能重名</li>
+<li>interface 可以继承（extends）和实现（implements）</li>
+<li>interface 可以声明属性为可选或必填，type 不行。</li>
+</ol>
 <h1 id="类型装饰"><a href="#类型装饰" class="headerlink" title="类型装饰"></a>类型装饰</h1><h2 id="是否可选"><a href="#是否可选" class="headerlink" title="是否可选"></a>是否可选</h2><p>Typescript 中通过 ? 来声明一个属性是否为可选属性</p>
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">IPerson</span> &#123;<br>    <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>;<br>    age?: <span class="hljs-built_in">number</span>;<br>&#125;<br><span class="hljs-keyword">const</span> <span class="hljs-attr">person</span>: <span class="hljs-title class_">IPerson</span> = &#123;<br>    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;john&#x27;</span>,<br>    <span class="hljs-comment">// age 为可选属性 非必选项</span><br>&#125;<br></code></pre></td></tr></table></figure>
 
