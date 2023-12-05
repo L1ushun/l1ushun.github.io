@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://l1ushun.github.io/img/typescript.png">
 <meta property="article:published_time" content="2023-10-18T02:04:11.000Z">
-<meta property="article:modified_time" content="2023-12-05T02:24:07.073Z">
+<meta property="article:modified_time" content="2023-12-05T03:23:29.367Z">
 <meta property="article:author" content="liu shun">
 <meta property="article:tag" content="TypeScript">
 <meta name="twitter:card" content="summary_large_image">
@@ -210,7 +210,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.5k 字
+          4.1k 字
         
       </span>
     
@@ -221,7 +221,7 @@
         
         
         
-          29 分钟
+          34 分钟
         
       </span>
     
@@ -480,7 +480,10 @@
                 <h1 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h1><p>Typescript 包含 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Data_structures#%E5%8E%9F%E5%A7%8B%E5%80%BC_primitive_values">Javascript 的全部类型</a>，也就是 number、boolean、string、object、bigint、symbol、undefined、null，还有包装类 Number、Boolean、String、Object、Symbol。</p>
 <p>除此之外，Typescript 还有 void、never、enum、unknown、any、tuple(元组) 以及自定义的 type 和 interface。</p>
 <h2 id="null、undefined"><a href="#null、undefined" class="headerlink" title="null、undefined"></a>null、undefined</h2><p>在 Typescript 中，null、undefined 标识一个具体的类型值，被当成其他类型的子类型（在不开启 strictNullChecks 前提下），也就是说 null 和 undefined 可以赋值给其他类型的变量</p>
-<h2 id="void"><a href="#void" class="headerlink" title="void"></a>void</h2><p>用来表示一个函数没有显示的返回值</p>
+<h2 id="void"><a href="#void" class="headerlink" title="void"></a>void</h2><p>用来表示一个函数没有显示的返回值。这里的 test2 虽然可以用 void 但其实它显示声明了 return， 只不过什么都没返回，所以用 undefined 更好。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">function</span> <span class="hljs-title function_">test1</span>(<span class="hljs-params"></span>): <span class="hljs-built_in">void</span> &#123;&#125;<br><span class="hljs-comment">// 或者</span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">test2</span>(<span class="hljs-params"></span>): <span class="hljs-built_in">void</span> &#123;<br>    <span class="hljs-keyword">return</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="never"><a href="#never" class="headerlink" title="never"></a>never</h2><p>never 在 Typescript 中表示什么都没有，他不可以被任何类型赋值，但可以赋值给任何类型。<br><img src="https://z1.ax1x.com/2023/12/05/pi6Ym3n.png" srcset="/img/loading.gif" lazyload alt="不能被任何类型赋值"><br>另外在联合类型中，never 直接被无视掉。<br><img src="https://z1.ax1x.com/2023/12/05/pi6YMuV.png" srcset="/img/loading.gif" lazyload alt="在联合类型被移除"></p>
 <h2 id="枚举-enum"><a href="#枚举-enum" class="headerlink" title="枚举 enum"></a>枚举 enum</h2><p>枚举其实可以理解成我们把一些常量封装到一个命名空间里面，通过这个命名空间来给我们提供类型提示。<br>另外，如果你没有给你的 enum 赋值，那么他会自动从 0 开始累加赋值。如果你给某个枚举赋值数字，那么他下面的会依次累加。</p>
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">enum</span> <span class="hljs-title class_">Numbers</span> &#123;<br>    a, <span class="hljs-comment">// 0</span><br>    b, <span class="hljs-comment">// 1</span><br>    c = <span class="hljs-number">200</span>,<br>    d, <span class="hljs-comment">// 201</span><br>&#125;<br></code></pre></td></tr></table></figure>
 
@@ -514,6 +517,15 @@
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">IPerson</span> &#123;<br>    <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>;<br>    age?: <span class="hljs-built_in">number</span>;<br>&#125;<br><span class="hljs-keyword">const</span> <span class="hljs-attr">person</span>: <span class="hljs-title class_">IPerson</span> = &#123;<br>    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;john&#x27;</span>,<br>    <span class="hljs-comment">// age 为可选属性 非必选项</span><br>&#125;<br></code></pre></td></tr></table></figure>
 
 <h2 id="是否只读"><a href="#是否只读" class="headerlink" title="是否只读"></a>是否只读</h2><p>Typescript 通过 readonly 来声明一个值是只读的，当只读的属性被修改报错。<br><img src="https://z1.ax1x.com/2023/12/04/piyxtl8.png" srcset="/img/loading.gif" lazyload alt="readonly.png"></p>
+<h1 id="类型断言"><a href="#类型断言" class="headerlink" title="类型断言"></a>类型断言</h1><p>类型断言就是在 Typescript 分析的类型不符合预期时，自己手动指定一个类型。</p>
+<h2 id="尖括号方法"><a href="#尖括号方法" class="headerlink" title="尖括号方法"></a>尖括号方法</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">let</span> <span class="hljs-attr">value</span>: <span class="hljs-built_in">any</span> = <span class="hljs-string">&#x27;hello world&#x27;</span>;<br><span class="hljs-keyword">let</span> <span class="hljs-attr">len</span>: <span class="hljs-built_in">number</span> = (&lt;<span class="hljs-built_in">string</span>&gt;value).<span class="hljs-property">length</span>;<br></code></pre></td></tr></table></figure>
+<p>通过尖括号的方法来将 any 类型的 value 断言为 string 类型，调用 string 的 length 属性</p>
+<h2 id="as"><a href="#as" class="headerlink" title="as"></a>as</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">let</span> <span class="hljs-attr">value</span>: <span class="hljs-built_in">any</span> = <span class="hljs-string">&#x27;hello world&#x27;</span>;<br><span class="hljs-keyword">let</span> <span class="hljs-attr">len</span>: <span class="hljs-built_in">number</span> = (value <span class="hljs-keyword">as</span> <span class="hljs-built_in">string</span>).<span class="hljs-property">length</span>;<br></code></pre></td></tr></table></figure>
+<p>as 语法进行断言应该更加常用。</p>
+<h2 id="非空断言"><a href="#非空断言" class="headerlink" title="非空断言"></a>非空断言</h2><p>非空断言用来声明某个值一定不是 null 或 undefined。</p>
+<p><img src="https://z1.ax1x.com/2023/12/05/pi6tTeK.png" srcset="/img/loading.gif" lazyload></p>
+<p>这里的 str 也有可能是 null ，所以 Typescript 回警告属性可能为空，此时我们就可以使用非空断言，声明值不会为 null。<br><img src="https://z1.ax1x.com/2023/12/05/pi6NnmV.png" srcset="/img/loading.gif" lazyload></p>
+<p>非空断言在处理某些属性为空值无法继续调用时很有用。</p>
 <h1 id="类型运算"><a href="#类型运算" class="headerlink" title="类型运算"></a>类型运算</h1><h2 id="条件类型-extends"><a href="#条件类型-extends" class="headerlink" title="条件类型 extends"></a>条件类型 extends</h2><p>extends 一般用作泛型类型约束，和定义条件类型</p>
 <ol>
 <li>泛型类型约束 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">ToReadonly</span>&lt;T <span class="hljs-keyword">extends</span> <span class="hljs-built_in">object</span>&gt; = &#123;<br>    <span class="hljs-keyword">readonly</span> [<span class="hljs-title class_">Key</span> <span class="hljs-keyword">in</span> keyof T]: T[<span class="hljs-title class_">Key</span>]<br>&#125;<br></code></pre></td></tr></table></figure>
