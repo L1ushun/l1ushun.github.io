@@ -18,14 +18,14 @@
   
     <meta name="description" content="类型Typescript 包含 Javascript 的全部类型，也就是 number、boolean、string、object、bigint、symbol、undefined、null，还有包装类 Number、Boolean、String、Object、Symbol。 除此之外，Typescript 还有 void、never、enum、unknown、any、tuple(元组) 以及自定义">
 <meta property="og:type" content="article">
-<meta property="og:title" content="TypeScript学习指北">
-<meta property="og:url" content="https://l1ushun.github.io/2023/10/18/ts-01/index.html">
+<meta property="og:title" content="TypeScript入坑指北">
+<meta property="og:url" content="https://l1ushun.github.io/2023/10/31/ts-01/index.html">
 <meta property="og:site_name" content="liu的博客">
 <meta property="og:description" content="类型Typescript 包含 Javascript 的全部类型，也就是 number、boolean、string、object、bigint、symbol、undefined、null，还有包装类 Number、Boolean、String、Object、Symbol。 除此之外，Typescript 还有 void、never、enum、unknown、any、tuple(元组) 以及自定义">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://l1ushun.github.io/img/typescript.png">
-<meta property="article:published_time" content="2023-10-18T02:04:11.000Z">
-<meta property="article:modified_time" content="2023-12-05T03:23:29.367Z">
+<meta property="article:published_time" content="2023-10-31T02:04:11.000Z">
+<meta property="article:modified_time" content="2023-12-05T06:35:25.561Z">
 <meta property="article:author" content="liu shun">
 <meta property="article:tag" content="TypeScript">
 <meta name="twitter:card" content="summary_large_image">
@@ -33,7 +33,7 @@
   
   
   
-  <title>TypeScript学习指北 - liu的博客</title>
+  <title>TypeScript入坑指北 - liu的博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -187,7 +187,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="TypeScript学习指北"></span>
+            <span id="subtitle" data-typed-text="TypeScript入坑指北"></span>
           
         </div>
 
@@ -198,8 +198,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-10-18 10:04" pubdate>
-          2023年10月18日 上午
+        <time datetime="2023-10-31 10:04" pubdate>
+          2023年10月31日 上午
         </time>
       </span>
     
@@ -210,7 +210,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4.1k 字
+          5k 字
         
       </span>
     
@@ -221,7 +221,7 @@
         
         
         
-          34 分钟
+          42 分钟
         
       </span>
     
@@ -375,10 +375,10 @@
     
       
       
-        <a href="/2023/10/18/ts-01/" title="TypeScript学习指北"
+        <a href="/2023/10/31/ts-01/" title="TypeScript入坑指北"
            class="list-group-item list-group-item-action
            active">
-          <span class="category-post">TypeScript学习指北</span>
+          <span class="category-post">TypeScript入坑指北</span>
         </a>
       
     
@@ -472,7 +472,7 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">TypeScript学习指北</h1>
+            <h1 id="seo-header">TypeScript入坑指北</h1>
             
             
               <div class="markdown-body">
@@ -550,6 +550,21 @@
 <p>索引当然也可以修改，通过 as 做重映射，重新定义索引名。</p>
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">const</span> <span class="hljs-attr">test</span>:<span class="hljs-title class_">MapType</span>&lt;&#123;<span class="hljs-attr">ab</span>: <span class="hljs-built_in">number</span>, <span class="hljs-attr">cd</span>: <span class="hljs-built_in">number</span>&#125;&gt; = &#123;<br>    <span class="hljs-attr">a_b</span>: [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>],<br>    <span class="hljs-attr">c_d</span>: [<span class="hljs-number">3</span>,<span class="hljs-number">4</span>],<br>&#125;<br></code></pre></td></tr></table></figure>
 
+
+<h1 id="类型守卫"><a href="#类型守卫" class="headerlink" title="类型守卫"></a>类型守卫</h1><p>先看一段代码</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">function</span> <span class="hljs-title function_">processValue</span>(<span class="hljs-params">value: <span class="hljs-built_in">unknown</span></span>) &#123;<br>    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> value === <span class="hljs-string">&quot;string&quot;</span>) &#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(value.<span class="hljs-title function_">toUpperCase</span>());<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Value is not a string.&#x27;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>这段代码我们判断入参 value 是否为 string 类型，这时在 if 内 value 已经是 string 类型。所以可以调用字符串的 toUpperCase 方法，下面我们把校验的过程抽离出来。<br><img src="https://z1.ax1x.com/2023/12/05/pi6cI9x.png" srcset="/img/loading.gif" lazyload></p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">function</span> <span class="hljs-title function_">isString</span>(<span class="hljs-params">value: <span class="hljs-built_in">unknown</span></span>): <span class="hljs-built_in">boolean</span> &#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-keyword">typeof</span> value === <span class="hljs-string">&#x27;string&#x27;</span>;<br>&#125;<br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">processValue</span>(<span class="hljs-params">value: <span class="hljs-built_in">unknown</span></span>) &#123;<br>  <span class="hljs-keyword">if</span> (<span class="hljs-title function_">isString</span>(value)) &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(value.<span class="hljs-title function_">toUpperCase</span>());<br>  &#125; <span class="hljs-keyword">else</span> &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Value is not a string.&#x27;</span>);<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>这时发现类型错误，value 还是 unknown 并没有因为校验而更改类型。<br><img src="https://z1.ax1x.com/2023/12/05/pi66IOg.png" srcset="/img/loading.gif" lazyload><br>Typescript 通过 <strong>is</strong> 关键字来处理这种情况</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">function</span> <span class="hljs-title function_">isString</span>(<span class="hljs-params">value: <span class="hljs-built_in">unknown</span></span>): value is <span class="hljs-built_in">string</span> &#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-keyword">typeof</span> value === <span class="hljs-string">&#x27;string&#x27;</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>isString 这种方法称之为类型守卫，想要通过类型守卫获得参数类型，需要通过 <strong>参数 + is + 预期类型</strong>来显示声明，这样才能在判断中矫正参数类型。</p>
+<p><code>使用 is 也有一些注意的地方</code></p>
+<ul>
+<li>必须返回一个布尔值。</li>
+<li>通常结合 if、else 等条件语句使用，以根据类型进行不同的逻辑处理。</li>
+<li>使用 is 编译器会智能推断变量类型，就不用再显示声明了</li>
+</ul>
+
                 
               </div>
             
@@ -594,8 +609,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>TypeScript学习指北</div>
-      <div>https://l1ushun.github.io/2023/10/18/ts-01/</div>
+      <div>TypeScript入坑指北</div>
+      <div>https://l1ushun.github.io/2023/10/31/ts-01/</div>
     </div>
     <div class="license-meta">
       
@@ -607,7 +622,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年10月18日</div>
+          <div>2023年10月31日</div>
         </div>
       
       
