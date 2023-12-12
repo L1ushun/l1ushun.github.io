@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://l1ushun.github.io/img/typescript.png">
 <meta property="article:published_time" content="2023-10-31T02:04:11.000Z">
-<meta property="article:modified_time" content="2023-12-12T02:36:16.005Z">
+<meta property="article:modified_time" content="2023-12-12T03:08:48.488Z">
 <meta property="article:author" content="liu shun">
 <meta property="article:tag" content="TypeScript">
 <meta name="twitter:card" content="summary_large_image">
@@ -210,7 +210,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          6k 字
+          6.7k 字
         
       </span>
     
@@ -221,7 +221,7 @@
         
         
         
-          50 分钟
+          56 分钟
         
       </span>
     
@@ -578,6 +578,12 @@
 <p>好的，没看懂，下面用代码来体验一下</p>
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">Father</span> &#123;<br>   <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>;<br>&#125;<br><span class="hljs-keyword">interface</span> <span class="hljs-title class_">Son</span> &#123;<br>   <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>;<br>   <span class="hljs-attr">age</span>: <span class="hljs-built_in">number</span>;<br>&#125;<br><span class="hljs-keyword">const</span> <span class="hljs-attr">son</span>: <span class="hljs-title class_">Son</span> = &#123;<br>   <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;xiaoming&#x27;</span>,<br>   <span class="hljs-attr">age</span>: <span class="hljs-number">18</span>,<br>&#125;<br><span class="hljs-keyword">function</span> <span class="hljs-title function_">test</span>(<span class="hljs-params">param:Father</span>)&#123;&#125;<br><span class="hljs-title function_">test</span>(son);<br><br></code></pre></td></tr></table></figure>
 <p>test 方法的参数明明是 Father 类型，但我们传入的 Son 类型却没有报错，这是因为这两个接口都有相同的 name 属性，并且 Son 在 Father 的基础上多了一个 age 而已，结构化类型系统会认为 Son 是 Father 的子类 。这也就是上图中的<strong>如果两个类型的成员结构相同（即它们拥有相同的属性和方法），那么它们被认为是兼容的</strong>。另外这种子类型可以赋值给父类型的情况叫做<strong>协变</strong>。</p>
+<h1 id="分布式类型"><a href="#分布式类型" class="headerlink" title="分布式类型"></a>分布式类型</h1><p><img src="https://z1.ax1x.com/2023/12/12/piWDu0e.png" srcset="/img/loading.gif" lazyload alt="分布式类型"><br>图中代码使用联合类型作为参数，Typescript 遇到这种情况会把联合类型分别传入进行类型运算，然后再合并成新的联合类型，这就是分布式类型。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">Test</span>&lt;T <span class="hljs-keyword">extends</span> <span class="hljs-built_in">string</span>, Y <span class="hljs-keyword">extends</span> <span class="hljs-built_in">string</span>&gt; =<br>    T <span class="hljs-keyword">extends</span> Y<br>        ? <span class="hljs-literal">true</span><br>        : <span class="hljs-literal">false</span>;<br><br><span class="hljs-keyword">type</span> T = <span class="hljs-title class_">Test</span>&lt;<span class="hljs-string">&#x27;a&#x27;</span> | <span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;a&#x27;</span>&gt;<br></code></pre></td></tr></table></figure>
+<p>正常情况下 <code>&#39;a&#39; | &#39;b&#39; extends &#39;a&#39;</code> 结果应该为 false，但当我们把他们分别当作参数传入 Test 的时候，结果却发生了变化<br><img src="https://z1.ax1x.com/2023/12/12/piWrwDO.png" srcset="/img/loading.gif" lazyload><br>结果变成了 <code>boolean</code> 这就是因为分布式的作用所致，当我们把 <code>&#39;a&#39;|&#39;b&#39;</code> 传入时，等同于分别传入 <code>&#39;a&#39;</code> 和 <code>&#39;b&#39;</code> 得到结果后再联合，<code>&#39;a&#39;</code> 得到的结果是 true，<code>&#39;b&#39;</code>得到的结果是 false，联合起来就是 boolean 类型。</p>
+<h2 id="关闭分布式"><a href="#关闭分布式" class="headerlink" title="关闭分布式"></a>关闭分布式</h2><p>以上得到的结果显然是不对的，那我们如何关闭分布式，让他直接对比呢</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">Test</span>&lt;T <span class="hljs-keyword">extends</span> <span class="hljs-built_in">string</span>, Y <span class="hljs-keyword">extends</span> <span class="hljs-built_in">string</span>&gt; =<br>    [T] <span class="hljs-keyword">extends</span> [Y]<br>        ? <span class="hljs-literal">true</span><br>        : <span class="hljs-literal">false</span>;<br><br><span class="hljs-keyword">type</span> T = <span class="hljs-title class_">Test</span>&lt;<span class="hljs-string">&#x27;a&#x27;</span> | <span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;a&#x27;</span>&gt; <span class="hljs-comment">// false</span><br></code></pre></td></tr></table></figure>
+<p>这里把 <code>T extends Y</code> 改成 <code>[T] extends [Y] </code> 关闭分布式，让联合类型不再分别做类型运算，而是直接进行运算，这样就可以直接运算得到符合预期的结果了。</p>
 
                 
               </div>
