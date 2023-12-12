@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://l1ushun.github.io/img/typescript.png">
 <meta property="article:published_time" content="2023-10-31T02:04:11.000Z">
-<meta property="article:modified_time" content="2023-12-07T03:07:52.738Z">
+<meta property="article:modified_time" content="2023-12-12T02:36:16.005Z">
 <meta property="article:author" content="liu shun">
 <meta property="article:tag" content="TypeScript">
 <meta name="twitter:card" content="summary_large_image">
@@ -210,7 +210,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          5.8k 字
+          6k 字
         
       </span>
     
@@ -221,7 +221,7 @@
         
         
         
-          49 分钟
+          50 分钟
         
       </span>
     
@@ -402,6 +402,24 @@
     
       
       
+        <a href="/2023/08/12/vite-04/" title="Vite-架构篇（Rollup）"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Vite-架构篇（Rollup）</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2023/08/17/vite-05/" title="Vite-进阶篇"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Vite-进阶篇</span>
+        </a>
+      
+    
+      
+      
         <a href="/2023/07/11/ahooks-useRequest/" title="ahooks源码之useRequest"
            class="list-group-item list-group-item-action
            ">
@@ -415,24 +433,6 @@
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">ahooks源码之useVirtualList</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2023/08/12/vite-04/" title="vite-架构篇（Rollup）"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">vite-架构篇（Rollup）</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2023/08/17/vite-05/" title="vite-进阶篇"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">vite-进阶篇</span>
         </a>
       
     
@@ -487,7 +487,7 @@
 <p>这里 Fun 返回值是 void，实际 fun 返回了一个字符串，这段代码并没有报错，而且 result 的类型还是 void。这虽然看起来有点奇怪，但其实 TS 并没有强制要求 void 真的不能什么都不返回，他的意思更倾向于返回值并不会被使用，就像我们写 forEach 返回值是 void ，但我们箭头函数简写一般都会省略代码块。</p>
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ts">[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>].<span class="hljs-title function_">forEach</span>(<span class="hljs-function">(<span class="hljs-params">item</span>) =&gt;</span> item + <span class="hljs-number">1</span>);<br></code></pre></td></tr></table></figure>
 
-<h2 id="never"><a href="#never" class="headerlink" title="never"></a>never</h2><p>never 在 Typescript 中表示什么都没有，他不可以被任何类型赋值，但可以赋值给任何类型。<br><img src="https://z1.ax1x.com/2023/12/05/pi6Ym3n.png" srcset="/img/loading.gif" lazyload alt="不能被任何类型赋值"><br>另外在联合类型中，never 直接被无视掉。<br><img src="https://z1.ax1x.com/2023/12/05/pi6YMuV.png" srcset="/img/loading.gif" lazyload alt="在联合类型被移除"></p>
+<h2 id="never"><a href="#never" class="headerlink" title="never"></a>never</h2><p>never 在 Typescript 中表示什么都没有，他不可以被任何类型赋值，但可以赋值给任何类型。<br><img src="https://z1.ax1x.com/2023/12/12/piWDU0g.png" srcset="/img/loading.gif" lazyload alt="不能被任何类型赋值"><br>另外在联合类型中，never 直接被无视掉。<br><img src="https://z1.ax1x.com/2023/12/12/piWDa7Q.png" srcset="/img/loading.gif" lazyload alt="在联合类型被移除"></p>
 <h2 id="枚举-enum"><a href="#枚举-enum" class="headerlink" title="枚举 enum"></a>枚举 enum</h2><p>枚举其实可以理解成我们把一些常量封装到一个命名空间里面，通过这个命名空间来给我们提供类型提示。<br>另外，如果你没有给你的 enum 赋值，那么他会自动从 0 开始累加赋值。如果你给某个枚举赋值数字，那么他下面的会依次累加。</p>
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">enum</span> <span class="hljs-title class_">Numbers</span> &#123;<br>    a, <span class="hljs-comment">// 0</span><br>    b, <span class="hljs-comment">// 1</span><br>    c = <span class="hljs-number">200</span>,<br>    d, <span class="hljs-comment">// 201</span><br>&#125;<br></code></pre></td></tr></table></figure>
 
@@ -532,8 +532,10 @@
 <h2 id="as"><a href="#as" class="headerlink" title="as"></a>as</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">let</span> <span class="hljs-attr">value</span>: <span class="hljs-built_in">any</span> = <span class="hljs-string">&#x27;hello world&#x27;</span>;<br><span class="hljs-keyword">let</span> <span class="hljs-attr">len</span>: <span class="hljs-built_in">number</span> = (value <span class="hljs-keyword">as</span> <span class="hljs-built_in">string</span>).<span class="hljs-property">length</span>;<br></code></pre></td></tr></table></figure>
 <p>as 语法进行断言应该更加常用。</p>
 <h2 id="非空断言"><a href="#非空断言" class="headerlink" title="非空断言"></a>非空断言</h2><p>非空断言用来声明某个值一定不是 null 或 undefined。</p>
-<p><img src="https://z1.ax1x.com/2023/12/05/pi6tTeK.png" srcset="/img/loading.gif" lazyload></p>
-<p>这里的 str 也有可能是 null ，所以 Typescript 回警告属性可能为空，此时我们就可以使用非空断言，声明值不会为 null。<br><img src="https://z1.ax1x.com/2023/12/05/pi6NnmV.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://z1.ax1x.com/2023/12/12/piWD6XT.png" srcset="/img/loading.gif" lazyload></p>
+<p>这里的 name 可能不存在 ，所以 Typescript 警告属性可能为 undefined，此时我们就可以使用非空断言，声明值存在。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">Person</span> = &#123;<br>    name?: <span class="hljs-built_in">string</span>,<br>&#125;<br><span class="hljs-keyword">const</span> <span class="hljs-attr">person</span>:<span class="hljs-title class_">Person</span> = &#123;<br>    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;john&#x27;</span>,<br>&#125;<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(person.<span class="hljs-property">name</span>!.<span class="hljs-property">length</span>)<br></code></pre></td></tr></table></figure>
+
 <p>非空断言在处理某些属性为空值无法继续调用时很有用。</p>
 <h1 id="类型运算"><a href="#类型运算" class="headerlink" title="类型运算"></a>类型运算</h1><h2 id="条件类型-extends"><a href="#条件类型-extends" class="headerlink" title="条件类型 extends"></a>条件类型 extends</h2><p>extends 一般用作泛型类型约束，和定义条件类型</p>
 <ol>
@@ -548,7 +550,7 @@
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">NumType</span> = <span class="hljs-number">1</span> | <span class="hljs-number">2</span> | <span class="hljs-number">3</span>;<br><span class="hljs-keyword">const</span> <span class="hljs-attr">num</span>:<span class="hljs-title class_">NumType</span> = <span class="hljs-number">1</span>;<br></code></pre></td></tr></table></figure>
 <h2 id="交叉"><a href="#交叉" class="headerlink" title="交叉 &amp;"></a>交叉 &amp;</h2><p>和 Javascript 中的 &amp; 作用类似，代表需要满足全部条件，对类型做合并。</p>
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">Type</span> = &#123; <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span> &#125; &amp; &#123; <span class="hljs-attr">age</span>: <span class="hljs-built_in">number</span> &#125;<br><br><span class="hljs-keyword">const</span> <span class="hljs-attr">person</span>:<span class="hljs-title class_">Type</span> = &#123;<br>   <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;john&#x27;</span>,<br>   <span class="hljs-attr">age</span>: <span class="hljs-number">23</span>,<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>另外不同类型无法合并<br><img src="https://z1.ax1x.com/2023/12/05/pi634fI.png" srcset="/img/loading.gif" lazyload></p>
+<p><strong>另外不同类型无法合并</strong></p>
 <h2 id="映射类型"><a href="#映射类型" class="headerlink" title="映射类型"></a>映射类型</h2><p>映射类型用于从一个现有的类型中创建新类型的方式，就是在在现有类型基础上进行属性转换</p>
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">MapType</span>&lt;T&gt; = &#123;<br>  [<span class="hljs-title class_">Key</span> <span class="hljs-keyword">in</span> keyof T]?: T[<span class="hljs-title class_">Key</span>]<br>&#125;<br></code></pre></td></tr></table></figure>
 <p><strong>in</strong> 就是对 keyof T 进行遍历<br><strong>keyof</strong> 是取 T 的key，可以成为索引查询<br><strong>T[Key]</strong> 是取值，成为索引访问</p>
@@ -563,7 +565,7 @@
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">function</span> <span class="hljs-title function_">processValue</span>(<span class="hljs-params">value: <span class="hljs-built_in">unknown</span></span>) &#123;<br>    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> value === <span class="hljs-string">&quot;string&quot;</span>) &#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(value.<span class="hljs-title function_">toUpperCase</span>());<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Value is not a string.&#x27;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 <p>这段代码我们判断入参 value 是否为 string 类型，这时在 if 内 value 已经是 string 类型。所以可以调用字符串的 toUpperCase 方法，下面我们把校验的过程抽离出来。<br><img src="https://z1.ax1x.com/2023/12/05/pi6cI9x.png" srcset="/img/loading.gif" lazyload></p>
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">function</span> <span class="hljs-title function_">isString</span>(<span class="hljs-params">value: <span class="hljs-built_in">unknown</span></span>): <span class="hljs-built_in">boolean</span> &#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-keyword">typeof</span> value === <span class="hljs-string">&#x27;string&#x27;</span>;<br>&#125;<br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">processValue</span>(<span class="hljs-params">value: <span class="hljs-built_in">unknown</span></span>) &#123;<br>  <span class="hljs-keyword">if</span> (<span class="hljs-title function_">isString</span>(value)) &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(value.<span class="hljs-title function_">toUpperCase</span>());<br>  &#125; <span class="hljs-keyword">else</span> &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Value is not a string.&#x27;</span>);<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>这时发现类型错误，value 还是 unknown 并没有因为校验而更改类型。<br><img src="https://z1.ax1x.com/2023/12/05/pi66IOg.png" srcset="/img/loading.gif" lazyload><br>Typescript 通过 <strong>is</strong> 关键字来处理这种情况</p>
+<p>这时发现类型错误，value 还是 unknown 并没有因为校验而更改类型。<br><img src="https://z1.ax1x.com/2023/12/12/piWDbnO.png" srcset="/img/loading.gif" lazyload><br>Typescript 通过 <strong>is</strong> 关键字来处理这种情况</p>
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">function</span> <span class="hljs-title function_">isString</span>(<span class="hljs-params">value: <span class="hljs-built_in">unknown</span></span>): value is <span class="hljs-built_in">string</span> &#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-keyword">typeof</span> value === <span class="hljs-string">&#x27;string&#x27;</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 <p>isString 这种方法称之为类型守卫，想要通过类型守卫获得参数类型，需要通过 <strong>参数 + is + 预期类型</strong>来显示声明，这样才能在判断中矫正参数类型。</p>
 <p><code>使用 is 也有一些注意的地方</code></p>
@@ -572,7 +574,7 @@
 <li>通常结合 if、else 等条件语句使用，以根据类型进行不同的逻辑处理。</li>
 <li>使用 is 编译器会智能推断变量类型，就不用再显示声明了</li>
 </ul>
-<h1 id="类型系统"><a href="#类型系统" class="headerlink" title="类型系统"></a>类型系统</h1><h2 id="结构化类型系统"><a href="#结构化类型系统" class="headerlink" title="结构化类型系统"></a>结构化类型系统</h2><p>TypeScript 的类型系统是一种<strong>结构化类型系统</strong>，那什么是结构化类型系统？看看 ai 怎么说：<br><img src="https://z1.ax1x.com/2023/12/06/pickLLt.png" srcset="/img/loading.gif" lazyload alt="结构化类型系统"></p>
+<h1 id="类型系统"><a href="#类型系统" class="headerlink" title="类型系统"></a>类型系统</h1><h2 id="结构化类型系统"><a href="#结构化类型系统" class="headerlink" title="结构化类型系统"></a>结构化类型系统</h2><p>TypeScript 的类型系统是一种<strong>结构化类型系统</strong>，那什么是结构化类型系统？看看 ai 怎么说：<br><img src="https://z1.ax1x.com/2023/12/12/piWDeOO.png" srcset="/img/loading.gif" lazyload alt="结构化类型系统"></p>
 <p>好的，没看懂，下面用代码来体验一下</p>
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">Father</span> &#123;<br>   <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>;<br>&#125;<br><span class="hljs-keyword">interface</span> <span class="hljs-title class_">Son</span> &#123;<br>   <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>;<br>   <span class="hljs-attr">age</span>: <span class="hljs-built_in">number</span>;<br>&#125;<br><span class="hljs-keyword">const</span> <span class="hljs-attr">son</span>: <span class="hljs-title class_">Son</span> = &#123;<br>   <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;xiaoming&#x27;</span>,<br>   <span class="hljs-attr">age</span>: <span class="hljs-number">18</span>,<br>&#125;<br><span class="hljs-keyword">function</span> <span class="hljs-title function_">test</span>(<span class="hljs-params">param:Father</span>)&#123;&#125;<br><span class="hljs-title function_">test</span>(son);<br><br></code></pre></td></tr></table></figure>
 <p>test 方法的参数明明是 Father 类型，但我们传入的 Son 类型却没有报错，这是因为这两个接口都有相同的 name 属性，并且 Son 在 Father 的基础上多了一个 age 而已，结构化类型系统会认为 Son 是 Father 的子类 。这也就是上图中的<strong>如果两个类型的成员结构相同（即它们拥有相同的属性和方法），那么它们被认为是兼容的</strong>。另外这种子类型可以赋值给父类型的情况叫做<strong>协变</strong>。</p>

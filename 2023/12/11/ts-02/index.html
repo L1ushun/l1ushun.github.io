@@ -16,24 +16,24 @@
   <meta name="author" content="liu shun">
   <meta name="keywords" content="博客,前端,git">
   
-    <meta name="description" content="esbuild 插件开发举一个官网上的插件例子 123456789101112131415161718192021let envPlugin &#x3D; &amp;#123;  name: &amp;#x27;env&amp;#x27;,  setup(build) &amp;#123;    build.onResolve(&amp;#123; filter: &#x2F;^env$&#x2F; &amp;#125;, args &#x3D;&gt; (&amp;#123;      p">
+    <meta name="description" content="分布式类型图中代码使用联合类型作为参数，Typescript 遇到这种情况会把联合类型分别传入进行类型运算，然后再合并成新的联合类型，这就是分布式类型。 123456type Test&lt;T extends string, Y extends string&gt; &#x3D;    T extends Y        ? true        : false;type T &#x3D; Test&lt;&amp;#">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Vite-架构篇（esbuild）">
-<meta property="og:url" content="https://l1ushun.github.io/2023/08/10/vite-03/index.html">
+<meta property="og:title" content="TypeScript入坑指北">
+<meta property="og:url" content="https://l1ushun.github.io/2023/12/11/ts-02/index.html">
 <meta property="og:site_name" content="liu的博客">
-<meta property="og:description" content="esbuild 插件开发举一个官网上的插件例子 123456789101112131415161718192021let envPlugin &#x3D; &amp;#123;  name: &amp;#x27;env&amp;#x27;,  setup(build) &amp;#123;    build.onResolve(&amp;#123; filter: &#x2F;^env$&#x2F; &amp;#125;, args &#x3D;&gt; (&amp;#123;      p">
+<meta property="og:description" content="分布式类型图中代码使用联合类型作为参数，Typescript 遇到这种情况会把联合类型分别传入进行类型运算，然后再合并成新的联合类型，这就是分布式类型。 123456type Test&lt;T extends string, Y extends string&gt; &#x3D;    T extends Y        ? true        : false;type T &#x3D; Test&lt;&amp;#">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://l1ushun.github.io/img/vite-logo.png">
-<meta property="article:published_time" content="2023-08-10T03:25:42.000Z">
-<meta property="article:modified_time" content="2023-12-12T01:17:22.371Z">
+<meta property="og:image" content="https://l1ushun.github.io/img/typescript.png">
+<meta property="article:published_time" content="2023-12-11T01:24:33.000Z">
+<meta property="article:modified_time" content="2023-12-12T02:37:43.786Z">
 <meta property="article:author" content="liu shun">
-<meta property="article:tag" content="Vite">
+<meta property="article:tag" content="TypeScript">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://l1ushun.github.io/img/vite-logo.png">
+<meta name="twitter:image" content="https://l1ushun.github.io/img/typescript.png">
   
   
   
-  <title>Vite-架构篇（esbuild） - liu的博客</title>
+  <title>TypeScript入坑指北 - liu的博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -181,13 +181,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/vite-logo.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/typescript.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Vite-架构篇（esbuild）"></span>
+            <span id="subtitle" data-typed-text="TypeScript入坑指北"></span>
           
         </div>
 
@@ -198,8 +198,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-08-10 11:25" pubdate>
-          2023年8月10日 上午
+        <time datetime="2023-12-11 09:24" pubdate>
+          2023年12月11日 上午
         </time>
       </span>
     
@@ -210,7 +210,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          658 字
+          229 字
         
       </span>
     
@@ -221,7 +221,7 @@
         
         
         
-          6 分钟
+          2 分钟
         
       </span>
     
@@ -258,16 +258,15 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Vite-架构篇（esbuild）</h1>
+            <h1 id="seo-header">TypeScript入坑指北</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="esbuild-插件开发"><a href="#esbuild-插件开发" class="headerlink" title="esbuild 插件开发"></a>esbuild 插件开发</h1><p>举一个官网上的插件例子</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> envPlugin = &#123;<br>  <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;env&#x27;</span>,<br>  <span class="hljs-title function_">setup</span>(<span class="hljs-params">build</span>) &#123;<br>    build.<span class="hljs-title function_">onResolve</span>(&#123; <span class="hljs-attr">filter</span>: <span class="hljs-regexp">/^env$/</span> &#125;, <span class="hljs-function"><span class="hljs-params">args</span> =&gt;</span> (&#123;<br>      <span class="hljs-attr">path</span>: args.<span class="hljs-property">path</span>,<br>      <span class="hljs-attr">namespace</span>: <span class="hljs-string">&#x27;env-ns&#x27;</span>,<br>    &#125;))<br>      <br>    build.<span class="hljs-title function_">onLoad</span>(&#123; <span class="hljs-attr">filter</span>: <span class="hljs-regexp">/.*/</span>, <span class="hljs-attr">namespace</span>: <span class="hljs-string">&#x27;env-ns&#x27;</span> &#125;, <span class="hljs-function">() =&gt;</span> (&#123;<br>      <span class="hljs-attr">contents</span>: <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(process.<span class="hljs-property">env</span>),<br>      <span class="hljs-attr">loader</span>: <span class="hljs-string">&#x27;json&#x27;</span>,<br>    &#125;))<br>  &#125;,<br>&#125;<br><br><span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;esbuild&#x27;</span>).<span class="hljs-title function_">build</span>(&#123;<br>  <span class="hljs-attr">entryPoints</span>: [<span class="hljs-string">&#x27;app.js&#x27;</span>],<br>  <span class="hljs-attr">bundle</span>: <span class="hljs-literal">true</span>,<br>  <span class="hljs-attr">outfile</span>: <span class="hljs-string">&#x27;out.js&#x27;</span>,<br>  <span class="hljs-attr">plugins</span>: [envPlugin],<br>&#125;).<span class="hljs-title function_">catch</span>(<span class="hljs-function">() =&gt;</span> process.<span class="hljs-title function_">exit</span>(<span class="hljs-number">1</span>))<br></code></pre></td></tr></table></figure>
-
-<h1 id="钩子函数"><a href="#钩子函数" class="headerlink" title="钩子函数"></a>钩子函数</h1><h3 id="onResolve"><a href="#onResolve" class="headerlink" title="onResolve"></a>onResolve</h3><p>第一个参数：{ filter: RegExp, namespace?: string }<br>    filter 是一个正则表达式，筛选需要过滤的文件<br>    namespace 作为标识<br>第二个参数：是一个回调函数</p>
-
+                <h1 id="分布式类型"><a href="#分布式类型" class="headerlink" title="分布式类型"></a>分布式类型</h1><p><img src="https://z1.ax1x.com/2023/12/12/piWB3sU.png" srcset="/img/loading.gif" lazyload alt="分布式类型"><br>图中代码使用联合类型作为参数，Typescript 遇到这种情况会把联合类型分别传入进行类型运算，然后再合并成新的联合类型，这就是分布式类型。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">Test</span>&lt;T <span class="hljs-keyword">extends</span> <span class="hljs-built_in">string</span>, Y <span class="hljs-keyword">extends</span> <span class="hljs-built_in">string</span>&gt; =<br>    T <span class="hljs-keyword">extends</span> Y<br>        ? <span class="hljs-literal">true</span><br>        : <span class="hljs-literal">false</span>;<br><br><span class="hljs-keyword">type</span> T = <span class="hljs-title class_">Test</span>&lt;<span class="hljs-string">&#x27;a&#x27;</span> | <span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;a&#x27;</span>&gt;<br></code></pre></td></tr></table></figure>
+<p>以上代码正常情况下<br><img src="https://z1.ax1x.com/2023/12/12/piWDZ6K.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="模式匹配"><a href="#模式匹配" class="headerlink" title="模式匹配"></a>模式匹配</h1><h1 id="重构"><a href="#重构" class="headerlink" title="重构"></a>重构</h1><h1 id="模板字符串"><a href="#模板字符串" class="headerlink" title="模板字符串"></a>模板字符串</h1><h1 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h1>
                 
               </div>
             
@@ -300,7 +299,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Vite/" class="print-no-link">#Vite</a>
+        <a href="/tags/TypeScript/" class="print-no-link">#TypeScript</a>
       
     </div>
   
@@ -312,8 +311,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Vite-架构篇（esbuild）</div>
-      <div>https://l1ushun.github.io/2023/08/10/vite-03/</div>
+      <div>TypeScript入坑指北</div>
+      <div>https://l1ushun.github.io/2023/12/11/ts-02/</div>
     </div>
     <div class="license-meta">
       
@@ -325,7 +324,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年8月10日</div>
+          <div>2023年12月11日</div>
         </div>
       
       
