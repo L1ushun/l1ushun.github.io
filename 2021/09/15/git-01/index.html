@@ -16,25 +16,25 @@
   <meta name="author" content="liu shun">
   <meta name="keywords" content="博客,前端,git">
   
-    <meta name="description" content="代理模式 为其他对象提供一种代理以控制对这个对象的访问。  简单理解就是你想使用一个东西，但是你不能直接用，你必须通过一个中间商来使用，就像你想要找老板加工资，但不让你直接见老板，而是需要去找老板的助理，通过助理反馈给老板让他给你加工资。 代理模式其实也很常见，我们在写页面时，一个父节点下有很多子节点，每次点击子节点都需要触发事件，我们肯定不会挨个子节点去添加事件，而是会在让他的父节点做代理，通过">
+    <meta name="description" content="git对于软件开发团队的意义在我们进行团队协作的软件开发时，我们的项目可能会分解成多个不同的模块、功能，这些模块、功能又会细分下去交给不同的人来进行开发，当多个人共同来完成一个项目的时候，我们如何同步进行呢？使用git就能完美的解决这个问题，我们可以在git上建立多个分支，多人来同时工作，同事也可以通过你上传的代码来实时同步我们的工作进度。 另外，当多人对一个文件进行修改时，必然会发生冲突，不同人">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaScript设计模式(三)：代理模式">
-<meta property="og:url" content="https://l1ushun.github.io/2023/10/11/design-proxy/index.html">
+<meta property="og:title" content="团队协作中git的基本使用">
+<meta property="og:url" content="https://l1ushun.github.io/2021/09/15/git-01/index.html">
 <meta property="og:site_name" content="liu的博客">
-<meta property="og:description" content="代理模式 为其他对象提供一种代理以控制对这个对象的访问。  简单理解就是你想使用一个东西，但是你不能直接用，你必须通过一个中间商来使用，就像你想要找老板加工资，但不让你直接见老板，而是需要去找老板的助理，通过助理反馈给老板让他给你加工资。 代理模式其实也很常见，我们在写页面时，一个父节点下有很多子节点，每次点击子节点都需要触发事件，我们肯定不会挨个子节点去添加事件，而是会在让他的父节点做代理，通过">
+<meta property="og:description" content="git对于软件开发团队的意义在我们进行团队协作的软件开发时，我们的项目可能会分解成多个不同的模块、功能，这些模块、功能又会细分下去交给不同的人来进行开发，当多个人共同来完成一个项目的时候，我们如何同步进行呢？使用git就能完美的解决这个问题，我们可以在git上建立多个分支，多人来同时工作，同事也可以通过你上传的代码来实时同步我们的工作进度。 另外，当多人对一个文件进行修改时，必然会发生冲突，不同人">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://l1ushun.github.io/img/javascript.png">
-<meta property="article:published_time" content="2023-10-11T09:58:11.000Z">
-<meta property="article:modified_time" content="2023-10-17T06:38:54.248Z">
+<meta property="og:image" content="https://z1.ax1x.com/2023/12/13/pifKqVU.png">
+<meta property="article:published_time" content="2021-09-15T01:24:21.000Z">
+<meta property="article:modified_time" content="2023-12-13T03:20:21.911Z">
 <meta property="article:author" content="liu shun">
-<meta property="article:tag" content="JavaScript">
-<meta property="article:tag" content="设计模式">
+<meta property="article:tag" content="Git">
+<meta property="article:tag" content="git">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://l1ushun.github.io/img/javascript.png">
+<meta name="twitter:image" content="https://z1.ax1x.com/2023/12/13/pifKqVU.png">
   
   
   
-  <title>JavaScript设计模式(三)：代理模式 - liu的博客</title>
+  <title>团队协作中git的基本使用 - liu的博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -182,13 +182,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/javascript.png') no-repeat center center; background-size: cover;">
+     style="background: url('https://z1.ax1x.com/2023/12/13/pifKqVU.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="JavaScript设计模式(三)：代理模式"></span>
+            <span id="subtitle" data-typed-text="团队协作中git的基本使用"></span>
           
         </div>
 
@@ -199,8 +199,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-10-11 17:58" pubdate>
-          2023年10月11日 下午
+        <time datetime="2021-09-15 09:24" pubdate>
+          2021年9月15日 上午
         </time>
       </span>
     
@@ -211,7 +211,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.6k 字
+          2.3k 字
         
       </span>
     
@@ -222,7 +222,7 @@
         
         
         
-          14 分钟
+          19 分钟
         
       </span>
     
@@ -306,7 +306,7 @@
       
         <a href="/2023/10/11/design-proxy/" title="JavaScript设计模式(三)：代理模式"
            class="list-group-item list-group-item-action
-           active">
+           ">
           <span class="category-post">JavaScript设计模式(三)：代理模式</span>
         </a>
       
@@ -441,7 +441,7 @@
       
         <a href="/2021/09/15/git-01/" title="团队协作中git的基本使用"
            class="list-group-item list-group-item-action
-           ">
+           active">
           <span class="category-post">团队协作中git的基本使用</span>
         </a>
       
@@ -482,37 +482,45 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">JavaScript设计模式(三)：代理模式</h1>
+            <h1 id="seo-header">团队协作中git的基本使用</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h1><blockquote>
-<p>为其他对象提供一种代理以控制对这个对象的访问。</p>
-</blockquote>
-<p>简单理解就是你想使用一个东西，但是你不能直接用，你必须通过一个中间商来使用，就像你想要找老板加工资，但不让你直接见老板，而是需要去找老板的助理，通过助理反馈给老板让他给你加工资。</p>
-<p>代理模式其实也很常见，我们在写页面时，一个父节点下有很多子节点，每次点击子节点都需要触发事件，我们肯定不会挨个子节点去添加事件，而是会在让他的父节点做代理，通过冒泡到父节点触发事件。</p>
-<h1 id="保护代理"><a href="#保护代理" class="headerlink" title="保护代理"></a>保护代理</h1><blockquote>
-<p>通过代理过滤掉一些根本不符合执行条件的情况。</p>
-</blockquote>
-<p>例如我们有个方法去请求一些数据，后面突然需要加一些判断条件，不满足条件的就没必要再发送一次无用的请求了，这里就可以通过保护代理的方式，将筛选条件放在代理中去过滤，原本的方法还是纯粹的请求数据逻辑。<br>这样处理的好处就是不会去破环原来的逻辑，把筛选的逻辑放在代理中单独处理也更方便定位问题，代码更加清晰。</p>
-<h1 id="虚拟代理：使用代理模式实现图片预加载"><a href="#虚拟代理：使用代理模式实现图片预加载" class="headerlink" title="虚拟代理：使用代理模式实现图片预加载"></a>虚拟代理：使用代理模式实现图片预加载</h1><blockquote>
-<p>通过代理，在真正需要执行方法的时候再触发。</p>
-</blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> myImage = (<span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">var</span> imgNode = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Image</span>(<span class="hljs-number">500</span>,<span class="hljs-number">500</span>);<br>    <span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>.<span class="hljs-title function_">appendChild</span>(imgNode);<br>    <span class="hljs-keyword">return</span> &#123;<br>        <span class="hljs-attr">setSrc</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">src</span>) &#123;<br>            imgNode.<span class="hljs-property">src</span> = src;<br>        &#125;<br>    &#125;<br>&#125;)();<br></code></pre></td></tr></table></figure>
-<p>首先创建一个 Image 对象，把他的 setSrc 方法暴露出去。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> proxyImage = (<span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">var</span> img = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Image</span>(<span class="hljs-number">500</span>, <span class="hljs-number">500</span>);<br>    img.<span class="hljs-property">onload</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>        myImage.<span class="hljs-title function_">setSrc</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">src</span>);<br>    &#125;<br>    <span class="hljs-keyword">return</span> &#123;<br>        <span class="hljs-attr">setSrc</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">src</span>) &#123;<br>            myImage.<span class="hljs-title function_">setSrc</span>(<span class="hljs-string">&#x27;./loading.gif&#x27;</span>);<br>            img.<span class="hljs-property">src</span> = src;<br>        &#125;<br>    &#125;<br>&#125;)();<br></code></pre></td></tr></table></figure>
-<p>接着在定义一个代理对象，该方法同时也拥有 setSrc 方法，只不过在这里代理了设置原对象的方法，在真正的图片加载完成之前，会用其他图片代替展示，避免出现页面空白的情况。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">proxyImage.<span class="hljs-title function_">setSrc</span>(<span class="hljs-string">&#x27;https://www.bing.com/th?id=OHR.JohnDayFossil_EN-CN3221993722_tmb.jpg&#x27;</span>);<br></code></pre></td></tr></table></figure>
-<p>最后我们通过代理对象来设置图片的 src ，代理对象相当于拦截了对于真正对象的操作，在图片加载完成后才执行真正的赋值。</p>
-<h1 id="缓存代理：使用代理模式实做数据缓存"><a href="#缓存代理：使用代理模式实做数据缓存" class="headerlink" title="缓存代理：使用代理模式实做数据缓存"></a>缓存代理：使用代理模式实做数据缓存</h1><blockquote>
-<p>缓存代理主要就是对于一些计算开销比较的大的时候，通过代理实现缓存，减少重复计算。</p>
-</blockquote>
-<p>先实现一个计算斐波那契数列的方法</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">fibonacci</span>(<span class="hljs-params">n</span>) &#123;<br>    <span class="hljs-keyword">if</span> (n &lt;= <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> n;<br>    <span class="hljs-keyword">let</span> fib = [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>];<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">2</span>; i &lt;= n; i++) &#123;<br>        fib[i] = fib[i - <span class="hljs-number">1</span>] + fib[i - <span class="hljs-number">2</span>];<br>    &#125;<br>    <span class="hljs-keyword">return</span> fib[n];<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>然后加入代理</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> proxyFibonacci = (<span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">let</span> cache = &#123;&#125;;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">function</span> (<span class="hljs-params">num</span>) &#123;<br>       <span class="hljs-keyword">if</span> (!cache[num]) &#123;<br>           cache[num] = <span class="hljs-title function_">fibonacci</span>(num);<br>       &#125;<br>       <span class="hljs-keyword">return</span> cache[num];<br>   &#125;<br>&#125;)()<br></code></pre></td></tr></table></figure>
-<p>在代理里面我们使用闭包，用 cache 来缓存计算值，这样计算过的值我们通过代理直接读取缓存即可，减少计算的过程，提高性能。这种方式在计算方法开销很大的情况下很有用。</p>
+                <h1 id="git对于软件开发团队的意义"><a href="#git对于软件开发团队的意义" class="headerlink" title="git对于软件开发团队的意义"></a>git对于软件开发团队的意义</h1><p>在我们进行团队协作的软件开发时，我们的项目可能会分解成多个不同的模块、功能，这些模块、功能又会细分下去交给不同的人来进行开发，当多个人共同来完成一个项目的时候，我们如何同步进行呢？使用git就能完美的解决这个问题，我们可以在git上建立多个分支，多人来同时工作，同事也可以通过你上传的代码来实时同步我们的工作进度。</p>
+<p>另外，当多人对一个文件进行修改时，必然会发生冲突，不同人的思想不同，开发一个逻辑也难免出现错误，而git的优势就在于，对代码质量把控、减少代码冲突。</p>
+<p>又或者，我们在写代码的过程中，对于一段代码想要进行修改甚至删除，但又害怕将来出错需要恢复，这时候用git将是你最好的选择，git的定义就是一个开源的分布式版本控制系统，那什么是版本控制呢？通俗来讲，就是git可以将你的每次修改记录下来，形成一个版本，当你想要恢复你的代码时，只要找到对应的版本即可。</p>
+<h1 id="git-和-github-的区别"><a href="#git-和-github-的区别" class="headerlink" title="git 和 github 的区别"></a>git 和 github 的区别</h1><p><img src="https://z1.ax1x.com/2023/12/13/pifKqVU.png" srcset="/img/loading.gif" lazyload><br>git是一个开源的分布式版本控制系统，用以有效、高速的处理从很小到非常大的项目版本管理。<br>简单来说，git就是一个帮助我们管理我们的代码版本控制工具。<br><img src="https://z1.ax1x.com/2023/12/13/pifKLaF.png" srcset="/img/loading.gif" lazyload>{:height&#x3D;”50%” width&#x3D;”50%”}<br>而gitHub是一个面向开源及私有软件项目的托管平台，因为只支持git 作为唯一的版本库格式进行托管，故名github。<br>我们可以将自己的项目提交到github上进行托管，也可以在上面查阅他人公开的项目，必要的时候可以拉下来进行学习。<br>简单来说，github就是一个用来存放代码的仓库。</p>
+<h1 id="本地仓库和远端仓库"><a href="#本地仓库和远端仓库" class="headerlink" title="本地仓库和远端仓库"></a>本地仓库和远端仓库</h1><p>本地仓库和远端仓库在本质上来说没有什么区别，甚至可以理解为一个是本地电脑，一个是远端的电脑，通常情况下，远端仓库不参与开发，主要作为托管中心。<br><img src="https://z1.ax1x.com/2023/12/13/pifMEPH.jpg" srcset="/img/loading.gif" lazyload alt="图片来源自网络"></p>
+<p>上图就能够很清晰的表明远程仓库、本地仓库、暂存区、工作区之间的关系。这其中出现的一些概念：<br><strong>workspace</strong>：工作区，我们进行编写代码的区域，可以通过pull将远端仓库的代码拉取下来，也可以通过checkout来切换分支。<br><strong>Index</strong>：暂存区，当我们代码完成一个阶段后，需要在本地仓库进行同步，即进行commit操作，但每次修改都进行commit会比较麻烦，所以git给我们提供一个暂存区，修改代码后进行add操作添加到缓存区，最后统一进行commit到本地仓库。<br><strong>Repository</strong>：本地仓库，本地用来存储代码的仓库，可以通过push将本地仓库文件上传到远程仓库，也可以通过fetch&#x2F;clone将远端仓库的文件拉取克隆下来。<br><strong>Remote</strong>：远程仓库，远端用来存储代码的仓库。</p>
+<h1 id="代码如何上传到私有远端仓库"><a href="#代码如何上传到私有远端仓库" class="headerlink" title="代码如何上传到私有远端仓库"></a>代码如何上传到私有远端仓库</h1><h2 id="Http"><a href="#Http" class="headerlink" title="Http"></a>Http</h2><ol>
+<li>进行初始化本地仓库  	git init			</li>
+<li>加到暂存区			git add *</li>
+<li>提交到本地仓库			git commit -m ‘文本’ 	</li>
+<li>连接远程仓库			git remote add origin  你的远程仓库的URL（在创建仓库中可以找到）</li>
+<li>提交到远程仓库			git push origin master</li>
+</ol>
+<h2 id="SSH"><a href="#SSH" class="headerlink" title="SSH"></a>SSH</h2><h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><ol>
+<li>首先在桌面右键打开 gitbash 输入ssh<br><img src="https://z1.ax1x.com/2023/12/13/pif1kIU.png" srcset="/img/loading.gif" lazyload><br>出现如图代表git安装成功可以正常使用。</li>
+<li>然后输入 ssh-keygen -t rsa 该命令是指定rsa算法生成密钥，输入命令后连续三个回车即可，默认情况下会生成两个文件 id_rsa 和 id_rsa.pub，id_rsa是密钥，id_rsa.pub是公钥。生成目录在执行命令后可以看到。</li>
+<li>用记事本打开id_rsa.pub后copy全部内容。</li>
+<li>进入远程仓库（用github示例），找到settings。</li>
+<li>选择SSH and GPG keys -&gt; New SSH key。<br><img src="https://z1.ax1x.com/2023/12/13/pifMVGd.png" srcset="/img/loading.gif" lazyload></li>
+<li>将（3）复制的内容粘贴到Key中，Title可以空着不写，然后Add SSH key。</li>
+</ol>
+<h3 id="上传项目"><a href="#上传项目" class="headerlink" title="上传项目"></a>上传项目</h3><ol>
+<li>首先在github上创建新的仓库，然后复制SSH。</li>
+<li>打开编译器（IDEA）终端依次输入如下命令<br> git init<br> git remote add origin 你复制的SSH<br> git add .<br> git commit -m’文本’<br> git push origin master<br> 进入到github仓库中查看是否上传成功。</li>
+</ol>
+<h1 id="代码怎么从远端仓库同步到本地"><a href="#代码怎么从远端仓库同步到本地" class="headerlink" title="代码怎么从远端仓库同步到本地"></a>代码怎么从远端仓库同步到本地</h1><p>第一种情况：将远端仓库代码克隆到本地<br>git clone 仓库的http&#x2F;SSH</p>
+<p>第二种情况：将远端仓库代码拉取下来合并到本地<br>git pull &#x2F; git pull origin master</p>
+<h1 id="多人工作在同一代码库如何合并代码"><a href="#多人工作在同一代码库如何合并代码" class="headerlink" title="多人工作在同一代码库如何合并代码"></a>多人工作在同一代码库如何合并代码</h1><p>1、切换到其他分支：git checkout 分支名<br>2、将代码拉取下来：git pull<br>3、合并分支：git merge 分支名</p>
+<h1 id="合并出现冲突怎么处理"><a href="#合并出现冲突怎么处理" class="headerlink" title="合并出现冲突怎么处理"></a>合并出现冲突怎么处理</h1><p>首先要知道为什么会产生代码冲突，假设我们现在有三次提交A.B.C<br><img src="https://z1.ax1x.com/2023/12/13/pifMFaD.png" srcset="/img/loading.gif" lazyload><br>在远程分支origin的基础上创建一个名为”mywork”的分支并提交了（可以理解为我们自己进行了更改要进行提交），同时有其他人在”origin”上做了一些修改并提交了。<br><img src="https://z1.ax1x.com/2023/12/13/pifMCqK.png" srcset="/img/loading.gif" lazyload><br>此时在E提交的时候就会产生代码冲突。</p>
+<p>产生代码冲突后如何解决呢？</p>
+<p>我们有两种方法可以用来解决代码冲突：</p>
+<p>首先就是git merge方法，该方法就是使用git pull命令将origin分支上的修改拉取下来，再与本地的提交合并之后再提交，简单来说，就是将别人的修改和自己的修改合并成一个文件再进行提交。<br><img src="https://z1.ax1x.com/2023/12/13/pifMiVO.png" srcset="/img/loading.gif" lazyload><br>因为是合并两个修改，所以会形成菱形。</p>
+<p>另一种方法就是git rebase，该方法就是废除掉我们要提交的修改，选择一个我们想要提交的正确的进行提交。</p>
+<p><img src="https://z1.ax1x.com/2023/12/13/pifM9r6.png" srcset="/img/loading.gif" lazyload><br>由于E被废除掉，所以用虚线表示，此时形成的是一条线而并非菱形。<br>在rebase过程中有时会出现conflict，此时就需要用户自己手动来解决冲突后继续提交。</p>
 
                 
               </div>
@@ -546,9 +554,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/JavaScript/" class="print-no-link">#JavaScript</a>
+        <a href="/tags/Git/" class="print-no-link">#Git</a>
       
-        <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="print-no-link">#设计模式</a>
+        <a href="/tags/git/" class="print-no-link">#git</a>
       
     </div>
   
@@ -560,8 +568,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>JavaScript设计模式(三)：代理模式</div>
-      <div>https://l1ushun.github.io/2023/10/11/design-proxy/</div>
+      <div>团队协作中git的基本使用</div>
+      <div>https://l1ushun.github.io/2021/09/15/git-01/</div>
     </div>
     <div class="license-meta">
       
@@ -573,7 +581,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年10月11日</div>
+          <div>2021年9月15日</div>
         </div>
       
       
@@ -605,21 +613,15 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/10/13/design-observer/" title="JavaScript设计模式(四)：发布-订阅模式、观察者模式">
+                      <a href="/2022/12/03/write/" title="手写集合">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">JavaScript设计模式(四)：发布-订阅模式、观察者模式</span>
+                        <span class="hidden-mobile">手写集合</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
                   </article>
                   <article class="post-next col-6">
                     
-                    
-                      <a href="/2023/10/10/design-strategy/" title="JavaScript设计模式(二)：策略模式">
-                        <span class="hidden-mobile">JavaScript设计模式(二)：策略模式</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
                     
                   </article>
                 </div>
