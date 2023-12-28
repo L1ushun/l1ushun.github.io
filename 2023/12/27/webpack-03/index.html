@@ -16,16 +16,16 @@
   <meta name="author" content="liu shun">
   <meta name="keywords" content="博客,前端,git">
   
-    <meta name="description" content="常见的打包命令使用默认配置文件：如果你的项目中有一个名为 webpack.config.js 的默认配置文件，可以使用以下命令进行打包： 1npx webpack  指定自定义配置文件：如果你使用了不同于默认配置文件的自定义配置文件，可以使用 –config 参数指定配置文件的路径进行打包。例如： 1npx webpack --config webpack.custom.config.js  指定">
+    <meta name="description" content="图像优化压缩">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Webpack入坑指北(2)">
-<meta property="og:url" content="https://l1ushun.github.io/2023/12/27/webpack-02/index.html">
+<meta property="og:title" content="Webpack优化篇">
+<meta property="og:url" content="https://l1ushun.github.io/2023/12/27/webpack-03/index.html">
 <meta property="og:site_name" content="liu的博客">
-<meta property="og:description" content="常见的打包命令使用默认配置文件：如果你的项目中有一个名为 webpack.config.js 的默认配置文件，可以使用以下命令进行打包： 1npx webpack  指定自定义配置文件：如果你使用了不同于默认配置文件的自定义配置文件，可以使用 –config 参数指定配置文件的路径进行打包。例如： 1npx webpack --config webpack.custom.config.js  指定">
+<meta property="og:description" content="图像优化压缩">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://z1.ax1x.com/2023/12/13/pifsd3R.png">
 <meta property="article:published_time" content="2023-12-27T11:38:37.000Z">
-<meta property="article:modified_time" content="2023-12-27T09:32:12.284Z">
+<meta property="article:modified_time" content="2023-12-27T09:35:20.897Z">
 <meta property="article:author" content="liu shun">
 <meta property="article:tag" content="webpack">
 <meta name="twitter:card" content="summary_large_image">
@@ -33,7 +33,7 @@
   
   
   
-  <title>Webpack入坑指北(2) - liu的博客</title>
+  <title>Webpack优化篇 - liu的博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -187,7 +187,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Webpack入坑指北(2)"></span>
+            <span id="subtitle" data-typed-text="Webpack优化篇"></span>
           
         </div>
 
@@ -210,7 +210,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.8k 字
+          6 字
         
       </span>
     
@@ -221,7 +221,7 @@
         
         
         
-          16 分钟
+          1 分钟
         
       </span>
     
@@ -258,34 +258,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Webpack入坑指北(2)</h1>
+            <h1 id="seo-header">Webpack优化篇</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="常见的打包命令"><a href="#常见的打包命令" class="headerlink" title="常见的打包命令"></a>常见的打包命令</h1><p>使用默认配置文件：如果你的项目中有一个名为 webpack.config.js 的默认配置文件，可以使用以下命令进行打包：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">npx webpack<br></code></pre></td></tr></table></figure>
-
-<p>指定自定义配置文件：如果你使用了不同于默认配置文件的自定义配置文件，可以使用 –config 参数指定配置文件的路径进行打包。例如：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">npx webpack --config webpack.custom.config.js<br></code></pre></td></tr></table></figure>
-
-<p>指定构建模式：webpack 提供了两种构建模式，即开发模式（development）和生产模式（production）。你可以通过 –mode 参数指定构建模式，并根据不同的模式应用不同的配置。例如：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">npx webpack --mode development<br>npx webpack --mode production<br></code></pre></td></tr></table></figure>
-
-<p>监听文件变化：在开发过程中，你可能希望在文件发生变化时自动重新构建项目。可以使用 –watch 参数启用文件监听模式，使 webpack<br>监听文件变化并自动重新构建。例如：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">npx webpack --watch<br></code></pre></td></tr></table></figure>
-
-<h1 id="Loader"><a href="#Loader" class="headerlink" title="Loader"></a>Loader</h1><h2 id="什么是-Loader？"><a href="#什么是-Loader？" class="headerlink" title="什么是 Loader？"></a>什么是 Loader？</h2><p>一个函数接收资源文件或者上个Loader结果</p>
-<h2 id="在-webpack-中如何使用自定义-Loader？有几种方式？"><a href="#在-webpack-中如何使用自定义-Loader？有几种方式？" class="headerlink" title="在 webpack 中如何使用自定义 Loader？有几种方式？"></a>在 webpack 中如何使用自定义 Loader？有几种方式？</h2><p>三种</p>
-<ol>
-<li>通过 path.resolve() 获取绝对路径 <figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs dts"><span class="hljs-punctuation">&#123;</span><br><span class="hljs-symbol">  test:</span> /\.js$/,<br><span class="hljs-symbol">  use:</span> [<br>    <span class="hljs-punctuation">&#123;</span><br><span class="hljs-symbol">      loader:</span> path.resolve(__dirname, <span class="hljs-string">&quot;./loaders/simpleLoader.js&quot;</span>),<br><span class="hljs-symbol">      options:</span> <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-comment">/* ... */</span><br>      <span class="hljs-punctuation">&#125;</span>,<br>    <span class="hljs-punctuation">&#125;</span>,<br>  ],<br><span class="hljs-punctuation">&#125;</span>,<br></code></pre></td></tr></table></figure></li>
-<li>通过 resolveLoader.alias 配置别名 <figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs dts"><span class="hljs-symbol">resolveLoader:</span> <span class="hljs-punctuation">&#123;</span><br><span class="hljs-symbol">   alias:</span> <span class="hljs-punctuation">&#123;</span><br>     <span class="hljs-string">&quot;simpleLoader&quot;</span>: path.resolve(__dirname, <span class="hljs-string">&quot;./loaders/simpleLoader.js&quot;</span>),<br>   <span class="hljs-punctuation">&#125;</span>,<br><span class="hljs-punctuation">&#125;</span>,<br><span class="hljs-symbol">module:</span> <span class="hljs-punctuation">&#123;</span><br><span class="hljs-symbol">  rules:</span> [<br>    <span class="hljs-punctuation">&#123;</span><br><span class="hljs-symbol">      test:</span> /\.js$/,<br><span class="hljs-symbol">      use:</span> [<br>        <span class="hljs-punctuation">&#123;</span><br><span class="hljs-symbol">          loader:</span> <span class="hljs-string">&quot;simpleLoader&quot;</span>,<br><span class="hljs-symbol">          options:</span> <span class="hljs-punctuation">&#123;</span><br>            <span class="hljs-comment">/* ... */</span><br>          <span class="hljs-punctuation">&#125;</span>,<br>        <span class="hljs-punctuation">&#125;</span>,<br>      ],<br>    <span class="hljs-punctuation">&#125;</span>,<br>  ],<br><span class="hljs-punctuation">&#125;</span>,<br></code></pre></td></tr></table></figure></li>
-<li>resolveLoader.modules<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs dts"><span class="hljs-symbol">resolveLoader:</span> <span class="hljs-punctuation">&#123;</span><br> <span class="hljs-comment">//找loader的时候，先去loaders目录下找，找不到再去node_modules下面找</span><br><span class="hljs-symbol"> modules:</span> [<span class="hljs-string">&quot;loaders&quot;</span>, <span class="hljs-string">&quot;node_modules&quot;</span>],<br><span class="hljs-punctuation">&#125;</span>,<br><span class="hljs-symbol">module:</span> <span class="hljs-punctuation">&#123;</span><br><span class="hljs-symbol"> rules:</span> [<br>   <span class="hljs-punctuation">&#123;</span><br><span class="hljs-symbol">     test:</span> /\.js$/,<br><span class="hljs-symbol">     use:</span> [<br>       <span class="hljs-punctuation">&#123;</span><br><span class="hljs-symbol">         loader:</span> <span class="hljs-string">&quot;simpleLoader&quot;</span>,<br><span class="hljs-symbol">         options:</span> <span class="hljs-punctuation">&#123;</span><br>           <span class="hljs-comment">/* ... */</span><br>         <span class="hljs-punctuation">&#125;</span>,<br>       <span class="hljs-punctuation">&#125;</span>,<br>     ],<br>   <span class="hljs-punctuation">&#125;</span>,<br> ],<br><span class="hljs-punctuation">&#125;</span>,<br></code></pre></td></tr></table></figure></li>
-</ol>
-<h2 id="Loader-的类型有哪几种？它们的运行顺序是怎么样的？如何控制它们的运行顺序？"><a href="#Loader-的类型有哪几种？它们的运行顺序是怎么样的？如何控制它们的运行顺序？" class="headerlink" title="Loader 的类型有哪几种？它们的运行顺序是怎么样的？如何控制它们的运行顺序？"></a>Loader 的类型有哪几种？它们的运行顺序是怎么样的？如何控制它们的运行顺序？</h2><p>前置(pre)、普通(normal)、行内(inline)、后置(post)<br>通过 enforce 属性控制</p>
-<h2 id="什么是-Normal-Loader？什么是-Pitching-Loader？它们的运行机制有什么不同？"><a href="#什么是-Normal-Loader？什么是-Pitching-Loader？它们的运行机制有什么不同？" class="headerlink" title="什么是 Normal Loader？什么是 Pitching Loader？它们的运行机制有什么不同？"></a>什么是 Normal Loader？什么是 Pitching Loader？它们的运行机制有什么不同？</h2><p>pitching：后置(post)、行内(inline)、普通(normal)、前置(pre) 的顺序调用。<br>normal：前置(pre)、普通(normal)、行内(inline)、后置(post)</p>
-<p>如果一个文件指定了多个 Loader，如何控制使得只执行特定的 Loader，忽略其他的 Loader?<br>Loader 为什么是自右向左执行的？如何做到的？<br>项目中对.css、.less、.scss、.tsx、.vue等文件是如何做解析的？它们的原理是什么？<br>webpack 中完整的 Loader 运行机制是怎么样的？<br>为什么最后的 Loader 处理结果必须是JS类型的字符串？<br>给你个需求：需要在打包过程中移除console.log函数，你会通过哪种方式进行处理？是通过 Loader 还是 Babel Plugin？再或者是 webpack<br>Plugin？给出你的理由</p>
-
+                <h1 id="图像优化"><a href="#图像优化" class="headerlink" title="图像优化"></a>图像优化</h1><h2 id="压缩"><a href="#压缩" class="headerlink" title="压缩"></a>压缩</h2>
                 
               </div>
             
@@ -330,8 +308,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Webpack入坑指北(2)</div>
-      <div>https://l1ushun.github.io/2023/12/27/webpack-02/</div>
+      <div>Webpack优化篇</div>
+      <div>https://l1ushun.github.io/2023/12/27/webpack-03/</div>
     </div>
     <div class="license-meta">
       
