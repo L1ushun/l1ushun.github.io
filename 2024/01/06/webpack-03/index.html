@@ -16,25 +16,24 @@
   <meta name="author" content="liu shun">
   <meta name="keywords" content="博客,前端,git">
   
-    <meta name="description" content="什么是策略模式 定义一系列的算法，把它们一个个封装起来，并且使它们可以相互替换。  简单说就是对于不同的场景，我们才采取不同的方式来应对。举几个简单的小例子：  我们要组装一台电脑，如果预算充足的话，那就可以什么都用顶配，如果预算不够，那就追求性价比，用最少的预算获得最高的性能，如果基本没有什么预算，那就只能楼下网吧对付一下了，对于不同的预算就需要不同的策略。 在网购过程中，我们买的东西越多，相应">
+    <meta name="description" content="性能分析工具这里使用 Webpack-bundle-analyzer 1pnpm add progress-bar-webpack-plugin -D 配置 12345678const BundleAnalyzerPlugin &#x3D; require(&amp;#x27;webpack-bundle-analyzer&amp;#x27;).BundleAnalyzerPlugin;module.exports &#x3D; &amp;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaScript设计模式(二)：策略模式">
-<meta property="og:url" content="https://l1ushun.github.io/2023/10/10/design-strategy/index.html">
+<meta property="og:title" content="Webpack优化篇">
+<meta property="og:url" content="https://l1ushun.github.io/2024/01/06/webpack-03/index.html">
 <meta property="og:site_name" content="liu的博客">
-<meta property="og:description" content="什么是策略模式 定义一系列的算法，把它们一个个封装起来，并且使它们可以相互替换。  简单说就是对于不同的场景，我们才采取不同的方式来应对。举几个简单的小例子：  我们要组装一台电脑，如果预算充足的话，那就可以什么都用顶配，如果预算不够，那就追求性价比，用最少的预算获得最高的性能，如果基本没有什么预算，那就只能楼下网吧对付一下了，对于不同的预算就需要不同的策略。 在网购过程中，我们买的东西越多，相应">
+<meta property="og:description" content="性能分析工具这里使用 Webpack-bundle-analyzer 1pnpm add progress-bar-webpack-plugin -D 配置 12345678const BundleAnalyzerPlugin &#x3D; require(&amp;#x27;webpack-bundle-analyzer&amp;#x27;).BundleAnalyzerPlugin;module.exports &#x3D; &amp;">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://l1ushun.github.io/img/javascript.png">
-<meta property="article:published_time" content="2023-10-10T11:14:25.000Z">
-<meta property="article:modified_time" content="2023-10-12T09:56:15.240Z">
+<meta property="og:image" content="https://z1.ax1x.com/2023/12/13/pifsd3R.png">
+<meta property="article:published_time" content="2024-01-06T07:23:09.000Z">
+<meta property="article:modified_time" content="2024-01-08T01:20:38.758Z">
 <meta property="article:author" content="liu shun">
-<meta property="article:tag" content="JavaScript">
-<meta property="article:tag" content="设计模式">
+<meta property="article:tag" content="webpack">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://l1ushun.github.io/img/javascript.png">
+<meta name="twitter:image" content="https://z1.ax1x.com/2023/12/13/pifsd3R.png">
   
   
   
-  <title>JavaScript设计模式(二)：策略模式 - liu的博客</title>
+  <title>Webpack优化篇 - liu的博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -182,13 +181,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/javascript.png') no-repeat center center; background-size: cover;">
+     style="background: url('https://z1.ax1x.com/2023/12/13/pifsd3R.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="JavaScript设计模式(二)：策略模式"></span>
+            <span id="subtitle" data-typed-text="Webpack优化篇"></span>
           
         </div>
 
@@ -199,8 +198,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-10-10 19:14" pubdate>
-          2023年10月10日 晚上
+        <time datetime="2024-01-06 15:23" pubdate>
+          2024年1月6日 下午
         </time>
       </span>
     
@@ -211,7 +210,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.9k 字
+          3.4k 字
         
       </span>
     
@@ -222,7 +221,7 @@
         
         
         
-          17 分钟
+          28 分钟
         
       </span>
     
@@ -315,7 +314,7 @@
       
         <a href="/2023/10/10/design-strategy/" title="JavaScript设计模式(二)：策略模式"
            class="list-group-item list-group-item-action
-           active">
+           ">
           <span class="category-post">JavaScript设计模式(二)：策略模式</span>
         </a>
       
@@ -423,7 +422,7 @@
       
         <a href="/2024/01/06/webpack-03/" title="Webpack优化篇"
            class="list-group-item list-group-item-action
-           ">
+           active">
           <span class="category-post">Webpack优化篇</span>
         </a>
       
@@ -518,34 +517,62 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">JavaScript设计模式(二)：策略模式</h1>
+            <h1 id="seo-header">Webpack优化篇</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="什么是策略模式"><a href="#什么是策略模式" class="headerlink" title="什么是策略模式"></a>什么是策略模式</h1><blockquote>
-<p><strong>定义一系列的算法，把它们一个个封装起来，并且使它们可以相互替换</strong>。</p>
+                <h1 id="性能分析工具"><a href="#性能分析工具" class="headerlink" title="性能分析工具"></a>性能分析工具</h1><p>这里使用 <a target="_blank" rel="noopener" href="https://www.npmjs.com/package/webpack-bundle-analyzer">Webpack-bundle-analyzer</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">pnpm add progress-bar-webpack-plugin -D<br></code></pre></td></tr></table></figure>
+<p>配置</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> <span class="hljs-title class_">BundleAnalyzerPlugin</span> = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;webpack-bundle-analyzer&#x27;</span>).<span class="hljs-property">BundleAnalyzerPlugin</span>;<br><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = &#123;<br>    <span class="hljs-comment">// ...</span><br>    <span class="hljs-attr">plugins</span>: [<br>        <span class="hljs-comment">// 代码产物分析</span><br>        <span class="hljs-keyword">new</span> <span class="hljs-title class_">BundleAnalyzerPlugin</span>(),<br>    ],<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><img src="https://cloud.githubusercontent.com/assets/302213/20628702/93f72404-b338-11e6-92d4-9a365550a701.gif" srcset="/img/loading.gif" lazyload alt="分析界面（图片来自https://www.npmjs.com/package/webpack-bundle-analyzer）"></p>
+<h1 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h1><p>在 webpack 5 中提供了<a target="_blank" rel="noopener" href="https://webpack.js.org/configuration/cache/#cache">缓存</a>的功能，通过 <code>cache.type = &#39;filesystem&#39;</code> 即可开启持久化缓存。<br>开启持久化缓存后，webpack 会在首次构建时，将构建出的产物模块序列化然后保存到硬盘，后面再执行构建时，就可以跳过很多编译过程，直接复用缓存。</p>
+<h1 id="图像优化"><a href="#图像优化" class="headerlink" title="图像优化"></a>图像优化</h1><h2 id="压缩"><a href="#压缩" class="headerlink" title="压缩"></a>压缩</h2><p>关于图片压缩这里使用的是 <a target="_blank" rel="noopener" href="https://github.com/tcoopman/image-webpack-loader">image-webpack-loader</a>。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">pnpm add -D image-webpack-loader<br></code></pre></td></tr></table></figure>
+<p>配置</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = &#123;<br>    <span class="hljs-comment">// ...</span><br>    <span class="hljs-attr">module</span>: &#123;<br>        <span class="hljs-attr">rules</span>: [<br>            &#123;<br>                <span class="hljs-attr">test</span>: <span class="hljs-regexp">/\.(gif|png|jpe?g|svg)$/i</span>,<br>                <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;asset/resource&quot;</span>,<br>                <span class="hljs-attr">use</span>: [&#123;<br>                    <span class="hljs-attr">loader</span>: <span class="hljs-string">&#x27;image-webpack-loader&#x27;</span>,<br>                    <span class="hljs-attr">options</span>: &#123;<br>                       <span class="hljs-attr">mozjpeg</span>: &#123;<br>                            <span class="hljs-attr">progressive</span>: <span class="hljs-literal">true</span>,<br>                            <span class="hljs-attr">quality</span>: <span class="hljs-number">65</span>,<br>                        &#125;,<br>                        <span class="hljs-attr">optipng</span>: &#123;<br>                            <span class="hljs-attr">enabled</span>: <span class="hljs-literal">false</span>,<br>                        &#125;,<br>                        <span class="hljs-attr">pngquant</span>: &#123;<br>                            <span class="hljs-attr">quality</span>: [<span class="hljs-number">0.65</span>, <span class="hljs-number">0.9</span>],<br>                            <span class="hljs-attr">speed</span>: <span class="hljs-number">4</span>,<br>                        &#125;,<br>                        <span class="hljs-attr">gifsicle</span>: &#123;<br>                            <span class="hljs-attr">interlaced</span>: <span class="hljs-literal">false</span>,<br>                        &#125;,<br>                        <span class="hljs-attr">webp</span>: &#123;<br>                            <span class="hljs-attr">quality</span>: <span class="hljs-number">75</span>,<br>                        &#125;,<br>                    &#125;<br>                &#125;]<br>            &#125;,<br>        ]<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>实际测试 766kb 图片压缩到192kb。</p>
 </blockquote>
-<p>简单说就是对于不同的场景，我们才采取不同的方式来应对。举几个简单的小例子：</p>
-<ol>
-<li>我们要组装一台电脑，如果预算充足的话，那就可以什么都用顶配，如果预算不够，那就追求性价比，用最少的预算获得最高的性能，如果基本没有什么预算，那就只能楼下网吧对付一下了，对于不同的预算就需要不同的策略。</li>
-<li>在网购过程中，我们买的东西越多，相应的满减金额越多，能用的红包金额越大，省的钱越多。对于不同的金额，需要不同的计算策略。</li>
-<li>年底计算绩效，不同的评分队对应不同的等级，需要不同的计算策略。</li>
-</ol>
-<h1 id="传统的策略模式"><a href="#传统的策略模式" class="headerlink" title="传统的策略模式"></a>传统的策略模式</h1><p>传统的策略模式一般分成两个部分，一个是接受调用，然后委托给某个策略来完成相应的功能，另一个部分就是把一系列的算法封装成一个个策略类。</p>
-<h2 id="举个例子"><a href="#举个例子" class="headerlink" title="举个例子"></a>举个例子</h2><p>我们去某商场购物，如果拥有该商场的 vip 那么就能在总价的基础上进行打折，vip 分为 S 等级和 A 等级。</p>
-<p>首先我们把不同的等级的计算策略封装起来，S 等级的 vip 可以打8折，A 等级的 vip 可以打九折。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> <span class="hljs-title class_">VipS</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;&#125;;<br><br><span class="hljs-title class_">VipS</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">discount</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params">totalPrice</span>) &#123;<br>    <span class="hljs-keyword">return</span> totalPrice * <span class="hljs-number">0.8</span>;<br>&#125;<br><br><span class="hljs-keyword">const</span> <span class="hljs-title class_">VipA</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;&#125;;<br><br><span class="hljs-title class_">VipA</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">discount</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params">totalPrice</span>) &#123;<br>    <span class="hljs-keyword">return</span> totalPrice * <span class="hljs-number">0.9</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>然后再来写商品总价的类</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> <span class="hljs-title class_">GoodsPrice</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;&#125;;<br><br><span class="hljs-title class_">GoodsPrice</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">setTotalPrice</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params">totalPrice</span>) &#123;<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">totalPrice</span> = totalPrice;<br>&#125;<br><br><span class="hljs-title class_">GoodsPrice</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">setCalculateMethod</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params">obj</span>) &#123;<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">calculateMethod</span> = obj.<span class="hljs-property">discount</span>;<br>&#125;<br><br><span class="hljs-title class_">GoodsPrice</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">getActualAmount</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">calculateMethod</span> ? <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">calculateMethod</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">totalPrice</span>) : <span class="hljs-variable language_">this</span>.<span class="hljs-property">totalPrice</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>通过 setTotalPrice 方法来设置原价的金额，通过 setCalculateMethod 方法来设置我们要执行的策略，最后通过 getActualAmount 来计算出应付金额。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> goods = <span class="hljs-keyword">new</span> <span class="hljs-title class_">GoodsPrice</span>();<br>goods.<span class="hljs-title function_">setTotalPrice</span>(<span class="hljs-number">1000</span>);<br>goods.<span class="hljs-title function_">setCalculateMethod</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">VipS</span>());<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(goods.<span class="hljs-title function_">getActualAmount</span>())    <span class="hljs-comment">// 800</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>mozjpeg：压缩 JPG(JPEG) 图片</li>
+<li>optipng、pngquant：压缩 PNG 图片</li>
+<li>svgo：压缩 SVG 图片</li>
+<li>gifsicle：压缩 Gif 图</li>
+<li>webp：将 JPG&#x2F;PNG 图压缩并转化为 WebP 图片格式</li>
+</ul>
+<h1 id="打包体积优化"><a href="#打包体积优化" class="headerlink" title="打包体积优化"></a>打包体积优化</h1><h2 id="代码分离"><a href="#代码分离" class="headerlink" title="代码分离"></a>代码分离</h2><h2 id="使用-cdn-分包"><a href="#使用-cdn-分包" class="headerlink" title="使用 cdn 分包"></a>使用 cdn 分包</h2><p>将项目中体积较大的包通过 cdn 的方式引入，减少打包产物体积大小。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">pnpm add html-webpack-externals-plugin -D<br></code></pre></td></tr></table></figure>
+<p>配置</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> <span class="hljs-title class_">HtmlWebpackExternalsPlugin</span> = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;html-webpack-externals-plugin&quot;</span>);<br><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = <span class="hljs-title function_">merge</span>(common, &#123;<br>    <span class="hljs-comment">// ...</span><br>    <span class="hljs-attr">plugins</span>: [<br>        <span class="hljs-comment">// ...</span><br>        <span class="hljs-keyword">new</span> <span class="hljs-title class_">HtmlWebpackExternalsPlugin</span>(&#123;<br>            <span class="hljs-attr">externals</span>: [<br>                &#123;<br>                    <span class="hljs-attr">module</span>: <span class="hljs-string">&#x27;react&#x27;</span>,<br>                    <span class="hljs-attr">entry</span>: <span class="hljs-string">&#x27;https://unpkg.com/react@18.2.0/umd/react.production.min.js&#x27;</span>,<br>                    <span class="hljs-attr">global</span>: <span class="hljs-string">&#x27;React&#x27;</span>,<br>                &#125;,<br>                &#123;<br>                    <span class="hljs-attr">module</span>: <span class="hljs-string">&#x27;react-dom&#x27;</span>,<br>                    <span class="hljs-attr">entry</span>:<br>                        <span class="hljs-string">&#x27;https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js&#x27;</span>,<br>                    <span class="hljs-attr">global</span>: <span class="hljs-string">&#x27;ReactDOM&#x27;</span>,<br>                &#125;,<br>                &#123;<br>                    <span class="hljs-attr">module</span>: <span class="hljs-string">&#x27;echarts&#x27;</span>,<br>                    <span class="hljs-attr">entry</span>:<br>                        <span class="hljs-string">&#x27;https://cdn.bootcdn.net/ajax/libs/echarts/5.4.3/echarts.common.min.js&#x27;</span>,<br>                    <span class="hljs-attr">global</span>: <span class="hljs-string">&#x27;echarts&#x27;</span>,<br>                &#125;,<br>            ]<br>        &#125;)<br>    ],<br>&#125;);<br></code></pre></td></tr></table></figure>
+<p>这里以 react、react-dom、echarts 为例，将他们使用 cdn 的方式引入，不再打包进入产物，</p>
+<blockquote>
+<p>实测 打包时间由 21604ms -&gt; 6937ms 产物体积由 1.28mb -&gt; 162.71kb</p>
+</blockquote>
+<h1 id="打包速度优化"><a href="#打包速度优化" class="headerlink" title="打包速度优化"></a>打包速度优化</h1><h2 id="多进程打包"><a href="#多进程打包" class="headerlink" title="多进程打包"></a>多进程打包</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">pnpm add -D thread-loader<br></code></pre></td></tr></table></figure>
+<p>配置</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = &#123;<br>    <span class="hljs-comment">// ...</span><br>    <span class="hljs-attr">module</span>: &#123;<br>        <span class="hljs-attr">rules</span>: [<br>            <span class="hljs-comment">// ...</span><br>            &#123;<br>                <span class="hljs-attr">test</span>: <span class="hljs-regexp">/\.js$/</span>,<br>                <span class="hljs-attr">use</span>: [<br>                    &#123;<br>                        <span class="hljs-attr">loader</span>: <span class="hljs-string">&quot;thread-loader&quot;</span>,<br>                        <span class="hljs-attr">options</span>: &#123;<br>                            <span class="hljs-attr">workers</span>: <span class="hljs-number">2</span>,<br>                            <span class="hljs-attr">workerParallelJobs</span>: <span class="hljs-number">50</span>,<br>                        &#125;,<br>                    &#125;,<br>                    <span class="hljs-comment">// ...</span><br>                ]<br>            &#125;<br>        ]<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<ul>
+<li>workers 进程总数</li>
+<li>workerParallelJobs 单个进程中并发执行的任务数</li>
+<li>poolTimeout 超时时间，子进程空闲超时会关闭</li>
+<li>poolRespawn 是否允许子进程关闭后重新创建新的子进程</li>
+<li>workerNodeArgs 设置启动子进程时，额外的参数</li>
+</ul>
+<h2 id="按需编译"><a href="#按需编译" class="headerlink" title="按需编译"></a>按需编译</h2><p>webpack 提供一个实验特性 <a target="_blank" rel="noopener" href="https://webpack.docschina.org/configuration/experiments/#experimentslazycompilation">lazyCompilation</a>用来实现异步引用模块的按需编译，极大提高了冷启动速度。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = &#123;<br>    <span class="hljs-comment">// ...</span><br>    <span class="hljs-attr">experiments</span>: &#123;<br>        <span class="hljs-attr">lazyCompilation</span>: <span class="hljs-literal">true</span>,<br>    &#125;,<br>&#125;;<br></code></pre></td></tr></table></figure>
+<p>但是该功能还处在实验阶段，<strong>最好只在开发环境使用</strong>。</p>
+<h2 id="约束-loader-执行的范围"><a href="#约束-loader-执行的范围" class="headerlink" title="约束 loader 执行的范围"></a>约束 loader 执行的范围</h2><p>通过 <code>module.rules.exclude</code> &#x2F; <code>module.rules.include</code> 可以进一步缩小 loader 的执行范围。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = &#123;<br>  <span class="hljs-comment">// ...</span><br>  <span class="hljs-attr">module</span>: &#123;<br>    <span class="hljs-attr">rules</span>: [<br>      &#123;<br>        <span class="hljs-attr">test</span>: <span class="hljs-regexp">/\.js$/</span>,<br>        <span class="hljs-attr">exclude</span>: <span class="hljs-regexp">/node_modules/</span>,<br>        <span class="hljs-comment">// ...</span><br>      &#125;,<br>    ],<br>  &#125;,<br>&#125;;<br></code></pre></td></tr></table></figure>
 
-<p>由于我们的场景逻辑比较单一，所以使用策略模式反而看起来反而把问题搞复杂了，但如果在复杂的逻辑场景，例如我们在以上的场景下增加更多更细致的优惠方案策略，使用策略模式能让我们的代码逻辑更加清晰。</p>
-<h1 id="Javascript-的策略模式"><a href="#Javascript-的策略模式" class="headerlink" title="Javascript 的策略模式"></a>Javascript 的策略模式</h1><p>在 Javascript 语言中，函数也是对象，我们可以把 n 个策略直接放到一个对象中。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> strategies = &#123;<br>    <span class="hljs-string">&#x27;vipS&#x27;</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">totalPrice</span>) &#123;<br>        <span class="hljs-keyword">return</span> totalPrice * <span class="hljs-number">0.8</span>;<br>    &#125;,<br>    <span class="hljs-string">&#x27;vipA&#x27;</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">totalPrice</span>) &#123;<br>        <span class="hljs-keyword">return</span> totalPrice * <span class="hljs-number">0.9</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> calculateActualAmount = <span class="hljs-keyword">function</span>(<span class="hljs-params"> level, price </span>)&#123;<br>    <span class="hljs-keyword">return</span> level ? strategies[ level ]( price ) : price;<br>&#125;;<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>( <span class="hljs-title function_">calculateActualAmount</span>( <span class="hljs-string">&#x27;vipS&#x27;</span>, <span class="hljs-number">1000</span> ) );<br></code></pre></td></tr></table></figure>
-<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>策略模式主要解决的就是很多相同的算法，我们一个个去使用 if…else… 去判断很麻烦，而且也不容易维护，代码可读性不高，所以我们把每个分支拆解成策略，避免使用多重判断。但还要注意的是如果策略过多的话，可能使用策略模式也并不那么合适，就需要考虑其他的设计模式来解决问题了。</p>
+<h2 id="使用-noParse"><a href="#使用-noParse" class="headerlink" title="使用 noParse"></a>使用 noParse</h2><p>使用 <a target="_blank" rel="noopener" href="https://webpack.docschina.org/configuration/module/#modulenoparse">module.noParse</a> 跳过不需要二次编译的资源文件。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = &#123;<br>  <span class="hljs-comment">//...</span><br>  <span class="hljs-attr">module</span>: &#123;<br>    <span class="hljs-attr">noParse</span>: <span class="hljs-regexp">/lodash|react/</span>,<br>  &#125;,<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h2 id="关闭-ts-的类型检查"><a href="#关闭-ts-的类型检查" class="headerlink" title="关闭 ts 的类型检查"></a>关闭 ts 的类型检查</h2><p>使用 <code>fork-ts-checker-webpack-plugin</code> 插件来进行 ts 的类型检查，该插件会将 ts 的类型检查和编译过程放在单独的进程中运行，然后我们关闭 ts-loader 的类型检查，提升编译速度。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">pnpm add -D fork-ts-checker-webpack-plugin<br></code></pre></td></tr></table></figure>
+<p>配置</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> <span class="hljs-title class_">ForkTsCheckerWebpackPlugin</span> = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;fork-ts-checker-webpack-plugin&#x27;</span>);<br><br><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = &#123;<br>  <span class="hljs-comment">// ...</span><br>  <span class="hljs-attr">module</span>: &#123;<br>    <span class="hljs-attr">rules</span>: [&#123;<br>      <span class="hljs-attr">test</span>: <span class="hljs-regexp">/\.ts$/</span>,<br>      <span class="hljs-attr">use</span>: [<br>        &#123;<br>          <span class="hljs-attr">loader</span>: <span class="hljs-string">&#x27;ts-loader&#x27;</span>,<br>          <span class="hljs-attr">options</span>: &#123;<br>            <span class="hljs-comment">// 仅编译</span><br>            <span class="hljs-attr">transpileOnly</span>: <span class="hljs-literal">true</span><br>          &#125;<br>        &#125;<br>      ],<br>    &#125;, ],<br>  &#125;,<br>  <span class="hljs-attr">plugins</span>:[<br>    <span class="hljs-comment">// 使用插件，用单独的进程进行 ts 类型检查</span><br>    <span class="hljs-keyword">new</span> <span class="hljs-title class_">ForkTsCheckerWebpackPlugin</span>()<br>  ]<br>&#125;;<br></code></pre></td></tr></table></figure>
 
                 
               </div>
@@ -579,9 +606,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/JavaScript/" class="print-no-link">#JavaScript</a>
-      
-        <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="print-no-link">#设计模式</a>
+        <a href="/tags/webpack/" class="print-no-link">#webpack</a>
       
     </div>
   
@@ -593,8 +618,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>JavaScript设计模式(二)：策略模式</div>
-      <div>https://l1ushun.github.io/2023/10/10/design-strategy/</div>
+      <div>Webpack优化篇</div>
+      <div>https://l1ushun.github.io/2024/01/06/webpack-03/</div>
     </div>
     <div class="license-meta">
       
@@ -606,7 +631,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年10月10日</div>
+          <div>2024年1月6日</div>
         </div>
       
       
@@ -638,18 +663,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/10/11/design-proxy/" title="JavaScript设计模式(三)：代理模式">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">JavaScript设计模式(三)：代理模式</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/09/13/design-mode/" title="JavaScript设计模式(一)：单例模式、工厂模式">
-                        <span class="hidden-mobile">JavaScript设计模式(一)：单例模式、工厂模式</span>
+                      <a href="/2023/12/27/webpack-01/" title="Webpack入坑指北">
+                        <span class="hidden-mobile">Webpack入坑指北</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
