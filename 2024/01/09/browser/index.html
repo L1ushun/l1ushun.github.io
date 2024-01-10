@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://s11.ax1x.com/2024/01/09/pFpJ5AH.jpg">
 <meta property="article:published_time" content="2024-01-09T06:44:01.000Z">
-<meta property="article:modified_time" content="2024-01-10T06:28:49.765Z">
+<meta property="article:modified_time" content="2024-01-10T06:34:11.321Z">
 <meta property="article:author" content="liu shun">
 <meta property="article:tag" content="浏览器">
 <meta name="twitter:card" content="summary_large_image">
@@ -546,7 +546,7 @@
 <p>在 <strong>http1.1</strong> 通过 <strong>Cache-Control</strong> 进行判断，和 Expires 不同的是，Cache-Control 的 <strong>max-age</strong> 字段代表的是缓存的时长，在这个时长内缓存都是有效的，这样就能避免由于时间误差导致缓存失效。</p>
 <h2 id="协商缓存"><a href="#协商缓存" class="headerlink" title="协商缓存"></a>协商缓存</h2><p>当强缓存失效就进入到了协商缓存，协商缓存需要向服务器发送请求。协商缓存通过 <strong>Last-Modified</strong> 和 <strong>ETag</strong> 来判断。</p>
 <p><strong>Last-Modified</strong> 即最后修改时间，在浏览器接收到请求，会在请求头保存最后修改时间在 <strong>If-Modified-Since</strong> 字段，当该字段和服务器的最后修改时间一致，标识服务端资源没有再被更改，命中协商缓存。</p>
-<p><strong>ETag</strong> ETag 和 Last-Modified 的区别在于，后者按照修改时间界定资源是否更新，而 ETag 则是通过资源生成的唯一 hash 值来进行界定，只要资源发生改变就会生成新的 hash 值，通过这个值就能判断是否命中协商缓存。</p>
+<p><strong>ETag</strong> 和 Last-Modified 的区别在于，后者按照修改时间界定资源是否更新，而 ETag 则是通过资源生成的唯一 hash 值来进行界定，只要资源发生改变就会生成新的 hash 值，通过这个值就能判断是否命中协商缓存。</p>
 <h1 id="TCP-和-UDP"><a href="#TCP-和-UDP" class="headerlink" title="TCP 和 UDP"></a>TCP 和 UDP</h1><h2 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h2><h3 id="三次握手"><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h3><p>三次握手主要目的是确认客户端和服务端的发送和接收功能是否正常。</p>
 <p><strong>第一次握手</strong>；客户端向服务端发送 SYN 标记的包，告诉服务端请求建立连接（确认客户端发送功能正常）<br><strong>第二次握手</strong>：服务端接收到 SYN 包并确认，发送包 SYN、ACK 到客户端响应连接（确认服务端发送和相应功能正常）<br><strong>第三次握手</strong>：客户端接收到服务端响应，发送确认包 ACK 到服务端，连接建立成功（确认客户端接收功能正常）</p>
 <p><img src="https://s11.ax1x.com/2024/01/10/pFpbgun.png" srcset="/img/loading.gif" lazyload alt="三次握手"></p>
