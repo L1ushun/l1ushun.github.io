@@ -16,16 +16,16 @@
   <meta name="author" content="liu shun">
   <meta name="keywords" content="博客,前端,git">
   
-    <meta name="description" content="性能分析工具这里使用 Webpack-bundle-analyzer 1pnpm add progress-bar-webpack-plugin -D 配置 12345678const BundleAnalyzerPlugin &#x3D; require(&amp;#x27;webpack-bundle-analyzer&amp;#x27;).BundleAnalyzerPlugin;module.exports &#x3D; &amp;">
+    <meta name="description" content="前置性能分析工具这里使用 Webpack-bundle-analyzer 1pnpm add progress-bar-webpack-plugin -D 配置 12345678const BundleAnalyzerPlugin &#x3D; require(&amp;#x27;webpack-bundle-analyzer&amp;#x27;).BundleAnalyzerPlugin;module.exports &#x3D;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Webpack优化篇">
 <meta property="og:url" content="https://l1ushun.github.io/2024/01/06/webpack-03/index.html">
 <meta property="og:site_name" content="liu的博客">
-<meta property="og:description" content="性能分析工具这里使用 Webpack-bundle-analyzer 1pnpm add progress-bar-webpack-plugin -D 配置 12345678const BundleAnalyzerPlugin &#x3D; require(&amp;#x27;webpack-bundle-analyzer&amp;#x27;).BundleAnalyzerPlugin;module.exports &#x3D; &amp;">
+<meta property="og:description" content="前置性能分析工具这里使用 Webpack-bundle-analyzer 1pnpm add progress-bar-webpack-plugin -D 配置 12345678const BundleAnalyzerPlugin &#x3D; require(&amp;#x27;webpack-bundle-analyzer&amp;#x27;).BundleAnalyzerPlugin;module.exports &#x3D;">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://z1.ax1x.com/2023/12/13/pifsd3R.png">
 <meta property="article:published_time" content="2024-01-06T07:23:09.000Z">
-<meta property="article:modified_time" content="2024-01-11T02:41:22.339Z">
+<meta property="article:modified_time" content="2024-01-15T08:51:06.356Z">
 <meta property="article:author" content="liu shun">
 <meta property="article:tag" content="webpack">
 <meta name="twitter:card" content="summary_large_image">
@@ -210,7 +210,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4.4k 字
+          4.5k 字
         
       </span>
     
@@ -221,7 +221,7 @@
         
         
         
-          37 分钟
+          38 分钟
         
       </span>
     
@@ -531,11 +531,32 @@
             
               <div class="markdown-body">
                 
-                <h1 id="性能分析工具"><a href="#性能分析工具" class="headerlink" title="性能分析工具"></a>性能分析工具</h1><p>这里使用 <a target="_blank" rel="noopener" href="https://www.npmjs.com/package/webpack-bundle-analyzer">Webpack-bundle-analyzer</a></p>
+                <h1 id="前置"><a href="#前置" class="headerlink" title="前置"></a>前置</h1><h2 id="性能分析工具"><a href="#性能分析工具" class="headerlink" title="性能分析工具"></a>性能分析工具</h2><p>这里使用 <a target="_blank" rel="noopener" href="https://www.npmjs.com/package/webpack-bundle-analyzer">Webpack-bundle-analyzer</a></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">pnpm add progress-bar-webpack-plugin -D<br></code></pre></td></tr></table></figure>
 <p>配置</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> <span class="hljs-title class_">BundleAnalyzerPlugin</span> = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;webpack-bundle-analyzer&#x27;</span>).<span class="hljs-property">BundleAnalyzerPlugin</span>;<br><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = &#123;<br>    <span class="hljs-comment">// ...</span><br>    <span class="hljs-attr">plugins</span>: [<br>        <span class="hljs-comment">// 代码产物分析</span><br>        <span class="hljs-keyword">new</span> <span class="hljs-title class_">BundleAnalyzerPlugin</span>(),<br>    ],<br>&#125;<br></code></pre></td></tr></table></figure>
 <p><img src="https://cloud.githubusercontent.com/assets/302213/20628702/93f72404-b338-11e6-92d4-9a365550a701.gif" srcset="/img/loading.gif" lazyload alt="分析界面（图片来自https://www.npmjs.com/package/webpack-bundle-analyzer）"></p>
+<h2 id="webpack-构建流程"><a href="#webpack-构建流程" class="headerlink" title="webpack 构建流程"></a>webpack 构建流程</h2><ul>
+<li>初始化<ol>
+<li>根据配置文件、Shell 参数以及默认配置结合得出最终的配置参数</li>
+<li>创建编译器对象 Compiler</li>
+<li>初始化编译环境</li>
+<li>编译开始，执行 Compiler 的 run 方法，创建 Compilation 对象</li>
+<li>确定入口</li>
+</ol>
+</li>
+<li>构建<ol>
+<li>编译模块</li>
+<li>完成编译模块，得到依赖关系图</li>
+</ol>
+</li>
+<li>封装<ol>
+<li>根据依赖关系进行打包</li>
+<li>对包进行优化，tree-sharking、压缩 等</li>
+<li>写入系统</li>
+</ol>
+</li>
+</ul>
 <h1 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h1><p>在 webpack 5 中提供了<a target="_blank" rel="noopener" href="https://webpack.js.org/configuration/cache/#cache">缓存</a>的功能，通过 <code>cache.type = &#39;filesystem&#39;</code> 即可开启持久化缓存。<br>开启持久化缓存后，webpack 会在首次构建时，将构建出的产物模块序列化然后保存到硬盘，后面再执行构建时，就可以跳过很多编译过程，直接复用缓存。</p>
 <h1 id="图像优化"><a href="#图像优化" class="headerlink" title="图像优化"></a>图像优化</h1><h2 id="压缩"><a href="#压缩" class="headerlink" title="压缩"></a>压缩</h2><p>关于图片压缩这里使用的是 <a target="_blank" rel="noopener" href="https://github.com/tcoopman/image-webpack-loader">image-webpack-loader</a>。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">pnpm add -D image-webpack-loader<br></code></pre></td></tr></table></figure>
@@ -579,8 +600,6 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">pnpm add -D fork-ts-checker-webpack-plugin<br></code></pre></td></tr></table></figure>
 <p>配置</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> <span class="hljs-title class_">ForkTsCheckerWebpackPlugin</span> = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;fork-ts-checker-webpack-plugin&#x27;</span>);<br><br><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = &#123;<br>  <span class="hljs-comment">// ...</span><br>  <span class="hljs-attr">module</span>: &#123;<br>    <span class="hljs-attr">rules</span>: [&#123;<br>      <span class="hljs-attr">test</span>: <span class="hljs-regexp">/\.ts$/</span>,<br>      <span class="hljs-attr">use</span>: [<br>        &#123;<br>          <span class="hljs-attr">loader</span>: <span class="hljs-string">&#x27;ts-loader&#x27;</span>,<br>          <span class="hljs-attr">options</span>: &#123;<br>            <span class="hljs-comment">// 仅编译</span><br>            <span class="hljs-attr">transpileOnly</span>: <span class="hljs-literal">true</span><br>          &#125;<br>        &#125;<br>      ],<br>    &#125;, ],<br>  &#125;,<br>  <span class="hljs-attr">plugins</span>:[<br>    <span class="hljs-comment">// 使用插件，用单独的进程进行 ts 类型检查</span><br>    <span class="hljs-keyword">new</span> <span class="hljs-title class_">ForkTsCheckerWebpackPlugin</span>()<br>  ]<br>&#125;;<br></code></pre></td></tr></table></figure>
-
-
 
 <h1 id="代码压缩"><a href="#代码压缩" class="headerlink" title="代码压缩"></a>代码压缩</h1><p>代码压缩就是抛弃代码的可读性、格式化等等一切，把我们的代码做到最精简。</p>
 <h2 id="js-压缩"><a href="#js-压缩" class="headerlink" title="js 压缩"></a>js 压缩</h2><p>webpack 5 默认使用 terser 进行 js 压缩，通过 <code>optimization.minimize</code> 属性开启。</p>
