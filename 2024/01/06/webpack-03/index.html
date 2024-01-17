@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://z1.ax1x.com/2023/12/13/pifsd3R.png">
 <meta property="article:published_time" content="2024-01-06T07:23:09.000Z">
-<meta property="article:modified_time" content="2024-01-15T08:51:06.356Z">
+<meta property="article:modified_time" content="2024-01-17T08:51:43.576Z">
 <meta property="article:author" content="liu shun">
 <meta property="article:tag" content="webpack">
 <meta name="twitter:card" content="summary_large_image">
@@ -210,7 +210,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4.5k 字
+          4.8k 字
         
       </span>
     
@@ -221,7 +221,7 @@
         
         
         
-          38 分钟
+          41 分钟
         
       </span>
     
@@ -539,9 +539,9 @@
 <h2 id="webpack-构建流程"><a href="#webpack-构建流程" class="headerlink" title="webpack 构建流程"></a>webpack 构建流程</h2><ul>
 <li>初始化<ol>
 <li>根据配置文件、Shell 参数以及默认配置结合得出最终的配置参数</li>
-<li>创建编译器对象 Compiler</li>
+<li>创建编译器对象 compiler</li>
 <li>初始化编译环境</li>
-<li>编译开始，执行 Compiler 的 run 方法，创建 Compilation 对象</li>
+<li>编译开始，执行 compiler 的 run 方法，创建 compilation 对象</li>
 <li>确定入口</li>
 </ol>
 </li>
@@ -619,6 +619,11 @@
 <h2 id="html-压缩"><a href="#html-压缩" class="headerlink" title="html 压缩"></a>html 压缩</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">pnpm add -D html-minifier-terser<br></code></pre></td></tr></table></figure>
 <p>配置</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = <span class="hljs-title function_">merge</span>(common, &#123;<br>    <span class="hljs-comment">// ...</span><br>    <span class="hljs-attr">optimization</span>: &#123;<br>        <span class="hljs-attr">minimize</span>: <span class="hljs-literal">true</span>,<br>        <span class="hljs-attr">minimizer</span>: [<br>            <span class="hljs-keyword">new</span> <span class="hljs-title class_">TerserPlugin</span>(&#123;<br>                <span class="hljs-attr">parallel</span>: <span class="hljs-number">2</span> <span class="hljs-comment">// number | boolean</span><br>            &#125;),<br>            <span class="hljs-keyword">new</span> <span class="hljs-title class_">CssMinimizerPlugin</span>(&#123;<br>                <span class="hljs-attr">minify</span>: <span class="hljs-title class_">CssMinimizerPlugin</span>.<span class="hljs-property">cssnanoMinify</span>,<br>            &#125;),<br>        ],<br>    &#125;,<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<h2 id="gzip"><a href="#gzip" class="headerlink" title="gzip"></a>gzip</h2><p>安装 <a target="_blank" rel="noopener" href="https://webpack.docschina.org/plugins/compression-webpack-plugin/#root">CompressionWebpackPlugin</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">pnpm add -D compression-webpack-plugin<br></code></pre></td></tr></table></figure>
+<p>配置</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> <span class="hljs-title class_">CompressionPlugin</span> = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;compression-webpack-plugin&#x27;</span>);<br><br><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = &#123;<br>  <span class="hljs-comment">// ...</span><br>  <span class="hljs-attr">plugins</span>: [<br>    <span class="hljs-keyword">new</span> <span class="hljs-title class_">CompressionPlugin</span>(&#123;<br>      <span class="hljs-attr">algorithm</span>: <span class="hljs-string">&#x27;gzip&#x27;</span>,    <span class="hljs-comment">// 默认值就是 gzip</span><br>      <span class="hljs-attr">test</span>: <span class="hljs-regexp">/\.(js|css)$/</span>,  <span class="hljs-comment">// 压缩范围</span><br>    &#125;),<br>  ],<br>&#125;;<br></code></pre></td></tr></table></figure>
 
                 
               </div>
