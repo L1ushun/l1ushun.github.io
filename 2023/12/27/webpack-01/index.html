@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://z1.ax1x.com/2023/12/13/pifsd3R.png">
 <meta property="article:published_time" content="2023-12-27T11:38:37.000Z">
-<meta property="article:modified_time" content="2024-01-02T07:15:32.835Z">
+<meta property="article:modified_time" content="2024-02-29T06:05:44.439Z">
 <meta property="article:author" content="liu shun">
 <meta property="article:tag" content="webpack">
 <meta property="article:tag" content="工程化">
@@ -564,7 +564,7 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-attr">module</span>: &#123;<br>   <span class="hljs-attr">rules</span>: [<br>      &#123;<br>          <span class="hljs-attr">test</span>: <span class="hljs-regexp">/\.css$/</span>,<br>          <span class="hljs-attr">use</span>: [<span class="hljs-string">&quot;style-loader&quot;</span>, <span class="hljs-string">&quot;css-loader&quot;</span>]<br>      &#125;<br>   ]<br>&#125;<br></code></pre></td></tr></table></figure>
 <p>module 是我们用来定义某种资源通过指定的 loader 来处理，如上代码我们通过 <code>&quot;style-loader&quot;</code> 和 <code>&quot;css-loader&quot;</code> 来处理后缀名为 <code>css</code> 的文件，<code>&quot;css-loader&quot;</code> 做的是解析 css 文件，翻译成 JavaScript 代码，使得 webpack 能够如同处理 JS 代码一样解析 CSS，<code>&quot;style-loader&quot;&quot;</code> 做的是将解析出来的文件通过 <code>style</code> 标签插入到页面中。</p>
 <blockquote>
-<p>另外 loader 的书写顺序也是有要求的，<strong>一般情况下</strong>，会按照由左到右，由上到下的顺序执行。所以上面代码才是先解析再插入到页面。</p>
+<p>另外 loader 的书写顺序也是有要求的，<strong>一般情况下</strong>，会按照由右到左，由上到下的顺序执行。所以上面代码才是先解析再插入到页面。</p>
 </blockquote>
 <p>通过打包的产物发现我们的 css 已经被打包进 js 文件中，下面我们把 css 代码抽离出来。安装<a target="_blank" rel="noopener" href="https://webpack.js.org/plugins/mini-css-extract-plugin/">MiniCssExtractPlugin</a>插件</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">pnpm add -D mini-css-extract-plugin<br></code></pre></td></tr></table></figure>
