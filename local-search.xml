@@ -622,6 +622,31 @@
   
   
   <entry>
+    <title>Tasking</title>
+    <link href="/2021/09/16/tasking/"/>
+    <url>/2021/09/16/tasking/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Taking的好处"><a href="#Taking的好处" class="headerlink" title="Taking的好处"></a>Taking的好处</h1><ol><li>梳理业务需求：高效沟通</li><li>进行复杂度估算：独立交付价值</li></ol><p>业务需求-&gt;Tasking-&gt;使用TDD开发</p><h1 id="TDD"><a href="#TDD" class="headerlink" title="TDD"></a>TDD</h1><p>实践过程中赋予TDD的三层含义</p><ol><li>Task-Driven Development</li><li>Test-Driven Development</li><li>Test-Driven Design</li></ol><h1 id="Tasking的不同视角"><a href="#Tasking的不同视角" class="headerlink" title="Tasking的不同视角"></a>Tasking的不同视角</h1><ol><li>面向技术实现的Tasking（根据业务场景的复杂度）</li><li>面向业务需求的Tasking（首先进行）</li></ol><h2 id="面向业务需求"><a href="#面向业务需求" class="headerlink" title="面向业务需求"></a>面向业务需求</h2><p>面向业务需求的Tasking需要穷举所有业务场景，包括边界条件</p><h3 id="面向业务需求的价值"><a href="#面向业务需求的价值" class="headerlink" title="面向业务需求的价值"></a>面向业务需求的价值</h3><ol><li>独立价值交付：具有独立价值交付，每完成一条即可进行交付</li><li>高效沟通：采用业务语言描述列表，有助于开发人员与业务人员更好的沟通</li></ol><h2 id="面向技术"><a href="#面向技术" class="headerlink" title="面向技术"></a>面向技术</h2><h3 id="基于技术实现的TDD是如何实现的"><a href="#基于技术实现的TDD是如何实现的" class="headerlink" title="基于技术实现的TDD是如何实现的"></a>基于技术实现的TDD是如何实现的</h3><p>例：Given 用户名密码When登录 Then 登录成功</p><ol><li>编写LoginController</li><li>集成Identity服务验证用户名、密码</li><li>生成Token并返回</li></ol><h1 id="Tasking场景的三个维度"><a href="#Tasking场景的三个维度" class="headerlink" title="Tasking场景的三个维度"></a>Tasking场景的三个维度</h1><ol><li>Happy Path     &#x2F;&#x2F;正常状态下</li><li>Alternate Path&#x2F;&#x2F;边界</li><li>Sad Path&#x2F;&#x2F;非法</li></ol><h1 id="TDD-实践"><a href="#TDD-实践" class="headerlink" title="TDD 实践"></a>TDD 实践</h1><p>测试案例三小步：</p><ol><li><p>红：保证测试案例没有编译错误，运行后报错    &#x2F;&#x2F;验证测试案例确实能捕获错误</p><p> <img src="https://s21.ax1x.com/2024/03/14/pFgE654.webp"></p></li><li><p>绿：修改被测代码到刚好通过        &#x2F;&#x2F;保证所有被测代码都被测试所覆盖</p><p> <img src="https://s21.ax1x.com/2024/03/14/pFgEDbT.webp"></p></li><li><p>重构：整理代码，消除重复    &#x2F;&#x2F;分离关注点，快速反馈</p><p> <img src="https://s21.ax1x.com/2024/03/14/pFgVFRs.jpg"><br> <img src="https://s21.ax1x.com/2024/03/14/pFgViGj.jpg"></p></li></ol><h1 id="TDD的价值"><a href="#TDD的价值" class="headerlink" title="TDD的价值"></a>TDD的价值</h1><ol><li>澄清目标：TDD不是“先写测试”，而是“先写需求”，明白自己要实现的目标是什么</li><li>及时反馈：每写完一小步就进行单元测试，可以很快就得到反馈</li><li>减少调试：由于进行了多个单元测试，可以减少90%的调试过程</li><li>优化设计：重构环节就保证了每小段代码的优化</li><li>构建安全网：TDD的测试案例覆盖率很高，修改任何代码，一键就可以对整个系统测试，有问题可以及时发现解决</li><li>提高开发体验：确保每小步都正确，合起来也极少会出现问题</li></ol><h1 id="怎样学好-TDD"><a href="#怎样学好-TDD" class="headerlink" title="怎样学好 TDD"></a>怎样学好 TDD</h1><p>遵循 守、破、离</p><p>Pair的方式<br>线下结对编程<br>线上通过Zoom以Navigator-Observer的形式<br>线上通过Zoom以Ping-Pong的形式<br>沟通产生统一Task，异步完成</p><h1 id="重构时常用的快捷键"><a href="#重构时常用的快捷键" class="headerlink" title="重构时常用的快捷键"></a>重构时常用的快捷键</h1><ul><li>重命名文件、方法、属性等（rename）：SHIFT+F6</li><li>提取当前选择为变量（extract variable）：CTRL+ALT+V</li><li>提取当前选择为属性（extract field）：CTRL+ALT+F</li><li>提取当前选择为常量（extract constant）：CTRL+ALT+C</li><li>提取当前选择为方法（extract method）：CTRL+ALT+M</li><li>提取当前选择为方法参数（extract parameter）：CTRL+ALT+P</li><li>重构类、方法（change signarture）：CTRL+F6</li><li>提取代码块至if、try等结构中（surround with）：CTRL+ALT+T</li><li>创建模块文件等（new）：CTRL+ALT+N</li><li>创建测试用例（test）：CTRL+SHIFT+T</li><li>重构菜单（refactor for this）：CTRL+T</li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>技术博客</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Tasking</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>团队协作中git的基本使用</title>
     <link href="/2021/09/15/git-01/"/>
     <url>/2021/09/15/git-01/</url>
