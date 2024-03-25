@@ -4,11 +4,36 @@
   
   
   <entry>
+    <title>Vue3 思维导图(二)：深入组件</title>
+    <link href="/2024/03/25/vue-mapping-deep/"/>
+    <url>/2024/03/25/vue-mapping-deep/</url>
+    
+    <content type="html"><![CDATA[<h2 id="组件注册"><a href="#组件注册" class="headerlink" title="组件注册"></a>组件注册</h2><p><img src="https://s21.ax1x.com/2024/03/25/pF40bZj.png" alt="组件注册"></p><h2 id="Props"><a href="#Props" class="headerlink" title="Props"></a>Props</h2><p><img src="https://s21.ax1x.com/2024/03/25/pF4rwin.png" alt="Props"></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>技术博客</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Vue</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Vue3 思维导图(一)：基础篇</title>
     <link href="/2024/03/21/vue-mind-mapping/"/>
     <url>/2024/03/21/vue-mind-mapping/</url>
     
-    <content type="html"><![CDATA[<h2 id="响应式基础"><a href="#响应式基础" class="headerlink" title="响应式基础"></a>响应式基础</h2><p><img src="https://s21.ax1x.com/2024/03/21/pFfutxO.png" alt="响应式基础"></p><h2 id="计算属性"><a href="#计算属性" class="headerlink" title="计算属性"></a>计算属性</h2><p><img src="https://s21.ax1x.com/2024/03/21/pFfKT7d.png" alt="计算属性"></p><h2 id="类和样式"><a href="#类和样式" class="headerlink" title="类和样式"></a>类和样式</h2><p><img src="https://s21.ax1x.com/2024/03/21/pFf1bqS.png" alt="类和样式"></p><h2 id="条件渲染"><a href="#条件渲染" class="headerlink" title="条件渲染"></a>条件渲染</h2><p><img src="https://s21.ax1x.com/2024/03/21/pFf3WLT.png" alt="条件渲染"></p><h2 id="列表渲染"><a href="#列表渲染" class="headerlink" title="列表渲染"></a>列表渲染</h2><p><img src="https://s21.ax1x.com/2024/03/21/pFfG5G9.png" alt="列表渲染"></p><h2 id="事件处理"><a href="#事件处理" class="headerlink" title="事件处理"></a>事件处理</h2><p><img src="https://s21.ax1x.com/2024/03/21/pFfagq1.png" alt="事件处理"></p><h2 id="侦听器"><a href="#侦听器" class="headerlink" title="侦听器"></a>侦听器</h2><p><img src="https://s21.ax1x.com/2024/03/22/pFfT6QH.png" alt="侦听器"></p><h2 id="模板引用"><a href="#模板引用" class="headerlink" title="模板引用"></a>模板引用</h2><p><img src="https://s21.ax1x.com/2024/03/22/pFfHBxe.png" alt="模板引用"></p><h2 id="组件基础"><a href="#组件基础" class="headerlink" title="组件基础"></a>组件基础</h2><p><img src="https://s21.ax1x.com/2024/03/25/pF4wa38.png" alt="组件基础"></p>]]></content>
+    <content type="html"><![CDATA[<h2 id="响应式基础"><a href="#响应式基础" class="headerlink" title="响应式基础"></a>响应式基础</h2><p><img src="https://s21.ax1x.com/2024/03/21/pFfutxO.png" alt="响应式基础"></p><h2 id="计算属性"><a href="#计算属性" class="headerlink" title="计算属性"></a>计算属性</h2><p><img src="https://s21.ax1x.com/2024/03/21/pFfKT7d.png" alt="计算属性"></p><h2 id="类和样式"><a href="#类和样式" class="headerlink" title="类和样式"></a>类和样式</h2><p><img src="https://s21.ax1x.com/2024/03/21/pFf1bqS.png" alt="类和样式"></p><h2 id="条件渲染"><a href="#条件渲染" class="headerlink" title="条件渲染"></a>条件渲染</h2><p><img src="https://s21.ax1x.com/2024/03/21/pFf3WLT.png" alt="条件渲染"></p><h2 id="列表渲染"><a href="#列表渲染" class="headerlink" title="列表渲染"></a>列表渲染</h2><p><img src="https://s21.ax1x.com/2024/03/21/pFfG5G9.png" alt="列表渲染"></p><h2 id="事件处理"><a href="#事件处理" class="headerlink" title="事件处理"></a>事件处理</h2><p><img src="https://s21.ax1x.com/2024/03/21/pFfagq1.png" alt="事件处理"></p><h2 id="侦听器"><a href="#侦听器" class="headerlink" title="侦听器"></a>侦听器</h2><p><img src="https://s21.ax1x.com/2024/03/22/pFfT6QH.png" alt="侦听器"></p><h2 id="模板引用"><a href="#模板引用" class="headerlink" title="模板引用"></a>模板引用</h2><p><img src="https://s21.ax1x.com/2024/03/22/pFfHBxe.png" alt="模板引用"></p><h2 id="组件基础"><a href="#组件基础" class="headerlink" title="组件基础"></a>组件基础</h2><p><img src="https://s21.ax1x.com/2024/03/25/pF4r7LD.png" alt="组件基础"></p>]]></content>
     
     
     <categories>
