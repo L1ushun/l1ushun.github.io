@@ -211,6 +211,345 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2024/05/24/nuxt/" target="_self">
+          <img src="https://s21.ax1x.com/2024/05/24/pkQ50QP.png" srcset="/img/loading.gif" lazyload alt="初识Nuxt">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/05/24/nuxt/" target="_self">
+          初识Nuxt
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt " href="/2024/05/24/nuxt/" target="_self">
+        <div>
+          项目初始化新建项目 1pnpm dlx nuxi init nuxt3-demo  接入 tailwindcss 1pnpm add @nuxtjs/tailwindcss -D  另外 tailwindcss 需要在 nuxt.config.ts 中配置一下 1modules: [&quot;@nuxtjs/tailwindcss&quot;]  基础路由Nuxt 路由基于 vue-router
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-05-24 17:20" pubdate>
+              2024-05-24
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2/" class="category-chain-item">技术博客</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Nuxt/">#Nuxt</a>
+            
+              <a href="/tags/SSR/">#SSR</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2024/05/22/qiankun-baics/" target="_self">
+          <img src="https://gw.alipayobjects.com/zos/bmw-prod/8a74c1d3-16f3-4719-be63-15e467a68a24/km0cv8vn_w500_h500.png" srcset="/img/loading.gif" lazyload alt="微前端 qiankun">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/05/22/qiankun-baics/" target="_self">
+          微前端 qiankun
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt " href="/2024/05/22/qiankun-baics/" target="_self">
+        <div>
+          前言环境准备创建三个项目分别是： 其中 react 项目都是通过 create-react-app 创建的，vue 项目通过 vite 创建，另外项目还需要安装 qiankun。 搭建主应用子应用渲染入口首先需要给子应用在主应用中渲染的容器，我们在 App.js 中写一个容器 定义子应用的列表在 src 下新建一个 subApp.js   name 子应用的名称，需要唯一 entry 子应用的入口
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-05-22 17:40" pubdate>
+              2024-05-22
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2/" class="category-chain-item">技术博客</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%BE%AE%E5%89%8D%E7%AB%AF/">#微前端</a>
+            
+              <a href="/tags/qiankun/">#qiankun</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2024/05/17/vue3-diff/" target="_self">
+          <img src="https://s21.ax1x.com/2024/03/21/pFfabqI.jpg" srcset="/img/loading.gif" lazyload alt="了解Vue3是如何进行组件更新的">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/05/17/vue3-diff/" target="_self">
+          了解Vue3是如何进行组件更新的
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt " href="/2024/05/17/vue3-diff/" target="_self">
+        <div>
+          组件更新patchvue 在更新的时候，使用 patch 方法更新新老节点，判断老节点是否可以复用在 patch 时会先比较新老节点的类型，比较的方式就是判断 type 和 key 是否都相等，类型不同代表不能复用，直接卸载。然后判断新节点的类型， 在这里可以看到有三种类型的节点，使用不同的方法进行处理： 文本节点 Fragment 节点，vue3 引入 Fragment，在 vue3 的模板中可
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-05-17 16:40" pubdate>
+              2024-05-17
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2/" class="category-chain-item">技术博客</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Vue/">#Vue</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2024/04/29/react-ref/" target="_self">
+          <img src="/img/react-logo.png" srcset="/img/loading.gif" lazyload alt="一文搞定 React 的 ref">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/04/29/react-ref/" target="_self">
+          一文搞定 React 的 ref
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt " href="/2024/04/29/react-ref/" target="_self">
+        <div>
+          创建一个 ref类组件的 ref函数当 ref 是一个函数时，入参就是当前的 DOM 节点，在函数内将它赋给别的值，就可以通过这个值进行访问。 字符串ref 可以绑定一个字符串，它会被保存到 this.refs 上。 另外当判断 ref 绑定的是字符串时，其实走的是函数的处理逻辑，只不过字符串都被绑定在了 this.refs 上。 createRef()通过 React 提供的 createRef
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-04-29 09:21" pubdate>
+              2024-04-29
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2/" class="category-chain-item">技术博客</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/React/">#React</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2024/04/25/useEffect/" target="_self">
+          <img src="/img/react-logo.png" srcset="/img/loading.gif" lazyload alt="一文搞定 React 的 useEffect">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/04/25/useEffect/" target="_self">
+          一文搞定 React 的 useEffect
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt " href="/2024/04/25/useEffect/" target="_self">
+        <div>
+          当依赖为引用数据类型时依赖是引用数据类型和基本类型对比 每次点击发现只会输出 useEffect - obj，也就是当 useEffect 依赖为对象时，每次更新都会执行。 依赖是如何进行比较的123456789101112131415function areHookInputsEqual(  nextDeps: Array&lt;mixed&gt;,  prevDeps: Array&lt;mi
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-04-25 10:40" pubdate>
+              2024-04-25
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2/" class="category-chain-item">技术博客</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/React/">#React</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2024/04/02/nest-01/" target="_self">
           <img src="https://s21.ax1x.com/2024/04/02/pFHPTc8.png" srcset="/img/loading.gif" lazyload alt="Nest 初体验">
         </a>
@@ -542,356 +881,11 @@
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2023/12/27/webpack-01/" target="_self">
-          <img src="https://z1.ax1x.com/2023/12/13/pifsd3R.png" srcset="/img/loading.gif" lazyload alt="Webpack入坑指北">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/12/27/webpack-01/" target="_self">
-          Webpack入坑指北
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt " href="/2023/12/27/webpack-01/" target="_self">
-        <div>
-          初始化项目首先新建一个项目然后初始化。 12npm init -ypnpm add webpack webpack-cli -D  创建一个 src&#x2F;main.js 文件，随便写点啥在根目录创建 build&#x2F;webpack.common.js 文件 12345678910const path = require(&quot;path&quot;);module.exports
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-12-27 19:38" pubdate>
-              2023-12-27
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2/" class="category-chain-item">技术博客</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/webpack/">#webpack</a>
-            
-              <a href="/tags/%E5%B7%A5%E7%A8%8B%E5%8C%96/">#工程化</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2023/12/18/module/" target="_self">
-          <img src="https://s11.ax1x.com/2023/12/18/pi5vFoV.jpg" srcset="/img/loading.gif" lazyload alt="深入浅出前端模块化原理">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/12/18/module/" target="_self">
-          深入浅出前端模块化原理
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt " href="/2023/12/18/module/" target="_self">
-        <div>
-          前言什么是模块化模块化简单说就是为了解决代码没有自己的“域”，很容易造成命名冲突，依赖混乱。我们的代码通过模块化隔离开来，更有利于后期维护。 模块化解决方案从最开始的通过立即执行函数（IIFE）到 CJS、AMD、CMD、UMD、再到 ES6 引入模块化 ESM，本文主要写 CJS 和 ESM。 CommonJs实现原理123// src/index.jsconst name = require(
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-12-18 09:04" pubdate>
-              2023-12-18
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2/" class="category-chain-item">技术博客</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E6%A8%A1%E5%9D%97%E5%8C%96/">#模块化</a>
-            
-              <a href="/tags/CommonJs/">#CommonJs</a>
-            
-              <a href="/tags/ES-Module/">#ES Module</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2023/12/13/regexp/" target="_self">
-          <img src="/img/javascript.png" srcset="/img/loading.gif" lazyload alt="无法避免的正则表达式">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/12/13/regexp/" target="_self">
-          无法避免的正则表达式
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt " href="/2023/12/13/regexp/" target="_self">
-        <div>
-          前言什么是正则表达式？我们在日常开发中总是能遇到一些需要校验的功能，例如校验邮箱、手机号等等，或者对一些字符串做替换处理等，正则表达式总是避不开的。个人理解正则就是用来匹配字符，校验字符规则，或者是提取一段字符中的内容。本文只介绍正则的一些基本使用。 匹配字符匹配模糊长度123const regexp = /ab&#123;1,5&#125;c/gconst str = &quot;abc abb
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-12-13 16:48" pubdate>
-              2023-12-13
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2/" class="category-chain-item">技术博客</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/JavaScript/">#JavaScript</a>
-            
-              <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">#正则表达式</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2023/10/31/ts-01/" target="_self">
-          <img src="/img/typescript.png" srcset="/img/loading.gif" lazyload alt="TypeScript入坑指北">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/10/31/ts-01/" target="_self">
-          TypeScript入坑指北
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt " href="/2023/10/31/ts-01/" target="_self">
-        <div>
-          类型Typescript 包含 Javascript 的全部类型，也就是 number、boolean、string、object、bigint、symbol、undefined、null，还有包装类 Number、Boolean、String、Object、Symbol。 除此之外，Typescript 还有 void、never、enum、unknown、any、tuple(元组) 以及自定义
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-10-31 10:04" pubdate>
-              2023-10-31
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2/" class="category-chain-item">技术博客</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/TypeScript/">#TypeScript</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2023/10/17/desigin-decorator/" target="_self">
-          <img src="/img/javascript.png" srcset="/img/loading.gif" lazyload alt="JavaScript设计模式(五)：装饰器模式">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/10/17/desigin-decorator/" target="_self">
-          JavaScript设计模式(五)：装饰器模式
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt " href="/2023/10/17/desigin-decorator/" target="_self">
-        <div>
-          定义是一种结构型设计模式。在不改变原对象的基础上，通过对其进行包装拓展，使原有对象可以满足用户的更复杂需求。 装饰函数装饰函数可以让我们在不修改原方法的情况加对原函数进行包装，增加额外的功能。在日常开发中难免遇到原来的需求现在要增加新的功能，如果原来的代码是自己写的还好，如果是接手别人写的代码，直接修改源代码就很冒风险，甚至有可能导致其他功能异常。 保存原引用方法123456789function
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-10-17 10:04" pubdate>
-              2023-10-17
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2/" class="category-chain-item">技术博客</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/JavaScript/">#JavaScript</a>
-            
-              <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">#设计模式</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><a class="extend next" rel="next" href="/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><a class="page-number" href="/page/4/#board">4</a><a class="extend next" rel="next" href="/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 

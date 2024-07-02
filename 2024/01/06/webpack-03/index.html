@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://z1.ax1x.com/2023/12/13/pifsd3R.png">
 <meta property="article:published_time" content="2024-01-06T07:23:09.000Z">
-<meta property="article:modified_time" content="2024-03-25T07:49:24.774Z">
+<meta property="article:modified_time" content="2024-06-17T07:56:00.917Z">
 <meta property="article:author" content="liu shun">
 <meta property="article:tag" content="webpack">
 <meta name="twitter:card" content="summary_large_image">
@@ -210,7 +210,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4.8k 字
+          6.1k 字
         
       </span>
     
@@ -221,7 +221,7 @@
         
         
         
-          41 分钟
+          51 分钟
         
       </span>
     
@@ -271,7 +271,7 @@
         aria-expanded="true"
       >
         技术博客
-        <span class="list-group-count">(30)</span>
+        <span class="list-group-count">(35)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -492,10 +492,46 @@
     
       
       
+        <a href="/2024/04/29/react-ref/" title="一文搞定 React 的 ref"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">一文搞定 React 的 ref</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/04/25/useEffect/" title="一文搞定 React 的 useEffect"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">一文搞定 React 的 useEffect</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/05/17/vue3-diff/" title="了解Vue3是如何进行组件更新的"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">了解Vue3是如何进行组件更新的</span>
+        </a>
+      
+    
+      
+      
         <a href="/2024/01/09/browser/" title="从输入URL开始构建浏览器知识体系"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">从输入URL开始构建浏览器知识体系</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/05/24/nuxt/" title="初识Nuxt"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">初识Nuxt</span>
         </a>
       
     
@@ -514,6 +550,15 @@
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">图片懒加载的几种方式</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/05/22/qiankun-baics/" title="微前端 qiankun"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">微前端 qiankun</span>
         </a>
       
     
@@ -622,6 +667,17 @@
 <p>配置</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> <span class="hljs-title class_">HtmlWebpackExternalsPlugin</span> = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;html-webpack-externals-plugin&quot;</span>);<br><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = <span class="hljs-title function_">merge</span>(common, &#123;<br>    <span class="hljs-comment">// ...</span><br>    <span class="hljs-attr">plugins</span>: [<br>        <span class="hljs-comment">// ...</span><br>        <span class="hljs-keyword">new</span> <span class="hljs-title class_">HtmlWebpackExternalsPlugin</span>(&#123;<br>            <span class="hljs-attr">externals</span>: [<br>                &#123;<br>                    <span class="hljs-attr">module</span>: <span class="hljs-string">&#x27;react&#x27;</span>,<br>                    <span class="hljs-attr">entry</span>: <span class="hljs-string">&#x27;https://unpkg.com/react@18.2.0/umd/react.production.min.js&#x27;</span>,<br>                    <span class="hljs-attr">global</span>: <span class="hljs-string">&#x27;React&#x27;</span>,<br>                &#125;,<br>                &#123;<br>                    <span class="hljs-attr">module</span>: <span class="hljs-string">&#x27;react-dom&#x27;</span>,<br>                    <span class="hljs-attr">entry</span>:<br>                        <span class="hljs-string">&#x27;https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js&#x27;</span>,<br>                    <span class="hljs-attr">global</span>: <span class="hljs-string">&#x27;ReactDOM&#x27;</span>,<br>                &#125;,<br>                &#123;<br>                    <span class="hljs-attr">module</span>: <span class="hljs-string">&#x27;echarts&#x27;</span>,<br>                    <span class="hljs-attr">entry</span>:<br>                        <span class="hljs-string">&#x27;https://cdn.bootcdn.net/ajax/libs/echarts/5.4.3/echarts.common.min.js&#x27;</span>,<br>                    <span class="hljs-attr">global</span>: <span class="hljs-string">&#x27;echarts&#x27;</span>,<br>                &#125;,<br>            ]<br>        &#125;)<br>    ],<br>&#125;);<br></code></pre></td></tr></table></figure>
 <p>这里以 react、react-dom、echarts 为例，将他们使用 cdn 的方式引入，不再打包进入产物，</p>
+<h2 id="合并模块-Scope-Hoisting"><a href="#合并模块-Scope-Hoisting" class="headerlink" title="合并模块 Scope Hoisting"></a>合并模块 Scope Hoisting</h2><p>Scope Hoisting 可以将符合条件的多个模块合并到一个函数中，减少产物体积</p>
+<h3 id="开启方式"><a href="#开启方式" class="headerlink" title="开启方式"></a>开启方式</h3><ul>
+<li>使用 mode &#x3D; ‘production’ 开启生产模式</li>
+<li>使用 optimization.concatenateModules 配置项</li>
+<li>使用 ModuleConcatenationPlugin 插件</li>
+</ul>
+<h3 id="特殊情况"><a href="#特殊情况" class="headerlink" title="特殊情况"></a>特殊情况</h3><p>在一些特殊情况下会关闭模块合并</p>
+<ol>
+<li>非 ESM 模块</li>
+<li>模块被多个 Chunk 引用</li>
+</ol>
 <h1 id="打包速度优化"><a href="#打包速度优化" class="headerlink" title="打包速度优化"></a>打包速度优化</h1><h2 id="多进程打包"><a href="#多进程打包" class="headerlink" title="多进程打包"></a>多进程打包</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">pnpm add -D thread-loader<br></code></pre></td></tr></table></figure>
 <p>配置</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = &#123;<br>    <span class="hljs-comment">// ...</span><br>    <span class="hljs-attr">module</span>: &#123;<br>        <span class="hljs-attr">rules</span>: [<br>            <span class="hljs-comment">// ...</span><br>            &#123;<br>                <span class="hljs-attr">test</span>: <span class="hljs-regexp">/\.js$/</span>,<br>                <span class="hljs-attr">use</span>: [<br>                    &#123;<br>                        <span class="hljs-attr">loader</span>: <span class="hljs-string">&quot;thread-loader&quot;</span>,<br>                        <span class="hljs-attr">options</span>: &#123;<br>                            <span class="hljs-attr">workers</span>: <span class="hljs-number">2</span>,<br>                            <span class="hljs-attr">workerParallelJobs</span>: <span class="hljs-number">50</span>,<br>                        &#125;,<br>                    &#125;,<br>                    <span class="hljs-comment">// ...</span><br>                ]<br>            &#125;<br>        ]<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
@@ -641,10 +697,22 @@
 <h2 id="使用-noParse"><a href="#使用-noParse" class="headerlink" title="使用 noParse"></a>使用 noParse</h2><p>使用 <a target="_blank" rel="noopener" href="https://webpack.docschina.org/configuration/module/#modulenoparse">module.noParse</a> 跳过不需要二次编译的资源文件。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = &#123;<br>  <span class="hljs-comment">//...</span><br>  <span class="hljs-attr">module</span>: &#123;<br>    <span class="hljs-attr">noParse</span>: <span class="hljs-regexp">/lodash|react/</span>,<br>  &#125;,<br>&#125;;<br></code></pre></td></tr></table></figure>
 
+<p>使用 noParse 需要注意的是：</p>
+<ul>
+<li>需要确保 noParse 文件的准确性</li>
+<li>不能依赖其他文件</li>
+<li>使用 noParse 的文件就无法 tree-shaking 了</li>
+</ul>
 <h2 id="关闭-ts-的类型检查"><a href="#关闭-ts-的类型检查" class="headerlink" title="关闭 ts 的类型检查"></a>关闭 ts 的类型检查</h2><p>使用 <code>fork-ts-checker-webpack-plugin</code> 插件来进行 ts 的类型检查，该插件会将 ts 的类型检查和编译过程放在单独的进程中运行，然后我们关闭 ts-loader 的类型检查，提升编译速度。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">pnpm add -D fork-ts-checker-webpack-plugin<br></code></pre></td></tr></table></figure>
 <p>配置</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> <span class="hljs-title class_">ForkTsCheckerWebpackPlugin</span> = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;fork-ts-checker-webpack-plugin&#x27;</span>);<br><br><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = &#123;<br>  <span class="hljs-comment">// ...</span><br>  <span class="hljs-attr">module</span>: &#123;<br>    <span class="hljs-attr">rules</span>: [&#123;<br>      <span class="hljs-attr">test</span>: <span class="hljs-regexp">/\.ts$/</span>,<br>      <span class="hljs-attr">use</span>: [<br>        &#123;<br>          <span class="hljs-attr">loader</span>: <span class="hljs-string">&#x27;ts-loader&#x27;</span>,<br>          <span class="hljs-attr">options</span>: &#123;<br>            <span class="hljs-comment">// 仅编译</span><br>            <span class="hljs-attr">transpileOnly</span>: <span class="hljs-literal">true</span><br>          &#125;<br>        &#125;<br>      ],<br>    &#125;, ],<br>  &#125;,<br>  <span class="hljs-attr">plugins</span>:[<br>    <span class="hljs-comment">// 使用插件，用单独的进程进行 ts 类型检查</span><br>    <span class="hljs-keyword">new</span> <span class="hljs-title class_">ForkTsCheckerWebpackPlugin</span>()<br>  ]<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h2 id="resolve-modules-定向查找"><a href="#resolve-modules-定向查找" class="headerlink" title="resolve.modules 定向查找"></a>resolve.modules 定向查找</h2><p>webpack 在查找模块时，会先去当前目录的 .&#x2F;node_modules 下查找，没找到就去上一级的 ..&#x2F;node_modules 找。使用 resolve.modules 指定查找的目录，减少查找的时间</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-variable language_">module</span>.<span class="hljs-property">export</span> = &#123;<br>  <span class="hljs-attr">resolve</span>: &#123;<br>    <span class="hljs-attr">modules</span>: [path.<span class="hljs-title function_">resolve</span>(__dirname, <span class="hljs-string">&#x27;node_modules&#x27;</span>)]<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="指定补全后缀"><a href="#指定补全后缀" class="headerlink" title="指定补全后缀"></a>指定补全后缀</h2><p><code>resolve.extensions</code> 可以指定导入没写后缀时自动补全的后缀列表，默认值是 <code>[&#39;.js&#39;, &#39;.json&#39;, &#39;.wasm&#39;]</code>，也就是导入的时候没写后缀，会自动去查找 .js、.json、.wasm 后缀的文件，如果找不到就报错。<br>如果手动声明这个属性，会把默认值覆盖掉，我们可以通过 <code>[&#39;...&#39;]</code>的方式保留默认值</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-variable language_">module</span>.<span class="hljs-property">export</span> = &#123;<br>  <span class="hljs-attr">resolve</span>: &#123;<br>    <span class="hljs-attr">extensions</span>: [<span class="hljs-string">&quot;...&quot;</span>, <span class="hljs-string">&#x27;.jsx&#x27;</span>, <span class="hljs-string">&#x27;.ts&#x27;</span>, <span class="hljs-string">&#x27;.tsx&#x27;</span>],<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <h1 id="代码压缩"><a href="#代码压缩" class="headerlink" title="代码压缩"></a>代码压缩</h1><p>代码压缩就是抛弃代码的可读性、格式化等等一切，把我们的代码做到最精简。</p>
 <h2 id="js-压缩"><a href="#js-压缩" class="headerlink" title="js 压缩"></a>js 压缩</h2><p>webpack 5 默认使用 terser 进行 js 压缩，通过 <code>optimization.minimize</code> 属性开启。</p>
@@ -669,6 +737,10 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">pnpm add -D compression-webpack-plugin<br></code></pre></td></tr></table></figure>
 <p>配置</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> <span class="hljs-title class_">CompressionPlugin</span> = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;compression-webpack-plugin&#x27;</span>);<br><br><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = &#123;<br>  <span class="hljs-comment">// ...</span><br>  <span class="hljs-attr">plugins</span>: [<br>    <span class="hljs-keyword">new</span> <span class="hljs-title class_">CompressionPlugin</span>(&#123;<br>      <span class="hljs-attr">algorithm</span>: <span class="hljs-string">&#x27;gzip&#x27;</span>,    <span class="hljs-comment">// 默认值就是 gzip</span><br>      <span class="hljs-attr">test</span>: <span class="hljs-regexp">/\.(js|css)$/</span>,  <span class="hljs-comment">// 压缩范围</span><br>    &#125;),<br>  ],<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+
+<h1 id="抽离运行时代码"><a href="#抽离运行时代码" class="headerlink" title="抽离运行时代码"></a>抽离运行时代码</h1><p>在 entry 中配置 runtime 将运行时代码抽离到 common-runtime 中</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;path&quot;</span>);<br><br><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = &#123;<br>  <span class="hljs-attr">mode</span>: <span class="hljs-string">&quot;development&quot;</span>,<br>  <span class="hljs-attr">devtool</span>: <span class="hljs-literal">false</span>,<br>  <span class="hljs-attr">entry</span>: &#123;<br>    <span class="hljs-attr">main</span>: &#123; <span class="hljs-attr">import</span>: <span class="hljs-string">&quot;./src/index.js&quot;</span>, <span class="hljs-attr">runtime</span>: <span class="hljs-string">&quot;common-runtime&quot;</span> &#125;,<br>    <span class="hljs-attr">foo</span>: &#123; <span class="hljs-attr">import</span>: <span class="hljs-string">&quot;./src/foo.js&quot;</span>, <span class="hljs-attr">runtime</span>: <span class="hljs-string">&quot;common-runtime&quot;</span> &#125;,<br>  &#125;,<br>  <span class="hljs-attr">output</span>: &#123;<br>    <span class="hljs-attr">clean</span>: <span class="hljs-literal">true</span>,<br>    <span class="hljs-attr">filename</span>: <span class="hljs-string">&quot;[name].js&quot;</span>,<br>    <span class="hljs-attr">path</span>: path.<span class="hljs-title function_">resolve</span>(__dirname, <span class="hljs-string">&quot;dist&quot;</span>),<br>  &#125;,<br>&#125;;<br></code></pre></td></tr></table></figure>
 
                 
               </div>
