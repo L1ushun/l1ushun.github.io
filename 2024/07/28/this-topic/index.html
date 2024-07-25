@@ -16,26 +16,24 @@
   <meta name="author" content="liu shun">
   <meta name="keywords" content="博客,前端,git">
   
-    <meta name="description" content="前言什么是模块化模块化简单说就是为了解决代码没有自己的“域”，很容易造成命名冲突，依赖混乱。我们的代码通过模块化隔离开来，更有利于后期维护。 模块化解决方案从最开始的通过立即执行函数（IIFE）到 CJS、AMD、CMD、UMD、再到 ES6 引入模块化 ESM，本文主要写 CJS 和 ESM。 CommonJs实现原理123&#x2F;&#x2F; src&#x2F;index.jsconst name &#x3D; require(">
+    <meta name="description" content="123456789101112131415161718192021222324252627function Foo() &amp;#123;    getName &#x3D; function () &amp;#123;        console.log(1)    &amp;#125;;    return this;&amp;#125;Foo.prototype.getName &#x3D; function () &amp;#123;    c">
 <meta property="og:type" content="article">
-<meta property="og:title" content="深入浅出前端模块化原理">
-<meta property="og:url" content="https://l1ushun.github.io/2023/12/18/module/index.html">
+<meta property="og:title" content="题">
+<meta property="og:url" content="https://l1ushun.github.io/2024/07/28/this-topic/index.html">
 <meta property="og:site_name" content="liu的博客">
-<meta property="og:description" content="前言什么是模块化模块化简单说就是为了解决代码没有自己的“域”，很容易造成命名冲突，依赖混乱。我们的代码通过模块化隔离开来，更有利于后期维护。 模块化解决方案从最开始的通过立即执行函数（IIFE）到 CJS、AMD、CMD、UMD、再到 ES6 引入模块化 ESM，本文主要写 CJS 和 ESM。 CommonJs实现原理123&#x2F;&#x2F; src&#x2F;index.jsconst name &#x3D; require(">
+<meta property="og:description" content="123456789101112131415161718192021222324252627function Foo() &amp;#123;    getName &#x3D; function () &amp;#123;        console.log(1)    &amp;#125;;    return this;&amp;#125;Foo.prototype.getName &#x3D; function () &amp;#123;    c">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://s11.ax1x.com/2023/12/18/pi5vFoV.jpg">
-<meta property="article:published_time" content="2023-12-18T01:04:14.000Z">
-<meta property="article:modified_time" content="2023-12-19T01:05:37.303Z">
+<meta property="og:image" content="https://l1ushun.github.io/img/javascript.png">
+<meta property="article:published_time" content="2024-07-28T08:31:15.000Z">
+<meta property="article:modified_time" content="2024-07-08T08:32:40.917Z">
 <meta property="article:author" content="liu shun">
-<meta property="article:tag" content="模块化">
-<meta property="article:tag" content="CommonJs">
-<meta property="article:tag" content="ES Module">
+<meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://s11.ax1x.com/2023/12/18/pi5vFoV.jpg">
+<meta name="twitter:image" content="https://l1ushun.github.io/img/javascript.png">
   
   
   
-  <title>深入浅出前端模块化原理 - liu的博客</title>
+  <title>题 - liu的博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -183,13 +181,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('https://s11.ax1x.com/2023/12/18/pi5vFoV.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('/img/javascript.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="深入浅出前端模块化原理"></span>
+            <span id="subtitle" data-typed-text="题"></span>
           
         </div>
 
@@ -200,8 +198,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-12-18 09:04" pubdate>
-          2023年12月18日 上午
+        <time datetime="2024-07-28 16:31" pubdate>
+          2024年7月28日 下午
         </time>
       </span>
     
@@ -212,7 +210,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.1k 字
+          843 字
         
       </span>
     
@@ -223,7 +221,7 @@
         
         
         
-          27 分钟
+          8 分钟
         
       </span>
     
@@ -595,7 +593,7 @@
       
         <a href="/2023/12/18/module/" title="深入浅出前端模块化原理"
            class="list-group-item list-group-item-action
-           active">
+           ">
           <span class="category-post">深入浅出前端模块化原理</span>
         </a>
       
@@ -604,7 +602,7 @@
       
         <a href="/2024/07/28/this-topic/" title="题"
            class="list-group-item list-group-item-action
-           ">
+           active">
           <span class="category-post">题</span>
         </a>
       
@@ -627,79 +625,24 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">深入浅出前端模块化原理</h1>
+            <h1 id="seo-header">题</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><h2 id="什么是模块化"><a href="#什么是模块化" class="headerlink" title="什么是模块化"></a>什么是模块化</h2><p>模块化简单说就是为了解决代码没有自己的“域”，很容易造成命名冲突，依赖混乱。我们的代码通过模块化隔离开来，更有利于后期维护。</p>
-<h2 id="模块化解决方案"><a href="#模块化解决方案" class="headerlink" title="模块化解决方案"></a>模块化解决方案</h2><p>从最开始的通过立即执行函数（IIFE）到 CJS、AMD、CMD、UMD、再到 ES6 引入模块化 ESM，本文主要写 CJS 和 ESM。</p>
-<h1 id="CommonJs"><a href="#CommonJs" class="headerlink" title="CommonJs"></a>CommonJs</h1><h2 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// src/index.js</span><br><span class="hljs-keyword">const</span> name = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;./name&quot;</span>)<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(name)<br></code></pre></td></tr></table></figure>
+                <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">Foo</span>(<span class="hljs-params"></span>) &#123;<br>    getName = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-number">1</span>)<br>    &#125;;<br>    <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>;<br>&#125;<br><br><span class="hljs-title class_">Foo</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">getName</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-number">2</span>)<br>&#125;<br><span class="hljs-title class_">Foo</span>.<span class="hljs-property">getName</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-number">3</span>)<br>&#125;<br><span class="hljs-keyword">var</span> getName = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-number">4</span>)<br>&#125;<br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">getName</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-number">5</span>)<br>&#125;<br><span class="hljs-title function_">getName</span>()<br><span class="hljs-title class_">Foo</span>.<span class="hljs-title function_">getName</span>()<br><span class="hljs-title class_">Foo</span>().<span class="hljs-title function_">getName</span>()<br><span class="hljs-keyword">new</span> <span class="hljs-title class_">Foo</span>.<span class="hljs-title function_">getName</span>()<br><span class="hljs-title function_">getName</span>()<br><span class="hljs-keyword">new</span> <span class="hljs-title class_">Foo</span>().<span class="hljs-title function_">getName</span>()<br><span class="hljs-keyword">new</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Foo</span>().<span class="hljs-title function_">getName</span>()<br></code></pre></td></tr></table></figure>
 
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// src/name.js</span><br><span class="hljs-keyword">var</span> name = <span class="hljs-string">&quot;john&quot;</span>;<br><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = &#123;<br>    <span class="hljs-attr">name</span>: name,<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>我们把以上代码打包，通过产物看一下CJS到底是如何进行模块化的。<strong>产物代码经过简化</strong>。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs js">(<span class="hljs-function">() =&gt;</span> &#123;<br>    <span class="hljs-comment">// 定义一个 modules 存放每个文件的源码，[key] 是文件路径</span><br>    <span class="hljs-keyword">var</span> __webpack_modules__ = (&#123;<br>        <span class="hljs-string">&quot;./src/index.js&quot;</span>: (<span class="hljs-function">(<span class="hljs-params">__unused_webpack_module, __unused_webpack_exports, __webpack_require__</span>) =&gt;</span> &#123;<br>            <span class="hljs-comment">// ...</span><br>        &#125;),<br>        <span class="hljs-string">&quot;./src/name.js&quot;</span>: (<span class="hljs-function">(<span class="hljs-params"><span class="hljs-variable language_">module</span></span>) =&gt;</span> &#123;<br>            <span class="hljs-comment">// ...</span><br>        &#125;)<br>    &#125;);<br>    <span class="hljs-comment">// 缓存</span><br>    <span class="hljs-keyword">var</span> __webpack_module_cache__ = &#123;&#125;;<br><br>    <span class="hljs-comment">// 获取源码的方法</span><br>    <span class="hljs-keyword">function</span> <span class="hljs-title function_">__webpack_require__</span>(<span class="hljs-params">moduleId</span>) &#123;<br>        <span class="hljs-comment">// 读取缓存</span><br>        <span class="hljs-keyword">var</span> cachedModule = __webpack_module_cache__[moduleId];<br>        <span class="hljs-keyword">if</span> (cachedModule !== <span class="hljs-literal">undefined</span>) &#123;<br>            <span class="hljs-comment">// 有缓存就不执行了，直接返回缓存</span><br>            <span class="hljs-keyword">return</span> cachedModule.<span class="hljs-property">exports</span>;<br>        &#125;<br>        <span class="hljs-keyword">var</span> <span class="hljs-variable language_">module</span> = __webpack_module_cache__[moduleId] = &#123;<br>            <span class="hljs-attr">exports</span>: &#123;&#125;<br>        &#125;;<br>        <span class="hljs-comment">// 没缓存就执行然后缓存，</span><br>        __webpack_modules__[moduleId](<span class="hljs-variable language_">module</span>, <span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span>, __webpack_require__);<br>        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span>;<br>    &#125;<br><br>    <span class="hljs-comment">// 执行入口函数</span><br>    <span class="hljs-keyword">var</span> __webpack_exports__ = <span class="hljs-title function_">__webpack_require__</span>(<span class="hljs-string">&quot;./src/index.js&quot;</span>);<br>&#125;)();<br></code></pre></td></tr></table></figure>
-
-<p>从产物中不难看出 CJS 把每个路径的源码都存在一起，然后通过 require 来实现读取并缓存，实现模块化的功能，其实说到底还是使用了立即执行函数（IIFE）来实现的。<br><img src="https://s11.ax1x.com/2023/12/18/pi5L129.png" srcset="/img/loading.gif" lazyload alt="CJS原理"></p>
-<h1 id="EsModule"><a href="#EsModule" class="headerlink" title="EsModule"></a>EsModule</h1><p>我们在 name.js 加上默认导出。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// src/name.js</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">var</span> name = <span class="hljs-string">&quot;john&quot;</span>;<br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-string">&quot;this is default&quot;</span><br></code></pre></td></tr></table></figure>
-
-<p>ESM 和 CJS 的区别在于，ESM 给 exports 做了一层代理。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> __webpack_modules__ = (&#123;<br>    <span class="hljs-comment">// ...</span><br>    <span class="hljs-string">&quot;./src/name.js&quot;</span>: (<span class="hljs-function">(<span class="hljs-params">__unused_webpack_module, __webpack_exports__, __webpack_require__</span>) =&gt;</span> &#123;<br>        <span class="hljs-comment">// 扩展里会写到</span><br>        __webpack_require__.<span class="hljs-title function_">r</span>(__webpack_exports__);<br>        <span class="hljs-comment">// 进行代理</span><br>        __webpack_require__.<span class="hljs-title function_">d</span>(__webpack_exports__, &#123;<br>            <span class="hljs-string">&quot;default&quot;</span>: <span class="hljs-function">() =&gt;</span> (__WEBPACK_DEFAULT_EXPORT__),<br>            <span class="hljs-attr">name</span>: <span class="hljs-function">() =&gt;</span> (name)<br>        &#125;);<br>        <span class="hljs-keyword">var</span> name = <span class="hljs-string">&quot;john&quot;</span>;<br>        <span class="hljs-keyword">const</span> __WEBPACK_DEFAULT_EXPORT__ = (<span class="hljs-string">&quot;this is default&quot;</span>);<br>    &#125;)<br>&#125;);<br><br>(<span class="hljs-function">() =&gt;</span> &#123;<br>    <span class="hljs-comment">// 代理</span><br>    __webpack_require__.<span class="hljs-property">d</span> = <span class="hljs-function">(<span class="hljs-params"><span class="hljs-built_in">exports</span>, definition</span>) =&gt;</span> &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> key <span class="hljs-keyword">in</span> definition) &#123;<br>            <span class="hljs-keyword">if</span> (__webpack_require__.<span class="hljs-title function_">o</span>(definition, key) &amp;&amp; !__webpack_require__.<span class="hljs-title function_">o</span>(<span class="hljs-built_in">exports</span>, key)) &#123;<br>                <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">defineProperty</span>(<span class="hljs-built_in">exports</span>, key, &#123;<span class="hljs-attr">enumerable</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">get</span>: definition[key]&#125;);<br>            &#125;<br>        &#125;<br>    &#125;;<br>&#125;)();<br></code></pre></td></tr></table></figure>
-
-<p>当我们使用 ESM 导入的值，实际上都是代理值，我们每次访问这个值其实都是通过要这个代理，这也就是为什么导出后改变这个值，导入的文件也能拿到更新后的值。</p>
-<h1 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h1><h2 id="设置值类型"><a href="#设置值类型" class="headerlink" title="设置值类型"></a>设置值类型</h2><p>在 EsModule 的 <code>__webpack_modules__</code> 中有一个方法 <code>__webpack_require__.r</code> 这个是干什么用的呢？他其实就是把 exports标记成 <code>Module</code> 类型。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js">(<span class="hljs-function">() =&gt;</span> &#123;<br>    __webpack_require__.<span class="hljs-property">r</span> = <span class="hljs-function">(<span class="hljs-params"><span class="hljs-built_in">exports</span></span>) =&gt;</span> &#123;<br>        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> <span class="hljs-title class_">Symbol</span> !== <span class="hljs-string">&#x27;undefined&#x27;</span> &amp;&amp; <span class="hljs-title class_">Symbol</span>.<span class="hljs-property">toStringTag</span>) &#123;<br>            <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">defineProperty</span>(<span class="hljs-built_in">exports</span>, <span class="hljs-title class_">Symbol</span>.<span class="hljs-property">toStringTag</span>, &#123;<span class="hljs-attr">value</span>: <span class="hljs-string">&#x27;Module&#x27;</span>&#125;);<br>        &#125;<br>        <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">defineProperty</span>(<span class="hljs-built_in">exports</span>, <span class="hljs-string">&#x27;__esModule&#x27;</span>, &#123;<span class="hljs-attr">value</span>: <span class="hljs-literal">true</span>&#125;);<br>    &#125;;<br>&#125;)();<br></code></pre></td></tr></table></figure>
-
-<p>我们判断一个值的属性，通过 <code>Object.prototype.toString.call()</code>方法，那么这个方法是根据什么判断出类型的？其实就是根据值的 <code>Symbol.toStringTag</code> 来识别。</p>
-<p>举个例子：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> obj = &#123;&#125;;<br><span class="hljs-title class_">Object</span>.<span class="hljs-title function_">defineProperty</span>(obj, <span class="hljs-title class_">Symbol</span>.<span class="hljs-property">toStringTag</span>, &#123;<span class="hljs-attr">value</span>: <span class="hljs-string">&quot;Module&quot;</span>&#125;);<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title class_">Object</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">toString</span>.<span class="hljs-title function_">call</span>(obj)); <span class="hljs-comment">// [object Module]</span><br></code></pre></td></tr></table></figure>
-<h2 id="CJS-和-ESM-区别"><a href="#CJS-和-ESM-区别" class="headerlink" title="CJS 和 ESM 区别"></a>CJS 和 ESM 区别</h2><table>
-<thead>
-<tr>
-<th></th>
-<th>CJS</th>
-<th>ESM</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>语法类型</td>
-<td>动态</td>
-<td>静态</td>
-</tr>
-<tr>
-<td>加载方式</td>
-<td>运行时加载</td>
-<td>编译时加载</td>
-</tr>
-<tr>
-<td>加载行为</td>
-<td>同步加载</td>
-<td>异步加载</td>
-</tr>
-<tr>
-<td>this指向</td>
-<td>当前模块</td>
-<td>undefined</td>
-</tr>
-<tr>
-<td>能否修改</td>
-<td>可以修改引用的值</td>
-<td>引入的值是只读的</td>
-</tr>
-<tr>
-<td>引用</td>
-<td>基本类型复制<br/>引用类型浅拷贝</td>
-<td>动态只读引用</td>
-</tr>
-<tr>
-<td>书写位置</td>
-<td>任意位置</td>
-<td>顶层</td>
-</tr>
-</tbody></table>
-<h3 id="运行时加载和编译时加载"><a href="#运行时加载和编译时加载" class="headerlink" title="运行时加载和编译时加载"></a>运行时加载和编译时加载</h3><p>运行时加载会生成一个对象全部加载，运行时获得该对象。编译时加载直接从模块中加载，能做到按需加载，效率更高。</p>
+<blockquote>
+<p>答案：4 3 1 3 1 2 2</p>
+</blockquote>
+<h3 id="1-getName"><a href="#1-getName" class="headerlink" title="1.getName()"></a>1.getName()</h3><p>function 和 var 都会提升，function 作为第一公民，比 var 优先级更高，所以 var 会覆盖 function</p>
+<h3 id="2-Foo-getName"><a href="#2-Foo-getName" class="headerlink" title="2.Foo.getName()"></a>2.Foo.getName()</h3><p>第十一行代码将 Foo 的 getName 方法指向了一个新的函数，所以 Foo.getName 调用的是新的函数</p>
+<h3 id="3-Foo-getName"><a href="#3-Foo-getName" class="headerlink" title="3.Foo().getName()"></a>3.Foo().getName()</h3><p>Foo() 执行的时候，将 window 的 getName 方法改写，并且 Foo 的 this 就是 window，所以调用的是 window.getName</p>
+<h3 id="4-new-Foo-getName"><a href="#4-new-Foo-getName" class="headerlink" title="4.new Foo.getName()"></a>4.new Foo.getName()</h3><p>本质还是执行的 Foo.getName()</p>
+<h3 id="5-getName"><a href="#5-getName" class="headerlink" title="5.getName()"></a>5.getName()</h3><p>由于之前执行了 Foo() getName 被改写，现在执行的是被改写后的 getName()</p>
+<h3 id="6-new-Foo-getName"><a href="#6-new-Foo-getName" class="headerlink" title="6.new Foo().getName()"></a>6.new Foo().getName()</h3><p>创造了 Foo 的实例，执行 getName 顺着原型链向上找到 Foo.prototype.getName()</p>
+<h3 id="7-new-new-Foo-getName"><a href="#7-new-new-Foo-getName" class="headerlink" title="7.new new Foo().getName()"></a>7.new new Foo().getName()</h3><p>同 6</p>
 
                 
               </div>
@@ -733,11 +676,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E6%A8%A1%E5%9D%97%E5%8C%96/" class="print-no-link">#模块化</a>
-      
-        <a href="/tags/CommonJs/" class="print-no-link">#CommonJs</a>
-      
-        <a href="/tags/ES-Module/" class="print-no-link">#ES Module</a>
+        <a href="/tags/JavaScript/" class="print-no-link">#JavaScript</a>
       
     </div>
   
@@ -749,8 +688,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>深入浅出前端模块化原理</div>
-      <div>https://l1ushun.github.io/2023/12/18/module/</div>
+      <div>题</div>
+      <div>https://l1ushun.github.io/2024/07/28/this-topic/</div>
     </div>
     <div class="license-meta">
       
@@ -762,7 +701,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年12月18日</div>
+          <div>2024年7月28日</div>
         </div>
       
       
@@ -794,18 +733,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/12/27/webpack-01/" title="Webpack入坑指北">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Webpack入坑指北</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/12/13/regexp/" title="无法避免的正则表达式">
-                        <span class="hidden-mobile">无法避免的正则表达式</span>
+                      <a href="/2024/05/24/nuxt/" title="初识Nuxt">
+                        <span class="hidden-mobile">初识Nuxt</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

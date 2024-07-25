@@ -16,24 +16,25 @@
   <meta name="author" content="liu shun">
   <meta name="keywords" content="博客,前端,git">
   
-    <meta name="description" content="组件注册 Props v-model 透传Attributes 插槽 依赖注入 异步组件 自定义指令 插件 KeepAlive Teleport Suspense">
+    <meta name="description" content="思路创建一个 message 组件 -&gt; 通过 Nuxt 插件的 defineNuxtPlugin 获取 nuxtApp -&gt; 将 message 挂载到 nuxtApp 上 -&gt; 调用 message 组件 创建一个 message 组件">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Vue3 思维导图(二)">
-<meta property="og:url" content="https://l1ushun.github.io/2024/03/25/vue-mapping-deep/index.html">
+<meta property="og:title" content="在 Nuxt 中封装 Message 组件">
+<meta property="og:url" content="https://l1ushun.github.io/2024/07/12/nuxt-message/index.html">
 <meta property="og:site_name" content="liu的博客">
-<meta property="og:description" content="组件注册 Props v-model 透传Attributes 插槽 依赖注入 异步组件 自定义指令 插件 KeepAlive Teleport Suspense">
+<meta property="og:description" content="思路创建一个 message 组件 -&gt; 通过 Nuxt 插件的 defineNuxtPlugin 获取 nuxtApp -&gt; 将 message 挂载到 nuxtApp 上 -&gt; 调用 message 组件 创建一个 message 组件">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://s21.ax1x.com/2024/03/21/pFfabqI.jpg">
-<meta property="article:published_time" content="2024-03-25T02:37:37.000Z">
-<meta property="article:modified_time" content="2024-04-01T06:17:48.666Z">
+<meta property="og:image" content="https://s21.ax1x.com/2024/05/24/pkQ50QP.png">
+<meta property="article:published_time" content="2024-07-12T03:23:14.000Z">
+<meta property="article:modified_time" content="2024-07-25T09:00:53.774Z">
 <meta property="article:author" content="liu shun">
-<meta property="article:tag" content="Vue">
+<meta property="article:tag" content="Nuxt">
+<meta property="article:tag" content="SSR">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://s21.ax1x.com/2024/03/21/pFfabqI.jpg">
+<meta name="twitter:image" content="https://s21.ax1x.com/2024/05/24/pkQ50QP.png">
   
   
   
-  <title>Vue3 思维导图(二) - liu的博客</title>
+  <title>在 Nuxt 中封装 Message 组件 - liu的博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -181,13 +182,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('https://s21.ax1x.com/2024/03/21/pFfabqI.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('https://s21.ax1x.com/2024/05/24/pkQ50QP.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Vue3 思维导图(二)"></span>
+            <span id="subtitle" data-typed-text="在 Nuxt 中封装 Message 组件"></span>
           
         </div>
 
@@ -198,8 +199,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-03-25 10:37" pubdate>
-          2024年3月25日 上午
+        <time datetime="2024-07-12 11:23" pubdate>
+          2024年7月12日 上午
         </time>
       </span>
     
@@ -210,7 +211,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          70 字
+          107 字
         
       </span>
     
@@ -251,373 +252,6 @@
   <div class="row nomargin-x">
     <div class="side-col d-none d-lg-block col-lg-2">
       
-  <aside class="sidebar category-bar" style="margin-right: -1rem">
-    
-
-
-
-
-
-<div class="category-list">
-  
-  
-    
-    
-    
-    <div class="category row nomargin-x">
-      <a class="category-item 
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="技术博客"
-        id="heading-2143c8627fa00f84aa0cd4b0b5aed288" role="tab" data-toggle="collapse" href="#collapse-2143c8627fa00f84aa0cd4b0b5aed288"
-        aria-expanded="true"
-      >
-        技术博客
-        <span class="list-group-count">(36)</span>
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      
-      <div class="category-collapse collapse show" id="collapse-2143c8627fa00f84aa0cd4b0b5aed288"
-           role="tabpanel" aria-labelledby="heading-2143c8627fa00f84aa0cd4b0b5aed288">
-        
-        
-          
-  <div class="category-post-list">
-    
-    
-      
-      
-        <a href="/2023/03/11/lodash-round/" title="JavaScript 精度问题的原因和解决方案"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">JavaScript 精度问题的原因和解决方案</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2023/09/13/design-mode/" title="JavaScript设计模式(一)：单例模式、工厂模式"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">JavaScript设计模式(一)：单例模式、工厂模式</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2023/10/11/design-proxy/" title="JavaScript设计模式(三)：代理模式"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">JavaScript设计模式(三)：代理模式</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2023/10/10/design-strategy/" title="JavaScript设计模式(二)：策略模式"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">JavaScript设计模式(二)：策略模式</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2023/10/17/desigin-decorator/" title="JavaScript设计模式(五)：装饰器模式"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">JavaScript设计模式(五)：装饰器模式</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2023/10/13/design-observer/" title="JavaScript设计模式(四)：发布-订阅模式、观察者模式"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">JavaScript设计模式(四)：发布-订阅模式、观察者模式</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2024/04/02/nest-01/" title="Nest 初体验"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">Nest 初体验</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2023/08/19/react-event/" title="React事件系统"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">React事件系统</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2023/07/21/diff/" title="React原理之diff流程"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">React原理之diff流程</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2023/07/31/react-flow/" title="React流程图（完善ing...）"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">React流程图（完善ing...）</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2023/05/29/redux-source/" title="Redux源码之createStore"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">Redux源码之createStore</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2021/09/16/tasking/" title="Tasking"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">Tasking</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2023/10/31/ts-01/" title="TypeScript入坑指北"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">TypeScript入坑指北</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2023/08/07/vite-02/" title="Vite-优化篇"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">Vite-优化篇</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2023/08/04/vite-01/" title="Vite-快速入门"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">Vite-快速入门</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2023/08/12/vite-04/" title="Vite-架构篇（Rollup）"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">Vite-架构篇（Rollup）</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2023/08/17/vite-05/" title="Vite-进阶篇"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">Vite-进阶篇</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2024/03/21/vue-mind-mapping/" title="Vue3 思维导图(一)：基础篇"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">Vue3 思维导图(一)：基础篇</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2024/03/25/vue-mapping-deep/" title="Vue3 思维导图(二)"
-           class="list-group-item list-group-item-action
-           active">
-          <span class="category-post">Vue3 思维导图(二)</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2024/01/06/webpack-03/" title="Webpack优化篇"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">Webpack优化篇</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2023/12/27/webpack-01/" title="Webpack入坑指北"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">Webpack入坑指北</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2023/07/11/ahooks-useRequest/" title="ahooks源码之useRequest"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">ahooks源码之useRequest</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2023/07/12/ahooks-useVirtualList/" title="ahooks源码之useVirtualList"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">ahooks源码之useVirtualList</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2024/04/29/react-ref/" title="一文搞定 React 的 ref"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">一文搞定 React 的 ref</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2024/04/25/useEffect/" title="一文搞定 React 的 useEffect"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">一文搞定 React 的 useEffect</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2024/05/17/vue3-diff/" title="了解Vue3是如何进行组件更新的"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">了解Vue3是如何进行组件更新的</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2024/01/09/browser/" title="从输入URL开始构建浏览器知识体系"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">从输入URL开始构建浏览器知识体系</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2024/05/24/nuxt/" title="初识Nuxt"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">初识Nuxt</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2021/09/15/git-01/" title="团队协作中git的基本使用"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">团队协作中git的基本使用</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2022/12/21/lazy-image-loading/" title="图片懒加载的几种方式"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">图片懒加载的几种方式</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2024/05/22/qiankun-baics/" title="微前端 qiankun"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">微前端 qiankun</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2023/05/26/create-redux/" title="快速入门Redux"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">快速入门Redux</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2022/12/03/write/" title="手写集合"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">手写集合</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2023/12/13/regexp/" title="无法避免的正则表达式"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">无法避免的正则表达式</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2023/12/18/module/" title="深入浅出前端模块化原理"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">深入浅出前端模块化原理</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2024/07/28/this-topic/" title="题"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">题</span>
-        </a>
-      
-    
-  </div>
-
-        
-      </div>
-    </div>
-  
-</div>
-
-
-  </aside>
-
 
     </div>
 
@@ -625,23 +259,13 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Vue3 思维导图(二)</h1>
+            <h1 id="seo-header">在 Nuxt 中封装 Message 组件</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="组件注册"><a href="#组件注册" class="headerlink" title="组件注册"></a>组件注册</h2><p><img src="https://s21.ax1x.com/2024/03/25/pF40bZj.png" srcset="/img/loading.gif" lazyload alt="组件注册"></p>
-<h2 id="Props"><a href="#Props" class="headerlink" title="Props"></a>Props</h2><p><img src="https://s21.ax1x.com/2024/03/25/pF4rwin.png" srcset="/img/loading.gif" lazyload alt="Props"></p>
-<h2 id="v-model"><a href="#v-model" class="headerlink" title="v-model"></a>v-model</h2><p><img src="https://s21.ax1x.com/2024/03/27/pFIu5WR.png" srcset="/img/loading.gif" lazyload alt="v-model"></p>
-<h2 id="透传Attributes"><a href="#透传Attributes" class="headerlink" title="透传Attributes"></a>透传Attributes</h2><p><img src="https://s21.ax1x.com/2024/03/27/pFI16Vf.png" srcset="/img/loading.gif" lazyload alt="透传Attributes"></p>
-<h2 id="插槽"><a href="#插槽" class="headerlink" title="插槽"></a>插槽</h2><p><img src="https://s21.ax1x.com/2024/03/28/pFIbKFs.png" srcset="/img/loading.gif" lazyload alt="插槽"></p>
-<h2 id="依赖注入"><a href="#依赖注入" class="headerlink" title="依赖注入"></a>依赖注入</h2><p><img src="https://s21.ax1x.com/2024/03/28/pFIqD4s.png" srcset="/img/loading.gif" lazyload alt="依赖注入"></p>
-<h2 id="异步组件"><a href="#异步组件" class="headerlink" title="异步组件"></a>异步组件</h2><p><img src="https://s21.ax1x.com/2024/03/28/pFopCBq.png" srcset="/img/loading.gif" lazyload alt="异步组件"></p>
-<h2 id="自定义指令"><a href="#自定义指令" class="headerlink" title="自定义指令"></a>自定义指令</h2><p><img src="https://s21.ax1x.com/2024/03/29/pFog57V.png" srcset="/img/loading.gif" lazyload alt="自定义指令"></p>
-<h2 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h2><p><img src="https://s21.ax1x.com/2024/04/01/pF71Awq.png" srcset="/img/loading.gif" lazyload alt="插件"></p>
-<h2 id="KeepAlive"><a href="#KeepAlive" class="headerlink" title="KeepAlive"></a>KeepAlive</h2><p><img src="https://s21.ax1x.com/2024/04/01/pF71kmn.png" srcset="/img/loading.gif" lazyload alt="KeepAlive"></p>
-<h2 id="Teleport"><a href="#Teleport" class="headerlink" title="Teleport"></a>Teleport</h2><p><img src="https://s21.ax1x.com/2024/04/01/pF78ZzF.png" srcset="/img/loading.gif" lazyload alt="Teleport"></p>
-<h2 id="Suspense"><a href="#Suspense" class="headerlink" title="Suspense"></a>Suspense</h2><p><img src="https://s21.ax1x.com/2024/04/01/pF7amhn.png" srcset="/img/loading.gif" lazyload alt="Suspense"></p>
+                <h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>创建一个 message 组件 -&gt; 通过 Nuxt 插件的 defineNuxtPlugin 获取 nuxtApp -&gt; 将 message 挂载到 nuxtApp 上 -&gt; 调用 message 组件</p>
+<h1 id="创建一个-message-组件"><a href="#创建一个-message-组件" class="headerlink" title="创建一个 message 组件"></a>创建一个 message 组件</h1><p><img src="https://s21.ax1x.com/2024/07/15/pk5aGdK.png" srcset="/img/loading.gif" lazyload></p>
 
                 
               </div>
@@ -675,7 +299,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Vue/" class="print-no-link">#Vue</a>
+        <a href="/tags/Nuxt/" class="print-no-link">#Nuxt</a>
+      
+        <a href="/tags/SSR/" class="print-no-link">#SSR</a>
       
     </div>
   
@@ -687,8 +313,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Vue3 思维导图(二)</div>
-      <div>https://l1ushun.github.io/2024/03/25/vue-mapping-deep/</div>
+      <div>在 Nuxt 中封装 Message 组件</div>
+      <div>https://l1ushun.github.io/2024/07/12/nuxt-message/</div>
     </div>
     <div class="license-meta">
       
@@ -700,7 +326,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年3月25日</div>
+          <div>2024年7月12日</div>
         </div>
       
       
@@ -727,29 +353,6 @@
 
 
 
-              
-                <div class="post-prevnext my-3">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2024/04/02/nest-01/" title="Nest 初体验">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Nest 初体验</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2024/03/21/vue-mind-mapping/" title="Vue3 思维导图(一)：基础篇">
-                        <span class="hidden-mobile">Vue3 思维导图(一)：基础篇</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
               
             </div>
 

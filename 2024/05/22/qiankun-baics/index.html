@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://gw.alipayobjects.com/zos/bmw-prod/8a74c1d3-16f3-4719-be63-15e467a68a24/km0cv8vn_w500_h500.png">
 <meta property="article:published_time" content="2024-05-22T09:40:14.000Z">
-<meta property="article:modified_time" content="2024-05-23T09:32:12.136Z">
+<meta property="article:modified_time" content="2024-07-25T09:00:12.952Z">
 <meta property="article:author" content="liu shun">
 <meta property="article:tag" content="微前端">
 <meta property="article:tag" content="qiankun">
@@ -211,7 +211,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.7k 字
+          2.9k 字
         
       </span>
     
@@ -222,7 +222,7 @@
         
         
         
-          14 分钟
+          24 分钟
         
       </span>
     
@@ -272,7 +272,7 @@
         aria-expanded="true"
       >
         技术博客
-        <span class="list-group-count">(35)</span>
+        <span class="list-group-count">(36)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -599,6 +599,15 @@
         </a>
       
     
+      
+      
+        <a href="/2024/07/28/this-topic/" title="题"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">题</span>
+        </a>
+      
+    
   </div>
 
         
@@ -665,6 +674,16 @@
 <h2 id="通过按钮切换两个子应用"><a href="#通过按钮切换两个子应用" class="headerlink" title="通过按钮切换两个子应用"></a>通过按钮切换两个子应用</h2><p>在 react-master 的 App.js 中实现两个按钮分别切换 react-sub 和 vue-sub</p>
 <p><img src="https://s21.ax1x.com/2024/05/23/pkQevzd.png" srcset="/img/loading.gif" lazyload></p>
 <p>这里推荐使用 <code>window.history.pushState</code> 让页面在不刷新的情况下进行跳转。</p>
+<h1 id="应用间通信"><a href="#应用间通信" class="headerlink" title="应用间通信"></a>应用间通信</h1><h2 id="initGlobalState"><a href="#initGlobalState" class="headerlink" title="initGlobalState"></a>initGlobalState</h2><p>首先在主应用中通过 initGlobalState API 初始化一个全局 state</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// src/shared/actions</span><br><span class="hljs-keyword">import</span> &#123; initGlobalState &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;qiankun&quot;</span>;<br><br><span class="hljs-keyword">const</span> initialState = &#123;<br>    <span class="hljs-attr">sharedProperty</span>: <span class="hljs-string">&#x27;&#x27;</span><br>&#125;;<br><span class="hljs-keyword">const</span> actions = <span class="hljs-title function_">initGlobalState</span>(initialState);<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> actions;<br></code></pre></td></tr></table></figure>
+
+<p>然后调用 onGlobalStateChange 来观察全局 state 的变化，当 state 发生变化时，就会调用这个函数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"> <span class="hljs-comment">// 注册一个观察者函数</span><br>actions.<span class="hljs-title function_">onGlobalStateChange</span>(<span class="hljs-function">(<span class="hljs-params">state, prev</span>) =&gt;</span> &#123;<br>    <span class="hljs-comment">// state: 变更后的状态; prev 变更前的状态</span><br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(state, prev);<br>&#125;);<br><span class="hljs-comment">// 设置值</span><br>actions.<span class="hljs-title function_">setGlobalState</span>(&#123;<br>    <span class="hljs-attr">sharedProperty</span>: <span class="hljs-string">&#x27;qiankun-example&#x27;</span><br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<h2 id="子应用接收-state"><a href="#子应用接收-state" class="headerlink" title="子应用接收 state"></a>子应用接收 state</h2><p>子应用在 render 生命周期中可以通过 props 获取主应用传来的 state</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">render</span>(<span class="hljs-params">props</span>) &#123;<br>    <span class="hljs-keyword">if</span> (props) &#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(props)<br>    &#125;<br>    <span class="hljs-comment">// ...</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<p>并且也可以用 actions 的方法进行操作，我们可以封装一个类来处理 state</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">emptyAction</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">warn</span>(<span class="hljs-string">&quot;Current execute action is empty!&quot;</span>);<br>&#125;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Actions</span> &#123;<br>    actions = &#123;<br>        <span class="hljs-attr">onGlobalStateChange</span>: emptyAction,<br>        <span class="hljs-attr">setGlobalState</span>: emptyAction<br>    &#125;<br>    <span class="hljs-title function_">setActions</span>(<span class="hljs-params">actions</span>) &#123;<br>        <span class="hljs-variable language_">this</span>.<span class="hljs-property">actions</span> = actions;<br>    &#125;<br>    <span class="hljs-title function_">onGlobalStateChange</span>(<span class="hljs-params">...args</span>) &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">actions</span>.<span class="hljs-title function_">onGlobalStateChange</span>(...args);<br>    &#125;<br>    <span class="hljs-title function_">setGlobalState</span>(<span class="hljs-params">...args</span>) &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">actions</span>.<span class="hljs-title function_">setGlobalState</span>(...args);<br>    &#125;<br>&#125;<br><br><br><span class="hljs-keyword">const</span> actions = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Actions</span>();<br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> actions;<br></code></pre></td></tr></table></figure>
 
                 
               </div>
