@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://s21.ax1x.com/2024/08/08/pkzV4IK.jpg">
 <meta property="article:published_time" content="2024-08-08T02:29:14.000Z">
-<meta property="article:modified_time" content="2024-08-12T01:52:16.232Z">
+<meta property="article:modified_time" content="2024-08-12T08:05:26.702Z">
 <meta property="article:author" content="liu shun">
 <meta property="article:tag" content="React">
 <meta property="article:tag" content="Next">
@@ -212,7 +212,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.2k 字
+          4.2k 字
         
       </span>
     
@@ -223,7 +223,7 @@
         
         
         
-          27 分钟
+          36 分钟
         
       </span>
     
@@ -672,7 +672,16 @@
 <p>最后呈现的效果大概是这样，Layout 就是最外层 app&#x2F;layout.js About Page 是 about&#x2F;layout.js</p>
 <h3 id="根目录的-layout"><a href="#根目录的-layout" class="headerlink" title="根目录的 layout"></a>根目录的 layout</h3><p>根目录下的 layout 有一点特殊，首先这个文件是必需的，另外这个文件必须有 html 和 body 标签，而其他的 layout 不能有</p>
 <h2 id="模板-template"><a href="#模板-template" class="headerlink" title="模板 template"></a>模板 template</h2><p>模板和 layout 的区别在于 template 没有办法保持状态。</p>
-<p>TODO：ps</p>
+<p><img src="https://s21.ax1x.com/2024/08/12/pApJFgA.png" srcset="/img/loading.gif" lazyload alt="目录结构"></p>
+<p>这里 detail 和 detail2 只是用来进行跳转用，重点看一下 layout 和 template</p>
+<p>layout.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-string">&#x27;use client&#x27;</span><br><span class="hljs-keyword">import</span> &#123;useState&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span>;<br><span class="hljs-keyword">import</span> <span class="hljs-title class_">Link</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;next/link&quot;</span>;<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">ProductLayout</span>(<span class="hljs-params">&#123;children&#125;</span>) &#123;<br>    <span class="hljs-keyword">const</span> [state, setState] = <span class="hljs-title function_">useState</span>(<span class="hljs-number">0</span>)<br>    <span class="hljs-keyword">return</span> (<br>        <span class="language-xml"><span class="hljs-tag">&lt;&gt;</span></span><br><span class="language-xml">            Layout: &#123;state&#125;</span><br><span class="language-xml">            <span class="hljs-tag">&lt;<span class="hljs-name">br</span>/&gt;</span></span><br><span class="language-xml">            <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">&#123;()</span> =&gt;</span> setState(state+1)&#125;&gt;add<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span><br><span class="language-xml">            &#123;children&#125;</span><br><span class="language-xml">            <span class="hljs-tag">&lt;<span class="hljs-name">br</span>/&gt;</span></span><br><span class="language-xml">            <span class="hljs-tag">&lt;<span class="hljs-name">Link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;/product/detail&quot;</span>&gt;</span>TO DETAIL<span class="hljs-tag">&lt;/<span class="hljs-name">Link</span>&gt;</span></span><br><span class="language-xml">            <span class="hljs-tag">&lt;<span class="hljs-name">br</span>/&gt;</span></span><br><span class="language-xml">            <span class="hljs-tag">&lt;<span class="hljs-name">Link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;/product/detail2&quot;</span>&gt;</span>TO DETAIL2<span class="hljs-tag">&lt;/<span class="hljs-name">Link</span>&gt;</span></span><br><span class="language-xml">        <span class="hljs-tag">&lt;/&gt;</span></span><br>    )<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>template.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-string">&#x27;use client&#x27;</span><br><span class="hljs-keyword">import</span> &#123;useState&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span>;<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">ProductLayout</span>(<span class="hljs-params">&#123;children&#125;</span>) &#123;<br>    <span class="hljs-keyword">const</span> [state, setState] = <span class="hljs-title function_">useState</span>(<span class="hljs-number">0</span>)<br>    <span class="hljs-keyword">return</span> (<br>        <span class="language-xml"><span class="hljs-tag">&lt;&gt;</span></span><br><span class="language-xml">            Template: &#123;state&#125;</span><br><span class="language-xml">            <span class="hljs-tag">&lt;<span class="hljs-name">br</span>/&gt;</span></span><br><span class="language-xml">            <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">&#123;()</span> =&gt;</span> setState(state+1)&#125;&gt;add<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span><br><span class="language-xml">            &#123;children&#125;</span><br><span class="language-xml">        <span class="hljs-tag">&lt;/&gt;</span></span><br>    )<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>在 layout 和 template 中分别加入状态，当我们切换路由时看状态变化</p>
+<p><img src="/img/next-16.gif" srcset="/img/loading.gif" lazyload alt="效果图"></p>
 <h2 id="加载-loading"><a href="#加载-loading" class="headerlink" title="加载 loading"></a>加载 loading</h2><p>在页面同级下创建 loading.js，以上例子是 about&#x2F;loading.js</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">DashboardLoading</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">return</span> <span class="language-xml"><span class="hljs-tag">&lt;&gt;</span>Loading...<span class="hljs-tag">&lt;/&gt;</span></span><br>&#125;<br></code></pre></td></tr></table></figure>
 <p>然后在 about&#x2F;page.js 中</p>
