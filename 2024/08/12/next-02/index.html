@@ -16,22 +16,26 @@
   <meta name="author" content="liu shun">
   <meta name="keywords" content="博客,前端,git">
   
-    <meta property="og:type" content="article">
-<meta property="og:title" content="React流程图（完善ing...）">
-<meta property="og:url" content="https://l1ushun.github.io/2023/07/31/react-flow/index.html">
+    <meta name="description" content="路由导航Link基本使用 12345import Link from &quot;next&#x2F;link&quot;;export default async function Index() &amp;#123;    return &lt;Link href&#x3D;&quot;&#x2F;about&quot;&gt;To About&lt;&#x2F;Link&gt;&amp;#125;  useRouter12345678910&amp;#x">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Next（二） 路由">
+<meta property="og:url" content="https://l1ushun.github.io/2024/08/12/next-02/index.html">
 <meta property="og:site_name" content="liu的博客">
+<meta property="og:description" content="路由导航Link基本使用 12345import Link from &quot;next&#x2F;link&quot;;export default async function Index() &amp;#123;    return &lt;Link href&#x3D;&quot;&#x2F;about&quot;&gt;To About&lt;&#x2F;Link&gt;&amp;#125;  useRouter12345678910&amp;#x">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://l1ushun.github.io/img/react-logo.png">
-<meta property="article:published_time" content="2023-07-31T03:42:21.000Z">
-<meta property="article:modified_time" content="2023-10-12T09:56:38.896Z">
+<meta property="og:image" content="https://s21.ax1x.com/2024/08/08/pkzV4IK.jpg">
+<meta property="article:published_time" content="2024-08-12T01:52:12.000Z">
+<meta property="article:modified_time" content="2024-08-12T07:44:24.149Z">
 <meta property="article:author" content="liu shun">
 <meta property="article:tag" content="React">
+<meta property="article:tag" content="Next">
+<meta property="article:tag" content="ssr">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://l1ushun.github.io/img/react-logo.png">
+<meta name="twitter:image" content="https://s21.ax1x.com/2024/08/08/pkzV4IK.jpg">
   
   
   
-  <title>React流程图（完善ing...） - liu的博客</title>
+  <title>Next（二） 路由 - liu的博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -179,13 +183,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/react-logo.png') no-repeat center center; background-size: cover;">
+     style="background: url('https://s21.ax1x.com/2024/08/08/pkzV4IK.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="React流程图（完善ing...）"></span>
+            <span id="subtitle" data-typed-text="Next（二） 路由"></span>
           
         </div>
 
@@ -196,8 +200,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-07-31 11:42" pubdate>
-          2023年7月31日 中午
+        <time datetime="2024-08-12 09:52" pubdate>
+          2024年8月12日 上午
         </time>
       </span>
     
@@ -208,7 +212,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 字
+          2.9k 字
         
       </span>
     
@@ -219,7 +223,7 @@
         
         
         
-          1 分钟
+          24 分钟
         
       </span>
     
@@ -357,7 +361,7 @@
       
         <a href="/2024/08/12/next-02/" title="Next（二） 路由"
            class="list-group-item list-group-item-action
-           ">
+           active">
           <span class="category-post">Next（二） 路由</span>
         </a>
       
@@ -384,7 +388,7 @@
       
         <a href="/2023/07/31/react-flow/" title="React流程图（完善ing...）"
            class="list-group-item list-group-item-action
-           active">
+           ">
           <span class="category-post">React流程图（完善ing...）</span>
         </a>
       
@@ -641,12 +645,65 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">React流程图（完善ing...）</h1>
+            <h1 id="seo-header">Next（二） 路由</h1>
             
             
               <div class="markdown-body">
                 
-                <p><img src="/img/React%E6%B5%81%E7%A8%8B%E5%9B%BE.png" srcset="/img/loading.gif" lazyload alt="React流程图.png"></p>
+                <h1 id="路由导航"><a href="#路由导航" class="headerlink" title="路由导航"></a>路由导航</h1><h2 id="Link"><a href="#Link" class="headerlink" title="Link"></a>Link</h2><p>基本使用</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> <span class="hljs-title class_">Link</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;next/link&quot;</span>;<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">Index</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">return</span> <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">Link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;/about&quot;</span>&gt;</span>To About<span class="hljs-tag">&lt;/<span class="hljs-name">Link</span>&gt;</span></span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="useRouter"><a href="#useRouter" class="headerlink" title="useRouter"></a>useRouter</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-string">&#x27;use client&#x27;</span><br><span class="hljs-keyword">import</span> &#123;useRouter&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;next/navigation&#x27;</span><br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">Index</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">const</span> router = <span class="hljs-title function_">useRouter</span>();<br>    <span class="hljs-keyword">const</span> <span class="hljs-title function_">toAbout</span> = (<span class="hljs-params"></span>) =&gt; &#123;<br>        router.<span class="hljs-title function_">push</span>(<span class="hljs-string">&#x27;/about&#x27;</span>)<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">&#123;toAbout&#125;</span>&gt;</span>To About<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>使用 useRouter 必须在客户端组件，也就是在文件顶部加上 <code>&#39;use client&#39;</code> 还有就是 <code>useRouter</code> 是 “next&#x2F;navigation” 导入的，不是 “next&#x2F;router”。</p>
+<h2 id="redirect"><a href="#redirect" class="headerlink" title="redirect"></a>redirect</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">Index</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-title function_">redirect</span>(<span class="hljs-string">&#x27;/about&#x27;</span>)<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>服务端组件使用 redirect 进行重定向跳转。</p>
+<h2 id="history"><a href="#history" class="headerlink" title="history"></a>history</h2><p>history 是浏览器提供的原生跳转方式，有 pushState 和 replaceState 两种方式，前者是向路由栈推一条新的路由，后者是直接将当前条替换掉</p>
+<h2 id="跳转行为"><a href="#跳转行为" class="headerlink" title="跳转行为"></a>跳转行为</h2><p>在 App Router 下跳转后默认滚动到顶部，使用导航的前进后退会保持原来的滚动距离</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> <span class="hljs-title class_">Link</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;next/link&quot;</span>;<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">Index</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">return</span> <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">Link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;/about&quot;</span> <span class="hljs-attr">scroll</span>=<span class="hljs-string">&#123;false&#125;</span>&gt;</span>To About<span class="hljs-tag">&lt;/<span class="hljs-name">Link</span>&gt;</span></span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>通过给 Link 标签添加 scroll 属性，或者使用 router 跳转时第二个参数对象加上 <code>scroll: false</code> 禁用行为。</p>
+<h1 id="动态路由"><a href="#动态路由" class="headerlink" title="动态路由"></a>动态路由</h1><p>动态路由需要用<code>[]</code>将文件夹名包住，例如新建如下结构目录：<br><img src="https://s21.ax1x.com/2024/08/12/pApMnS0.png" srcset="/img/loading.gif" lazyload></p>
+<p>在 <code>src/app/dynamic-routing/[id]/page.js</code> 就是一个 id 的动态路由</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> (props) =&gt; &#123;<br>    <span class="hljs-keyword">const</span> &#123; params &#125; = props;<br>    <span class="hljs-keyword">return</span> <span class="language-xml"><span class="hljs-tag">&lt;&gt;</span>&#123;params.id&#125;<span class="hljs-tag">&lt;/&gt;</span></span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>这时访问 <code>/dynamic-routing/111</code> 页面现实的结果就是 111</p>
+<p>但如果有多个参数的情况以上方法就不好用了，这时只需要将文件夹的名改成 <code>[...params]</code>，声明接收所有参数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> (props) =&gt; &#123;<br>    <span class="hljs-keyword">const</span> params = <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(props.<span class="hljs-property">params</span>.<span class="hljs-property">params</span>)<br>    <span class="hljs-keyword">return</span> <span class="language-xml"><span class="hljs-tag">&lt;&gt;</span>&#123;params&#125;<span class="hljs-tag">&lt;/&gt;</span></span><br>&#125;<br></code></pre></td></tr></table></figure>
+<p>这时我们访问 <code>/dynamic-routing/name/age/hobby</code> 来看下效果</p>
+<p><img src="https://s21.ax1x.com/2024/08/12/pApMJYR.png" srcset="/img/loading.gif" lazyload></p>
+<p>可以看到的是参数是以数组的形式传递进来的。</p>
+<h1 id="路由组"><a href="#路由组" class="headerlink" title="路由组"></a>路由组</h1><p>通过使用 <code>()</code> 包裹文件夹名创建分组，通过 <code>()</code> 创建的文件夹不会出现在路由的路径中，例如下图 <code>(group1)</code> 和 <code>(group2)</code> 并不会对路由产生影响，也正因如此，<strong>即使在不同分组下，也不能创建同名的文件夹</strong></p>
+<p><img src="https://s21.ax1x.com/2024/08/12/pApQNNj.png" srcset="/img/loading.gif" lazyload alt="路由组"></p>
+<h2 id="多个根布局"><a href="#多个根布局" class="headerlink" title="多个根布局"></a>多个根布局</h2><p>使用路由组后，可以给每个组单独设置 layout，也就是在每个分组下新建 layout.js，如果这样做的话，就需要删除掉 app 下的 layout.js，并且因为是根布局，每个分组下的 layout 都需要有 <html> 和 <body> 标签。<br>只是删除 app 下的 layout.js 的话，还是会报错，因为还需要将 app 下的 page.js 放入到某一个分组下，需要注意的是，放在某个分组下就会使用这个分组的 layout。</p>
+<h2 id="平行路由"><a href="#平行路由" class="headerlink" title="平行路由"></a>平行路由</h2><p>当一个页面布局需要多个页面显示在一起的时候可以使用平行路由，通过 <code>@</code> 作为文件夹的开头声明这是一个平行路由，在平行路由的 layout 中通过 props 拿到并渲染</p>
+<p><img src="https://s21.ax1x.com/2024/08/12/pApQIKK.png" srcset="/img/loading.gif" lazyload alt="目录结构"></p>
+<p>layout.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">RootLayout</span>(<span class="hljs-params">&#123; children, address, contact &#125;</span>) &#123;<br>  <span class="hljs-keyword">return</span> (<br>    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span></span><br><span class="language-xml">        &#123;children&#125;</span><br><span class="language-xml">        &#123;address&#125;</span><br><span class="language-xml">        &#123;contact&#125;</span><br><span class="language-xml">      <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></span><br>  )<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>并且平行路由还可以嵌套子路由，例如在 @address 下新增 detail&#x2F;page.js ，然后在 layout 中加入跳转 <code>&lt;Link href=&quot;/detail&quot;&gt;to detail&lt;/Link&gt;</code></p>
+<p><img src="/img/next-10.gif" srcset="/img/loading.gif" lazyload alt="效果图"></p>
+<p>可以看到当进行跳转时，只有 address 部分进行了更新，然后我们刷新页面会发现页面404了</p>
+<p><img src="https://s21.ax1x.com/2024/08/12/pAp3MC9.png" srcset="/img/loading.gif" lazyload></p>
+<p>为什么会出现以上的情况呢？简单来说我们给 @address 加了 detail 的子路由，而 @contact 没有，当通过 Link 软导航跳转时，Next 进行了部分渲染，也就是对匹配上路由的 @address 进行更新，而 @contact 匹配不上，保留了原来的状态，当我们刷新浏览器进行硬导航时，Next 没办法判断不匹配路由，也就是 @contact 的状态没办法进行渲染，所以 404。</p>
+<p>想要解决 404 的问题，我们需要给不匹配的路由增加 default.js 在不匹配时显示</p>
+<p><img src="https://s21.ax1x.com/2024/08/12/pAp325Q.png" srcset="/img/loading.gif" lazyload></p>
+<p>效果<br><img src="/img/next-12.gif" srcset="/img/loading.gif" lazyload></p>
+<h1 id="路由拦截"><a href="#路由拦截" class="headerlink" title="路由拦截"></a>路由拦截</h1><p>Next 提供路由拦截功能，当从一个路由跳转到新的路由可以进行拦截渲染。</p>
+<p>实现方式：在文件夹名前加上 <code>(.)</code> 声明拦截路由，按照官网说的不同数量的 . 代表拦截不同层级</p>
+<ul>
+<li>(.)来匹配同一层级</li>
+<li>(…)来匹配上一层级</li>
+<li>(…)(…)来匹配上两层</li>
+<li>(…)来匹配应用程序根目录</li>
+</ul>
+<p>我们新建一个 product ，这里希望使用 (.)detail 拦截 <code>&#39;/product/detail&#39;</code></p>
+<p><img src="https://s21.ax1x.com/2024/08/12/pApGlm6.png" srcset="/img/loading.gif" lazyload alt="目录结构"></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// (.)detail/page.js</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> () =&gt; &#123;<br>    <span class="hljs-keyword">return</span><span class="language-xml"><span class="hljs-tag">&lt;&gt;</span>拦截 Product Detail<span class="hljs-tag">&lt;/&gt;</span></span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>剩下的文件随便写点内容即可，我们看下效果</p>
+<p><img src="/img/next-15.gif" srcset="/img/loading.gif" lazyload></p>
+<p>可以看到当我们从 &#x2F;product 跳转到 &#x2F;product&#x2F;detail 时被拦截了，而我们硬导航刷新页面则不会被拦截。</p>
 
                 
               </div>
@@ -682,6 +739,10 @@
       
         <a href="/tags/React/" class="print-no-link">#React</a>
       
+        <a href="/tags/Next/" class="print-no-link">#Next</a>
+      
+        <a href="/tags/ssr/" class="print-no-link">#ssr</a>
+      
     </div>
   
 </div>
@@ -692,8 +753,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>React流程图（完善ing...）</div>
-      <div>https://l1ushun.github.io/2023/07/31/react-flow/</div>
+      <div>Next（二） 路由</div>
+      <div>https://l1ushun.github.io/2024/08/12/next-02/</div>
     </div>
     <div class="license-meta">
       
@@ -705,7 +766,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年7月31日</div>
+          <div>2024年8月12日</div>
         </div>
       
       
@@ -737,18 +798,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/08/04/vite-01/" title="Vite-快速入门">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Vite-快速入门</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/07/21/diff/" title="React原理之diff流程">
-                        <span class="hidden-mobile">React原理之diff流程</span>
+                      <a href="/2024/08/08/next-01/" title="Next（一） 快速入门">
+                        <span class="hidden-mobile">Next（一） 快速入门</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
