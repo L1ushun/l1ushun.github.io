@@ -16,25 +16,26 @@
   <meta name="author" content="liu shun">
   <meta name="keywords" content="博客,前端,git">
   
-    <meta name="description" content="什么是策略模式 定义一系列的算法，把它们一个个封装起来，并且使它们可以相互替换。  简单说就是对于不同的场景，我们才采取不同的方式来应对。举几个简单的小例子：  我们要组装一台电脑，如果预算充足的话，那就可以什么都用顶配，如果预算不够，那就追求性价比，用最少的预算获得最高的性能，如果基本没有什么预算，那就只能楼下网吧对付一下了，对于不同的预算就需要不同的策略。 在网购过程中，我们买的东西越多，相应">
+    <meta name="description" content="项目初始化手动创建 Next 项目第一步：创建文件夹 next-demo第二步：初始化 package.json  1npm init -y 第三步；安装 next react 1npm install next@latest react@latest react-dom@latest 第四步：package.json 添加执行命令 12345678&amp;#123;  &quot;scripts&amp;qu">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaScript设计模式(二)：策略模式">
-<meta property="og:url" content="https://l1ushun.github.io/2023/10/10/design-strategy/index.html">
+<meta property="og:title" content="Next 入门（一）">
+<meta property="og:url" content="https://l1ushun.github.io/2024/08/08/next-01/index.html">
 <meta property="og:site_name" content="liu的博客">
-<meta property="og:description" content="什么是策略模式 定义一系列的算法，把它们一个个封装起来，并且使它们可以相互替换。  简单说就是对于不同的场景，我们才采取不同的方式来应对。举几个简单的小例子：  我们要组装一台电脑，如果预算充足的话，那就可以什么都用顶配，如果预算不够，那就追求性价比，用最少的预算获得最高的性能，如果基本没有什么预算，那就只能楼下网吧对付一下了，对于不同的预算就需要不同的策略。 在网购过程中，我们买的东西越多，相应">
+<meta property="og:description" content="项目初始化手动创建 Next 项目第一步：创建文件夹 next-demo第二步：初始化 package.json  1npm init -y 第三步；安装 next react 1npm install next@latest react@latest react-dom@latest 第四步：package.json 添加执行命令 12345678&amp;#123;  &quot;scripts&amp;qu">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://l1ushun.github.io/img/javascript.png">
-<meta property="article:published_time" content="2023-10-10T11:14:25.000Z">
-<meta property="article:modified_time" content="2023-10-12T09:56:15.240Z">
+<meta property="og:image" content="https://s21.ax1x.com/2024/08/08/pkzV4IK.jpg">
+<meta property="article:published_time" content="2024-08-08T02:29:14.000Z">
+<meta property="article:modified_time" content="2024-08-12T01:46:13.645Z">
 <meta property="article:author" content="liu shun">
-<meta property="article:tag" content="JavaScript">
-<meta property="article:tag" content="设计模式">
+<meta property="article:tag" content="React">
+<meta property="article:tag" content="Next">
+<meta property="article:tag" content="ssr">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://l1ushun.github.io/img/javascript.png">
+<meta name="twitter:image" content="https://s21.ax1x.com/2024/08/08/pkzV4IK.jpg">
   
   
   
-  <title>JavaScript设计模式(二)：策略模式 - liu的博客</title>
+  <title>Next 入门（一） - liu的博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -182,13 +183,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/javascript.png') no-repeat center center; background-size: cover;">
+     style="background: url('https://s21.ax1x.com/2024/08/08/pkzV4IK.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="JavaScript设计模式(二)：策略模式"></span>
+            <span id="subtitle" data-typed-text="Next 入门（一）"></span>
           
         </div>
 
@@ -199,8 +200,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-10-10 19:14" pubdate>
-          2023年10月10日 晚上
+        <time datetime="2024-08-08 10:29" pubdate>
+          2024年8月8日 上午
         </time>
       </span>
     
@@ -211,7 +212,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.9k 字
+          3.2k 字
         
       </span>
     
@@ -222,7 +223,7 @@
         
         
         
-          17 分钟
+          27 分钟
         
       </span>
     
@@ -315,7 +316,7 @@
       
         <a href="/2023/10/10/design-strategy/" title="JavaScript设计模式(二)：策略模式"
            class="list-group-item list-group-item-action
-           active">
+           ">
           <span class="category-post">JavaScript设计模式(二)：策略模式</span>
         </a>
       
@@ -351,7 +352,7 @@
       
         <a href="/2024/08/08/next-01/" title="Next 入门（一）"
            class="list-group-item list-group-item-action
-           ">
+           active">
           <span class="category-post">Next 入门（一）</span>
         </a>
       
@@ -635,34 +636,57 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">JavaScript设计模式(二)：策略模式</h1>
+            <h1 id="seo-header">Next 入门（一）</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="什么是策略模式"><a href="#什么是策略模式" class="headerlink" title="什么是策略模式"></a>什么是策略模式</h1><blockquote>
-<p><strong>定义一系列的算法，把它们一个个封装起来，并且使它们可以相互替换</strong>。</p>
-</blockquote>
-<p>简单说就是对于不同的场景，我们才采取不同的方式来应对。举几个简单的小例子：</p>
-<ol>
-<li>我们要组装一台电脑，如果预算充足的话，那就可以什么都用顶配，如果预算不够，那就追求性价比，用最少的预算获得最高的性能，如果基本没有什么预算，那就只能楼下网吧对付一下了，对于不同的预算就需要不同的策略。</li>
-<li>在网购过程中，我们买的东西越多，相应的满减金额越多，能用的红包金额越大，省的钱越多。对于不同的金额，需要不同的计算策略。</li>
-<li>年底计算绩效，不同的评分队对应不同的等级，需要不同的计算策略。</li>
-</ol>
-<h1 id="传统的策略模式"><a href="#传统的策略模式" class="headerlink" title="传统的策略模式"></a>传统的策略模式</h1><p>传统的策略模式一般分成两个部分，一个是接受调用，然后委托给某个策略来完成相应的功能，另一个部分就是把一系列的算法封装成一个个策略类。</p>
-<h2 id="举个例子"><a href="#举个例子" class="headerlink" title="举个例子"></a>举个例子</h2><p>我们去某商场购物，如果拥有该商场的 vip 那么就能在总价的基础上进行打折，vip 分为 S 等级和 A 等级。</p>
-<p>首先我们把不同的等级的计算策略封装起来，S 等级的 vip 可以打8折，A 等级的 vip 可以打九折。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> <span class="hljs-title class_">VipS</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;&#125;;<br><br><span class="hljs-title class_">VipS</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">discount</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params">totalPrice</span>) &#123;<br>    <span class="hljs-keyword">return</span> totalPrice * <span class="hljs-number">0.8</span>;<br>&#125;<br><br><span class="hljs-keyword">const</span> <span class="hljs-title class_">VipA</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;&#125;;<br><br><span class="hljs-title class_">VipA</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">discount</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params">totalPrice</span>) &#123;<br>    <span class="hljs-keyword">return</span> totalPrice * <span class="hljs-number">0.9</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>然后再来写商品总价的类</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> <span class="hljs-title class_">GoodsPrice</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;&#125;;<br><br><span class="hljs-title class_">GoodsPrice</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">setTotalPrice</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params">totalPrice</span>) &#123;<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">totalPrice</span> = totalPrice;<br>&#125;<br><br><span class="hljs-title class_">GoodsPrice</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">setCalculateMethod</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params">obj</span>) &#123;<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">calculateMethod</span> = obj.<span class="hljs-property">discount</span>;<br>&#125;<br><br><span class="hljs-title class_">GoodsPrice</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">getActualAmount</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">calculateMethod</span> ? <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">calculateMethod</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">totalPrice</span>) : <span class="hljs-variable language_">this</span>.<span class="hljs-property">totalPrice</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>通过 setTotalPrice 方法来设置原价的金额，通过 setCalculateMethod 方法来设置我们要执行的策略，最后通过 getActualAmount 来计算出应付金额。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> goods = <span class="hljs-keyword">new</span> <span class="hljs-title class_">GoodsPrice</span>();<br>goods.<span class="hljs-title function_">setTotalPrice</span>(<span class="hljs-number">1000</span>);<br>goods.<span class="hljs-title function_">setCalculateMethod</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">VipS</span>());<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(goods.<span class="hljs-title function_">getActualAmount</span>())    <span class="hljs-comment">// 800</span><br></code></pre></td></tr></table></figure>
+                <h1 id="项目初始化"><a href="#项目初始化" class="headerlink" title="项目初始化"></a>项目初始化</h1><h2 id="手动创建-Next-项目"><a href="#手动创建-Next-项目" class="headerlink" title="手动创建 Next 项目"></a>手动创建 Next 项目</h2><p>第一步：创建文件夹 next-demo<br>第二步：初始化 package.json </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">npm init -y<br></code></pre></td></tr></table></figure>
+<p>第三步；安装 next react</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">npm install next@latest react@latest react-dom@latest<br></code></pre></td></tr></table></figure>
+<p>第四步：package.json 添加执行命令</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;scripts&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;dev&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;next dev&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;build&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;next build&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;start&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;next start&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;lint&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;next lint&quot;</span><br>  <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+<p>第五步：新建 layout 文件 src&#x2F;app&#x2F;layout.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">RootLayout</span>(<span class="hljs-params">&#123; children &#125;</span>) &#123;<br>    <span class="hljs-keyword">return</span> (<br>        <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span></span><br><span class="language-xml">            <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>&#123;children&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span></span><br><span class="language-xml">        <span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></span><br>    );<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>第六步：新建 page 文件 src&#x2F;app&#x2F;page.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">Home</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">return</span> (<br>        <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">main</span>&gt;</span></span><br><span class="language-xml">            <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Hello Next<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span><br><span class="language-xml">        <span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span></span><br>    );<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>然后执行 dev 命令就能启动项目了</p>
+<h2 id="通过-create-next-app-脚手架创建项目"><a href="#通过-create-next-app-脚手架创建项目" class="headerlink" title="通过 create-next-app 脚手架创建项目"></a>通过 create-next-app 脚手架创建项目</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">npx create-next-app@latest<br></code></pre></td></tr></table></figure>
 
-<p>由于我们的场景逻辑比较单一，所以使用策略模式反而看起来反而把问题搞复杂了，但如果在复杂的逻辑场景，例如我们在以上的场景下增加更多更细致的优惠方案策略，使用策略模式能让我们的代码逻辑更加清晰。</p>
-<h1 id="Javascript-的策略模式"><a href="#Javascript-的策略模式" class="headerlink" title="Javascript 的策略模式"></a>Javascript 的策略模式</h1><p>在 Javascript 语言中，函数也是对象，我们可以把 n 个策略直接放到一个对象中。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> strategies = &#123;<br>    <span class="hljs-string">&#x27;vipS&#x27;</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">totalPrice</span>) &#123;<br>        <span class="hljs-keyword">return</span> totalPrice * <span class="hljs-number">0.8</span>;<br>    &#125;,<br>    <span class="hljs-string">&#x27;vipA&#x27;</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">totalPrice</span>) &#123;<br>        <span class="hljs-keyword">return</span> totalPrice * <span class="hljs-number">0.9</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> calculateActualAmount = <span class="hljs-keyword">function</span>(<span class="hljs-params"> level, price </span>)&#123;<br>    <span class="hljs-keyword">return</span> level ? strategies[ level ]( price ) : price;<br>&#125;;<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>( <span class="hljs-title function_">calculateActualAmount</span>( <span class="hljs-string">&#x27;vipS&#x27;</span>, <span class="hljs-number">1000</span> ) );<br></code></pre></td></tr></table></figure>
-<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>策略模式主要解决的就是很多相同的算法，我们一个个去使用 if…else… 去判断很麻烦，而且也不容易维护，代码可读性不高，所以我们把每个分支拆解成策略，避免使用多重判断。但还要注意的是如果策略过多的话，可能使用策略模式也并不那么合适，就需要考虑其他的设计模式来解决问题了。</p>
+<p><img src="https://s21.ax1x.com/2024/08/08/pkzEA6s.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="App-Router"><a href="#App-Router" class="headerlink" title="App Router"></a>App Router</h1><p>在 Next 13.4 版本后推荐使用 App Route 在上文通过 create-next-app 脚手架创建项目时，有个选项就是是否使用 App Router</p>
+<h2 id="页面"><a href="#页面" class="headerlink" title="页面"></a>页面</h2><p><img src="https://s21.ax1x.com/2024/08/08/pkzVnKA.png" srcset="/img/loading.gif" lazyload></p>
+<p>创建如上的目录结构，page.js 可以理解为对应的页面文件，app 下的 page.js 对应的路由就是 &#x2F; about 文件下的 page.js 对应的路由就是 &#x2F;about 如果目录下没有 page.js 文件，也就不会生成对应的路由</p>
+<h2 id="Layout-布局"><a href="#Layout-布局" class="headerlink" title="Layout 布局"></a>Layout 布局</h2><p>Layout 相当于页面的“壳”，每个页面都会在 layout 下，另外还可以给每个页面单独设置一个 layout，例如在 about 目录下新建 layout.js 文件</p>
+<p><img src="https://s21.ax1x.com/2024/08/08/pkzV6xJ.png" srcset="/img/loading.gif" lazyload></p>
+<p>最后呈现的效果大概是这样，Layout 就是最外层 app&#x2F;layout.js About Page 是 about&#x2F;layout.js</p>
+<h3 id="根目录的-layout"><a href="#根目录的-layout" class="headerlink" title="根目录的 layout"></a>根目录的 layout</h3><p>根目录下的 layout 有一点特殊，首先这个文件是必需的，另外这个文件必须有 html 和 body 标签，而其他的 layout 不能有</p>
+<h2 id="模板-template"><a href="#模板-template" class="headerlink" title="模板 template"></a>模板 template</h2><p>模板和 layout 的区别在于 template 没有办法保持状态。</p>
+<p>TODO：ps</p>
+<h2 id="加载-loading"><a href="#加载-loading" class="headerlink" title="加载 loading"></a>加载 loading</h2><p>在页面同级下创建 loading.js，以上例子是 about&#x2F;loading.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">DashboardLoading</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">return</span> <span class="language-xml"><span class="hljs-tag">&lt;&gt;</span>Loading...<span class="hljs-tag">&lt;/&gt;</span></span><br>&#125;<br></code></pre></td></tr></table></figure>
+<p>然后在 about&#x2F;page.js 中</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">About</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">getData</span>(<span class="hljs-params"></span>) &#123;<br>        <span class="hljs-keyword">await</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve</span>) =&gt;</span> <span class="hljs-built_in">setTimeout</span>(resolve, <span class="hljs-number">3000</span>))<br>        <span class="hljs-keyword">return</span> &#123;<br>            <span class="hljs-attr">data</span>: <span class="hljs-string">&#x27;About Page&#x27;</span>,<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">const</span> &#123; data &#125; = <span class="hljs-keyword">await</span> <span class="hljs-title function_">getData</span>();<br>    <span class="hljs-keyword">return</span> <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>&#123;data&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>这时再进入到 about 页面就会先出现 Loading… 等到 page.js 内的请求完毕 loading 关闭，所以 page 必须是一个异步函数，或者使用 React 的 use 函数才能触发 loading</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">About</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">getData</span>(<span class="hljs-params"></span>) &#123;<br>        <span class="hljs-keyword">await</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve</span>) =&gt;</span> <span class="hljs-built_in">setTimeout</span>(resolve, <span class="hljs-number">3000</span>))<br>        <span class="hljs-keyword">return</span> &#123;<br>            <span class="hljs-attr">data</span>: <span class="hljs-string">&#x27;About Page&#x27;</span>,<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">const</span> &#123; data &#125; = <span class="hljs-title class_">React</span>.<span class="hljs-title function_">use</span>(<span class="hljs-title function_">getData</span>());<br>    <span class="hljs-keyword">return</span> <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>&#123;data&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+<p>loading 会给 page 包一层 <code>&lt;Suspense&gt;</code> 用来捕获 page 加载的 promise，实现 loading 效果。</p>
+<h2 id="错误-error"><a href="#错误-error" class="headerlink" title="错误 error"></a>错误 error</h2><p>通过 error 可以在页面发生错误时，展示 error</p>
+<p>还是页面的同级目录创建 error.js，另外需要注意的是 error 组件必须是客户端组件。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-string">&#x27;use client&#x27;</span><br><span class="hljs-keyword">import</span> &#123; useEffect &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;react&#x27;</span><br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">Error</span>(<span class="hljs-params">&#123; error, reset &#125;</span>) &#123;<br>    <span class="hljs-title function_">useEffect</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(error)<br>    &#125;, [error])<br><br>    <span class="hljs-keyword">return</span> (<br>        <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">            <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Something went wrong!<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span></span><br><span class="language-xml">            <span class="hljs-tag">&lt;<span class="hljs-name">button</span></span></span><br><span class="hljs-tag"><span class="language-xml">                <span class="hljs-attr">onClick</span>=<span class="hljs-string">&#123;</span></span></span><br><span class="hljs-tag"><span class="language-xml">                    // <span class="hljs-attr">尝试恢复</span></span></span><br><span class="hljs-tag"><span class="language-xml">                    () =&gt;</span> reset()</span><br><span class="language-xml">                &#125;</span><br><span class="language-xml">            &gt;</span><br><span class="language-xml">                Try again</span><br><span class="language-xml">            <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span><br><span class="language-xml">        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>    )<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>error 会给 page 包一层 <code>&lt;ErrorBoundary&gt;</code> </p>
+<h3 id="全局错误处理-global-error"><a href="#全局错误处理-global-error" class="headerlink" title="全局错误处理 global-error"></a>全局错误处理 global-error</h3><h1 id="404页面-not-found"><a href="#404页面-not-found" class="headerlink" title="404页面 not-found"></a>404页面 not-found</h1><p>next 存在默认的 404 页面<br><img src="https://s21.ax1x.com/2024/08/08/pkzUgQs.png" srcset="/img/loading.gif" lazyload alt="next-404"></p>
+<p>如果想要自定义 404 页面，可以在 app 目录下新增一个 not-found.js 作为 404 页面。</p>
+<h2 id="跳转-404"><a href="#跳转-404" class="headerlink" title="跳转 404"></a>跳转 404</h2><p>next 有两种方式可以触发 not-found，第一种是执行 notFound 函数，第二种是路由找不到的情况。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> &#123; notFound &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;next/navigation&#x27;</span><br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">Index</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-title function_">notFound</span>()<br><br>    <span class="hljs-comment">// ...</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h1 id="层级关系"><a href="#层级关系" class="headerlink" title="层级关系"></a>层级关系</h1><p><img src="https://s21.ax1x.com/2024/08/12/pApKpb4.png" srcset="/img/loading.gif" lazyload alt="文件结构"></p>
+<p>层级结构：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;<span class="hljs-title class_">Layout</span>&gt;<br>    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">Tempolate</span>&gt;</span></span><br><span class="language-xml">        <span class="hljs-tag">&lt;<span class="hljs-name">ErrorBoundary</span> <span class="hljs-attr">fallback</span>=<span class="hljs-string">&#123;&#123;</span>&lt;<span class="hljs-attr">Error</span>/&gt;</span>&#125;&#125;&gt;</span><br><span class="language-xml">            <span class="hljs-tag">&lt;<span class="hljs-name">Suspense</span> <span class="hljs-attr">fallback</span>=<span class="hljs-string">&#123;</span>&lt;<span class="hljs-attr">Loading</span>/&gt;</span>&#125;&gt;</span><br><span class="language-xml">                <span class="hljs-tag">&lt;<span class="hljs-name">ErrorBoundary</span> <span class="hljs-attr">fallback</span>=<span class="hljs-string">&#123;</span>&lt;<span class="hljs-attr">NotFound</span>/&gt;</span>&#125;&gt;</span><br><span class="language-xml">                    <span class="hljs-tag">&lt;<span class="hljs-name">Page</span> /&gt;</span></span><br><span class="language-xml">                <span class="hljs-tag">&lt;/<span class="hljs-name">ErrorBoundary</span>&gt;</span></span><br><span class="language-xml">            <span class="hljs-tag">&lt;/<span class="hljs-name">Suspense</span>&gt;</span></span><br><span class="language-xml">        <span class="hljs-tag">&lt;/<span class="hljs-name">ErrorBoundary</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">Tempolate</span>&gt;</span></span><br>&lt;/<span class="hljs-title class_">Layout</span>&gt;<br></code></pre></td></tr></table></figure>
 
                 
               </div>
@@ -696,9 +720,11 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/JavaScript/" class="print-no-link">#JavaScript</a>
+        <a href="/tags/React/" class="print-no-link">#React</a>
       
-        <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="print-no-link">#设计模式</a>
+        <a href="/tags/Next/" class="print-no-link">#Next</a>
+      
+        <a href="/tags/ssr/" class="print-no-link">#ssr</a>
       
     </div>
   
@@ -710,8 +736,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>JavaScript设计模式(二)：策略模式</div>
-      <div>https://l1ushun.github.io/2023/10/10/design-strategy/</div>
+      <div>Next 入门（一）</div>
+      <div>https://l1ushun.github.io/2024/08/08/next-01/</div>
     </div>
     <div class="license-meta">
       
@@ -723,7 +749,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年10月10日</div>
+          <div>2024年8月8日</div>
         </div>
       
       
@@ -755,18 +781,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/10/11/design-proxy/" title="JavaScript设计模式(三)：代理模式">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">JavaScript设计模式(三)：代理模式</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/09/13/design-mode/" title="JavaScript设计模式(一)：单例模式、工厂模式">
-                        <span class="hidden-mobile">JavaScript设计模式(一)：单例模式、工厂模式</span>
+                      <a href="/2024/07/28/this-topic/" title="关于原型的 JS 题">
+                        <span class="hidden-mobile">关于原型的 JS 题</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
