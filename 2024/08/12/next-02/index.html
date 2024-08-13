@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://s21.ax1x.com/2024/08/08/pkzV4IK.jpg">
 <meta property="article:published_time" content="2024-08-12T01:52:12.000Z">
-<meta property="article:modified_time" content="2024-08-12T07:44:24.149Z">
+<meta property="article:modified_time" content="2024-08-13T01:07:51.512Z">
 <meta property="article:author" content="liu shun">
 <meta property="article:tag" content="React">
 <meta property="article:tag" content="Next">
@@ -212,7 +212,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.9k 字
+          3.9k 字
         
       </span>
     
@@ -223,7 +223,7 @@
         
         
         
-          24 分钟
+          33 分钟
         
       </span>
     
@@ -693,8 +693,8 @@
 <p>实现方式：在文件夹名前加上 <code>(.)</code> 声明拦截路由，按照官网说的不同数量的 . 代表拦截不同层级</p>
 <ul>
 <li>(.)来匹配同一层级</li>
-<li>(…)来匹配上一层级</li>
-<li>(…)(…)来匹配上两层</li>
+<li>(..)来匹配上一层级</li>
+<li>(..)(..)来匹配上两层</li>
 <li>(…)来匹配应用程序根目录</li>
 </ul>
 <p>我们新建一个 product ，这里希望使用 (.)detail 拦截 <code>&#39;/product/detail&#39;</code></p>
@@ -704,6 +704,24 @@
 <p>剩下的文件随便写点内容即可，我们看下效果</p>
 <p><img src="/img/next-15.gif" srcset="/img/loading.gif" lazyload></p>
 <p>可以看到当我们从 &#x2F;product 跳转到 &#x2F;product&#x2F;detail 时被拦截了，而我们硬导航刷新页面则不会被拦截。</p>
+<h1 id="路由处理程序"><a href="#路由处理程序" class="headerlink" title="路由处理程序"></a>路由处理程序</h1><p>Next 中命名为 route.js 的文件路由处理程序，也就是负责请求的文件，该文件必须在 app 目录下，并且不能和 page.js 同级。因为在同级的情况下，请求和页面路径相同产生冲突。</p>
+<p>我们新增 api&#x2F;test&#x2F;route.js 文件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">GET</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">return</span>  <span class="hljs-keyword">await</span> <span class="hljs-title function_">fetch</span>(<span class="hljs-string">&quot;xxxxxxxxx&quot;</span>)<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>这里写了一个最简单的 GET 请求，通过 <code>/api/test</code> 即可访问接口，除了 GET 请求还有 POST、PUT、PATCH、DELETE、HEAD 和 OPTIONS ，另外每个请求都有两个参数 request 和 context。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">GET</span>(<span class="hljs-params">request, context</span>)&#123;&#125;<br><span class="hljs-keyword">export</span> <span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">POST</span>(<span class="hljs-params">request, context</span>)&#123;&#125;<br><span class="hljs-comment">// ...</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="request"><a href="#request" class="headerlink" title="request"></a>request</h2><p>request 是对 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/Request">Web Request API</a> 的扩展</p>
+<p><img src="https://s21.ax1x.com/2024/08/12/pApNPCF.png" srcset="/img/loading.gif" lazyload alt="request"></p>
+<h3 id="通过-request-获取-search-参数"><a href="#通过-request-获取-search-参数" class="headerlink" title="通过 request 获取 search 参数"></a>通过 request 获取 search 参数</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">GET</span>(<span class="hljs-params">request</span>) &#123;<br>    <span class="hljs-keyword">const</span> field = request.<span class="hljs-property">nextUrl</span>.<span class="hljs-property">searchParams</span>.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;name&quot;</span>)<br>    <span class="hljs-comment">// ....</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>通过 request.nextUrl.searchParams.get() 的方法来获取 search 参数</p>
+<h3 id="通过-request-获取-body-参数"><a href="#通过-request-获取-body-参数" class="headerlink" title="通过 request 获取 body 参数"></a>通过 request 获取 body 参数</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">POST</span>(<span class="hljs-params">request</span>) &#123;<br>    <span class="hljs-keyword">const</span> res = <span class="hljs-keyword">await</span> request.<span class="hljs-title function_">json</span>()<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res)<br>    <span class="hljs-keyword">return</span> <span class="hljs-title class_">Response</span>.<span class="hljs-title function_">json</span>(&#123; res &#125;)<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>这里我们写一个 POST 请求，然后随便传递参数进来看打印结果。</p>
+<p><img src="https://s21.ax1x.com/2024/08/12/pApNkv9.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="context"><a href="#context" class="headerlink" title="context"></a>context</h2><p>context 只有一个 params，这里我们新建目录来测试<br><img src="https://s21.ax1x.com/2024/08/12/pApNmE6.png" srcset="/img/loading.gif" lazyload></p>
+<p>我们让接口地址传入一个 name 参数进来，看看 context 会打印出什么</p>
+<p><img src="https://s21.ax1x.com/2024/08/12/pApNu4O.png" srcset="/img/loading.gif" lazyload></p>
+<p>我接口调用 <code>/api/jack</code> 可以看到 context 输出了 name为 jack 的对象，如果有多个参数需要传递，也可以使用上文说到的 <code>[...params]</code> 的方式命名文件夹，参数会以数组的形式传递进来。</p>
 
                 
               </div>
