@@ -4,7 +4,7 @@
   
   
   <entry>
-    <title>Next（二） 路由</title>
+    <title>Next 路由篇</title>
     <link href="/2024/08/12/next-02/"/>
     <url>/2024/08/12/next-02/</url>
     
@@ -26,6 +26,8 @@
       
       <tag>ssr</tag>
       
+      <tag>ssg</tag>
+      
     </tags>
     
   </entry>
@@ -33,7 +35,7 @@
   
   
   <entry>
-    <title>Next（一） 快速入门</title>
+    <title>Next 入门篇</title>
     <link href="/2024/08/08/next-01/"/>
     <url>/2024/08/08/next-01/</url>
     
@@ -54,6 +56,8 @@
       <tag>Next</tag>
       
       <tag>ssr</tag>
+      
+      <tag>ssg</tag>
       
     </tags>
     
