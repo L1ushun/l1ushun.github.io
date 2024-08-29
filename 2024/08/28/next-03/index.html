@@ -16,24 +16,27 @@
   <meta name="author" content="liu shun">
   <meta name="keywords" content="博客,前端,git">
   
-    <meta name="description" content="组件更新patchvue 在更新的时候，使用 patch 方法更新新老节点，判断老节点是否可以复用在 patch 时会先比较新老节点的类型，比较的方式就是判断 type 和 key 是否都相等，类型不同代表不能复用，直接卸载。然后判断新节点的类型， 在这里可以看到有三种类型的节点，使用不同的方法进行处理： 文本节点 Fragment 节点，vue3 引入 Fragment，在 vue3 的模板中可">
+    <meta name="description" content="Image使用Image 是 Next 提供的组件之一，使用 Image 时就像使用 Image 标签一样。 123456789101112import Image from &amp;#x27;next&#x2F;image&amp;#x27; export default function Page() &amp;#123;  return (    &lt;Image      src&#x3D;&quot;&#x2F;profile.png&amp;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="了解Vue3是如何进行组件更新的">
-<meta property="og:url" content="https://l1ushun.github.io/2024/05/17/vue3-diff/index.html">
+<meta property="og:title" content="Next 组件篇">
+<meta property="og:url" content="https://l1ushun.github.io/2024/08/28/next-03/index.html">
 <meta property="og:site_name" content="liu的博客">
-<meta property="og:description" content="组件更新patchvue 在更新的时候，使用 patch 方法更新新老节点，判断老节点是否可以复用在 patch 时会先比较新老节点的类型，比较的方式就是判断 type 和 key 是否都相等，类型不同代表不能复用，直接卸载。然后判断新节点的类型， 在这里可以看到有三种类型的节点，使用不同的方法进行处理： 文本节点 Fragment 节点，vue3 引入 Fragment，在 vue3 的模板中可">
+<meta property="og:description" content="Image使用Image 是 Next 提供的组件之一，使用 Image 时就像使用 Image 标签一样。 123456789101112import Image from &amp;#x27;next&#x2F;image&amp;#x27; export default function Page() &amp;#123;  return (    &lt;Image      src&#x3D;&quot;&#x2F;profile.png&amp;">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://s21.ax1x.com/2024/03/21/pFfabqI.jpg">
-<meta property="article:published_time" content="2024-05-17T08:40:37.000Z">
-<meta property="article:modified_time" content="2024-05-31T03:31:38.452Z">
+<meta property="og:image" content="https://nextjs.org/_next/image?url=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Fv1714730590%2Ffront%2Fnextjs%2Fuwu%2Fnext-uwu-logo.png&w=640&q=75">
+<meta property="article:published_time" content="2024-08-28T08:25:14.000Z">
+<meta property="article:modified_time" content="2024-08-29T07:35:33.467Z">
 <meta property="article:author" content="liu shun">
-<meta property="article:tag" content="Vue">
+<meta property="article:tag" content="React">
+<meta property="article:tag" content="Next">
+<meta property="article:tag" content="ssr">
+<meta property="article:tag" content="ssg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://s21.ax1x.com/2024/03/21/pFfabqI.jpg">
+<meta name="twitter:image" content="https://nextjs.org/_next/image?url=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Fv1714730590%2Ffront%2Fnextjs%2Fuwu%2Fnext-uwu-logo.png&w=640&q=75">
   
   
   
-  <title>了解Vue3是如何进行组件更新的 - liu的博客</title>
+  <title>Next 组件篇 - liu的博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -181,13 +184,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('https://s21.ax1x.com/2024/03/21/pFfabqI.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('https://www.nextjs.cn/static/images/nextjs-big-logo.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="了解Vue3是如何进行组件更新的"></span>
+            <span id="subtitle" data-typed-text="Next 组件篇"></span>
           
         </div>
 
@@ -198,8 +201,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-05-17 16:40" pubdate>
-          2024年5月17日 下午
+        <time datetime="2024-08-28 16:25" pubdate>
+          2024年8月28日 下午
         </time>
       </span>
     
@@ -210,7 +213,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.8k 字
+          3.7k 字
         
       </span>
     
@@ -221,7 +224,7 @@
         
         
         
-          15 分钟
+          31 分钟
         
       </span>
     
@@ -359,7 +362,7 @@
       
         <a href="/2024/08/28/next-03/" title="Next 组件篇"
            class="list-group-item list-group-item-action
-           ">
+           active">
           <span class="category-post">Next 组件篇</span>
         </a>
       
@@ -539,7 +542,7 @@
       
         <a href="/2024/05/17/vue3-diff/" title="了解Vue3是如何进行组件更新的"
            class="list-group-item list-group-item-action
-           active">
+           ">
           <span class="category-post">了解Vue3是如何进行组件更新的</span>
         </a>
       
@@ -652,100 +655,67 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">了解Vue3是如何进行组件更新的</h1>
+            <h1 id="seo-header">Next 组件篇</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="组件更新"><a href="#组件更新" class="headerlink" title="组件更新"></a>组件更新</h1><h2 id="patch"><a href="#patch" class="headerlink" title="patch"></a>patch</h2><p>vue 在更新的时候，使用 patch 方法更新新老节点，判断老节点是否可以复用<br><img src="https://s21.ax1x.com/2024/05/16/pkn0081.png" srcset="/img/loading.gif" lazyload alt="patch"><br>在 patch 时会先比较新老节点的类型，比较的方式就是判断 type 和 key 是否都相等，类型不同代表不能复用，直接卸载。然后判断新节点的类型，<br><img src="https://s21.ax1x.com/2024/05/16/pknBFIJ.png" srcset="/img/loading.gif" lazyload alt="isSameVNodeType"></p>
-<h3 id="在这里可以看到有三种类型的节点，使用不同的方法进行处理："><a href="#在这里可以看到有三种类型的节点，使用不同的方法进行处理：" class="headerlink" title="在这里可以看到有三种类型的节点，使用不同的方法进行处理："></a>在这里可以看到有三种类型的节点，使用不同的方法进行处理：</h3><ol>
-<li>文本节点</li>
-<li>Fragment 节点，vue3 引入 Fragment，在 vue3 的模板中可以使用多个根节点，会被视为 Fragment</li>
-<li>element(<code>普通元素</code>)类型、component(<code>组件</code>)类型</li>
-</ol>
-<h2 id="component-类型"><a href="#component-类型" class="headerlink" title="component 类型"></a>component 类型</h2><p>updateComponent<br><img src="https://s21.ax1x.com/2024/05/31/pk8EnGF.png" srcset="/img/loading.gif" lazyload><br>首先判断新老节点是否发生变化，决定需不需要更新，需要更新就执行<br>update，就是执行组件自己的更新流程。不需要更新就用老节点就行。通过组件的更新可以看出当父组件更新，子组件没发生变化是不会随着父组件更新的</p>
-<h2 id="element-类型"><a href="#element-类型" class="headerlink" title="element 类型"></a>element 类型</h2><p>Vue3 通过 patchElement 方法处理 element 类型的节点，首先会去比较新老节点的 props ，如果不同就更新，然后再执行 patchChildren 进行全量比较更新。</p>
-<h1 id="patchChildren"><a href="#patchChildren" class="headerlink" title="patchChildren"></a>patchChildren</h1><p>在 patchChildren 中对 children 的 vnode 进行 patch，这里存在几种情况：</p>
-<table>
-<thead>
-<tr>
-<th>老节点</th>
-<th>新节点</th>
-<th>处理方式</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>空</td>
-<td>空</td>
-<td>-</td>
-</tr>
-<tr>
-<td>空</td>
-<td>文本</td>
-<td>添加文本节点</td>
-</tr>
-<tr>
-<td>空</td>
-<td>数组</td>
-<td>添加多个节点</td>
-</tr>
-<tr>
-<td>文本</td>
-<td>空</td>
-<td>删除多个节点</td>
-</tr>
-<tr>
-<td>文本</td>
-<td>文本</td>
-<td>替换新文本</td>
-</tr>
-<tr>
-<td>文本</td>
-<td>数组</td>
-<td>清空老节点，添加多个新节点</td>
-</tr>
-<tr>
-<td>数组</td>
-<td>空</td>
-<td>删除多个节点</td>
-</tr>
-<tr>
-<td>数组</td>
-<td>文本</td>
-<td>删除多个节点，添加文本节点</td>
-</tr>
-<tr>
-<td>数组</td>
-<td>数组</td>
-<td>diff</td>
-</tr>
-</tbody></table>
-<p>当新老节点都是数组的时候，就会进入到 diff 的流程。</p>
-<h2 id="存在-key"><a href="#存在-key" class="headerlink" title="存在 key"></a>存在 key</h2><p>当节点有 key 时，就会进入到 diff 流程，Vue3 通过 <code>patchKeyedChildren</code> 进行处理。</p>
-<p>首先声明了一些变量</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>              <span class="hljs-comment">/* 记录索引 */</span><br><span class="hljs-keyword">const</span> l2 = c2.<span class="hljs-property">length</span>   <span class="hljs-comment">/* 新vnode的数量 */</span><br><span class="hljs-keyword">let</span> e1 = c1.<span class="hljs-property">length</span> - <span class="hljs-number">1</span> <span class="hljs-comment">/* 老vnode 最后一个节点的索引 */</span><br><span class="hljs-keyword">let</span> e2 = l2 - <span class="hljs-number">1</span>        <span class="hljs-comment">/* 新节点最后一个节点的索引 */</span><br></code></pre></td></tr></table></figure>
+                <h1 id="Image"><a href="#Image" class="headerlink" title="Image"></a>Image</h1><h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p><a target="_blank" rel="noopener" href="https://nextjs.org/docs/app/api-reference/components/image">Image</a> 是 Next 提供的组件之一，使用 Image 时就像使用 Image 标签一样。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> <span class="hljs-title class_">Image</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;next/image&#x27;</span><br> <br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">Page</span>(<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-keyword">return</span> (<br>    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">Image</span></span></span><br><span class="hljs-tag"><span class="language-xml">      <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;/profile.png&quot;</span></span></span><br><span class="hljs-tag"><span class="language-xml">      <span class="hljs-attr">width</span>=<span class="hljs-string">&#123;500&#125;</span></span></span><br><span class="hljs-tag"><span class="language-xml">      <span class="hljs-attr">height</span>=<span class="hljs-string">&#123;500&#125;</span></span></span><br><span class="hljs-tag"><span class="language-xml">      <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;Picture of the author&quot;</span></span></span><br><span class="hljs-tag"><span class="language-xml">    /&gt;</span></span><br>  )<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<h3 id="从头对比"><a href="#从头对比" class="headerlink" title="从头对比"></a>从头对比</h3><p><img src="https://s21.ax1x.com/2024/05/16/pknWSfO.png" srcset="/img/loading.gif" lazyload><br>从头对比就是用 <code>isSameVNodeType</code> 检查新老节点是否能一一相等，如果相等就 <code>patch</code>，如果发现不等就 break 跳出头部对比流程。</p>
-<h3 id="从尾对比"><a href="#从尾对比" class="headerlink" title="从尾对比"></a>从尾对比</h3><p><img src="https://s21.ax1x.com/2024/05/17/pknv2wV.png" srcset="/img/loading.gif" lazyload><br>从尾对比就同样用 <code>isSameVNodeType</code> 从尾开始遍历检查新老节点是否相等，直到遇到不等的就 break 跳出从尾对比流程</p>
-<h3 id="比较节点数"><a href="#比较节点数" class="headerlink" title="比较节点数"></a>比较节点数</h3><p>进行完头尾对比后会出现三种可能</p>
-<ol>
-<li>老节点全部 patch ，新节点有剩余，说明有新增节点，就需要添加这个节点</li>
-<li>新节点全部 patch ，老节点有剩余，说明有节点被删除，老节点剩余的节点不需要了，需要全部删除</li>
-<li>新老节点全部有剩余，说明节点可能发生了移动，新增，删除</li>
-</ol>
-<h3 id="剩余的节点"><a href="#剩余的节点" class="headerlink" title="剩余的节点"></a>剩余的节点</h3><h4 id="keyToNewIndexMap"><a href="#keyToNewIndexMap" class="headerlink" title="keyToNewIndexMap"></a>keyToNewIndexMap</h4><p><img src="https://s21.ax1x.com/2024/05/17/pknza8g.png" srcset="/img/loading.gif" lazyload><br>keyToNewIndexMap 是一个 <code>[新节点的key, 索引]</code> 的 map 集合，方便通过 key 来找到老节点的索引。</p>
-<h4 id="遍历老节点"><a href="#遍历老节点" class="headerlink" title="遍历老节点"></a>遍历老节点</h4><p>这一步的主要过程就是通过老节点的 key 去查找索引，如果没有 key，就遍历剩下的新节点，看有没有和该节点相等的，如果有，就证明有可复用的老节点，直接进行 patch，如果找不到索引，就说明不可复用，直接删除，最后把新老节点对应的索引保存在 newIndexToOldIndexMap，结构是 <code>[新节点索引, 老节点索引]</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> newIndexToOldIndexMap = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Array</span>(toBePatched)<br><span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; toBePatched; i++) newIndexToOldIndexMap[i] = <span class="hljs-number">0</span><br></code></pre></td></tr></table></figure>
-<blockquote>
-<p>newIndexToOldIndexMap 是长度和新节点长度相等的，初始值都是 0 的数组。</p>
-</blockquote>
-<p>经历过上面的步骤，老节点都已经被 patch 过了，剩下的就是新节点有新增、移动两种情况，在 newIndexToOldIndexMap 中没有找到新节点对应的值，说明是新增的节点</p>
-<h4 id="最长递增子序列"><a href="#最长递增子序列" class="headerlink" title="最长递增子序列"></a>最长递增子序列</h4><p>求出最长递增子序列，根据这个作为基准移动节点，使用最长递增子序列作为基准可以使节点移动最少。</p>
-<blockquote>
-<p>最长递增子序列就是一个序列中，找到一个最长的子序列，并且子序列中的元素是按照递增顺序排列的。</p>
-</blockquote>
-<h2 id="不存在-key"><a href="#不存在-key" class="headerlink" title="不存在 key"></a>不存在 key</h2><p>没有 key 的时候会进入 patchUnKeyedChildren 来处理</p>
-<p>首先比较老节点和新节点的 length ，获取其中较小的值，然后遍历进行 patch<br>然后如果老节点长度大于新节点，进行删除<br>如果老节点长度小于新节点，进行新增</p>
+<p><img src="https://s21.ax1x.com/2024/08/28/pAAA5xx.png" srcset="/img/loading.gif" lazyload alt="支持的Props"></p>
+<h2 id="必须的属性"><a href="#必须的属性" class="headerlink" title="必须的属性"></a>必须的属性</h2><p>在使用 Image 时，<code>src</code>、<code>width</code> 和 <code>height</code> 是必须的属性。</p>
+<p>src 支持图片路径的格式，但是要注意如果使用远程地址，需要在 next.config.js 中声明支持的远程地址图片。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// next.config.js</span><br><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = &#123;<br>  <span class="hljs-attr">images</span>: &#123;<br>    <span class="hljs-attr">remotePatterns</span>: [<br>      &#123;<br>        <span class="hljs-attr">protocol</span>: <span class="hljs-string">&#x27;https&#x27;</span>,<br>        <span class="hljs-attr">hostname</span>: <span class="hljs-string">&#x27;s3.amazonaws.com&#x27;</span>,<br>        <span class="hljs-attr">port</span>: <span class="hljs-string">&#x27;&#x27;</span>,<br>        <span class="hljs-attr">pathname</span>: <span class="hljs-string">&#x27;/my-bucket/**&#x27;</span>,<br>      &#125;,<br>    ],<br>  &#125;,<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>另外也支持<a target="_blank" rel="noopener" href="https://nextjs.org/docs/app/building-your-application/optimizing/images#local-images">静态的 import 导入</a>的图片，使用 await import 是不行的，在构建时无法被分析。并且如果使用了 import 导入的图片，那么就不需要使用 <code>width</code> 和 <code>height</code> 了。</p>
+<p>width 和 height 用来推断宽高比，除非是静态导入图片或者图片有 fill 属性，否则为必选项。</p>
+<h2 id="其他属性"><a href="#其他属性" class="headerlink" title="其他属性"></a>其他属性</h2><ul>
+<li><p>alt 图片描述，用于 SEO 和在图片被禁用或者加载失败时显示。</p>
+</li>
+<li><p>loader 解析图片地址的自定义函数</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-string">&#x27;use client&#x27;</span><br> <br><span class="hljs-keyword">import</span> <span class="hljs-title class_">Image</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;next/image&#x27;</span><br> <br><span class="hljs-keyword">const</span> <span class="hljs-title function_">imageLoader</span> = (<span class="hljs-params">&#123; src, width, quality &#125;</span>) =&gt; &#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-string">`https://example.com/<span class="hljs-subst">$&#123;src&#125;</span>?w=<span class="hljs-subst">$&#123;width&#125;</span>&amp;q=<span class="hljs-subst">$&#123;quality || <span class="hljs-number">75</span>&#125;</span>`</span><br>&#125;<br> <br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">Page</span>(<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-keyword">return</span> (<br>    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">Image</span></span></span><br><span class="hljs-tag"><span class="language-xml">      <span class="hljs-attr">loader</span>=<span class="hljs-string">&#123;imageLoader&#125;</span></span></span><br><span class="hljs-tag"><span class="language-xml">      <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;me.png&quot;</span></span></span><br><span class="hljs-tag"><span class="language-xml">      <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;Picture of the author&quot;</span></span></span><br><span class="hljs-tag"><span class="language-xml">      <span class="hljs-attr">width</span>=<span class="hljs-string">&#123;500&#125;</span></span></span><br><span class="hljs-tag"><span class="language-xml">      <span class="hljs-attr">height</span>=<span class="hljs-string">&#123;500&#125;</span></span></span><br><span class="hljs-tag"><span class="language-xml">    /&gt;</span></span><br>  )<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li><p>fill 是否填充父元素，默认为 false，当开启这个属性时，父元素必须 position 为 <code>relative</code>、<code>fixed</code>、<code>absolute</code>，img 元素会默认自动指定为 <code>position: &quot;absolute&quot;</code>。<br>关于填充还可以通过 CSS 的方式来实现，<code>object-fit: &quot;contain&quot;</code> 和 <code>object-fit: &quot;cover&quot;</code> 都可以用来填充父元素，他们的区别在于<br>使用 fill 属性时，图片会被拉伸以填充父元素；<br>使用 <code>object-fit: &quot;container&quot;</code> 时图片在保持其宽高比的同时填充元素的整个内容框；<br>使用 <code>object-fit: &quot;cover&quot;</code> 时图片在保持其宽高比的同时填充元素的整个内容框。如果对象的宽高比与内容框不相匹配，该对象将被剪裁以适应内容框；</p>
+</li>
+<li><p>sizes<br>img 有一个属性 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images">srcset</a> 可以根据不同设备显示不同的图片<br>根据分辨率显示图片</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;img<br>  srcset=<span class="hljs-string">&quot;elva-fairy-320w.jpg, elva-fairy-480w.jpg 1.5x, elva-fairy-640w.jpg 2x&quot;</span><br>  src=<span class="hljs-string">&quot;elva-fairy-640w.jpg&quot;</span><br>  alt=<span class="hljs-string">&quot;Elva dressed as a fairy&quot;</span> /&gt;<br></code></pre></td></tr></table></figure>
+<p>在一般情况下显示 elva-fairy-320w.jpg 图片即可，当用户的分辨率比较高的时候，会根据用户的分辨率选择 elva-fairy-480w.jpg 或者 elva-fairy-640w.jpg</p>
+<p>根据设备大小显示图片</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;img<br>  srcset=<span class="hljs-string">&quot;elva-fairy-small.jpg 480w, elva-fairy-large.jpg 800w&quot;</span><br>  src=<span class="hljs-string">&quot;elva-fairy-large.jpg&quot;</span><br>  alt=<span class="hljs-string">&quot;Elva dressed as a fairy&quot;</span> /&gt;<br></code></pre></td></tr></table></figure>
+<p>有两种图片可以选择，elva-fairy-small.jpg 宽度为 480px，elva-fairy-large.jpg 宽度为 800px，不过当窗口宽度不能匹配图片的宽度，也就是窗口宽度为 680px 时，还需要配合使用 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/img#sizes">sizes</a> 属性帮助浏览器选择合适的图片</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;img<br>  srcset=<span class="hljs-string">&quot;elva-fairy-small.jpg 480w, elva-fairy-large.jpg 800w&quot;</span><br>  sizes=<span class="hljs-string">&quot;(max-width: 600px) 480px,</span><br><span class="hljs-string">         800px&quot;</span><br>  src=<span class="hljs-string">&quot;elva-fairy-large.jpg&quot;</span><br>  alt=<span class="hljs-string">&quot;Elva dressed as a fairy&quot;</span> /&gt;<br></code></pre></td></tr></table></figure>
+<p>sizes 首先 <code>(max-width: 600px)</code> 是一个媒体条件，看当前视口是否小于等于 600px ，如果是，则使用 480px 的图片，否则使用 800px 的图片。</p>
+<p>不过 Next 的 Image 并需要设置 srcset 属性，Next 会自动生成，如果你不设置组件的 sizes 属性，Next.js 会用 1x、2x 这种像素密度描述符，而如果你设置了 sizes 属性，Next.js 会用 640w、750w 这种固有宽度描述符。</p>
+</li>
+<li><p>quality<br>优化图片的质量，值为 <code>1</code> 到 <code>100</code> 之间的整数，越大品质越好。</p>
+</li>
+<li><p>priority<br>图片加载优先级，<code>boolean</code> 类型，默认为 <code>false</code>，设置为 <code>true</code> 时，图片优先级高并预加载，开启这个属性会禁用懒加载。</p>
+</li>
+<li><p>placeholder<br>占位符，默认值为 <code>empty</code>，没有占位符<br>值为 <code>blur</code> 时使用 blurDataURL 的值作为占位符图片 src 属性值是 import 静态导入的，会自动生成 blurDataURL值<br>值为 <code>data:image/...</code> 时, 使用 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/URI/Schemes/data">Data URL</a> 作为图片加载时的占位图片</p>
+</li>
+<li><p>blurDataURL<br>当 placeholder 是，使用该值作为占位符。必须是 base64 编码的图片。</p>
+</li>
+<li><p>onLoadingComplete<br>图片加载完毕执行该回调函数，删除占位符图片，需要使用客户端组件。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-string">&#x27;use client&#x27;</span><br>&lt;<span class="hljs-title class_">Image</span> onLoadingComplete=&#123;<span class="hljs-function">(<span class="hljs-params">img</span>) =&gt;</span> <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(img.<span class="hljs-property">naturalWidth</span>)&#125; /&gt;<br></code></pre></td></tr></table></figure></li>
+<li><p>onLoad<br>图片加载完的时候执行，但该回调函数可能会在占位符被删除以及图片被完全解码前执行。需要使用客户端组件。</p>
+</li>
+<li><p>onError<br>加载失败执行，需要使用客户端组件。</p>
+</li>
+<li><p>loading<br>图片加载行为，默认为 loading 懒加载，值为 eager 的时候，图片会被立即加载，但影响性能。</p>
+</li>
+<li><p>unoptimized<br>关闭优化，使用源图片，默认为 false</p>
+</li>
+</ul>
+<h2 id="在-next-config-js-中配置"><a href="#在-next-config-js-中配置" class="headerlink" title="在 next.config.js 中配置"></a>在 next.config.js 中配置</h2><ul>
+<li>remotePatterns<br>配置支持的远程地址图片，在上文中有提到。</li>
+<li>loaderFile<br>作用于所有 next&#x2F;image 的 loader 函数</li>
+<li>deviceSizes<br>声明一系列的设备宽度断点，用来推断正确加载的图片<br>默认值是 <code>deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],</code></li>
+<li>imageSizes<br>声明一系列的图片宽度<br>默认值是 <code>imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],</code><br>和 deviceSizes 区别在于 deviceSizes 用来处理大图片，imageSizes 用来处理小图片。而且 imageSizes 只会在图片使用了 sizes prop 的时候生效。</li>
+<li>formats<br>Next 的 <a target="_blank" rel="noopener" href="https://nextjs.org/docs/app/api-reference/components/image#loader">Image Optimization API</a> 会自动检测浏览器支持的图片格式<br>当匹配多个格式，按照数组顺序优先使用</li>
+<li>minimumCacheTTL<br>设置缓存优化请求图片的过期时间，单位为秒</li>
+<li>disableStaticImages<br>处理图片静态导入和其他插件冲突问题</li>
+<li>dangerouslyAllowSVG<br>使用默认图像优化 API 优化 SVG 图像</li>
+</ul>
 
                 
               </div>
@@ -779,7 +749,13 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Vue/" class="print-no-link">#Vue</a>
+        <a href="/tags/React/" class="print-no-link">#React</a>
+      
+        <a href="/tags/Next/" class="print-no-link">#Next</a>
+      
+        <a href="/tags/ssr/" class="print-no-link">#ssr</a>
+      
+        <a href="/tags/ssg/" class="print-no-link">#ssg</a>
       
     </div>
   
@@ -791,8 +767,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>了解Vue3是如何进行组件更新的</div>
-      <div>https://l1ushun.github.io/2024/05/17/vue3-diff/</div>
+      <div>Next 组件篇</div>
+      <div>https://l1ushun.github.io/2024/08/28/next-03/</div>
     </div>
     <div class="license-meta">
       
@@ -804,7 +780,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年5月17日</div>
+          <div>2024年8月28日</div>
         </div>
       
       
@@ -836,18 +812,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/05/22/qiankun-baics/" title="微前端 qiankun">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">微前端 qiankun</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/04/29/react-ref/" title="一文搞定 React 的 ref">
-                        <span class="hidden-mobile">一文搞定 React 的 ref</span>
+                      <a href="/2024/08/12/next-02/" title="Next 路由篇">
+                        <span class="hidden-mobile">Next 路由篇</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
