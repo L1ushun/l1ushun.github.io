@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://nextjs.org/_next/image?url=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Fv1714730590%2Ffront%2Fnextjs%2Fuwu%2Fnext-uwu-logo.png&w=640&q=75">
 <meta property="article:published_time" content="2024-08-28T08:25:14.000Z">
-<meta property="article:modified_time" content="2024-08-29T07:35:33.467Z">
+<meta property="article:modified_time" content="2024-08-29T08:43:48.883Z">
 <meta property="article:author" content="liu shun">
 <meta property="article:tag" content="React">
 <meta property="article:tag" content="Next">
@@ -213,7 +213,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.7k 字
+          4.6k 字
         
       </span>
     
@@ -224,7 +224,7 @@
         
         
         
-          31 分钟
+          39 分钟
         
       </span>
     
@@ -715,6 +715,31 @@
 <li>minimumCacheTTL<br>设置缓存优化请求图片的过期时间，单位为秒</li>
 <li>disableStaticImages<br>处理图片静态导入和其他插件冲突问题</li>
 <li>dangerouslyAllowSVG<br>使用默认图像优化 API 优化 SVG 图像</li>
+</ul>
+<h1 id="Link"><a href="#Link" class="headerlink" title="Link"></a>Link</h1><p>Next 导航的主要方式。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// app/page.js</span><br><span class="hljs-keyword">import</span> <span class="hljs-title class_">Link</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;next/link&#x27;</span><br> <br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">Page</span>(<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-keyword">return</span> <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">Link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;/dashboard&quot;</span>&gt;</span>Dashboard<span class="hljs-tag">&lt;/<span class="hljs-name">Link</span>&gt;</span></span><br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="Props"><a href="#Props" class="headerlink" title="Props"></a>Props</h2><p><img src="https://s21.ax1x.com/2024/08/29/pAADHIO.png" srcset="/img/loading.gif" lazyload alt="props"></p>
+<ul>
+<li>href：必填属性，指定跳转地址，支持传入对象，对象的属性有：<br>href：’<a target="_blank" rel="noopener" href="http://user:pass@host.com:8080/p/a/t/h?query=string#hash">http://user:pass@host.com:8080/p/a/t/h?query=string#hash</a>‘<br>protocol：’http:’<br>host: ‘host.com:8080’<br>auth: ‘user:pass’<br>hostname: ‘host.com’<br>port: ‘8080’<br>pathname: ‘&#x2F;p&#x2F;a&#x2F;t&#x2F;h’<br>search: ‘?query&#x3D;string’<br>path: ‘&#x2F;p&#x2F;a&#x2F;t&#x2F;h?query&#x3D;string’<br>query: ‘query&#x3D;string’ or {‘query’:’string’}<br>hash: ‘#hash’</li>
+<li>replace：history.replace 替换当前路由并且不会产生历史记录，默认为 false</li>
+<li>scroll：是否在跳转时滚动到页面顶部，默认为 false</li>
+<li>prefetch：是否预加载，默认为 true，预加载仅在生产环境开启</li>
+<li>其他的 props 会传递到底层的 a 标签</li>
+</ul>
+<h1 id="Script"><a href="#Script" class="headerlink" title="Script"></a>Script</h1><p>加载执行第三方脚本</p>
+<h2 id="Props-1"><a href="#Props-1" class="headerlink" title="Props"></a>Props</h2><p><img src="https://s21.ax1x.com/2024/08/29/pAArUw6.png" srcset="/img/loading.gif" lazyload alt="prop"></p>
+<ul>
+<li>src：指定加载的脚本源地址</li>
+<li>strategy：加载策略，<ol>
+<li>beforeInteractive： 在可交互前加载，适用于如机器人检测、Cookie 管理等</li>
+<li>afterInteractive：默认值，在可交互后加载，适用于如数据统计等</li>
+<li>lazyOnload：在浏览器空闲时间加载</li>
+<li>worker：（实验性质）通过 web worker 加载</li>
+</ol>
+</li>
+<li>onLoad：脚本加载完成时执行的回调函数</li>
+<li>onReady：组件每次重新挂载的时候执行</li>
+<li>onError：捕获错误</li>
 </ul>
 
                 
