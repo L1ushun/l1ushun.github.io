@@ -1,0 +1,1182 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="liu shun">
+  <meta name="keywords" content="博客,前端,git">
+  
+    <meta name="description" content="项目初始化新建项目 1pnpm dlx nuxi init nuxt3-demo  接入 tailwindcss 1pnpm add @nuxtjs&#x2F;tailwindcss -D  另外 tailwindcss 需要在 nuxt.config.ts 中配置一下 1modules: [&quot;@nuxtjs&#x2F;tailwindcss&quot;]  基础路由Nuxt 路由基于 vue-router">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初识Nuxt">
+<meta property="og:url" content="https://l1ushun.github.io/2024/05/24/nuxt/index.html">
+<meta property="og:site_name" content="liu的博客">
+<meta property="og:description" content="项目初始化新建项目 1pnpm dlx nuxi init nuxt3-demo  接入 tailwindcss 1pnpm add @nuxtjs&#x2F;tailwindcss -D  另外 tailwindcss 需要在 nuxt.config.ts 中配置一下 1modules: [&quot;@nuxtjs&#x2F;tailwindcss&quot;]  基础路由Nuxt 路由基于 vue-router">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s21.ax1x.com/2024/05/24/pkQ50QP.png">
+<meta property="article:published_time" content="2024-05-24T09:20:14.000Z">
+<meta property="article:modified_time" content="2024-10-23T06:18:48.365Z">
+<meta property="article:author" content="liu shun">
+<meta property="article:tag" content="Nuxt">
+<meta property="article:tag" content="SSR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://s21.ax1x.com/2024/05/24/pkQ50QP.png">
+  
+  
+  
+  <title>初识Nuxt - liu的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"l1ushun.github.io","root":"/","version":"1.9.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>主页</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://s21.ax1x.com/2024/05/24/pkQ50QP.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="初识Nuxt"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-05-24 17:20" pubdate>
+          2024年5月24日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5.9k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          49 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="技术博客"
+        id="heading-2143c8627fa00f84aa0cd4b0b5aed288" role="tab" data-toggle="collapse" href="#collapse-2143c8627fa00f84aa0cd4b0b5aed288"
+        aria-expanded="true"
+      >
+        技术博客
+        <span class="list-group-count">(41)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-2143c8627fa00f84aa0cd4b0b5aed288"
+           role="tabpanel" aria-labelledby="heading-2143c8627fa00f84aa0cd4b0b5aed288">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2023/03/11/lodash-round/" title="JavaScript 精度问题的原因和解决方案"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JavaScript 精度问题的原因和解决方案</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2023/09/13/design-mode/" title="JavaScript设计模式(一)：单例模式、工厂模式"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JavaScript设计模式(一)：单例模式、工厂模式</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2023/10/11/design-proxy/" title="JavaScript设计模式(三)：代理模式"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JavaScript设计模式(三)：代理模式</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2023/10/10/design-strategy/" title="JavaScript设计模式(二)：策略模式"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JavaScript设计模式(二)：策略模式</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2023/10/17/desigin-decorator/" title="JavaScript设计模式(五)：装饰器模式"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JavaScript设计模式(五)：装饰器模式</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2023/10/13/design-observer/" title="JavaScript设计模式(四)：发布-订阅模式、观察者模式"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JavaScript设计模式(四)：发布-订阅模式、观察者模式</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/04/02/nest-01/" title="Nest 初体验"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Nest 初体验</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/08/30/next-04/" title="Next 元数据（metadata）"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Next 元数据（metadata）</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/08/08/next-01/" title="Next 入门篇"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Next 入门篇</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/08/28/next-03/" title="Next 组件篇"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Next 组件篇</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/08/12/next-02/" title="Next 路由篇"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Next 路由篇</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/09/04/next-05/" title="Next 配置项 next.config.js"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Next 配置项 next.config.js</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2023/08/19/react-event/" title="React事件系统"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">React事件系统</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2023/07/21/diff/" title="React原理之diff流程"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">React原理之diff流程</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2023/07/31/react-flow/" title="React流程图（完善ing...）"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">React流程图（完善ing...）</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2023/05/29/redux-source/" title="Redux源码之createStore"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Redux源码之createStore</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/16/tasking/" title="Tasking"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Tasking</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2023/10/31/ts-01/" title="TypeScript入坑指北"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">TypeScript入坑指北</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2023/08/07/vite-02/" title="Vite-优化篇"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Vite-优化篇</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2023/08/04/vite-01/" title="Vite-快速入门"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Vite-快速入门</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2023/08/12/vite-04/" title="Vite-架构篇（Rollup）"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Vite-架构篇（Rollup）</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2023/08/17/vite-05/" title="Vite-进阶篇"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Vite-进阶篇</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/03/21/vue-mind-mapping/" title="Vue3 思维导图(一)：基础篇"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Vue3 思维导图(一)：基础篇</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/03/25/vue-mapping-deep/" title="Vue3 思维导图(二)"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Vue3 思维导图(二)</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/01/06/webpack-03/" title="Webpack优化篇"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Webpack优化篇</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2023/12/27/webpack-01/" title="Webpack入坑指北"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Webpack入坑指北</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2023/07/11/ahooks-useRequest/" title="ahooks源码之useRequest"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">ahooks源码之useRequest</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2023/07/12/ahooks-useVirtualList/" title="ahooks源码之useVirtualList"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">ahooks源码之useVirtualList</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/04/29/react-ref/" title="一文搞定 React 的 ref"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">一文搞定 React 的 ref</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/04/25/useEffect/" title="一文搞定 React 的 useEffect"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">一文搞定 React 的 useEffect</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/05/17/vue3-diff/" title="了解Vue3是如何进行组件更新的"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">了解Vue3是如何进行组件更新的</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/01/09/browser/" title="从输入URL开始构建浏览器知识体系"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">从输入URL开始构建浏览器知识体系</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/07/28/this-topic/" title="关于原型的 JS 题"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">关于原型的 JS 题</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/05/24/nuxt/" title="初识Nuxt"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">初识Nuxt</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/15/git-01/" title="团队协作中git的基本使用"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">团队协作中git的基本使用</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/12/21/lazy-image-loading/" title="图片懒加载的几种方式"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">图片懒加载的几种方式</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/05/22/qiankun-baics/" title="微前端 qiankun"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">微前端 qiankun</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2023/05/26/create-redux/" title="快速入门Redux"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">快速入门Redux</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/12/03/write/" title="手写集合"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">手写集合</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2023/12/13/regexp/" title="无法避免的正则表达式"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">无法避免的正则表达式</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2023/12/18/module/" title="深入浅出前端模块化原理"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">深入浅出前端模块化原理</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">初识Nuxt</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="项目初始化"><a href="#项目初始化" class="headerlink" title="项目初始化"></a>项目初始化</h1><p>新建项目</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">pnpm dlx nuxi init nuxt3-demo<br></code></pre></td></tr></table></figure>
+
+<p>接入 tailwindcss</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">pnpm add @nuxtjs/tailwindcss -D<br></code></pre></td></tr></table></figure>
+
+<p>另外 tailwindcss 需要在 nuxt.config.ts 中配置一下</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-attr">modules</span>: [<span class="hljs-string">&quot;@nuxtjs/tailwindcss&quot;</span>]<br></code></pre></td></tr></table></figure>
+
+<h1 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h1><h2 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h2><p>Nuxt 路由基于 vue-router ，在 pages 目录下创建的文件都会自动生成路由</p>
+<p><img src="https://s21.ax1x.com/2024/06/04/pkJrFIA.png" srcset="/img/loading.gif" lazyload></p>
+<p>例如如上结构的路由大概是：</p>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs scheme">[<br>  &#123;<br>    path: <span class="hljs-symbol">&#x27;/</span>&#x27;,<br>    component: <span class="hljs-symbol">&#x27;./pages/index.vue</span>&#x27;,<br>  &#125;,<br>  &#123;<br>    path: <span class="hljs-symbol">&#x27;/welcome</span>&#x27;,<br>    component: <span class="hljs-symbol">&#x27;./pages/welcome.vue</span>&#x27;,<br>  &#125;<br>]<br></code></pre></td></tr></table></figure>
+
+<h3 id="NuxtPage"><a href="#NuxtPage" class="headerlink" title="NuxtPage"></a>NuxtPage</h3><p>在 pages 下写了文件，但目前页面其实还不能按照上面的路由展示，需要在 app.vue 中给一个入口，就是 <code>&lt;NuxtPage&gt;</code>，当然如果项目只有一个页面就使用app.vue就行了。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;template&gt;<br>  &lt;NuxtPage&gt;&lt;/NuxtPage&gt;<br>&lt;/template&gt;<br></code></pre></td></tr></table></figure>
+
+<h3 id="路由导航"><a href="#路由导航" class="headerlink" title="路由导航"></a>路由导航</h3><p>Nuxt 提供 <code>&lt;NuxtLink&gt;</code>标签可以用来进行跳转，该标签有一个 to 属性声明跳转的地址。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;NuxtLink to=&quot;/home&quot;&gt;link&lt;/NuxtLink&gt;<br></code></pre></td></tr></table></figure>
+<p>还有一个帮助函数 navigateTo 可以用编程的方式进行导航，需要注意的是，调用该函数需要用 return 或者 await 处理结果。并且 navigateTo 还可以跳转到外部的地址，当跳转到外部地址时第二个参数必须有 <code>external: true</code>，不然会报错</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-comment">// vue 内跳转</span><br><span class="hljs-keyword">await</span> <span class="hljs-title function_">navigateTo</span>(<span class="hljs-string">&#x27;/home&#x27;</span>)<br><span class="hljs-comment">// 跳转外部地址</span><br><span class="hljs-keyword">await</span> <span class="hljs-title function_">navigateTo</span>(<span class="hljs-string">&#x27;https://nuxt.com&#x27;</span>, &#123;<br>    <span class="hljs-attr">external</span>: <span class="hljs-literal">true</span><br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<h3 id="动态路由"><a href="#动态路由" class="headerlink" title="动态路由"></a>动态路由</h3><p>当文件名包含了<code>[]</code>，就会被转换为动态路由参数，例如新建一个 list-[id].vue 文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;template&gt;<br>  &lt;div&gt;<br>    &#123;&#123; $route.params.id &#125;&#125;<br>  &lt;/div&gt;<br>&lt;/template&gt;<br></code></pre></td></tr></table></figure>
+<p>直接访问 &#x2F;list-1 可以看到页面显示 1</p>
+<h3 id="嵌套路由"><a href="#嵌套路由" class="headerlink" title="嵌套路由"></a>嵌套路由</h3><p>当需要二级路由，就需要通过文件结构来处理，pages&#x2F;detail&#x2F;name.vue 就会生成对应的路由 ‘&#x2F;detail&#x2F;name’ ，另外当存在 ‘&#x2F;detail’ 路由时，也就是</p>
+<p><img src="https://s21.ax1x.com/2024/05/28/pk1cj9P.png" srcset="/img/loading.gif" lazyload></p>
+<p>name 作为字路由，需要在 <code>detail.vue</code> 中提供入口 <code>&lt;NuxtPage&gt;</code> 才能将二级路由页面显示出来，另外也可以在 detail 目录下使用动态路由的方式创建 [id].vue 这样就通过 &#x2F;detail&#x2F;1 的方式访问即可。</p>
+<h2 id="Layout-布局"><a href="#Layout-布局" class="headerlink" title="Layout 布局"></a>Layout 布局</h2><p>根目录下的 Layouts 目录用于存放页面布局，该目录下的组件都可以通过 <code>&lt;NuxtLayout&gt;</code> 标签使用，该标签有一个属性 name 用于指定使用哪个 Layout ，如不指定，默认使用 default。在 Layout 中，还需要写一个插槽来展示 Layout 包裹的组件。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;template&gt;<br>  &lt;div&gt;Header&lt;/div&gt;<br>  &lt;slot /&gt;<br>&lt;/template&gt;<br></code></pre></td></tr></table></figure>
+
+<h2 id="静态资源"><a href="#静态资源" class="headerlink" title="静态资源"></a>静态资源</h2><p>需要打包工具处理的资源放在 assets 目录下，不需要处理的放在 public 目录下，访问 public 下的资源直接通过<code>/</code> 例如 <code>&#39;/pic.png&#39;</code>，访问 assets 目录下的资源需要从根目录开始，在 Nuxt 中路径有的会存在别名，可以通过别名来访问。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;~~&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;/&lt;rootDir&gt;&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;@@&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;/&lt;rootDir&gt;&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;~&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;/&lt;rootDir&gt;&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;@&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;/&lt;rootDir&gt;&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;assets&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;/&lt;rootDir&gt;/assets&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;public&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;/&lt;rootDir&gt;/public&quot;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="全局样式"><a href="#全局样式" class="headerlink" title="全局样式"></a>全局样式</h2><p>在 app.vue 引入的 css 都会作用于全局，另一种方法就是通过 nuxt.config.ts 进行配置，在 assets 新建一个 global.css 作为全局样式。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineNuxtConfig</span>(&#123;<br>  <span class="hljs-attr">css</span>: [<span class="hljs-string">&quot;assets/global.css&quot;</span>],<br>  <span class="hljs-comment">// ...  </span><br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<h2 id="组件-Components"><a href="#组件-Components" class="headerlink" title="组件 Components"></a>组件 Components</h2><p>Nuxt 组件放在根目录下的 components 目录下，这个目录下的组件当被使用到的时候无需引入和注册，<strong>组件名是路径和文件名以大驼峰</strong>，例如 ‘components&#x2F;nav&#x2F;bar.vue’ 就是 <code>&lt;NavBar&gt;</code></p>
+<h1 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h1><h2 id="Vue-渲染过程中的错误"><a href="#Vue-渲染过程中的错误" class="headerlink" title="Vue 渲染过程中的错误"></a>Vue 渲染过程中的错误</h2><p>通过 Nuxt 提供的插件，在 plugins 目录下新建 error-handler.js 来处理 vue 渲染过程中的错误。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineNuxtPlugin</span>(<span class="hljs-function">(<span class="hljs-params">nuxtApp</span>) =&gt;</span> &#123;<br>  nuxtApp.<span class="hljs-property">vueApp</span>.<span class="hljs-property">config</span>.<span class="hljs-property">errorHandler</span> = <span class="hljs-function">(<span class="hljs-params">..._args</span>) =&gt;</span> &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;vue error handler&#x27;</span>)<br>  &#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p>通过 Nuxt 钩子捕获 Vue 传播上来的错误<br>第一个钩子 app:error：整个应用层面的错误捕获<br>第二个钩子 vue:error：仅 Vue 层面的错误捕获。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineNuxtPlugin</span>(<span class="hljs-function">(<span class="hljs-params">nuxtApp</span>) =&gt;</span> &#123;<br>  nuxtApp.<span class="hljs-title function_">hook</span>(<span class="hljs-string">&#x27;app:error&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">..._args</span>) =&gt;</span> &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;app:error&#x27;</span>)<br>  &#125;)<br>  nuxtApp.<span class="hljs-title function_">hook</span>(<span class="hljs-string">&#x27;vue:error&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">..._args</span>) =&gt;</span> &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;app:error&#x27;</span>)<br>  &#125;)<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p>触发顺序：errorHandler -&gt; vue:error -&gt; app:error。</p>
+<h2 id="自定义错误页面"><a href="#自定义错误页面" class="headerlink" title="自定义错误页面"></a>自定义错误页面</h2><p>在根目录下创建 error.vue 文件，当抛出异常时会跳转到这个页面。另外手动抛出错误可以使用 showError() 参数是一个字符串或者一个错误对象</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-title function_">showError</span>(<span class="hljs-string">&#x27;404&#x27;</span>)<br><span class="hljs-title function_">showError</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">&#x27;404&#x27;</span>))<br></code></pre></td></tr></table></figure>
+
+
+<h2 id="组件错误处理"><a href="#组件错误处理" class="headerlink" title="组件错误处理"></a>组件错误处理</h2><p>Nuxt 提供 NuxtErrorBoundary 处理组件级的错误</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;template&gt;<br>  &lt;NuxtErrorBoundary&gt;<br>    &lt;!-- 默认插槽显示正常内容 --&gt;<br>    &lt;!-- 触发一个错误 --&gt;<br>    &lt;ThrowError&gt;&lt;/ThrowError&gt;<br>    &lt;!-- error插槽显示错误时内容 --&gt;<br>    &lt;template #error=&quot;&#123; error &#125;&quot;&gt;<br>      &lt;p class=&quot;my-4 text-xl text-gray-500&quot;&gt;发生了一些错误 &#123;&#123; error &#125;&#125;&lt;/p&gt;<br>      &lt;NButton type=&quot;success&quot; @click=&quot;error.value = null&quot;&gt; 修正错误 &lt;/NButton&gt;<br>    &lt;/template&gt;<br>  &lt;/NuxtErrorBoundary&gt;<br>&lt;/template&gt;<br></code></pre></td></tr></table></figure>
+<p>当 ThrowError 组件抛出错误时，会触发 error 插槽的内容。</p>
+<h1 id="配置-meta"><a href="#配置-meta" class="headerlink" title="配置 meta"></a>配置 meta</h1><h2 id="通过-app-head-配置"><a href="#通过-app-head-配置" class="headerlink" title="通过 app.head 配置"></a>通过 app.head 配置</h2><p>在 nuxt.config.ts 中配置</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineNuxtConfig</span>(&#123;<br>  <span class="hljs-attr">app</span>: &#123;<br>      <span class="hljs-attr">head</span>: &#123;<br>          <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;nuxt3-demo&#x27;</span>,<br>          <span class="hljs-attr">meta</span>: [<br>              &#123;<br>                  <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;keywords&#x27;</span>,<br>                  <span class="hljs-attr">content</span>: <span class="hljs-string">&#x27;nuxt3-demo&#x27;</span><br>              &#125;,<br>              &#123;<br>                  <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;description&#x27;</span>,<br>                  <span class="hljs-attr">content</span>: <span class="hljs-string">&#x27;nuxt3-demo&#x27;</span><br>              &#125;<br>          ]<br>      &#125;<br>  &#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
+<p><img src="https://s21.ax1x.com/2024/07/11/pkh869x.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="通过-useHead-在组件内配置"><a href="#通过-useHead-在组件内配置" class="headerlink" title="通过 useHead 在组件内配置"></a>通过 useHead 在组件内配置</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;script setup&gt;<br>useHead(&#123;<br>  title: &quot;Counter&quot;,<br>  meta: [<br>    &#123;name: &quot;description&quot;, content: &quot;counter&quot;&#125;,<br>  ]<br>&#125;)<br>&lt;/script&gt;<br></code></pre></td></tr></table></figure>
+
+<p>useHead 中的 title 会直接替换原本的 title，如果想保留原本的 title 可以使用 <code>titleTemplate</code> 配置。</p>
+<h2 id="通过组件标签配置"><a href="#通过组件标签配置" class="headerlink" title="通过组件标签配置"></a>通过组件标签配置</h2><p>Nuxt 提供 <Title>, <Base>, <NoScript>, <Style>, <Meta>, <Link>, <Body>, <Html> , <Head> 标签来配置 header。</p>
+<h2 id="常用-meta-配置"><a href="#常用-meta-配置" class="headerlink" title="常用 meta 配置"></a>常用 meta 配置</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs html"> <span class="hljs-comment">&lt;!-- 文本设置 GB2312:中国信息交换用汉字编码字符集(简体中文) GBK:汉字扩展规范(扩大汉字收录,增加繁体中文,蒙语,藏语等少数民族的文字) UTF-8: 万国码 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span><br><span class="hljs-comment">&lt;!-- 标题 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Document<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br><span class="hljs-comment">&lt;!-- 关键字  100字节 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;keywords&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 描述 80-120汉字 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;description&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 一般在移动端中使用，width=device-width 设置网页的宽度（viewport）和设备的宽度一样，这样横向就不会出现滚动条，用户浏览体验会大幅提升；后面的几个设置不允许用户手动缩放。--&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no&quot;</span>/&gt;</span><br></code></pre></td></tr></table></figure>
+<p>搜索引擎认知优先级  title &gt; description &gt; keywords</p>
+<h1 id="路由中间件"><a href="#路由中间件" class="headerlink" title="路由中间件"></a>路由中间件</h1><h2 id="匿名路由中间件"><a href="#匿名路由中间件" class="headerlink" title="匿名路由中间件"></a>匿名路由中间件</h2><p>匿名中间件就是在单个页面执行，没办法复用。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-title function_">definePageMeta</span>(&#123;<br>  <span class="hljs-title function_">middleware</span>(<span class="hljs-params">to, <span class="hljs-keyword">from</span></span>) &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;匿名中间件&#x27;</span>);<br>  &#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
+<h2 id="命名路由中间件"><a href="#命名路由中间件" class="headerlink" title="命名路由中间件"></a>命名路由中间件</h2><p>根目录下的 middleware 目录用来存放路由中间件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// middleware/auth.js</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineNuxtRouteMiddleware</span>(<span class="hljs-function">(<span class="hljs-params">to, <span class="hljs-keyword">from</span></span>) =&gt;</span> &#123;<br>    <span class="hljs-comment">// 验证权限</span><br>    <span class="hljs-keyword">if</span> (<span class="hljs-title function_">isAuthenticated</span>() === <span class="hljs-literal">false</span>) &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-title function_">navigateTo</span>(<span class="hljs-string">&#x27;/login&#x27;</span>)<br>    &#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;!-- pages/auth.vue--&gt;<br>definePageMeta(&#123;<br>  middleware: &#x27;auth&#x27;<br>&#125;)<br></code></pre></td></tr></table></figure>
+<p>当进入到页面时触发路由中间件，进行鉴权，无权限跳转到 login</p>
+<h2 id="全局路由中间件"><a href="#全局路由中间件" class="headerlink" title="全局路由中间件"></a>全局路由中间件</h2><p>在 middleware 目录下新建 mid.global.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineNuxtRouteMiddleware</span>(<span class="hljs-function">(<span class="hljs-params"><span class="hljs-keyword">from</span>, to</span>) =&gt;</span> &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;全局中间件&quot;</span>)<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<h2 id="工具方法"><a href="#工具方法" class="headerlink" title="工具方法"></a>工具方法</h2><ol>
+<li>abortNavigation：留在 from 页面</li>
+<li>navigateTo：跳转到某个页面</li>
+</ol>
+<h1 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h1><h2 id="注册"><a href="#注册" class="headerlink" title="注册"></a>注册</h2><p>根目录下的 plugin 目录下的文件或者文件夹下的 index.js 文件会被注册成插件，<br>另外可通过 1.name.js 给文件名加数字的方式控制插件的顺序<br>还可以通过 .server.js &#x2F; .client.js 给插件区分环境</p>
+<h2 id="NuxtApp"><a href="#NuxtApp" class="headerlink" title="NuxtApp"></a>NuxtApp</h2><p>使用 defineNuxtPlugin 时会传入一个参数 nuxtApp</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineNuxtPlugin</span>(<span class="hljs-function">(<span class="hljs-params">nuxtApp</span>) =&gt;</span> &#123;<br>    <span class="hljs-comment">// ...</span><br>&#125;)<br></code></pre></td></tr></table></figure>
+<p>nuxtApp 中有一些属性和方法：</p>
+<ul>
+<li>provide (name, value)：定义全局变量和方法；</li>
+<li>hook(name, cb)：定义 nuxt 钩子函数；</li>
+<li>vueApp：获取 vue 实例；</li>
+<li>ssrContext：服务端渲染时的上下文；</li>
+<li>payload：从服务端到客户端传递的数据和状态；</li>
+<li>isHydrating：用于检测是否正在客户端注水过程中。</li>
+</ul>
+<p>获取全局注册的属性和方法</p>
+<p>当使用 provide 定义了一些属性和方法时，通过 useNuxtApp() 获取</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2/" class="category-chain-item">技术博客</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Nuxt/" class="print-no-link">#Nuxt</a>
+      
+        <a href="/tags/SSR/" class="print-no-link">#SSR</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>初识Nuxt</div>
+      <div>https://l1ushun.github.io/2024/05/24/nuxt/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>liu shun</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年5月24日</div>
+        </div>
+      
+      
+<!--      -->
+<!--        <div class="license-meta-item">-->
+<!--          <div>许可协议</div>-->
+<!--          <div>-->
+<!--            -->
+<!--              -->
+<!--              -->
+<!--                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">-->
+<!--                  <span class="hint&#45;&#45;top hint&#45;&#45;rounded" aria-label="BY - 署名">-->
+<!--                    <i class="iconfont icon-by"></i>-->
+<!--                  </span>-->
+<!--                </a>-->
+<!--              -->
+<!--            -->
+<!--          </div>-->
+<!--        </div>-->
+<!--      -->
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/07/28/this-topic/" title="关于原型的 JS 题">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">关于原型的 JS 题</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/05/22/qiankun-baics/" title="微前端 qiankun">
+                        <span class="hidden-mobile">微前端 qiankun</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+    <div id="giscus" class="giscus"></div>
+    <script type="text/javascript">
+      Fluid.utils.loadComments('#giscus', function() {
+        var options = {"repo":"L1ushun/l1ushun.github.io","repo-id":"R_kgDOJ_203Q","category":"Announcements","category-id":"DIC_kwDOJ_203c4CYJ9O","theme-light":"light","theme-dark":"dark","mapping":"pathname","reactions-enabled":1,"emit-metadata":0,"input-position":"top","lang":"zh-CN"};
+        var attributes = {};
+        for (let option in options) {
+          if (!option.startsWith('theme-')) {
+            var key = option.startsWith('data-') ? option : 'data-' + option;
+            attributes[key] = options[option];
+          }
+        }
+        var light = 'light';
+        var dark = 'dark';
+        window.GiscusThemeLight = light;
+        window.GiscusThemeDark = dark;
+        attributes['data-theme'] = document.documentElement.getAttribute('data-user-color-scheme') === 'dark' ? dark : light;
+        for (let attribute in attributes) {
+          var value = attributes[attribute];
+          if (value === undefined || value === null || value === '') {
+            delete attributes[attribute];
+          }
+        }
+        var s = document.createElement('script');
+        s.setAttribute('src', 'https://giscus.app/client.js');
+        s.setAttribute('crossorigin', 'anonymous');
+        for (let attribute in attributes) {
+          s.setAttribute(attribute, attributes[attribute]);
+        }
+        var ss = document.getElementsByTagName('script');
+        var e = ss.length > 0 ? ss[ss.length - 1] : document.head || document.documentElement;
+        e.parentNode.insertBefore(s, e.nextSibling);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <i class="iconfont icon-love"></i> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
