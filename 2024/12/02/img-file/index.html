@@ -16,25 +16,26 @@
   <meta name="author" content="liu shun">
   <meta name="keywords" content="博客,前端,git">
   
-    <meta name="description" content="git对于软件开发团队的意义在我们进行团队协作的软件开发时，我们的项目可能会分解成多个不同的模块、功能，这些模块、功能又会细分下去交给不同的人来进行开发，当多个人共同来完成一个项目的时候，我们如何同步进行呢？使用git就能完美的解决这个问题，我们可以在git上建立多个分支，多人来同时工作，同事也可以通过你上传的代码来实时同步我们的工作进度。 另外，当多人对一个文件进行修改时，必然会发生冲突，不同人">
+    <meta name="description" content="Blob &amp; File 和  都是是一个文件对象，File 在 Blob 的基础上进行了功能扩展，两者可以通过 new 实例的方式获取。 12const blob &#x3D; new Blob(blobParts, options);const File &#x3D; new File(fileBits, fileName, options) 在参数上，File 多了一个文件名的参数，另外在 options">
 <meta property="og:type" content="article">
-<meta property="og:title" content="团队协作中git的基本使用">
-<meta property="og:url" content="https://l1ushun.github.io/2021/09/15/git-01/index.html">
+<meta property="og:title" content="前端文件格式转换">
+<meta property="og:url" content="https://l1ushun.github.io/2024/12/02/img-file/index.html">
 <meta property="og:site_name" content="liu的博客">
-<meta property="og:description" content="git对于软件开发团队的意义在我们进行团队协作的软件开发时，我们的项目可能会分解成多个不同的模块、功能，这些模块、功能又会细分下去交给不同的人来进行开发，当多个人共同来完成一个项目的时候，我们如何同步进行呢？使用git就能完美的解决这个问题，我们可以在git上建立多个分支，多人来同时工作，同事也可以通过你上传的代码来实时同步我们的工作进度。 另外，当多人对一个文件进行修改时，必然会发生冲突，不同人">
+<meta property="og:description" content="Blob &amp; File 和  都是是一个文件对象，File 在 Blob 的基础上进行了功能扩展，两者可以通过 new 实例的方式获取。 12const blob &#x3D; new Blob(blobParts, options);const File &#x3D; new File(fileBits, fileName, options) 在参数上，File 多了一个文件名的参数，另外在 options">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://z1.ax1x.com/2023/12/13/pifKqVU.png">
-<meta property="article:published_time" content="2021-09-15T01:24:21.000Z">
-<meta property="article:modified_time" content="2024-11-30T07:00:10.073Z">
+<meta property="og:image" content="https://s11.ax1x.com/2023/12/18/pi5vFoV.jpg">
+<meta property="article:published_time" content="2024-12-02T10:26:21.000Z">
+<meta property="article:modified_time" content="2024-12-03T01:39:48.434Z">
 <meta property="article:author" content="liu shun">
-<meta property="article:tag" content="Git">
-<meta property="article:tag" content="git">
+<meta property="article:tag" content="web">
+<meta property="article:tag" content="file">
+<meta property="article:tag" content="blob">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://z1.ax1x.com/2023/12/13/pifKqVU.png">
+<meta name="twitter:image" content="https://s11.ax1x.com/2023/12/18/pi5vFoV.jpg">
   
   
   
-  <title>团队协作中git的基本使用 - liu的博客</title>
+  <title>前端文件格式转换 - liu的博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -182,13 +183,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('https://z1.ax1x.com/2023/12/13/pifKqVU.png') no-repeat center center; background-size: cover;">
+     style="background: url('https://s11.ax1x.com/2023/12/18/pi5vFoV.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="团队协作中git的基本使用"></span>
+            <span id="subtitle" data-typed-text="前端文件格式转换"></span>
           
         </div>
 
@@ -199,8 +200,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2021-09-15 09:24" pubdate>
-          2021年9月15日 上午
+        <time datetime="2024-12-02 18:26" pubdate>
+          2024年12月2日 晚上
         </time>
       </span>
     
@@ -211,7 +212,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3k 字
+          2k 字
         
       </span>
     
@@ -222,7 +223,7 @@
         
         
         
-          25 分钟
+          17 分钟
         
       </span>
     
@@ -594,7 +595,7 @@
       
         <a href="/2024/12/02/img-file/" title="前端文件格式转换"
            class="list-group-item list-group-item-action
-           ">
+           active">
           <span class="category-post">前端文件格式转换</span>
         </a>
       
@@ -603,7 +604,7 @@
       
         <a href="/2021/09/15/git-01/" title="团队协作中git的基本使用"
            class="list-group-item list-group-item-action
-           active">
+           ">
           <span class="category-post">团队协作中git的基本使用</span>
         </a>
       
@@ -680,89 +681,48 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">团队协作中git的基本使用</h1>
+            <h1 id="seo-header">前端文件格式转换</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="git对于软件开发团队的意义"><a href="#git对于软件开发团队的意义" class="headerlink" title="git对于软件开发团队的意义"></a>git对于软件开发团队的意义</h1><p>在我们进行团队协作的软件开发时，我们的项目可能会分解成多个不同的模块、功能，这些模块、功能又会细分下去交给不同的人来进行开发，当多个人共同来完成一个项目的时候，我们如何同步进行呢？使用git就能完美的解决这个问题，我们可以在git上建立多个分支，多人来同时工作，同事也可以通过你上传的代码来实时同步我们的工作进度。</p>
-<p>另外，当多人对一个文件进行修改时，必然会发生冲突，不同人的思想不同，开发一个逻辑也难免出现错误，而git的优势就在于，对代码质量把控、减少代码冲突。</p>
-<p>又或者，我们在写代码的过程中，对于一段代码想要进行修改甚至删除，但又害怕将来出错需要恢复，这时候用git将是你最好的选择，git的定义就是一个开源的分布式版本控制系统，那什么是版本控制呢？通俗来讲，就是git可以将你的每次修改记录下来，形成一个版本，当你想要恢复你的代码时，只要找到对应的版本即可。</p>
-<h1 id="git-和-github-的区别"><a href="#git-和-github-的区别" class="headerlink" title="git 和 github 的区别"></a>git 和 github 的区别</h1><p><img src="https://z1.ax1x.com/2023/12/13/pifKqVU.png" srcset="/img/loading.gif" lazyload><br>git 是一个开源的分布式版本控制系统，用以有效、高速的处理从很小到非常大的项目版本管理。<br>简单来说，git就是一个帮助我们管理我们的代码版本控制工具。<br><img src="https://z1.ax1x.com/2023/12/13/pifKLaF.png" srcset="/img/loading.gif" lazyload><br>而 gitHub 是一个面向开源及私有软件项目的托管平台，因为只支持 git 作为唯一的版本库格式进行托管，所以叫 github。<br>我们可以将自己的项目提交到 github 上进行托管，也可以在上面查阅他人公开的项目，必要的时候可以拉下来进行学习。<br>简单来说，github 就是一个用来存放代码的仓库。</p>
-<h1 id="本地仓库和远端仓库"><a href="#本地仓库和远端仓库" class="headerlink" title="本地仓库和远端仓库"></a>本地仓库和远端仓库</h1><p>本地仓库和远端仓库在本质上来说没有什么区别，甚至可以理解为一个是本地电脑，一个是远端的电脑，通常情况下，远端仓库不参与开发，主要作为托管中心。<br><img src="https://z1.ax1x.com/2023/12/13/pifMEPH.jpg" srcset="/img/loading.gif" lazyload alt="图片来源自网络"></p>
-<p>上图就能够很清晰的表明远程仓库、本地仓库、暂存区、工作区之间的关系。这其中出现的一些概念：<br><strong>workspace</strong>：工作区，我们进行编写代码的区域，可以通过pull将远端仓库的代码拉取下来，也可以通过checkout来切换分支。<br><strong>Index</strong>：暂存区，当我们代码完成一个阶段后，需要在本地仓库进行同步，即进行commit操作，但每次修改都进行commit会比较麻烦，所以git给我们提供一个暂存区，修改代码后进行add操作添加到缓存区，最后统一进行commit到本地仓库。<br><strong>Repository</strong>：本地仓库，本地用来存储代码的仓库，可以通过push将本地仓库文件上传到远程仓库，也可以通过fetch&#x2F;clone将远端仓库的文件拉取克隆下来。<br><strong>Remote</strong>：远程仓库，远端用来存储代码的仓库。</p>
-<h1 id="代码如何上传到私有远端仓库"><a href="#代码如何上传到私有远端仓库" class="headerlink" title="代码如何上传到私有远端仓库"></a>代码如何上传到私有远端仓库</h1><h2 id="Http"><a href="#Http" class="headerlink" title="Http"></a>Http</h2><ol>
-<li>进行初始化本地仓库  	git init			</li>
-<li>加到暂存区			git add . &#x2F; git add *</li>
-<li>提交到本地仓库			git commit -m ‘文本’ 	</li>
-<li>连接远程仓库			git remote add origin  你的远程仓库的URL（在创建仓库中可以找到）</li>
-<li>提交到远程仓库			git push origin master</li>
+                <h1 id="Blob-File"><a href="#Blob-File" class="headerlink" title="Blob &amp; File"></a>Blob &amp; File</h1><p><img src="https://developer.mozilla.org/en-US/docs/Web/API/Blob" srcset="/img/loading.gif" lazyload alt="Blob"> 和 <img src="https://developer.mozilla.org/en-US/docs/Web/API/File" srcset="/img/loading.gif" lazyload alt="File"> 都是是一个文件对象，File 在 Blob 的基础上进行了功能扩展，两者可以通过 new 实例的方式获取。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> blob = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Blob</span>(blobParts, options);<br><span class="hljs-keyword">const</span> <span class="hljs-title class_">File</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">File</span>(fileBits, fileName, options)<br></code></pre></td></tr></table></figure>
+<p>在参数上，File 多了一个文件名的参数，另外在 options 里还多了一个可选的 lastModified 上次修改时间。</p>
+<p><img src="https://s21.ax1x.com/2024/12/02/pAI0qXt.png" srcset="/img/loading.gif" lazyload alt="blob file"></p>
+<p>通过打印同一个图片的 Blob 和 File 更嫩直观的看出属性上的差异，另外还可以看到 File 继承了 Blob。</p>
+<h1 id="FileReader"><a href="#FileReader" class="headerlink" title="FileReader"></a>FileReader</h1><p>读取文件对象的构造函数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> reader = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FileReader</span>()<br></code></pre></td></tr></table></figure>
+
+<p>实例上有几个方法</p>
+<ol>
+<li>readAsDataURL(blob)： 读取文件对象的内容，将内容用 data:URL 的形式表示，比较常用，例如读取图片文件复制给 img 的 src。</li>
+<li>readAsArrayBuffer(blob)：将内容用 <img src="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer" srcset="/img/loading.gif" lazyload alt="ArrayBuffer"> 的形式表示</li>
+<li>readAsText(blob)：将内容用字符串形式表示</li>
+<li>abort()： 终止文件的读取</li>
 </ol>
-<h2 id="SSH"><a href="#SSH" class="headerlink" title="SSH"></a>SSH</h2><h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><ol>
-<li>首先在桌面右键打开 gitbash 输入ssh<br><img src="https://z1.ax1x.com/2023/12/13/pif1kIU.png" srcset="/img/loading.gif" lazyload><br>出现如图代表git安装成功可以正常使用。</li>
-<li>然后输入 ssh-keygen -t rsa 该命令是指定 rsa 算法生成密钥，输入命令后连续三个回车即可，默认情况下会生成两个文件 id_rsa 和 id_rsa.pub，id_rsa是密钥，id_rsa.pub是公钥。生成目录在执行命令后可以看到。</li>
-<li>用记事本打开 id_rsa.pub 后 copy 全部内容。</li>
-<li>进入远程仓库（用github示例），找到settings。</li>
-<li>选择 SSH and GPG keys -&gt; New SSH key。<br><img src="https://z1.ax1x.com/2023/12/13/pifMVGd.png" srcset="/img/loading.gif" lazyload></li>
-<li>将（3）复制的内容粘贴到 Key 中，Title 可以空着不写，然后 Add SSH key。</li>
+<p>还有几个事件，也可以理解为读取文件的声明周期</p>
+<ol>
+<li>abort 终止时触发</li>
+<li>error 读取跑出错误触发</li>
+<li>load 读取成功触发</li>
+<li>loadend 读取完成时触发，无论成功还是失败</li>
+<li>loadstart 开始读取时触发</li>
+<li>progress 定期触发</li>
 </ol>
-<h3 id="上传项目"><a href="#上传项目" class="headerlink" title="上传项目"></a>上传项目</h3><ol>
-<li>首先在 github 上创建新的仓库，然后复制SSH。</li>
-<li>打开编译器终端依次输入如下命令<br> git init<br> git remote add origin 你复制的SSH<br> git add .<br> git commit -m’文本’<br> git push origin master<br> 进入到github仓库中查看是否上传成功。</li>
-</ol>
-<h1 id="代码怎么从远端仓库同步到本地"><a href="#代码怎么从远端仓库同步到本地" class="headerlink" title="代码怎么从远端仓库同步到本地"></a>代码怎么从远端仓库同步到本地</h1><p>第一种情况：将远端仓库代码克隆到本地<br>git clone 仓库的 http&#x2F;SSH</p>
-<p>第二种情况：将远端仓库代码拉取下来合并到本地<br>git pull &#x2F; git pull origin master</p>
-<h1 id="多人工作在同一代码库如何合并代码"><a href="#多人工作在同一代码库如何合并代码" class="headerlink" title="多人工作在同一代码库如何合并代码"></a>多人工作在同一代码库如何合并代码</h1><p>1、切换到其他分支：git checkout 分支名<br>2、将代码拉取下来：git pull<br>3、合并分支：git merge 分支名</p>
-<h1 id="合并出现冲突怎么处理"><a href="#合并出现冲突怎么处理" class="headerlink" title="合并出现冲突怎么处理"></a>合并出现冲突怎么处理</h1><p>首先要知道为什么会产生代码冲突，假设我们现在有三次提交A.B.C<br><img src="https://z1.ax1x.com/2023/12/13/pifMFaD.png" srcset="/img/loading.gif" lazyload><br>在远程分支 origin 的基础上创建一个名为 “mywork” 的分支并提交了（可以理解为我们自己进行了更改要进行提交），同时有其他人在 “origin” 上做了一些修改并提交了。<br><img src="https://z1.ax1x.com/2023/12/13/pifMCqK.png" srcset="/img/loading.gif" lazyload><br>此时在 E 提交的时候就会产生代码冲突。</p>
-<p>产生代码冲突后如何解决呢？</p>
-<p>我们有两种方法可以用来解决代码冲突：</p>
-<p>首先就是 git merge 方法，该方法就是使用 git pull 命令将 origin 分支上的修改拉取下来，再与本地的提交合并之后再提交，简单来说，就是将别人的修改和自己的修改合并成一个文件再进行提交。<br><img src="https://z1.ax1x.com/2023/12/13/pifMiVO.png" srcset="/img/loading.gif" lazyload><br>因为是合并两个修改，所以会形成菱形。</p>
-<p>另一种方法就是 git rebase，该方法就是废除掉我们要提交的修改，选择一个我们想要提交的正确的进行提交。</p>
-<p><img src="https://z1.ax1x.com/2023/12/13/pifM9r6.png" srcset="/img/loading.gif" lazyload><br>由于 E 被废除掉，所以用虚线表示，此时形成的是一条线而并非菱形。<br>在 rebase 过程中有时会出现 conflict，此时就需要用户自己手动来解决冲突后继续提交。</p>
-<h1 id="关于-commit-的提交规范"><a href="#关于-commit-的提交规范" class="headerlink" title="关于 commit 的提交规范"></a>关于 commit 的提交规范</h1><ul>
-<li>feat: 新的功能</li>
-<li>fix: 修复 bug</li>
-<li>refactor: 重构代码</li>
-<li>chore: 不影响业务功能的一些操作</li>
-<li>doc: 关于文档的修改</li>
-<li>test: 测试代码</li>
-<li>perf: 性能优化</li>
-<li>style: 代码格式修改</li>
-<li>ci: 持续集成</li>
-<li>release: 发布新版本</li>
-</ul>
-<h1 id="Git-常用命令"><a href="#Git-常用命令" class="headerlink" title="Git 常用命令"></a>Git 常用命令</h1><h2 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h2><ol>
-<li>创建分支：git branch 分支名</li>
-<li>创建并切换到分支：git checkout -b 分支名</li>
-<li>查看分支：git branch</li>
-<li>切换到其他分支：git checkout 分支名</li>
-<li>创建并切换分支并与远端仓库分支进行关联：git checkout -b 分支名 远端仓库分支</li>
-<li>删除分支：git branch -d 分支名  &#x2F;&#x2F;不能删除当前所在分支；已进行过提交的不能删除</li>
-<li>强制删除分支：git branch -D 分支名 	</li>
-<li>删除分支并且推送远程仓库：git push origin –delete 分支名</li>
-<li>合并分支：git merge 要合并的分支名</li>
-<li>查看所有分支信息：git branch -av</li>
-</ol>
-<h2 id="版本"><a href="#版本" class="headerlink" title="版本"></a>版本</h2><ol>
-<li>查看版本简写日志：git log –oneline</li>
-<li>查看版本路线：git log –oneline –graph</li>
-<li>从远端仓库拉取：git fetch</li>
-</ol>
-<h2 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h2><ol>
-<li>打标签：git tag xxx</li>
-<li>查看标签：git tag –list</li>
-<li>删除标签：git tag -d xxx</li>
-</ol>
-<h2 id="操作失误回滚"><a href="#操作失误回滚" class="headerlink" title="操作失误回滚"></a>操作失误回滚</h2><h3 id="未提交到暂存区"><a href="#未提交到暂存区" class="headerlink" title="未提交到暂存区"></a>未提交到暂存区</h3><ol>
-<li>使用命令git status 查看缓存区中未提交的文件，然后使用命令git checkout – 要还原的文件夹下的文件，执行命令后会自动还原</li>
-</ol>
-<h3 id="已提交到暂存区"><a href="#已提交到暂存区" class="headerlink" title="已提交到暂存区"></a>已提交到暂存区</h3><ol>
-<li>使用命令 git reset HEAD 文件夹下的文件 ，把文件从暂存区撤销，然后使用未提交到暂存区的操作失误还原操作即可。</li>
-</ol>
-<h3 id="回滚到指定版本"><a href="#回滚到指定版本" class="headerlink" title="回滚到指定版本"></a>回滚到指定版本</h3><ol>
-<li>git reset –hard HEAD^   &#x2F;&#x2F;一个^代表回归一个版本</li>
-<li>先 git log 查看历史获取 commit 的 id，然后 git reset –hard 你要回到版本的commit的id</li>
-</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> reader = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FileReader</span>();<br>reader.<span class="hljs-property">onload</span> = <span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);<br>&#125;;<br>reader.<span class="hljs-title function_">readAsDataURL</span>(file);<br></code></pre></td></tr></table></figure>
+<p><img src="https://s21.ax1x.com/2024/12/02/pAIBIbV.png" srcset="/img/loading.gif" lazyload><br>可以看到使用 readAsDataURL 转换出的结果在 onload 事件入参的 target.result 属性</p>
+<h1 id="Base64"><a href="#Base64" class="headerlink" title="Base64"></a>Base64</h1><p><img src="https://developer.mozilla.org/zh-CN/docs/Glossary/Base64" srcset="/img/loading.gif" lazyload alt="Base64"> 是将二进制转化成 ASCII 字符的编码方式</p>
+<h2 id="window-atob-window-btoa"><a href="#window-atob-window-btoa" class="headerlink" title="window.atob window.btoa"></a>window.atob window.btoa</h2><p>浏览器提供了两个方法用于 Base64 的编码和解码<br><img src="https://s21.ax1x.com/2024/12/02/pAIDaIU.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="URL-createObjectURL"><a href="#URL-createObjectURL" class="headerlink" title="URL.createObjectURL"></a>URL.createObjectURL</h1><p>URL 提供了一个静态方法 <img src="https://developer.mozilla.org/zh-CN/docs/Web/API/URL/createObjectURL_static" srcset="/img/loading.gif" lazyload alt="createObjectURL">，通过该方法可以对象创建一个临时的 URL 用来访问，浏览器卸载时会自动释放这个 url，当然还可以通过 <img src="https://developer.mozilla.org/zh-CN/docs/Web/API/URL/revokeObjectURL_static" srcset="/img/loading.gif" lazyload alt="revokeObjectURL">来手动卸载。</p>
+<h2 id="图片预览"><a href="#图片预览" class="headerlink" title="图片预览"></a>图片预览</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> url = <span class="hljs-variable constant_">URL</span>.<span class="hljs-title function_">createObjectURL</span>(file);<br><span class="hljs-variable language_">window</span>.<span class="hljs-title function_">open</span>(url);<br><span class="hljs-variable constant_">URL</span>.<span class="hljs-title function_">revokeObjectURL</span>(url);<br></code></pre></td></tr></table></figure>
+<p>通过 createObjectURL 给图片文件创建一个临时 url 然后在浏览器访问地址实现预览</p>
+<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> url = <span class="hljs-variable constant_">URL</span>.<span class="hljs-title function_">createObjectURL</span>(file);<br><span class="hljs-keyword">const</span> a = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&quot;a&quot;</span>);<br>a.<span class="hljs-property">href</span> = url;<br>a.<span class="hljs-property">download</span> = <span class="hljs-string">&quot;download.png&quot;</span>;<br>a.<span class="hljs-title function_">click</span>();<br><span class="hljs-variable constant_">URL</span>.<span class="hljs-title function_">revokeObjectURL</span>(url);<br></code></pre></td></tr></table></figure>
+
+<h1 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h1><h2 id="将-DOM-上的-svg-转换成各种格式文件"><a href="#将-DOM-上的-svg-转换成各种格式文件" class="headerlink" title="将 DOM 上的 svg 转换成各种格式文件"></a>将 DOM 上的 svg 转换成各种格式文件</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> svgNode = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&quot;svg&quot;</span>);<br><span class="hljs-keyword">const</span> s = <span class="hljs-keyword">new</span> <span class="hljs-title class_">XMLSerializer</span>().<span class="hljs-title function_">serializeToString</span>(svgNode);<br><span class="hljs-comment">// base64</span><br><span class="hljs-keyword">const</span> base64 = <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">btoa</span>(s)<br><span class="hljs-comment">// dataURL 格式</span><br><span class="hljs-keyword">const</span> encodedData = <span class="hljs-string">`data:image/svg+xml;base64,<span class="hljs-subst">$&#123;base64&#125;</span>`</span>;<br><span class="hljs-keyword">const</span> img = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Image</span>();<br><br>img.<span class="hljs-property">onload</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-keyword">const</span> canvas = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&quot;canvas&quot;</span>);<br>  <span class="hljs-keyword">const</span> ctx = canvas.<span class="hljs-title function_">getContext</span>(<span class="hljs-string">&quot;2d&quot;</span>);<br>  canvas.<span class="hljs-property">height</span> = img.<span class="hljs-property">height</span>;<br>  canvas.<span class="hljs-property">width</span> = img.<span class="hljs-property">width</span>;<br>  ctx.<span class="hljs-title function_">drawImage</span>(img, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);<br>  <span class="hljs-comment">// Blog 格式</span><br>  canvas.<span class="hljs-title function_">toBlob</span>(<span class="hljs-function">(<span class="hljs-params">blob</span>) =&gt;</span> &#123;<br>    <span class="hljs-comment">// File 格式</span><br>    <span class="hljs-keyword">const</span> file = <span class="hljs-keyword">new</span> <span class="hljs-title class_">File</span>([blob], <span class="hljs-string">&quot;image.png&quot;</span>, &#123; <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;image/png&quot;</span> &#125;);<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(file);<br>    <span class="hljs-comment">// 图片下载</span><br>    <span class="hljs-keyword">const</span> url = <span class="hljs-variable constant_">URL</span>.<span class="hljs-title function_">createObjectURL</span>(file);<br>    <span class="hljs-keyword">const</span> a = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&quot;a&quot;</span>);<br>    a.<span class="hljs-property">download</span> = <span class="hljs-string">&quot;img.png&quot;</span>;<br>    a.<span class="hljs-property">href</span> = url;<br>    a.<span class="hljs-title function_">click</span>();<br>  &#125;);<br>&#125;;<br>img.<span class="hljs-property">src</span> = encodedData;<br></code></pre></td></tr></table></figure>
+
+
+
 
                 
               </div>
@@ -796,9 +756,11 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Git/" class="print-no-link">#Git</a>
+        <a href="/tags/web/" class="print-no-link">#web</a>
       
-        <a href="/tags/git/" class="print-no-link">#git</a>
+        <a href="/tags/file/" class="print-no-link">#file</a>
+      
+        <a href="/tags/blob/" class="print-no-link">#blob</a>
       
     </div>
   
@@ -810,8 +772,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>团队协作中git的基本使用</div>
-      <div>https://l1ushun.github.io/2021/09/15/git-01/</div>
+      <div>前端文件格式转换</div>
+      <div>https://l1ushun.github.io/2024/12/02/img-file/</div>
     </div>
     <div class="license-meta">
       
@@ -823,7 +785,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2021年9月15日</div>
+          <div>2024年12月2日</div>
         </div>
       
       
@@ -855,15 +817,15 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/09/16/tasking/" title="Tasking">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Tasking</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2024/09/04/next-05/" title="Next 配置项 next.config.js">
+                        <span class="hidden-mobile">Next 配置项 next.config.js</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>
