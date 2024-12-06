@@ -16,24 +16,24 @@
   <meta name="author" content="liu shun">
   <meta name="keywords" content="博客,前端,git">
   
-    <meta name="description" content="前言什么是 diff？我们写的 JSX 文件，会变成 vDom 也就是 React Element 实例，在 render 时进行调和变成 fiber，我们知道 React 采用了双缓存，正在页面中的是 current Fiber，本次渲染的是 workInProgress Fiber，在渲染时会用 workInProgress Fiber 直接替换 current Fiber，而 diff 做的">
+    <meta name="description" content="Runes#statesvelte 的状态，横向对比 Vue 的 ref，react 的 state 和 Vue React 不同的是 svelte 的值可以直接修改，UI即可响应，并且 $state 深度响应，你可以使用对象或者数组的 api 来更改值，如果不想深度响应就用 $state.raw 1234let a &#x3D; $state([1,2,3])let b &#x3D; $state.snapshot">
 <meta property="og:type" content="article">
-<meta property="og:title" content="React原理之diff流程">
-<meta property="og:url" content="https://l1ushun.github.io/2023/07/21/diff/index.html">
+<meta property="og:title" content="初始 Svelte">
+<meta property="og:url" content="https://l1ushun.github.io/2024/10/26/svelte/index.html">
 <meta property="og:site_name" content="liu的博客">
-<meta property="og:description" content="前言什么是 diff？我们写的 JSX 文件，会变成 vDom 也就是 React Element 实例，在 render 时进行调和变成 fiber，我们知道 React 采用了双缓存，正在页面中的是 current Fiber，本次渲染的是 workInProgress Fiber，在渲染时会用 workInProgress Fiber 直接替换 current Fiber，而 diff 做的">
+<meta property="og:description" content="Runes#statesvelte 的状态，横向对比 Vue 的 ref，react 的 state 和 Vue React 不同的是 svelte 的值可以直接修改，UI即可响应，并且 $state 深度响应，你可以使用对象或者数组的 api 来更改值，如果不想深度响应就用 $state.raw 1234let a &#x3D; $state([1,2,3])let b &#x3D; $state.snapshot">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://l1ushun.github.io/img/react-logo.png">
-<meta property="article:published_time" content="2023-07-21T14:29:21.000Z">
-<meta property="article:modified_time" content="2024-10-23T06:18:48.364Z">
+<meta property="og:image" content="https://www.svelte.cn/svelte.png">
+<meta property="article:published_time" content="2024-10-26T07:21:37.000Z">
+<meta property="article:modified_time" content="2024-12-06T09:24:35.704Z">
 <meta property="article:author" content="liu shun">
-<meta property="article:tag" content="React">
+<meta property="article:tag" content="svelte">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://l1ushun.github.io/img/react-logo.png">
+<meta name="twitter:image" content="https://www.svelte.cn/svelte.png">
   
   
   
-  <title>React原理之diff流程 - liu的博客</title>
+  <title>初始 Svelte - liu的博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -181,13 +181,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/react-logo.png') no-repeat center center; background-size: cover;">
+     style="background: url('https://www.svelte.cn/svelte.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="React原理之diff流程"></span>
+            <span id="subtitle" data-typed-text="初始 Svelte"></span>
           
         </div>
 
@@ -198,8 +198,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-07-21 22:29" pubdate>
-          2023年7月21日 晚上
+        <time datetime="2024-10-26 15:21" pubdate>
+          2024年10月26日 下午
         </time>
       </span>
     
@@ -210,7 +210,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.2k 字
+          3.7k 字
         
       </span>
     
@@ -221,7 +221,7 @@
         
         
         
-          18 分钟
+          31 分钟
         
       </span>
     
@@ -404,7 +404,7 @@
       
         <a href="/2023/07/21/diff/" title="React原理之diff流程"
            class="list-group-item list-group-item-action
-           active">
+           ">
           <span class="category-post">React原理之diff流程</span>
         </a>
       
@@ -584,7 +584,7 @@
       
         <a href="/2024/10/26/svelte/" title="初始 Svelte"
            class="list-group-item list-group-item-action
-           ">
+           active">
           <span class="category-post">初始 Svelte</span>
         </a>
       
@@ -688,70 +688,57 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">React原理之diff流程</h1>
+            <h1 id="seo-header">初始 Svelte</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><h2 id="什么是-diff？"><a href="#什么是-diff？" class="headerlink" title="什么是 diff？"></a>什么是 diff？</h2><p>我们写的 JSX 文件，会变成 vDom 也就是 React Element 实例，<strong>在 render 时进行调和变成 fiber</strong>，<br>我们知道 React 采用了双缓存，正在页面中的是 current Fiber，本次渲染的是 workInProgress Fiber，<br>在渲染时会用 workInProgress Fiber 直接替换 current Fiber，<strong>而 diff 做的就是比较 vDom 和 current Fiber 来生成 workInProgress Fiber，</strong><br>另外在<strong>初始化</strong>的时候，不存在 current Fiber ，也就<strong>不需要进行 diff</strong>。</p>
-<h1 id="三个设计思想"><a href="#三个设计思想" class="headerlink" title="三个设计思想"></a>三个设计思想</h1><ol>
-<li>永远只比较同层节点</li>
-<li>不同节点产生不同的树，如果节点改变了，直接删除原节点，创建新节点</li>
-<li>开发者通过 key 标记哪些是同个节点，在 diff 时会根据 key 进行判断（这也说明了key值必须唯一）</li>
-</ol>
-<h1 id="单节点-diff"><a href="#单节点-diff" class="headerlink" title="单节点 diff"></a>单节点 diff</h1><p><img src="/img/%E5%8D%95%E7%82%B9diff.png" srcset="/img/loading.gif" lazyload alt="单点diff.png"></p>
-<ul>
-<li>首先看上次更新时是否存在当前的DOM节点，如果没有证明进行了新增节点，直接创建新Fiber并返回</li>
-<li>然后比较 key 值是否相等，我们可以自定义 key 值来表明哪些节点是稳定的，如果连 key 值都不相同，说明进行了删除操作，直接打上删除的 tag，创建新的 Fiber 返回</li>
-<li>如果 key 相等，并且 type 也相等，证明该节点可以进行复用，直接返回即可。</li>
-<li>如果 key 相等，type 不等，证明该节点发生了更新，需要将该 fiber 和他的兄弟 fiber 全部标记删除</li>
-</ul>
-<h2 id="当-key-相等，type-不等时，为什么不仅标记该-fiber-删除，还要标记兄弟-fiber-呢？？"><a href="#当-key-相等，type-不等时，为什么不仅标记该-fiber-删除，还要标记兄弟-fiber-呢？？" class="headerlink" title="当 key 相等，type 不等时，为什么不仅标记该 fiber 删除，还要标记兄弟 fiber 呢？？"></a>当 key 相等，type 不等时，为什么不仅标记该 fiber 删除，还要标记兄弟 fiber 呢？？</h2><p>首先我们要清楚一点，这里是单节点 diff，也就是说我们当前只有一个节点，我们比较 type 前已经比较过了 key，证明了是同一个节点，如果 type 不相等的话，其他的节点根本没有比较的必要了。举个例子：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>  <br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">key</span>=<span class="hljs-string">&quot;1&quot;</span>&gt;</span>1<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>  <br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">key</span>=<span class="hljs-string">&quot;2&quot;</span>&gt;</span>2<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>  <br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>  <br> // 变成了<br><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>  <br>    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">key</span>=<span class="hljs-string">&quot;1&quot;</span>&gt;</span>1<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>  <br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br></code></pre></td></tr></table></figure>
-<p>在确定该节点是由 key &#x3D; “1” 的 div 更新而来的，因为只有 p 一个单节点，后续也不会有节点继续和 key&#x3D;”1”的兄弟节点进行比较了，所以直接打上删除标签就好了。</p>
-<h1 id="多节点-diff"><a href="#多节点-diff" class="headerlink" title="多节点 diff"></a>多节点 diff</h1><h2 id="第一阶段"><a href="#第一阶段" class="headerlink" title="第一阶段"></a>第一阶段</h2><p>第一阶段注主要处理更新的节点，步骤如下</p>
-<ul>
-<li>遍历 newChildren 和原来的 oldFiber ，首先比较 newChildren[i] 和 oldFiber，相同继续比较 newChildren[i+1] 和 oldFiber.sibling</li>
-<li>如果能复用就直接复用了</li>
-<li>不能复用有两种情况<ol>
-<li>key不同：直接跳出第一阶段的遍历</li>
-<li>key相同，type不同，说明发生了更新，遵循第二条思想，打上删除的 tag 继续遍历</li>
-</ol>
-</li>
-</ul>
-<p><strong>流程图</strong></p>
-<p><img src="/img/first-traverse.png" srcset="/img/loading.gif" lazyload alt="第一轮遍历.png"></p>
-<h2 id="第二阶段"><a href="#第二阶段" class="headerlink" title="第二阶段"></a>第二阶段</h2><p>当经过第一阶段的遍历后可能出现以下情况</p>
-<ul>
-<li>newChildren 和 oldFiber 都遍历完了，说明不再需要第二轮的遍历了</li>
-<li>newChildren 没遍历完，oldFiber 遍历完，说明新增了节点，这就需要再去遍历，标记上新增tag</li>
-<li>newChildren遍历完，oldFiber没遍历完，说明有删除节点，所以需要遍历剩下的oldFiber，依次标记删除tag</li>
-<li>newChildren与oldFiber都没遍历完，这说明有节点的位置发生了变化，举个例子</li>
-</ul>
+                <h1 id="Runes"><a href="#Runes" class="headerlink" title="Runes"></a>Runes</h1><h2 id="state"><a href="#state" class="headerlink" title="#state"></a>#state</h2><p>svelte 的状态，横向对比 Vue 的 ref，react 的 state</p>
+<p>和 Vue React 不同的是 svelte 的值可以直接修改，UI即可响应，并且 $state 深度响应，你可以使用对象或者数组的 api 来更改值，如果不想深度响应就用 $state.raw</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs svelte">let a = $state([1,2,3])<br>let b = $state.snapshot([1,2,3])<br>console.log(&quot;代理的&quot;, a);<br>console.log(&quot;静态的&quot;, b);<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://s21.ax1x.com/2024/12/06/pATsiu9.png" srcset="/img/loading.gif" lazyload></p>
+<p>使用 $state.snapshot 不会被代理</p>
+<h2 id="derived"><a href="#derived" class="headerlink" title="$derived"></a>$derived</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs svelte">&lt;script&gt;<br>	let count = $state(0);<br>	let doubled = $derived(count * 2);<br>&lt;/script&gt;<br></code></pre></td></tr></table></figure>
+
+<p>计算属性，当计算过程中的 state 值发生变化会重新计算，使用 $derived 计算不能传入带有副作用的计算表达式，并且在传入的计算表达式中不能修改 state 的值</p>
+<p>如果计算过程有点复杂，无法用一个表达式解决问题，还可以使用 $derived.by 支持传入一个有返回值 function，</p>
+<h2 id="effect"><a href="#effect" class="headerlink" title="$effect"></a>$effect</h2><p>$effect 会在组件安装到 DOM 后执行，$effect 不是必须放在最顶层，他可以放在任何地方。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs svelte">&lt;script&gt;<br>	let count = $state(0);<br>	let milliseconds = $state(1000);<br><br><br>  function testEffect () &#123;<br>    $effect(() =&gt; &#123;<br>		const interval = setInterval(() =&gt; &#123;<br>			count += 1;<br>		&#125;, milliseconds);<br><br>		return () =&gt; &#123;<br>			clearInterval(interval);<br>		&#125;;<br>	&#125;);<br>  &#125;<br>  testEffect()<br>&lt;/script&gt;<br><br>&lt;h1&gt;&#123;count&#125;&lt;/h1&gt;<br></code></pre></td></tr></table></figure>
+
+<p>这么写虽然没什么意义，但可以证明 $effect 即使在一个 function 里也不会有任何问题</p>
+<p>$effect 会自动识别内部的 $state、$props、$derived 并作为依赖项，当他们更新时 $effect 会重新执行</p>
+<p>$effect 可以返回一个 function，该 function 会在销毁时执行，不过以下这种情况</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs svelte">&lt;script&gt;<br>	let count = $state(&#123;<br>    name: &#x27;jack&#x27;<br>  &#125;);<br><br>  $effect(() =&gt; &#123;<br>    console.log(count);<br>  &#125;)<br>&lt;/script&gt;<br><br>&lt;h1&gt;&#123;count.name&#125;&lt;/h1&gt;<br>&lt;button onclick=&#123;() =&gt; count.name = &#x27;lucy&#x27;&#125;&gt;click&lt;/button&gt;<br></code></pre></td></tr></table></figure>
+
+<p>当点击 button 更改 state 的 name 时，$effect 是没办法识别到深层的更新的，处理这个问题有两种方式，第一种就是直接在 $effect 使用 count.name ，另外一种就是使用 $derived 计算属性</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs svelte">&lt;script&gt;<br>	let count = $state(&#123;<br>    name: &#x27;jack&#x27;<br>  &#125;);<br>  let name = $derived(count.name)<br>  $effect(() =&gt; &#123;<br>    console.log(name);<br>  &#125;)<br>&lt;/script&gt;<br><br>&lt;h1&gt;&#123;count.name&#125;&lt;/h1&gt;<br>&lt;button onclick=&#123;() =&gt; count.name = &#x27;lucy&#x27;&#125;&gt;click&lt;/button&gt;<br></code></pre></td></tr></table></figure>
+
+<p>还有一种情况是</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs svelte">&lt;script&gt;<br>  $effect(() =&gt; &#123;<br>    if (a || b) &#123;<br>      console.log(&#x27;inside if block&#x27;);<br>    &#125;<br>  &#125;);<br>&lt;/script&gt;<br></code></pre></td></tr></table></figure>
+
+<p>分别将 a 和 b 修改为 true ，但是打印只会执行一次，文档给出的解释是 effect 的执行效果取决于上次读到的值，大概就是说 a 已经为 true， b 不会对 effect 的执行产生更改，所以更改 b 不会触发 effect 执行</p>
+<p>如果想在 DOM 更新前做点事，可以使用 $effect.pre，用法和 $effect 完全一致</p>
+<p>另外 svelte 不建议直接在 $effect 同步状态，也就是修改 state 的值。</p>
+<h2 id="props"><a href="#props" class="headerlink" title="$props"></a>$props</h2><p>用来接收父组件传来的值，该值一般来说不希望被修改，并且修改一般是没作用的，唯一特殊的情况是传来的值是 $state 值虽然被修改但是会抛出警告该值不是属于你的</p>
+<h2 id="bindable"><a href="#bindable" class="headerlink" title="$bindable"></a>$bindable</h2><p>想允许自组件修改父组件的值，需要使用 $bindable</p>
+<p>子组件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs svelte">&lt;script lang=&quot;ts&quot;&gt;<br>	let &#123; value = $bindable() &#125; = $props();<br>&lt;/script&gt;<br><br>&lt;input bind:value=&#123;value&#125; /&gt;<br></code></pre></td></tr></table></figure>
+
+<p>父组件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs svelte">&lt;script&gt;<br>    import FancyInput from &quot;../FancyInput.svelte&quot;;<br>	  let message = $state(&#x27;hello&#x27;);<br>&lt;/script&gt;<br><br>&lt;FancyInput bind:value=&#123;message&#125;/&gt;<br>&lt;p&gt;&#123;message&#125;&lt;/p&gt;<br></code></pre></td></tr></table></figure>
+
+<p>如果想给 $bindable 设置一个默认值，直接给 $bindable 入参即可 $bindable(默认值)</p>
+<h2 id="inspect"><a href="#inspect" class="headerlink" title="$inspect"></a>$inspect</h2><p>在参数发生变化时，会在控制台打印。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs svelte">&lt;script lang=&quot;ts&quot;&gt;<br>  const obj = $state( &#123;<br>    name: &#x27;jack&#x27;,<br>    age: 18,<br>    hobby: [&#x27;run&#x27;, &#x27;jump&#x27;]<br>  &#125;)<br><br>  const addHobby = () =&gt; &#123;<br>    obj.hobby.push(&#x27;ball&#x27;)<br>  &#125;<br><br>  $inspect(obj.hobby)<br>&lt;/script&gt;<br><br>&lt;main&gt;<br>  &lt;div&gt;&#123;obj.hobby.join(&#x27;,&#x27;)&#125;&lt;/div&gt;<br>  &lt;button onclick=&#123;addHobby&#125;&gt;addHobby&lt;/button&gt;<br>&lt;/main&gt;<br></code></pre></td></tr></table></figure>
+
+<p>以上代码，在初始化时，$inspect 会输出 init 的值，当点击按钮进行更新时，会再次输出 update 的值</p>
+<p><img src="https://s21.ax1x.com/2024/10/26/pAwjam6.png" srcset="/img/loading.gif" lazyload alt="控制台输出"></p>
 <blockquote>
-<p>oldFiber: abcd<br>newChildren: acbd</p>
+<p>$inspect 执行返回一个 with 方法，该方法接收一个函数，函数有两个参数，一个是 type 初始化值为 init，更新时值为 update，第二个参数就是新的值</p>
 </blockquote>
-<p>在第一轮遍历之后，a 可以复用，oldFiber 剩余 bcd，newChildren 剩余 cbd，此时将未处理的 oldFiber 存入以 key 为 key，oldFiber 为 value 的 Map 中，遍历 newChildren，通过newChildren[i].key就能在existingChildren 中找到 key 相同的 oldFiber，索引为 oldIndex，通过 lastPlacedIndex 来进行处理。</p>
-<blockquote>
-<p>lastPlacedIndex 代表当前newChildren项在 oldFiber 中的索引<br>如果 oldIndex &gt;&#x3D; lastPlacedIndex 代表该可复用节点不需要移动<br>并将 lastPlacedIndex &#x3D; oldIndex;<br>如果 oldIndex &lt; lastplacedIndex 该可复用节点之前插入的位置索引小于这次更新需要插入的位置索引，代表该节点需要向右移动</p>
-</blockquote>
-<p><strong>流程</strong></p>
-<blockquote>
-<p>oldFiber: abcd<br>newChildren: acbd</p>
-</blockquote>
-<p>经过第一次阶段遍历</p>
-<blockquote>
-<p>oldFiber: bcd<br>newChildren: cbd<br>查找 newChildren 的 c 在 oldFiber 中的索引为 2 ，所以 lastPlacedIndex &#x3D; 2，无需换位</p>
-</blockquote>
-<p>第一次查找后</p>
-<blockquote>
-<p>oldFiber: bd<br>newChildren: bd<br>查找 newChildren 的 b 在 oldFiber 中的索引为 1 ，所以 lastPlacedIndex &#x3D; 1，需要向右移动</p>
-</blockquote>
-<p>第二次查找后</p>
-<blockquote>
-<p>oldFiber: d<br>newChildren: d<br>查找 newChildren 的 b 在 oldFiber 中的索引为 3 ，所以 lastPlacedIndex &#x3D; 3，无需换位</p>
-</blockquote>
-<p>至此，Diff流程结束。</p>
+<h1 id="Template-syntax"><a href="#Template-syntax" class="headerlink" title="Template syntax"></a>Template syntax</h1><h2 id="snippet"><a href="#snippet" class="headerlink" title="$snippet"></a>$snippet</h2><p>使用 $snippet 声明代码片段，通过 @render 渲染使用代码片段</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs svelte">&#123;#snippet figure(image)&#125;<br>	&lt;figure&gt;<br>		&lt;img src=&#123;image.src&#125; alt=&#123;image.caption&#125; width=&#123;image.width&#125; height=&#123;image.height&#125; /&gt;<br>		&lt;figcaption&gt;&#123;image.caption&#125;&lt;/figcaption&gt;<br>	&lt;/figure&gt;<br>&#123;/snippet&#125;<br><br>&#123;#each images as image&#125;<br>	&#123;#if image.href&#125;<br>		&lt;a href=&#123;image.href&#125;&gt;<br>			&#123;@render figure(image)&#125;<br>		&lt;/a&gt;<br>	&#123;:else&#125;<br>		&#123;@render figure(image)&#125;<br>	&#123;/if&#125;<br>&#123;/each&#125;ß<br></code></pre></td></tr></table></figure>
 
                 
               </div>
@@ -785,7 +772,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/React/" class="print-no-link">#React</a>
+        <a href="/tags/svelte/" class="print-no-link">#svelte</a>
       
     </div>
   
@@ -797,8 +784,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>React原理之diff流程</div>
-      <div>https://l1ushun.github.io/2023/07/21/diff/</div>
+      <div>初始 Svelte</div>
+      <div>https://l1ushun.github.io/2024/10/26/svelte/</div>
     </div>
     <div class="license-meta">
       
@@ -810,7 +797,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年7月21日</div>
+          <div>2024年10月26日</div>
         </div>
       
       
@@ -842,9 +829,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/07/31/react-flow/" title="React流程图（完善ing...）">
+                      <a href="/2024/12/02/img-file/" title="前端文件格式转换">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">React流程图（完善ing...）</span>
+                        <span class="hidden-mobile">前端文件格式转换</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -852,8 +839,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/07/12/ahooks-useVirtualList/" title="ahooks源码之useVirtualList">
-                        <span class="hidden-mobile">ahooks源码之useVirtualList</span>
+                      <a href="/2024/09/04/next-05/" title="Next 配置项 next.config.js">
+                        <span class="hidden-mobile">Next 配置项 next.config.js</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
