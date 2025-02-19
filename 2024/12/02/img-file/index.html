@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://s11.ax1x.com/2023/12/18/pi5vFoV.jpg">
 <meta property="article:published_time" content="2024-12-02T10:26:21.000Z">
-<meta property="article:modified_time" content="2024-12-03T03:02:32.571Z">
+<meta property="article:modified_time" content="2025-02-08T06:37:11.676Z">
 <meta property="article:author" content="liu shun">
 <meta property="article:tag" content="web">
 <meta property="article:tag" content="file">
@@ -584,10 +584,10 @@
     
       
       
-        <a href="/2024/10/26/svelte/" title="初始 Svelte"
+        <a href="/2024/10/26/svelte/" title="初识 Svelte"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">初始 Svelte</span>
+          <span class="category-post">初识 Svelte</span>
         </a>
       
     
@@ -741,7 +741,7 @@
 <blockquote>
 <p>用以下代码需要有一个 type 为 file id 为 upload 的 input，一个 id 为 btn 的 button</p>
 </blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> newWidth = <span class="hljs-number">200</span>;<br><span class="hljs-keyword">const</span> newHeight = <span class="hljs-number">200</span>;<br><span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&quot;#btn&quot;</span>).<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&quot;click&quot;</span>, <span class="hljs-function">() =&gt;</span> &#123;<br>  <span class="hljs-keyword">const</span> file = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&quot;#upload&quot;</span>).<span class="hljs-property">files</span>[<span class="hljs-number">0</span>];<br>  <span class="hljs-keyword">const</span> reader = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FileReader</span>();<br>  <span class="hljs-keyword">const</span> img = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Image</span>();<br>  <span class="hljs-comment">// 读文件</span><br>  reader.<span class="hljs-property">onload</span> = <span class="hljs-function">(<span class="hljs-params">e</span>) =&gt;</span> &#123;<br>    img.<span class="hljs-property">src</span> = e.<span class="hljs-property">target</span>.<span class="hljs-property">result</span>;<br>    img.<span class="hljs-property">onload</span> = <span class="hljs-function">() =&gt;</span> &#123;<br>      <span class="hljs-keyword">const</span> canvas = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&quot;canvas&quot;</span>);<br>      canvas.<span class="hljs-property">width</span> = newWidth;<br>      canvas.<span class="hljs-property">height</span> = newHeight;<br>      <span class="hljs-keyword">const</span> ctx = canvas.<span class="hljs-title function_">getContext</span>(<span class="hljs-string">&quot;2d&quot;</span>);<br>      ctx.<span class="hljs-title function_">drawImage</span>(img, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, newWidth, newHeight);<br>      <span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>.<span class="hljs-title function_">appendChild</span>(canvas);<br>    &#125;;<br>  &#125;;<br>  reader.<span class="hljs-title function_">readAsDataURL</span>(file);<br>&#125;);<br></code></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> newWidth = <span class="hljs-number">200</span>;<br><span class="hljs-keyword">const</span> newHeight = <span class="hljs-number">200</span>;<br><span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&quot;#btn&quot;</span>).<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&quot;click&quot;</span>, <span class="hljs-function">() =&gt;</span> &#123;<br>  <span class="hljs-keyword">const</span> file = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&quot;#upload&quot;</span>).<span class="hljs-property">files</span>[<span class="hljs-number">0</span>];<br>  <span class="hljs-keyword">const</span> reader = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FileReader</span>();<br>  <span class="hljs-keyword">const</span> img = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Image</span>();<br>  reader.<span class="hljs-property">onload</span> = <span class="hljs-function">(<span class="hljs-params">e</span>) =&gt;</span> &#123;<br>    img.<span class="hljs-property">src</span> = e.<span class="hljs-property">target</span>.<span class="hljs-property">result</span>;<br>    img.<span class="hljs-property">onload</span> = <span class="hljs-function">() =&gt;</span> &#123;<br>      <span class="hljs-keyword">const</span> canvas = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&quot;canvas&quot;</span>);<br>      canvas.<span class="hljs-property">width</span> = newWidth;<br>      canvas.<span class="hljs-property">height</span> = newHeight;<br>      <span class="hljs-keyword">const</span> ctx = canvas.<span class="hljs-title function_">getContext</span>(<span class="hljs-string">&quot;2d&quot;</span>);<br>      ctx.<span class="hljs-title function_">drawImage</span>(img, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, newWidth, newHeight);<br>      <span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>.<span class="hljs-title function_">appendChild</span>(canvas);<br>    &#125;;<br>  &#125;;<br>  <span class="hljs-comment">// 读取文件对象</span><br>  reader.<span class="hljs-title function_">readAsDataURL</span>(file);<br>&#125;);<br></code></pre></td></tr></table></figure>
 
 <h1 id="canvas-drawImage"><a href="#canvas-drawImage" class="headerlink" title="canvas.drawImage"></a>canvas.drawImage</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-title function_">drawImage</span>(image, dx, dy)<br><span class="hljs-title function_">drawImage</span>(image, dx, dy, dWidth, dHeight)<br><span class="hljs-title function_">drawImage</span>(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)<br></code></pre></td></tr></table></figure>
 
@@ -841,12 +841,18 @@
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/2025/02/09/review/" title="">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/10/26/svelte/" title="初始 Svelte">
-                        <span class="hidden-mobile">初始 Svelte</span>
+                      <a href="/2024/10/26/svelte/" title="初识 Svelte">
+                        <span class="hidden-mobile">初识 Svelte</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

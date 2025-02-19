@@ -16,22 +16,24 @@
   <meta name="author" content="liu shun">
   <meta name="keywords" content="博客,前端,git">
   
-    <meta property="og:type" content="article">
-<meta property="og:title" content="React流程图（完善ing...）">
-<meta property="og:url" content="https://l1ushun.github.io/2023/07/31/react-flow/index.html">
+    <meta name="description" content="JS闭包作用域（函数作用域，全局作用域），变量向上查找形成作用域链，闭包就是可以访问其他函数作用域的变量，这样会导致被引用变量的函数作用域不会被回收，过多闭包会造成内存泄露 TStype 和 interface 区别 type 不可重复声明，interface 可以，会自合并 type 通过 ｜ &amp; 进行扩展，interface 可以直接继承 interface 只能描述对象类型结构，ty">
+<meta property="og:type" content="article">
+<meta property="og:title" content="liu的博客">
+<meta property="og:url" content="https://l1ushun.github.io/2025/02/09/review/index.html">
 <meta property="og:site_name" content="liu的博客">
+<meta property="og:description" content="JS闭包作用域（函数作用域，全局作用域），变量向上查找形成作用域链，闭包就是可以访问其他函数作用域的变量，这样会导致被引用变量的函数作用域不会被回收，过多闭包会造成内存泄露 TStype 和 interface 区别 type 不可重复声明，interface 可以，会自合并 type 通过 ｜ &amp; 进行扩展，interface 可以直接继承 interface 只能描述对象类型结构，ty">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://l1ushun.github.io/img/react-logo.png">
-<meta property="article:published_time" content="2023-07-31T03:42:21.000Z">
-<meta property="article:modified_time" content="2024-10-23T06:18:48.366Z">
+<meta property="og:image" content="https://www.yuque.com/kuitos/gky7yw/gesexv">
+<meta property="article:published_time" content="2025-02-09T04:27:09.338Z">
+<meta property="article:modified_time" content="2025-02-14T12:38:47.981Z">
 <meta property="article:author" content="liu shun">
-<meta property="article:tag" content="React">
+<meta property="article:tag" content="博客,前端,git">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://l1ushun.github.io/img/react-logo.png">
+<meta name="twitter:image" content="https://www.yuque.com/kuitos/gky7yw/gesexv">
   
   
   
-  <title>React流程图（完善ing...） - liu的博客</title>
+  <title>liu的博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -179,13 +181,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/react-logo.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="React流程图（完善ing...）"></span>
+            <span id="subtitle" data-typed-text=""></span>
           
         </div>
 
@@ -196,8 +198,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-07-31 11:42" pubdate>
-          2023年7月31日 中午
+        <time datetime="2025-02-09 12:27" pubdate>
+          2025年2月9日 中午
         </time>
       </span>
     
@@ -208,7 +210,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 字
+          1.8k 字
         
       </span>
     
@@ -219,7 +221,7 @@
         
         
         
-          1 分钟
+          15 分钟
         
       </span>
     
@@ -249,436 +251,6 @@
   <div class="row nomargin-x">
     <div class="side-col d-none d-lg-block col-lg-2">
       
-  <aside class="sidebar category-bar" style="margin-right: -1rem">
-    
-
-
-
-
-
-<div class="category-list">
-  
-  
-    
-    
-    
-    <div class="category row nomargin-x">
-      <a class="category-item 
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="技术博客"
-        id="heading-2143c8627fa00f84aa0cd4b0b5aed288" role="tab" data-toggle="collapse" href="#collapse-2143c8627fa00f84aa0cd4b0b5aed288"
-        aria-expanded="true"
-      >
-        技术博客
-        <span class="list-group-count">(43)</span>
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      
-      <div class="category-collapse collapse show" id="collapse-2143c8627fa00f84aa0cd4b0b5aed288"
-           role="tabpanel" aria-labelledby="heading-2143c8627fa00f84aa0cd4b0b5aed288">
-        
-        
-          
-  <div class="category-post-list">
-    
-    
-      
-      
-        <a href="/2023/03/11/lodash-round/" title="JavaScript 精度问题的原因和解决方案"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">JavaScript 精度问题的原因和解决方案</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2023/09/13/design-mode/" title="JavaScript设计模式(一)：单例模式、工厂模式"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">JavaScript设计模式(一)：单例模式、工厂模式</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2023/10/11/design-proxy/" title="JavaScript设计模式(三)：代理模式"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">JavaScript设计模式(三)：代理模式</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2023/10/10/design-strategy/" title="JavaScript设计模式(二)：策略模式"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">JavaScript设计模式(二)：策略模式</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2023/10/17/desigin-decorator/" title="JavaScript设计模式(五)：装饰器模式"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">JavaScript设计模式(五)：装饰器模式</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2023/10/13/design-observer/" title="JavaScript设计模式(四)：发布-订阅模式、观察者模式"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">JavaScript设计模式(四)：发布-订阅模式、观察者模式</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2024/04/02/nest-01/" title="Nest 初体验"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">Nest 初体验</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2024/08/30/next-04/" title="Next 元数据（metadata）"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">Next 元数据（metadata）</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2024/08/08/next-01/" title="Next 入门篇"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">Next 入门篇</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2024/08/28/next-03/" title="Next 组件篇"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">Next 组件篇</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2024/08/12/next-02/" title="Next 路由篇"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">Next 路由篇</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2024/09/04/next-05/" title="Next 配置项 next.config.js"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">Next 配置项 next.config.js</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2023/08/19/react-event/" title="React事件系统"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">React事件系统</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2023/07/21/diff/" title="React原理之diff流程"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">React原理之diff流程</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2023/07/31/react-flow/" title="React流程图（完善ing...）"
-           class="list-group-item list-group-item-action
-           active">
-          <span class="category-post">React流程图（完善ing...）</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2023/05/29/redux-source/" title="Redux源码之createStore"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">Redux源码之createStore</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2021/09/16/tasking/" title="Tasking"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">Tasking</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2023/10/31/ts-01/" title="TypeScript入坑指北"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">TypeScript入坑指北</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2023/08/07/vite-02/" title="Vite-优化篇"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">Vite-优化篇</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2023/08/04/vite-01/" title="Vite-快速入门"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">Vite-快速入门</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2023/08/12/vite-04/" title="Vite-架构篇（Rollup）"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">Vite-架构篇（Rollup）</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2023/08/17/vite-05/" title="Vite-进阶篇"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">Vite-进阶篇</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2024/03/21/vue-mind-mapping/" title="Vue3 思维导图(一)：基础篇"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">Vue3 思维导图(一)：基础篇</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2024/03/25/vue-mapping-deep/" title="Vue3 思维导图(二)"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">Vue3 思维导图(二)</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2024/01/06/webpack-03/" title="Webpack优化篇"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">Webpack优化篇</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2023/12/27/webpack-01/" title="Webpack入坑指北"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">Webpack入坑指北</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2023/07/11/ahooks-useRequest/" title="ahooks源码之useRequest"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">ahooks源码之useRequest</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2023/07/12/ahooks-useVirtualList/" title="ahooks源码之useVirtualList"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">ahooks源码之useVirtualList</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2024/04/29/react-ref/" title="一文搞定 React 的 ref"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">一文搞定 React 的 ref</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2024/04/25/useEffect/" title="一文搞定 React 的 useEffect"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">一文搞定 React 的 useEffect</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2024/05/17/vue3-diff/" title="了解Vue3是如何进行组件更新的"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">了解Vue3是如何进行组件更新的</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2024/01/09/browser/" title="从输入URL开始构建浏览器知识体系"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">从输入URL开始构建浏览器知识体系</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2024/07/28/this-topic/" title="关于原型的 JS 题"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">关于原型的 JS 题</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2024/10/26/svelte/" title="初识 Svelte"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">初识 Svelte</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2024/05/24/nuxt/" title="初识Nuxt"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">初识Nuxt</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2024/12/02/img-file/" title="前端文件格式转换"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">前端文件格式转换</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2021/09/15/git-01/" title="团队协作中git的基本使用"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">团队协作中git的基本使用</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2022/12/21/lazy-image-loading/" title="图片懒加载的几种方式"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">图片懒加载的几种方式</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2024/05/22/qiankun-baics/" title="微前端 qiankun"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">微前端 qiankun</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2023/05/26/create-redux/" title="快速入门Redux"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">快速入门Redux</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2022/12/03/write/" title="手写集合"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">手写集合</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2023/12/13/regexp/" title="无法避免的正则表达式"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">无法避免的正则表达式</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2023/12/18/module/" title="深入浅出前端模块化原理"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">深入浅出前端模块化原理</span>
-        </a>
-      
-    
-  </div>
-
-        
-      </div>
-    </div>
-  
-</div>
-
-
-  </aside>
-
 
     </div>
 
@@ -686,12 +258,57 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">React流程图（完善ing...）</h1>
+            <h1 id="seo-header"></h1>
             
             
               <div class="markdown-body">
                 
-                <p><img src="/img/React%E6%B5%81%E7%A8%8B%E5%9B%BE.png" srcset="/img/loading.gif" lazyload alt="React流程图.png"></p>
+                <h1 id="JS"><a href="#JS" class="headerlink" title="JS"></a>JS</h1><h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><p>作用域（函数作用域，全局作用域），变量向上查找形成作用域链，闭包就是可以访问其他函数作用域的变量，这样会导致被引用变量的函数作用域不会被回收，过多闭包会造成内存泄露</p>
+<h1 id="TS"><a href="#TS" class="headerlink" title="TS"></a>TS</h1><h2 id="type-和-interface-区别"><a href="#type-和-interface-区别" class="headerlink" title="type 和 interface 区别"></a>type 和 interface 区别</h2><ol>
+<li>type 不可重复声明，interface 可以，会自合并</li>
+<li>type 通过 ｜ &amp; 进行扩展，interface 可以直接继承</li>
+<li>interface 只能描述对象类型结构，type 描述类型关系</li>
+</ol>
+<h2 id="分布式"><a href="#分布式" class="headerlink" title="分布式"></a>分布式</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js">type <span class="hljs-title class_">Test</span>&lt;T <span class="hljs-keyword">extends</span> string, Y <span class="hljs-keyword">extends</span> string&gt; =<br>    T <span class="hljs-keyword">extends</span> Y<br>        ? <span class="hljs-literal">true</span><br>        : <span class="hljs-literal">false</span>;<br><br>type T = <span class="hljs-title class_">Test</span>&lt;<span class="hljs-string">&#x27;a&#x27;</span> | <span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;a&#x27;</span>&gt;<br></code></pre></td></tr></table></figure>
+
+<p>如上，’a’ | ‘b’ 会分别传入，’a’ extends ‘a’ ‘a’ extends ‘b’ 所以 T 为 true | false 也就是 boolean类型</p>
+<h1 id="微前端"><a href="#微前端" class="headerlink" title="微前端"></a>微前端</h1><h2 id="为什么用微前端"><a href="#为什么用微前端" class="headerlink" title="为什么用微前端"></a>为什么用微前端</h2><ol>
+<li>解耦，将庞大的项目拆分成独立的小项目，通过微前端进行整个，各个项目<strong>独立开发维护</strong>，组合更加灵活</li>
+<li>不区分技术栈，一个页面可以有 React Vue 甚至 JQuery 的项目</li>
+<li>各个项目独立所以可以并行开发，效率更高</li>
+</ol>
+<h2 id="微前端和-iframe"><a href="#微前端和-iframe" class="headerlink" title="微前端和 iframe"></a>微前端和 iframe</h2><p>来自 <img src="https://www.yuque.com/kuitos/gky7yw/gesexv" srcset="/img/loading.gif" lazyload alt="Why Not Iframe"></p>
+<p>iframe 最大的特性就是提供了浏览器原生的硬隔离方案，不论是样式隔离、js 隔离这类问题统统都能被完美解决。但他的最大问题也在于他的隔离性无法被突破，导致应用间上下文无法被共享，随之带来的开发体验、产品体验的问题。</p>
+<ol>
+<li>url 不同步。浏览器刷新 iframe url 状态丢失、后退前进按钮无法使用。</li>
+<li>UI 不同步，DOM 结构不共享。想象一下屏幕右下角 1&#x2F;4 的 iframe 里来一个带遮罩层的弹框，同时我们要求这个弹框要浏览器居中显示，还要浏览器 resize 时自动居中..</li>
+<li>全局上下文完全隔离，内存变量不共享。iframe 内外系统的通信、数据同步等需求，主应用的 cookie 要透传到根域名都不同的子应用中实现免登效果。</li>
+<li>慢。每次子应用进入都是一次浏览器上下文重建、资源重新加载的过程。</li>
+</ol>
+<p>其中有的问题比较好解决(问题1)，有的问题我们可以睁一只眼闭一只眼(问题4)，但有的问题我们则很难解决(问题3)甚至无法解决(问题2)，而这些无法解决的问题恰恰又会给产品带来非常严重的体验问题， 最终导致我们舍弃了 iframe 方案。</p>
+<h2 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h2><ul>
+<li><p>加载： 通过动态创建 script 标签的方式加载子应用的入口文件。加载完成后，会执行子应用暴露出的生命周期函数。</p>
+</li>
+<li><p>生命周期：bootstrap 函数在应用加载时被调用，mount 函数在应用启动时被调用，unmount 函数在应用卸载时被调用。</p>
+</li>
+<li><p>隔离：js 通过 proxy 代理 window 对象，  css 通过 Shadow Dom</p>
+</li>
+</ul>
+<h2 id="关于隔离存在的问题"><a href="#关于隔离存在的问题" class="headerlink" title="关于隔离存在的问题"></a>关于隔离存在的问题</h2><p>js 沙箱隔离存在的问题是，子应用操作全局对象，例如给 body 添加事件不会被隔离，需要子应用在 unmount 时清除全局时间监听</p>
+<p>css 隔离通过 Shadow Dom 来进行隔离，这样存在的问题是，当我们的一些 Dom 是挂载到 body 上的，因为他不在 Shadow Dom 下，那样式自然就丢失了。解决办法就需要自己去维护自己的样式，例如 Vue 使用 scoped ，React 使用 css modules，或者内部统一使用BEM命名规范？</p>
+<h2 id="微前端通信"><a href="#微前端通信" class="headerlink" title="微前端通信"></a>微前端通信</h2><p>主应用通过 initGlobalState 注册全局 state，再使用 onGlobalStateChange 监听 state 变化，子应用在 render 生命周期获取主应用传来的 state</p>
+<h2 id="存在的问题"><a href="#存在的问题" class="headerlink" title="存在的问题"></a>存在的问题</h2><h1 id="React"><a href="#React" class="headerlink" title="React"></a>React</h1><h2 id="useEffect-更新流程"><a href="#useEffect-更新流程" class="headerlink" title="useEffect 更新流程"></a>useEffect 更新流程</h2><h1 id="工程化"><a href="#工程化" class="headerlink" title="工程化"></a>工程化</h1><h2 id="Webpack-执行流程"><a href="#Webpack-执行流程" class="headerlink" title="Webpack 执行流程"></a>Webpack 执行流程</h2><ol>
+<li>根据 shell 和配置文件得到完整的配置参数</li>
+<li>初始化编译对象</li>
+<li>开始编译</li>
+<li>确定入口</li>
+<li>编译完成，生成依赖关系图</li>
+<li>根据依赖关系打包</li>
+<li>对打包产物进行优化，tree-shaking 压缩等等</li>
+<li>写入 output 文件夹</li>
+</ol>
+<h2 id="Webpack-常见loader"><a href="#Webpack-常见loader" class="headerlink" title="Webpack 常见loader"></a>Webpack 常见loader</h2><p>babel-loader ts-loader css-loader style-loader sass-loader less-loader file-loader url-loader</p>
+<h2 id="Webpack-常见-plugin"><a href="#Webpack-常见-plugin" class="headerlink" title="Webpack 常见 plugin"></a>Webpack 常见 plugin</h2><p>HtmlWebpackPlugin MiniCssExtractPlugin TerserWebpackPlugin BundleAnalyzerPlugin</p>
 
                 
               </div>
@@ -700,34 +317,6 @@
             <div>
               <div class="post-metas my-3">
   
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2/" class="category-chain-item">技术博客</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
-  
-  
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/React/" class="print-no-link">#React</a>
-      
-    </div>
   
 </div>
 
@@ -737,8 +326,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>React流程图（完善ing...）</div>
-      <div>https://l1ushun.github.io/2023/07/31/react-flow/</div>
+      <div></div>
+      <div>https://l1ushun.github.io/2025/02/09/review/</div>
     </div>
     <div class="license-meta">
       
@@ -750,7 +339,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年7月31日</div>
+          <div>2025年2月9日</div>
         </div>
       
       
@@ -782,18 +371,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/08/04/vite-01/" title="Vite-快速入门">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Vite-快速入门</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/07/21/diff/" title="React原理之diff流程">
-                        <span class="hidden-mobile">React原理之diff流程</span>
+                      <a href="/2024/12/02/img-file/" title="前端文件格式转换">
+                        <span class="hidden-mobile">前端文件格式转换</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
