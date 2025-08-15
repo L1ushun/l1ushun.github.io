@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://l1ushun.github.io/img/typescript.png">
 <meta property="article:published_time" content="2023-10-31T02:04:11.000Z">
-<meta property="article:modified_time" content="2024-10-23T06:18:48.366Z">
+<meta property="article:modified_time" content="2025-02-27T04:50:07.962Z">
 <meta property="article:author" content="liu shun">
 <meta property="article:tag" content="TypeScript">
 <meta name="twitter:card" content="summary_large_image">
@@ -210,7 +210,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          6.9k 字
+          7.1k 字
         
       </span>
     
@@ -221,7 +221,7 @@
         
         
         
-          58 分钟
+          60 分钟
         
       </span>
     
@@ -801,22 +801,22 @@
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">Test</span>&lt;T <span class="hljs-keyword">extends</span> <span class="hljs-built_in">string</span>, Y <span class="hljs-keyword">extends</span> <span class="hljs-built_in">string</span>&gt; =<br>    [T] <span class="hljs-keyword">extends</span> [Y]<br>        ? <span class="hljs-literal">true</span><br>        : <span class="hljs-literal">false</span>;<br><br><span class="hljs-keyword">type</span> T = <span class="hljs-title class_">Test</span>&lt;<span class="hljs-string">&#x27;a&#x27;</span> | <span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;a&#x27;</span>&gt; <span class="hljs-comment">// false</span><br></code></pre></td></tr></table></figure>
 <p>这里把 <code>T extends Y</code> 改成 <code>[T] extends [Y] </code> 关闭分布式，让联合类型不再分别做类型运算，而是直接进行运算，这样就可以直接运算得到符合预期的结果了。</p>
 <h1 id="内置高级类型"><a href="#内置高级类型" class="headerlink" title="内置高级类型"></a>内置高级类型</h1><ul>
-<li>Parameters</li>
-<li>ReturnType</li>
-<li>ConstructorParameters</li>
-<li>InstanceType</li>
+<li>Parameters<T> 获取函数类型 T 的参数类型组成的元组。 </li>
+<li>ReturnType<T> 获取函数类型 T 的返回值类型。</li>
+<li>ConstructorParameters<T>  获取构造函数类型 T 的参数类型组成的元组。</li>
+<li>InstanceType<T>   获取构造函数类型 T 的实例类型。</li>
 <li>ThisParameterType</li>
 <li>OmitThisParameter</li>
-<li>Partial</li>
-<li>Required</li>
-<li>Readonly</li>
-<li>Pick</li>
-<li>Record</li>
-<li>Exclude</li>
-<li>Extract</li>
-<li>Omit</li>
+<li>Partial<T>    将类型 T 的所有属性变为可选。</li>
+<li>Required<T>   将类型 T 的所有属性变为必填。</li>
+<li>Readonly<T>   将类型 T 的所有属性变为只读。</li>
+<li>Pick&lt;T, K&gt;    从类型 T 中选取指定的属性 K。</li>
+<li>Omit&lt;T, K&gt;    从类型 T 中排除指定的属性 K。</li>
+<li>Record&lt;K, T&gt;  创建一个键为 K、值为 T 的对象类型。</li>
+<li>Exclude&lt;T, U&gt; 从类型 T 中排除可以赋值给 U 的类型。</li>
+<li>Extract&lt;T, U&gt; 从类型 T 中提取可以赋值给 U 的类型。</li>
 <li>Awaited</li>
-<li>NonNullable</li>
+<li>NonNullable<T>    从类型 T 中排除 null 和 undefined。</li>
 <li>Uppercase、Lowercase、Capitalize、Uncapitaliz*</li>
 </ul>
 

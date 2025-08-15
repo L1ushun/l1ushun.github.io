@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://z1.ax1x.com/2023/12/13/pifsd3R.png">
 <meta property="article:published_time" content="2023-12-27T11:38:37.000Z">
-<meta property="article:modified_time" content="2025-02-19T05:21:38.576Z">
+<meta property="article:modified_time" content="2025-02-19T06:41:50.836Z">
 <meta property="article:author" content="liu shun">
 <meta property="article:tag" content="webpack">
 <meta property="article:tag" content="工程化">
@@ -211,7 +211,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          6.7k 字
+          7k 字
         
       </span>
     
@@ -222,7 +222,7 @@
         
         
         
-          56 分钟
+          59 分钟
         
       </span>
     
@@ -822,6 +822,12 @@
 <td>根据内容生成hash值，文件内容相同hash值就相同</td>
 </tr>
 </tbody></table>
+<h1 id="source-map"><a href="#source-map" class="headerlink" title="source map"></a>source map</h1><p>一般建议在开发环境中开启 sourcemap 开启方法也很简单 配置中设置 devtool 即可，默认在开发环境中是 eval 生产环境是 none</p>
+<p>开发环境一些参数（具体需要看文档） </p>
+<p>eval 会在构建时使用 eval 来执行代码，在末尾加上 &#x2F;&#x2F;# sourceURL&#x3D;xxx.js 来指定映射文件路径，报错时会指向webpack 生成的一个临时文件中，速度最快</p>
+<p>eval-source-map 和 eval 类似， 区别在于使用的是 dataUrl 的方式</p>
+<p>cheap-eval–source-map 类似 eval-source-map  但开销更低 只映射行数，会忽略 loader 的sourcemap</p>
+<p>cheap-module-eval–source-map 支持 loader 的 sourcemap</p>
 
                 
               </div>
