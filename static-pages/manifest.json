@@ -1,0 +1,12 @@
+{
+  "items": [
+    {
+      "id": "wsj_demo",
+      "title": "节日祝福",
+      "description": "",
+      "href": "/static-pages/wsj_demo/index.html",
+      "type": "directory"
+    }
+  ],
+  "generatedAt": "2025-11-05T07:07:03.041Z"
+}
