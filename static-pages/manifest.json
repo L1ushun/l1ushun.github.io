@@ -6,7 +6,14 @@
       "description": "",
       "href": "/static-pages/wsj_demo/index.html",
       "type": "directory"
+    },
+    {
+      "id": "wheel",
+      "title": "随机抽签转盘",
+      "description": "",
+      "href": "/static-pages/wheel/index.html",
+      "type": "directory"
     }
   ],
-  "generatedAt": "2025-11-05T07:07:03.041Z"
+  "generatedAt": "2025-11-15T10:15:07.446Z"
 }
