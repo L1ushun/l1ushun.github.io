@@ -16,25 +16,24 @@
   <meta name="author" content="shun">
   <meta name="keywords" content="博客,前端,git,react,vue,nodejs">
   
-    <meta name="description" content="思路创建一个 message 组件 -&gt; 通过 Nuxt 插件的 defineNuxtPlugin 获取 nuxtApp -&gt; 将 message 挂载到 nuxtApp 上 -&gt; 调用 message 组件 创建一个 message 组件">
+    <meta name="description" content="Mermaid图表示例本文展示了如何在Hexo博客中使用Mermaid绘制各种图表。 流程图graph TD     A[开始] --&gt; B&amp;#123;判断条件&amp;#125;     B --&gt;|条件1| C[处理1]     B --&gt;|条件2| D[处理2]     C --&gt; E[结束]     D --&gt; E   时序图sequenceDiagram     p">
 <meta property="og:type" content="article">
-<meta property="og:title" content="在 Nuxt 中封装 Message 组件">
-<meta property="og:url" content="https://l1ushun.github.io/2024/07/12/nuxt-message/index.html">
+<meta property="og:title" content="Mermaid图表示例">
+<meta property="og:url" content="https://l1ushun.github.io/2025/11/17/mermaid-demo/index.html">
 <meta property="og:site_name" content="liu的博客">
-<meta property="og:description" content="思路创建一个 message 组件 -&gt; 通过 Nuxt 插件的 defineNuxtPlugin 获取 nuxtApp -&gt; 将 message 挂载到 nuxtApp 上 -&gt; 调用 message 组件 创建一个 message 组件">
+<meta property="og:description" content="Mermaid图表示例本文展示了如何在Hexo博客中使用Mermaid绘制各种图表。 流程图graph TD     A[开始] --&gt; B&amp;#123;判断条件&amp;#125;     B --&gt;|条件1| C[处理1]     B --&gt;|条件2| D[处理2]     C --&gt; E[结束]     D --&gt; E   时序图sequenceDiagram     p">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://s21.ax1x.com/2024/05/24/pkQ50QP.png">
-<meta property="article:published_time" content="2024-07-12T03:23:14.000Z">
-<meta property="article:modified_time" content="2024-10-23T06:18:48.365Z">
+<meta property="og:image" content="https://l1ushun.github.io/img/default.png">
+<meta property="article:published_time" content="2025-11-17T02:00:00.000Z">
+<meta property="article:modified_time" content="2025-11-17T03:26:05.919Z">
 <meta property="article:author" content="shun">
-<meta property="article:tag" content="Nuxt">
-<meta property="article:tag" content="SSR">
+<meta property="article:tag" content="技术博客">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://s21.ax1x.com/2024/05/24/pkQ50QP.png">
+<meta name="twitter:image" content="https://l1ushun.github.io/img/default.png">
   
   
   
-  <title>在 Nuxt 中封装 Message 组件 - liu的博客</title>
+  <title>Mermaid图表示例 - liu的博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -194,13 +193,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('https://s21.ax1x.com/2024/05/24/pkQ50QP.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="在 Nuxt 中封装 Message 组件"></span>
+            <span id="subtitle" data-typed-text="Mermaid图表示例"></span>
           
         </div>
 
@@ -211,8 +210,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-07-12 11:23" pubdate>
-          2024年7月12日 上午
+        <time datetime="2025-11-17 10:00" pubdate>
+          2025年11月17日 上午
         </time>
       </span>
     
@@ -223,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          107 字
+          1k 字
         
       </span>
     
@@ -234,7 +233,7 @@
         
         
         
-          1 分钟
+          9 分钟
         
       </span>
     
@@ -271,13 +270,95 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">在 Nuxt 中封装 Message 组件</h1>
+            <h1 id="seo-header">Mermaid图表示例</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>创建一个 message 组件 -&gt; 通过 Nuxt 插件的 defineNuxtPlugin 获取 nuxtApp -&gt; 将 message 挂载到 nuxtApp 上 -&gt; 调用 message 组件</p>
-<h1 id="创建一个-message-组件"><a href="#创建一个-message-组件" class="headerlink" title="创建一个 message 组件"></a>创建一个 message 组件</h1><p><img src="https://s21.ax1x.com/2024/07/15/pk5aGdK.png" srcset="/img/loading.gif" lazyload></p>
+                <h1 id="Mermaid图表示例"><a href="#Mermaid图表示例" class="headerlink" title="Mermaid图表示例"></a>Mermaid图表示例</h1><p>本文展示了如何在Hexo博客中使用Mermaid绘制各种图表。</p>
+<h2 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h2><pre><code class=" mermaid">graph TD
+    A[开始] --&gt; B&#123;判断条件&#125;
+    B --&gt;|条件1| C[处理1]
+    B --&gt;|条件2| D[处理2]
+    C --&gt; E[结束]
+    D --&gt; E
+</code></pre>
+
+<h2 id="时序图"><a href="#时序图" class="headerlink" title="时序图"></a>时序图</h2><pre><code class=" mermaid">sequenceDiagram
+    participant 浏览器
+    participant 服务器
+    浏览器-&gt;&gt;服务器: 请求数据
+    服务器--&gt;&gt;浏览器: 返回数据
+    浏览器-&gt;&gt;浏览器: 渲染页面
+</code></pre>
+
+<h2 id="甘特图"><a href="#甘特图" class="headerlink" title="甘特图"></a>甘特图</h2><pre><code class=" mermaid">gantt
+    title 项目计划
+    dateFormat  YYYY-MM-DD
+    section 阶段1
+    需求分析     :a1, 2025-11-01, 7d
+    设计规划     :a2, after a1, 5d
+    section 阶段2
+    编码实现     :a3, after a2, 10d
+    测试验证     :a4, after a3, 5d
+    section 阶段3
+    部署上线     :a5, after a4, 2d
+</code></pre>
+
+<h2 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h2><pre><code class=" mermaid">classDiagram
+    class Animal &#123;
+        +String name
+        +int age
+        +makeSound()
+    &#125;
+    class Dog &#123;
+        +fetch()
+    &#125;
+    class Cat &#123;
+        +climb()
+    &#125;
+    Animal &lt;|-- Dog
+    Animal &lt;|-- Cat
+</code></pre>
+
+<h2 id="状态图"><a href="#状态图" class="headerlink" title="状态图"></a>状态图</h2><pre><code class=" mermaid">stateDiagram-v2
+    [*] --&gt; 待处理
+    待处理 --&gt; 处理中: 开始处理
+    处理中 --&gt; 已完成: 处理完成
+    处理中 --&gt; 异常: 出现错误
+    异常 --&gt; 处理中: 重试
+    已完成 --&gt; [*]
+</code></pre>
+
+<h2 id="饼图"><a href="#饼图" class="headerlink" title="饼图"></a>饼图</h2><pre><code class=" mermaid">pie title 技术栈占比
+    &quot;前端&quot; : 40
+    &quot;后端&quot; : 30
+    &quot;数据库&quot; : 20
+    &quot;运维&quot; : 10
+</code></pre>
+
+<h2 id="用户旅程图"><a href="#用户旅程图" class="headerlink" title="用户旅程图"></a>用户旅程图</h2><pre><code class=" mermaid">journey
+    title 用户购买流程
+    section 浏览阶段
+      访问网站: 5: 用户
+      浏览商品: 4: 用户
+    section 购买阶段
+      加入购物车: 3: 用户
+      结算: 2: 用户, 系统
+    section 支付阶段
+      选择支付方式: 3: 用户
+      完成支付: 5: 用户, 系统
+</code></pre>
+
+<h2 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h2><p>要在文章中使用Mermaid图表，需要：</p>
+<ol>
+<li>在文章Front-matter中添加<code>mermaid: true</code></li>
+<li>使用代码块语法，指定语言为mermaid</li>
+</ol>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs css">```mermaid<br>graph <span class="hljs-selector-tag">TD</span><br>    <span class="hljs-selector-tag">A</span> --&gt; <span class="hljs-selector-tag">B</span><br></code></pre></td></tr></table></figure>
+<pre><code class="hljs">
+更多语法和示例可以参考[Mermaid官方文档](https://mermaid-js.github.io/mermaid/)。
+</code></pre>
 
                 
               </div>
@@ -311,9 +392,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Nuxt/" class="print-no-link">#Nuxt</a>
-      
-        <a href="/tags/SSR/" class="print-no-link">#SSR</a>
+        <a href="/tags/%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2/" class="print-no-link">#技术博客</a>
       
     </div>
   
@@ -325,8 +404,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>在 Nuxt 中封装 Message 组件</div>
-      <div>https://l1ushun.github.io/2024/07/12/nuxt-message/</div>
+      <div>Mermaid图表示例</div>
+      <div>https://l1ushun.github.io/2025/11/17/mermaid-demo/</div>
     </div>
     <div class="license-meta">
       
@@ -338,7 +417,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年7月12日</div>
+          <div>2025年11月17日</div>
         </div>
       
       
@@ -460,6 +539,21 @@
 
   
 
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
 
 
 
