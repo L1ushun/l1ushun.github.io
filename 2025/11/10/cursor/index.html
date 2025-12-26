@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.7k 字
+          2.9k 字
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          23 分钟
+          25 分钟
         
       </span>
     
@@ -283,7 +283,7 @@
         aria-expanded="true"
       >
         技术博客
-        <span class="list-group-count">(44)</span>
+        <span class="list-group-count">(45)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -558,6 +558,15 @@
     
       
       
+        <a href="/2025/12/25/patch-package/" title="patch-package 给 npm 包打补丁"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">patch-package 给 npm 包打补丁</span>
+        </a>
+      
+    
+      
+      
         <a href="/2024/04/29/react-ref/" title="一文搞定 React 的 ref"
            class="list-group-item list-group-item-action
            ">
@@ -796,13 +805,10 @@
 <li><code>stop</code>: 在代理循环结束时调用，可选地自动提交后续用户消息以继续迭代</li>
 </ul>
 <h3 id="function-call"><a href="#function-call" class="headerlink" title="function call"></a>function call</h3><p>在开始和AI对话前会有一些预定的的函数列表，通过 <a target="_blank" rel="noopener" href="https://json-schema.org/learn#get-started">json-schema</a>格式存储，每个函数都有明确的名称、描述、参数类型和用途说明。当用户和 AI 进行对话时，AI 会分析用户输入内容，从已注册的 function 列表中选择适合完成用户请求的函数，将用户输入转换成合适的参数，调用函数，函数再去调用其他API或者查询数据库返回结果，结果给到模型也是结构化JSON数据，模型对结果进行整合回答用户。</p>
-<h3 id="prompt"><a href="#prompt" class="headerlink" title="prompt"></a>prompt</h3><p>提示内容需要注意的几点：</p>
-<ul>
-<li>描述尽量具体</li>
-<li>避免说不要做什么，尽量明确要做什么</li>
-<li>避免不明确</li>
-</ul>
-<p><a target="_blank" rel="noopener" href="https://www.promptingguide.ai/zh/introduction/tips">提示技巧</a></p>
+<h3 id="prompt"><a href="#prompt" class="headerlink" title="prompt"></a>prompt</h3><h4 id="结构化提示词"><a href="#结构化提示词" class="headerlink" title="结构化提示词"></a>结构化提示词</h4><p>将提示词拆分成几个模块，</p>
+<p>角色定位：先给大模型做角色定位，例如：你是一个资深的软件开发工程师，你熟练掌握xxxxx<br>任务需求：然后将你需要让ai帮你实现的需求分条罗列出来，尽可能详细和明确<br>依赖：如果你的任务需要依赖一些工具或者素材，可以提供给ai<br>约束：对大模型进行限制或者明确一些错误边界，让他按照你的想法进行，规避大模型做一些不期望的动作，<code>避免说不要做什么，尽量明确要做什么</code></p>
+<p>写示例：给大模型一个示例，让他根据给出的示例来解决问题，给出的示例要保证准确性，尽可能在多方面给出不同的示例</p>
+<h4 id="加要求"><a href="#加要求" class="headerlink" title="加要求"></a>加要求</h4><p><a target="_blank" rel="noopener" href="https://www.promptingguide.ai/zh/introduction/tips">提示技巧</a></p>
 <p><a target="_blank" rel="noopener" href="https://prompt.com/metaprompt/">优化你的 prompt</a></p>
 <h3 id="RAG-fine-turning、workflow、agent"><a href="#RAG-fine-turning、workflow、agent" class="headerlink" title="RAG fine turning、workflow、agent"></a>RAG fine turning、workflow、agent</h3><p>loading….</p>
 
@@ -894,6 +900,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2025/12/25/patch-package/" title="patch-package 给 npm 包打补丁">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">patch-package 给 npm 包打补丁</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">

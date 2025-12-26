@@ -16,24 +16,24 @@
   <meta name="author" content="shun">
   <meta name="keywords" content="博客,前端,git,react,vue,nodejs">
   
-    <meta name="description" content="React 独特的事件系统首先要明确的是，React为了兼容全部的浏览器，模拟实现了一套自己的事件系统，也就是我们现在看到的事件都是被React处理过后的，给元素的事件也并不是真正的事件处理函数，所以原生事件中像 return false 阻止默认行为这种方式在 React 中是不生效的。 在 v17 之前，React事件绑定在 document 上，之后绑定在应用对应容器 container 上">
+    <meta name="description" content="前言本文从实际遇到的问题出发，使用 patch-package 如何给 npm 包打补丁，来处理 遇到的问题使用 react-pdf 时，版本4.2.0，在预览某pdf时，pdf上的盖章看不见 解决方案注释掉 pdfjs-dist 下 build&#x2F;pdf.worker.js 的代码 12345if (data.fieldType &#x3D;&#x3D;&#x3D; &amp;#x27;Sig&amp;#x27;) &amp;#123;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="React事件系统">
-<meta property="og:url" content="https://l1ushun.github.io/2023/08/19/react-event/index.html">
+<meta property="og:title" content="patch-package 给 npm 包打补丁">
+<meta property="og:url" content="https://l1ushun.github.io/2025/12/25/patch-package/index.html">
 <meta property="og:site_name" content="liu的博客">
-<meta property="og:description" content="React 独特的事件系统首先要明确的是，React为了兼容全部的浏览器，模拟实现了一套自己的事件系统，也就是我们现在看到的事件都是被React处理过后的，给元素的事件也并不是真正的事件处理函数，所以原生事件中像 return false 阻止默认行为这种方式在 React 中是不生效的。 在 v17 之前，React事件绑定在 document 上，之后绑定在应用对应容器 container 上">
+<meta property="og:description" content="前言本文从实际遇到的问题出发，使用 patch-package 如何给 npm 包打补丁，来处理 遇到的问题使用 react-pdf 时，版本4.2.0，在预览某pdf时，pdf上的盖章看不见 解决方案注释掉 pdfjs-dist 下 build&#x2F;pdf.worker.js 的代码 12345if (data.fieldType &#x3D;&#x3D;&#x3D; &amp;#x27;Sig&amp;#x27;) &amp;#123;">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://l1ushun.github.io/img/react-logo.png">
-<meta property="article:published_time" content="2023-08-19T01:55:26.000Z">
-<meta property="article:modified_time" content="2024-10-23T06:18:48.366Z">
+<meta property="og:image" content="https://s11.ax1x.com/2023/12/18/pi5vFoV.jpg">
+<meta property="article:published_time" content="2025-12-25T12:11:00.000Z">
+<meta property="article:modified_time" content="2025-12-26T02:10:03.984Z">
 <meta property="article:author" content="shun">
-<meta property="article:tag" content="React">
+<meta property="article:tag" content="博客,前端,git,react,vue,nodejs">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://l1ushun.github.io/img/react-logo.png">
+<meta name="twitter:image" content="https://s11.ax1x.com/2023/12/18/pi5vFoV.jpg">
   
   
   
-  <title>React事件系统 - liu的博客</title>
+  <title>patch-package 给 npm 包打补丁 - liu的博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -193,13 +193,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/react-logo.png') no-repeat center center; background-size: cover;">
+     style="background: url('https://s11.ax1x.com/2023/12/18/pi5vFoV.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="React事件系统"></span>
+            <span id="subtitle" data-typed-text="patch-package 给 npm 包打补丁"></span>
           
         </div>
 
@@ -210,8 +210,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-08-19 09:55" pubdate>
-          2023年8月19日 上午
+        <time datetime="2025-12-25 20:11" pubdate>
+          2025年12月25日 晚上
         </time>
       </span>
     
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          6.4k 字
+          615 字
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          54 分钟
+          6 分钟
         
       </span>
     
@@ -416,7 +416,7 @@
       
         <a href="/2023/08/19/react-event/" title="React事件系统"
            class="list-group-item list-group-item-action
-           active">
+           ">
           <span class="category-post">React事件系统</span>
         </a>
       
@@ -560,7 +560,7 @@
       
         <a href="/2025/12/25/patch-package/" title="patch-package 给 npm 包打补丁"
            class="list-group-item list-group-item-action
-           ">
+           active">
           <span class="category-post">patch-package 给 npm 包打补丁</span>
         </a>
       
@@ -718,40 +718,31 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">React事件系统</h1>
+            <h1 id="seo-header">patch-package 给 npm 包打补丁</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="React-独特的事件系统"><a href="#React-独特的事件系统" class="headerlink" title="React 独特的事件系统"></a>React 独特的事件系统</h1><p>首先要明确的是，React为了兼容全部的浏览器，模拟实现了一套自己的事件系统，也就是我们现在看到的事件都是被React处理过后的，给元素的事件也并不是真正的事件处理函数，所以原生事件中像 return false 阻止默认行为这种方式在 React 中是不生效的。</p>
-<p>在 v17 之前，React事件绑定在 document 上，之后绑定在应用对应容器 container 上，可以理解为事件委托，当然也不是所有事件都会进行事件委托，例如 scroll 等还是直接绑定在DOM上的。并且 React 将事件源 event 进行了重写，所以我们拿到的不是真正的事件源。</p>
-<h1 id="事件合成"><a href="#事件合成" class="headerlink" title="事件合成"></a>事件合成</h1><p>上面提到我们写的事件都绑定在了 document 或 container 上,并且一个事件可能由多个原生事件组成,<br>registrationNameDependencies 对象保存了每个事件是由哪写原生事件组成的,例如我们绑定一个 onChange,React 会绑定 blur change click … 方法</p>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs ts">&#123;<br>    <span class="hljs-attr">onBlur</span>: [<span class="hljs-string">&#x27;blur&#x27;</span>],<br>    <span class="hljs-attr">onClick</span>: [<span class="hljs-string">&#x27;click&#x27;</span>],<br>    <span class="hljs-attr">onClickCapture</span>: [<span class="hljs-string">&#x27;click&#x27;</span>],<br>    <span class="hljs-attr">onChange</span>: [<span class="hljs-string">&#x27;blur&#x27;</span>, <span class="hljs-string">&#x27;change&#x27;</span>, <span class="hljs-string">&#x27;click&#x27;</span>, <span class="hljs-string">&#x27;focus&#x27;</span>, <span class="hljs-string">&#x27;input&#x27;</span>, <span class="hljs-string">&#x27;keydown&#x27;</span>, <span class="hljs-string">&#x27;keyup&#x27;</span>, <span class="hljs-string">&#x27;selectionchange&#x27;</span>],<br>    <span class="hljs-comment">// ...</span><br>&#125;<br></code></pre></td></tr></table></figure>
+                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本文从实际遇到的问题出发，使用 patch-package 如何给 npm 包打补丁，来处理</p>
+<h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><p>使用 react-pdf 时，版本<code>4.2.0</code>，在预览某pdf时，pdf上的盖章看不见</p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>注释掉 pdfjs-dist 下 build&#x2F;pdf.worker.js 的代码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">if</span> (data.<span class="hljs-property">fieldType</span> === <span class="hljs-string">&#x27;Sig&#x27;</span>) &#123;<br>    data.<span class="hljs-property">fieldValue</span> = <span class="hljs-literal">null</span>;<br><br>    _this2.<span class="hljs-title function_">setFlags</span>(_util.<span class="hljs-property">AnnotationFlag</span>.<span class="hljs-property">HIDDEN</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<h1 id="事件插件"><a href="#事件插件" class="headerlink" title="事件插件"></a>事件插件</h1><p>registrationNameModules 对象保存了每个事件和处理该事件插件的映射,当触发某个事件就会通过这个对象找到对应的插件</p>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">const</span> registrationNameModules = &#123;<br>    <span class="hljs-attr">onBlur</span>: <span class="hljs-title class_">SimpleEventPlugin</span>,<br>    <span class="hljs-attr">onClick</span>: <span class="hljs-title class_">SimpleEventPlugin</span>,<br>    <span class="hljs-attr">onClickCapture</span>: <span class="hljs-title class_">SimpleEventPlugin</span>,<br>    <span class="hljs-comment">// ...</span><br>&#125;<br></code></pre></td></tr></table></figure>
-
-<h1 id="事件绑定"><a href="#事件绑定" class="headerlink" title="事件绑定"></a>事件绑定</h1><blockquote>
-<p>老版本事件系统：事件监听(addEventListener) -&gt; 捕获阶段执行 -&gt; 冒泡阶段执行<br>新版本事件系统：捕获阶段执行 -&gt; 事件监听 -&gt; 冒泡阶段执行</p>
-</blockquote>
-<p>老版本的事件系统模拟的冒泡和捕获阶段，其实都是在浏览器的冒泡阶段执行的，新版本的事件系统在创建 fiberRoot 时通过 listenToAllSupportedEvents 方法将全部事件注册完成事件代理，分别绑定了捕获和冒泡事件。</p>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-comment">// listenToAllSupportedEvents 是事件绑定的开始</span><br><span class="hljs-comment">// rootContainerElement 为根节点</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">listenToAllSupportedEvents</span>(<span class="hljs-params">rootContainerElement: EventTarget</span>) &#123;<br>    <span class="hljs-keyword">if</span> (enableEagerRootListeners) &#123;<br>        <span class="hljs-comment">// 优化处理，防止多次触发</span><br>        <span class="hljs-keyword">if</span> ((<span class="hljs-attr">rootContainerElement</span>: <span class="hljs-built_in">any</span>)[listeningMarker]) &#123;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>        (<span class="hljs-attr">rootContainerElement</span>: <span class="hljs-built_in">any</span>)[listeningMarker] = <span class="hljs-literal">true</span>;<br>        <span class="hljs-comment">// allNativeEvents 保存了大多数的浏览器事件（set集合，v18 保存了81个事件）</span><br>        allNativeEvents.<span class="hljs-title function_">forEach</span>(<span class="hljs-function">(<span class="hljs-params">domEventName</span>) =&gt;</span> &#123;<br>            <span class="hljs-comment">// nonDelegatedEvents 保存了不冒泡的事件</span><br>            <span class="hljs-keyword">if</span> (!nonDelegatedEvents.<span class="hljs-title function_">has</span>(domEventName)) &#123;<br>                <span class="hljs-comment">// 冒泡阶段绑定事件</span><br>                <span class="hljs-title function_">listenToNativeEvent</span>(domEventName, <span class="hljs-literal">false</span>, ((<span class="hljs-attr">rootContainerElement</span>: <span class="hljs-built_in">any</span>): <span class="hljs-title class_">Element</span>), <span class="hljs-literal">null</span>,);<br>            &#125;<br>            <span class="hljs-comment">// 捕获阶段绑定事件</span><br>            <span class="hljs-title function_">listenToNativeEvent</span>(domEventName, <span class="hljs-literal">true</span>, ((<span class="hljs-attr">rootContainerElement</span>: <span class="hljs-built_in">any</span>): <span class="hljs-title class_">Element</span>), <span class="hljs-literal">null</span>,);<br>        &#125;);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>这里的 listenToNativeEvent 方法调用到最后就是通过 addEventCaptureListener 和 addEventBubbleListener 来注册冒泡&#x2F;捕获的事件，本质都是原生的 addEventListener。</p>
-<p>另外我们定义的事件函数最后都会保存在都会保存在 DOM 对应 fiber 的 memoizedProps 上</p>
-<p><img src="/img/react-memoizedProps.png" srcset="/img/loading.gif" lazyload alt="memoizedProps.png"></p>
-<h1 id="事件触发"><a href="#事件触发" class="headerlink" title="事件触发"></a>事件触发</h1><p>绑定事件后，只要触发就会首先执行 React 的统一的事件处理函数 dispatchEvent，该方法调用会依次执行 dispatchEventForPluginEventSystem -&gt; batchedUpdates -&gt; dispatchEventsForPlugins</p>
-<h2 id="dispatchEventsForPlugins-触发"><a href="#dispatchEventsForPlugins-触发" class="headerlink" title="dispatchEventsForPlugins 触发"></a>dispatchEventsForPlugins 触发</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-comment">// 参数（事件名，冒泡阶段/捕获阶段，事件源，fiber，根节点）</span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">dispatchEventsForPlugins</span>(<span class="hljs-params">domEventName, eventSystemFlags, nativeEvent, targetInst, targetContainer</span>) &#123;<br>    <span class="hljs-comment">// 找到发生事件的元素的事件源</span><br>    <span class="hljs-keyword">var</span> nativeEventTarget = <span class="hljs-title function_">getEventTarget</span>(nativeEvent);<br>    <span class="hljs-comment">// 事件队列</span><br>    <span class="hljs-keyword">var</span> dispatchQueue = [];<br>    <span class="hljs-comment">// 收集事件</span><br>    <span class="hljs-title function_">extractEvents</span>(dispatchQueue, domEventName, targetInst, nativeEvent, nativeEventTarget, eventSystemFlags);<br>    <span class="hljs-comment">// 执行事件</span><br>    <span class="hljs-title function_">processDispatchQueue</span>(dispatchQueue, eventSystemFlags);<br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="extractEvents-收集"><a href="#extractEvents-收集" class="headerlink" title="extractEvents 收集"></a>extractEvents 收集</h2><p>其中 extractEvents 会根据不同的事件使用不同的插件生成对应的事件。</p>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">function</span> <span class="hljs-title function_">extractEvents</span>(<span class="hljs-params"></span><br><span class="hljs-params">    dispatchQueue: DispatchQueue,</span><br><span class="hljs-params">    domEventName: DOMEventName,</span><br><span class="hljs-params">    targetInst: <span class="hljs-literal">null</span> | Fiber,</span><br><span class="hljs-params">    nativeEvent: AnyNativeEvent,</span><br><span class="hljs-params">    nativeEventTarget: <span class="hljs-literal">null</span> | EventTarget,</span><br><span class="hljs-params">    eventSystemFlags: EventSystemFlags,</span><br><span class="hljs-params">    targetContainer: EventTarget,</span><br><span class="hljs-params"></span>): <span class="hljs-built_in">void</span> &#123;<br>    <span class="hljs-comment">//  合成事件名</span><br>    <span class="hljs-keyword">const</span> reactName = topLevelEventsToReactNames.<span class="hljs-title function_">get</span>(domEventName);<br>    <span class="hljs-keyword">if</span> (reactName === <span class="hljs-literal">undefined</span>) &#123;<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br>    <span class="hljs-comment">// 合成函数的构造函数</span><br>    <span class="hljs-keyword">let</span> <span class="hljs-title class_">SyntheticEventCtor</span> = <span class="hljs-title class_">SyntheticEvent</span>;<br>    <span class="hljs-keyword">let</span> <span class="hljs-attr">reactEventType</span>: <span class="hljs-built_in">string</span> = domEventName;<br><br>    <span class="hljs-keyword">const</span> inCapturePhase = (eventSystemFlags &amp; <span class="hljs-variable constant_">IS_CAPTURE_PHASE</span>) !== <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">const</span> accumulateTargetOnly = !inCapturePhase &amp;&amp; domEventName === <span class="hljs-string">&#x27;scroll&#x27;</span>;<br>    <span class="hljs-comment">// 收集当前阶段的所有事件.</span><br>    <span class="hljs-keyword">const</span> listeners = <span class="hljs-title function_">accumulateSinglePhaseListeners</span>(<br>        targetInst,<br>        reactName,<br>        nativeEvent.<span class="hljs-property">type</span>,<br>        inCapturePhase,<br>        accumulateTargetOnly,<br>    );<br>    <span class="hljs-keyword">if</span> (listeners.<span class="hljs-property">length</span> &gt; <span class="hljs-number">0</span>) &#123;<br>        <span class="hljs-comment">// 构造合成事件插入队列</span><br>        <span class="hljs-keyword">const</span> event = <span class="hljs-keyword">new</span> <span class="hljs-title class_">SyntheticEventCtor</span>(<br>            reactName,<br>            reactEventType,<br>            <span class="hljs-literal">null</span>,<br>            nativeEvent,<br>            nativeEventTarget,<br>        );<br>        dispatchQueue.<span class="hljs-title function_">push</span>(&#123;event, listeners&#125;);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<h2 id="accumulateSinglePhaseListeners"><a href="#accumulateSinglePhaseListeners" class="headerlink" title="accumulateSinglePhaseListeners"></a>accumulateSinglePhaseListeners</h2><p>accumulateSinglePhaseListeners 找到 fiber 的 props 对应的事件加入到监听集合，然后进行递归知直到根节点，如果事件不冒泡就停止。</p>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">accumulateSinglePhaseListeners</span>(<span class="hljs-params"></span><br><span class="hljs-params">  targetFiber: Fiber | <span class="hljs-literal">null</span>,</span><br><span class="hljs-params">  reactName: <span class="hljs-built_in">string</span> | <span class="hljs-literal">null</span>,</span><br><span class="hljs-params">  nativeEventType: <span class="hljs-built_in">string</span>,</span><br><span class="hljs-params">  inCapturePhase: <span class="hljs-built_in">boolean</span>,</span><br><span class="hljs-params">  accumulateTargetOnly: <span class="hljs-built_in">boolean</span>,</span><br><span class="hljs-params"></span>): <span class="hljs-title class_">Array</span>&lt;<span class="hljs-title class_">DispatchListener</span>&gt; &#123;<br>  <span class="hljs-keyword">const</span> captureName = reactName !== <span class="hljs-literal">null</span> ? reactName + <span class="hljs-string">&#x27;Capture&#x27;</span> : <span class="hljs-literal">null</span>;<br>  <span class="hljs-keyword">const</span> reactEventName = inCapturePhase ? captureName : reactName;<br>  <span class="hljs-keyword">const</span> <span class="hljs-attr">listeners</span>: <span class="hljs-title class_">Array</span>&lt;<span class="hljs-title class_">DispatchListener</span>&gt; = [];<br><br>  <span class="hljs-keyword">let</span> instance = targetFiber;<br>  <span class="hljs-keyword">let</span> lastHostComponent = <span class="hljs-literal">null</span>;<br><br>  <span class="hljs-comment">// 从targetFiber开始, 向上遍历, 直到 root 为止·</span><br>  <span class="hljs-keyword">while</span> (instance !== <span class="hljs-literal">null</span>) &#123;<br>    <span class="hljs-keyword">const</span> &#123; stateNode, tag &#125; = instance;<br>    <span class="hljs-comment">// 当节点类型是HostComponent时(如: div, span, button等类型)</span><br>    <span class="hljs-keyword">if</span> (tag === <span class="hljs-title class_">HostComponent</span> &amp;&amp; stateNode !== <span class="hljs-literal">null</span>) &#123;<br>      lastHostComponent = stateNode;<br>      <span class="hljs-keyword">if</span> (reactEventName !== <span class="hljs-literal">null</span>) &#123;<br>        <span class="hljs-comment">// 获取标准的监听函数 (如onClick , onClickCapture等)</span><br>        <span class="hljs-keyword">const</span> listener = <span class="hljs-title function_">getListener</span>(instance, reactEventName);<br>        <span class="hljs-keyword">if</span> (listener != <span class="hljs-literal">null</span>) &#123;<br>          listeners.<span class="hljs-title function_">push</span>(<br>            <span class="hljs-title function_">createDispatchListener</span>(instance, listener, lastHostComponent),<br>          );<br>        &#125;<br>      &#125;<br>    &#125;<br>    <span class="hljs-comment">// 如果只收集目标节点, 则不用向上遍历, 直接退出</span><br>    <span class="hljs-keyword">if</span> (accumulateTargetOnly) &#123;<br>      <span class="hljs-keyword">break</span>;<br>    &#125;<br>    instance = instance.<span class="hljs-property">return</span>;<br>  &#125;<br>  <span class="hljs-keyword">return</span> listeners;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<h2 id="processDispatchQueue-执行"><a href="#processDispatchQueue-执行" class="headerlink" title="processDispatchQueue 执行"></a>processDispatchQueue 执行</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">processDispatchQueue</span>(<span class="hljs-params"></span><br><span class="hljs-params">  dispatchQueue: DispatchQueue,</span><br><span class="hljs-params">  eventSystemFlags: EventSystemFlags,</span><br><span class="hljs-params"></span>): <span class="hljs-built_in">void</span> &#123;<br>  <span class="hljs-comment">//   是否是捕获阶段</span><br>  <span class="hljs-keyword">const</span> inCapturePhase = (eventSystemFlags &amp; <span class="hljs-variable constant_">IS_CAPTURE_PHASE</span>) !== <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; dispatchQueue.<span class="hljs-property">length</span>; i++) &#123;<br>    <span class="hljs-keyword">const</span> &#123; event, listeners &#125; = dispatchQueue[i];<br>    <span class="hljs-title function_">processDispatchQueueItemsInOrder</span>(event, listeners, inCapturePhase);<br>  &#125;<br>  <span class="hljs-comment">// ...</span><br>&#125;<br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">processDispatchQueueItemsInOrder</span>(<span class="hljs-params"></span><br><span class="hljs-params">  event: ReactSyntheticEvent,</span><br><span class="hljs-params">  dispatchListeners: <span class="hljs-built_in">Array</span>&lt;DispatchListener&gt;,</span><br><span class="hljs-params">  inCapturePhase: <span class="hljs-built_in">boolean</span>,</span><br><span class="hljs-params"></span>): <span class="hljs-built_in">void</span> &#123;<br>  <span class="hljs-keyword">let</span> previousInstance;<br>  <span class="hljs-keyword">if</span> (inCapturePhase) &#123;<br>    <span class="hljs-comment">// 捕获事件倒序遍历listeners</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = dispatchListeners.<span class="hljs-property">length</span> - <span class="hljs-number">1</span>; i &gt;= <span class="hljs-number">0</span>; i--) &#123;<br>      <span class="hljs-keyword">const</span> &#123; instance, currentTarget, listener &#125; = dispatchListeners[i];<br>      <span class="hljs-keyword">if</span> (instance !== previousInstance &amp;&amp; event.<span class="hljs-title function_">isPropagationStopped</span>()) &#123;<br>        <span class="hljs-keyword">return</span>;<br>      &#125;<br>      <span class="hljs-title function_">executeDispatch</span>(event, listener, currentTarget);<br>      previousInstance = instance;<br>    &#125;<br>  &#125; <span class="hljs-keyword">else</span> &#123;<br>    <span class="hljs-comment">// 冒泡事件顺序遍历listeners</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; dispatchListeners.<span class="hljs-property">length</span>; i++) &#123;<br>      <span class="hljs-keyword">const</span> &#123; instance, currentTarget, listener &#125; = dispatchListeners[i];<br>      <span class="hljs-keyword">if</span> (instance !== previousInstance &amp;&amp; event.<span class="hljs-title function_">isPropagationStopped</span>()) &#123;<br>        <span class="hljs-keyword">return</span>;<br>      &#125;<br>      <span class="hljs-title function_">executeDispatch</span>(event, listener, currentTarget);<br>      previousInstance = instance;<br>    &#125;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>首先判断是捕获阶段，然后遍历事件列表执行 processDispatchQueueItemsInOrder 如果是捕获事件，倒序执行，冒泡事件正序执行。</p>
-<h1 id="执行顺序"><a href="#执行顺序" class="headerlink" title="执行顺序"></a>执行顺序</h1><p>v16: document 捕获 &#x3D;&gt; 原生捕获 &#x3D;&gt; 原生冒泡 &#x3D;&gt; 合成事件（react）捕获 &#x3D;&gt; 合成事件（react）冒泡 &#x3D;&gt; document 元素冒泡</p>
-<p>v17&#x2F;v18: document 捕获 &#x3D;&gt; 合成事件（react）捕获 &#x3D;&gt; 原生捕获 &#x3D;&gt; 原生冒泡 &#x3D;&gt; 合成事件（react）冒泡 &#x3D;&gt; document 元素冒泡</p>
+<p>那想要修复类似这样的问题，有几种方案</p>
+<ol>
+<li>将源码拉下来修改代码推送到私有仓库</li>
+<li>升级版本（如果在新版本有修复你的问题）</li>
+<li>使用 patch-package</li>
+</ol>
+<p>每个的优缺点就不说了，如果对源码改动不大并且想快速解决问题，使用 patch-package 是性价比最高的</p>
+<h2 id="使用-patch-package"><a href="#使用-patch-package" class="headerlink" title="使用 patch-package"></a>使用 patch-package</h2><p>如上文，我们就解决这个问题当作事例</p>
+<ol>
+<li>首先要安装 patch-package </li>
+<li>直接跑到 node_modules 改源码</li>
+<li>执行 npx patch-package xxx 你改的包，这里是 npx patch-package-pdfjs-dist<br><img src="/img/patch-package.png" srcset="/img/loading.gif" lazyload alt="执行结果"></li>
+<li>可以看到项目里多了一个patch<br><img src="/img/patch-package-demo.png" srcset="/img/loading.gif" lazyload alt="目录"></li>
+<li>在 <code>package.json</code> 加入<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-attr">&quot;scripts&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;postinstall&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;patch-package&quot;</span><br><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br></code></pre></td></tr></table></figure></li>
+</ol>
 
                 
               </div>
@@ -782,13 +773,6 @@
     </div>
   
   
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/React/" class="print-no-link">#React</a>
-      
-    </div>
-  
 </div>
 
 
@@ -797,8 +781,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>React事件系统</div>
-      <div>https://l1ushun.github.io/2023/08/19/react-event/</div>
+      <div>patch-package 给 npm 包打补丁</div>
+      <div>https://l1ushun.github.io/2025/12/25/patch-package/</div>
     </div>
     <div class="license-meta">
       
@@ -810,7 +794,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年8月19日</div>
+          <div>2025年12月25日</div>
         </div>
       
       
@@ -842,18 +826,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/09/13/design-mode/" title="JavaScript设计模式(一)：单例模式、工厂模式">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">JavaScript设计模式(一)：单例模式、工厂模式</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/08/17/vite-05/" title="Vite-进阶篇">
-                        <span class="hidden-mobile">Vite-进阶篇</span>
+                      <a href="/2025/11/10/cursor/" title="Cursor编程">
+                        <span class="hidden-mobile">Cursor编程</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
