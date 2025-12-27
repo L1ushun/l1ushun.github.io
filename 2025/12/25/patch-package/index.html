@@ -16,16 +16,16 @@
   <meta name="author" content="shun">
   <meta name="keywords" content="博客,前端,git,react,vue,nodejs">
   
-    <meta name="description" content="前言本文从实际遇到的问题出发，使用 patch-package 如何给 npm 包打补丁，来处理 遇到的问题使用 react-pdf 时，版本4.2.0，在预览某pdf时，pdf上的盖章看不见 解决方案注释掉 pdfjs-dist 下 build&#x2F;pdf.worker.js 的代码 12345if (data.fieldType &#x3D;&#x3D;&#x3D; &amp;#x27;Sig&amp;#x27;) &amp;#123;">
+    <meta name="description" content="前言本文从实际遇到的问题出发，使用 patch-package 如何给 npm 包打补丁。 遇到的问题使用 react-pdf 时，版本4.2.0，在预览某pdf时，pdf上的盖章看不见 解决方案注释掉 pdfjs-dist 下 build&#x2F;pdf.worker.js 的代码 12345if (data.fieldType &#x3D;&#x3D;&#x3D; &amp;#x27;Sig&amp;#x27;) &amp;#123;    d">
 <meta property="og:type" content="article">
 <meta property="og:title" content="patch-package 给 npm 包打补丁">
 <meta property="og:url" content="https://l1ushun.github.io/2025/12/25/patch-package/index.html">
 <meta property="og:site_name" content="liu的博客">
-<meta property="og:description" content="前言本文从实际遇到的问题出发，使用 patch-package 如何给 npm 包打补丁，来处理 遇到的问题使用 react-pdf 时，版本4.2.0，在预览某pdf时，pdf上的盖章看不见 解决方案注释掉 pdfjs-dist 下 build&#x2F;pdf.worker.js 的代码 12345if (data.fieldType &#x3D;&#x3D;&#x3D; &amp;#x27;Sig&amp;#x27;) &amp;#123;">
+<meta property="og:description" content="前言本文从实际遇到的问题出发，使用 patch-package 如何给 npm 包打补丁。 遇到的问题使用 react-pdf 时，版本4.2.0，在预览某pdf时，pdf上的盖章看不见 解决方案注释掉 pdfjs-dist 下 build&#x2F;pdf.worker.js 的代码 12345if (data.fieldType &#x3D;&#x3D;&#x3D; &amp;#x27;Sig&amp;#x27;) &amp;#123;    d">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://s11.ax1x.com/2023/12/18/pi5vFoV.jpg">
 <meta property="article:published_time" content="2025-12-25T12:11:00.000Z">
-<meta property="article:modified_time" content="2025-12-26T02:10:03.984Z">
+<meta property="article:modified_time" content="2025-12-27T10:00:21.724Z">
 <meta property="article:author" content="shun">
 <meta property="article:tag" content="博客,前端,git,react,vue,nodejs">
 <meta name="twitter:card" content="summary_large_image">
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          615 字
+          948 字
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          6 分钟
+          8 分钟
         
       </span>
     
@@ -723,7 +723,7 @@
             
               <div class="markdown-body">
                 
-                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本文从实际遇到的问题出发，使用 patch-package 如何给 npm 包打补丁，来处理</p>
+                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本文从实际遇到的问题出发，使用 patch-package 如何给 npm 包打补丁。</p>
 <h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><p>使用 react-pdf 时，版本<code>4.2.0</code>，在预览某pdf时，pdf上的盖章看不见</p>
 <h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>注释掉 pdfjs-dist 下 build&#x2F;pdf.worker.js 的代码</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">if</span> (data.<span class="hljs-property">fieldType</span> === <span class="hljs-string">&#x27;Sig&#x27;</span>) &#123;<br>    data.<span class="hljs-property">fieldValue</span> = <span class="hljs-literal">null</span>;<br><br>    _this2.<span class="hljs-title function_">setFlags</span>(_util.<span class="hljs-property">AnnotationFlag</span>.<span class="hljs-property">HIDDEN</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
@@ -735,13 +735,24 @@
 <li>使用 patch-package</li>
 </ol>
 <p>每个的优缺点就不说了，如果对源码改动不大并且想快速解决问题，使用 patch-package 是性价比最高的</p>
-<h2 id="使用-patch-package"><a href="#使用-patch-package" class="headerlink" title="使用 patch-package"></a>使用 patch-package</h2><p>如上文，我们就解决这个问题当作事例</p>
+<h2 id="使用-patch-package"><a href="#使用-patch-package" class="headerlink" title="使用 patch-package"></a>使用 patch-package</h2><p>如上文，我们就解决这个问题当作示例</p>
 <ol>
 <li>首先要安装 patch-package </li>
 <li>直接跑到 node_modules 改源码</li>
 <li>执行 npx patch-package xxx 你改的包，这里是 npx patch-package-pdfjs-dist<br><img src="/img/patch-package.png" srcset="/img/loading.gif" lazyload alt="执行结果"></li>
 <li>可以看到项目里多了一个patch<br><img src="/img/patch-package-demo.png" srcset="/img/loading.gif" lazyload alt="目录"></li>
-<li>在 <code>package.json</code> 加入<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-attr">&quot;scripts&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;postinstall&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;patch-package&quot;</span><br><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br></code></pre></td></tr></table></figure></li>
+</ol>
+<p><img src="/img/cursor-patch.png" srcset="/img/loading.gif" lazyload alt="patch 文件内容"><br>5. 在 <code>package.json</code> 加入</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-attr">&quot;scripts&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;postinstall&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;patch-package&quot;</span><br><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br></code></pre></td></tr></table></figure>
+<p>postinstall 是 npm&#x2F;yarn 的生命周期钩子，在 npm install 或 yarn install 完成后自动执行，确保每次 install 会执行 patch-package</p>
+<h2 id="pnpm-自带-patch"><a href="#pnpm-自带-patch" class="headerlink" title="pnpm 自带 patch"></a>pnpm 自带 patch</h2><p>pnpm 是自带 patch 功能的，具体流程如下：</p>
+<ol>
+<li>首先执行<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sh">pnpm patch 你要修改的包<br><br><span class="hljs-comment"># 如果是上面的例子就是</span><br>pnpm patch pdfjs-dist@2.1.266<br></code></pre></td></tr></table></figure>
+<img src="/img/pnpm-patch.png" srcset="/img/loading.gif" lazyload alt="执行结果"></li>
+<li>然后 pnpm 会返回一个临时目录路径，例如：&#x2F;xxx&#x2F;…&#x2F;node_modules&#x2F;pdfjs-dist</li>
+<li>在返回路径的文件手动修改代码</li>
+<li>提交补丁，执行第一步返回的提示命令<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">pnpm patch-commit 路径xxx<br></code></pre></td></tr></table></figure>
+这样补丁会在每次 pnpm install 时自动应用</li>
 </ol>
 
                 
