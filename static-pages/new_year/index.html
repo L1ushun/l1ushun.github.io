@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新年倒计时</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', 'PingFang SC', Arial, sans-serif;
+            background: linear-gradient(135deg, #c41e3a 0%, #8b0000 100%);
+            color: #fff;
+            overflow: hidden;
+            height: 100vh;
+            position: relative;
+        }
+
+        .container {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5), 0 0 40px rgba(255, 255, 255, 0.3);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 20px rgba(255, 255, 255, 0.5), 0 0 40px rgba(255, 255, 255, 0.3);
+            }
+            to {
+                text-shadow: 0 0 30px rgba(255, 255, 255, 0.8), 0 0 60px rgba(255, 255, 255, 0.5);
+            }
+        }
+
+        .countdown {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .time-unit {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem 3rem;
+            min-width: 150px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .time-value {
+            font-size: 4rem;
+            font-weight: bold;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .time-label {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .danmaku-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .danmaku {
+            position: absolute;
+            white-space: nowrap;
+            font-size: 1.5rem;
+            color: #ffd700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5), 0 0 10px rgba(255, 215, 0, 0.5);
+            font-weight: bold;
+            animation: moveRight linear;
+        }
+
+        @keyframes moveRight {
+            from {
+                transform: translateX(-100%);
+            }
+            to {
+                transform: translateX(100vw);
+            }
+        }
+
+        .fireworks {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .firework {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            animation: explode 1s ease-out forwards;
+        }
+
+        @keyframes explode {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(0);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .countdown {
+                flex-wrap: wrap;
+                gap: 1rem;
+                justify-content: center;
+            }
+
+            .time-unit {
+                padding: 1.5rem 2rem;
+                min-width: 120px;
+            }
+
+            .time-value {
+                font-size: 3rem;
+            }
+
+            .time-label {
+                font-size: 1rem;
+            }
+
+            .danmaku {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="danmaku-container" id="danmakuContainer"></div>
+    <div class="fireworks" id="fireworks"></div>
+    
+    <div class="container">
+        <h1>新年倒计时</h1>
+        <div class="countdown" id="countdown">
+            <div class="time-unit">
+                <div class="time-value" id="days">00</div>
+                <div class="time-label">天</div>
+            </div>
+            <div class="time-unit">
+                <div class="time-value" id="hours">00</div>
+                <div class="time-label">时</div>
+            </div>
+            <div class="time-unit">
+                <div class="time-value" id="minutes">00</div>
+                <div class="time-label">分</div>
+            </div>
+            <div class="time-unit">
+                <div class="time-value" id="seconds">00</div>
+                <div class="time-label">秒</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const blessings = [
+            '新年快乐！', '恭喜发财！', '万事如意！', '身体健康！', '阖家幸福！',
+            '工作顺利！', '学业有成！', '财源广进！', '心想事成！', '大吉大利！',
+            '年年有余！', '岁岁平安！', '福星高照！', '龙马精神！', '步步高升！',
+            '笑口常开！', '好运连连！', '幸福美满！', '前程似锦！', '一帆风顺！'
+        ];
+
+        function getNextNewYear() {
+            const now = new Date();
+            const year = now.getFullYear();
+            const nextYear = year + 1;
+            return new Date(nextYear, 0, 1, 0, 0, 0, 0);
+        }
+
+        function updateCountdown() {
+            const now = new Date();
+            const nextNewYear = getNextNewYear();
+            const diff = nextNewYear - now;
+
+            if (diff <= 0) {
+                document.getElementById('days').textContent = '00';
+                document.getElementById('hours').textContent = '00';
+                document.getElementById('minutes').textContent = '00';
+                document.getElementById('seconds').textContent = '00';
+                createFireworks();
+                return;
+            }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = String(days).padStart(2, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+        }
+
+        function createDanmaku() {
+            const container = document.getElementById('danmakuContainer');
+            const danmaku = document.createElement('div');
+            danmaku.className = 'danmaku';
+            danmaku.textContent = blessings[Math.floor(Math.random() * blessings.length)];
+            
+            const top = Math.random() * 100;
+            danmaku.style.top = top + '%';
+            
+            const duration = 10 + Math.random() * 10;
+            danmaku.style.animationDuration = duration + 's';
+            
+            container.appendChild(danmaku);
+            
+            setTimeout(() => {
+                danmaku.remove();
+            }, duration * 1000);
+        }
+
+        function createFireworks() {
+            const container = document.getElementById('fireworks');
+            const colors = ['#ffd700', '#ff6b6b', '#4ecdc4', '#ffe66d', '#ff9ff3'];
+            
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const firework = document.createElement('div');
+                    firework.className = 'firework';
+                    firework.style.left = Math.random() * 100 + '%';
+                    firework.style.top = Math.random() * 100 + '%';
+                    firework.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    firework.style.boxShadow = `0 0 20px ${firework.style.backgroundColor}`;
+                    
+                    container.appendChild(firework);
+                    
+                    setTimeout(() => {
+                        firework.remove();
+                    }, 1000);
+                }, i * 50);
+            }
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        setInterval(createDanmaku, 2000);
+        
+        for (let i = 0; i < 5; i++) {
+            setTimeout(createDanmaku, i * 400);
+        }
+    </script>
+</body>
+</html>
+
