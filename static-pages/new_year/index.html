@@ -199,6 +199,8 @@
             '笑口常开！', '好运连连！', '幸福美满！', '前程似锦！', '一帆风顺！'
         ];
 
+        let fireworksInterval = null;
+
         function getNextNewYear() {
             const now = new Date();
             const year = now.getFullYear();
@@ -251,25 +253,33 @@
         }
 
         function createFireworks() {
+            if (fireworksInterval) return;
+            
             const container = document.getElementById('fireworks');
             const colors = ['#ffd700', '#ff6b6b', '#4ecdc4', '#ffe66d', '#ff9ff3'];
             
-            for (let i = 0; i < 50; i++) {
+            function createSingleFirework() {
+                const firework = document.createElement('div');
+                firework.className = 'firework';
+                firework.style.left = Math.random() * 100 + '%';
+                firework.style.top = Math.random() * 100 + '%';
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                firework.style.backgroundColor = color;
+                firework.style.boxShadow = `0 0 20px ${color}`;
+                
+                container.appendChild(firework);
+                
                 setTimeout(() => {
-                    const firework = document.createElement('div');
-                    firework.className = 'firework';
-                    firework.style.left = Math.random() * 100 + '%';
-                    firework.style.top = Math.random() * 100 + '%';
-                    firework.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                    firework.style.boxShadow = `0 0 20px ${firework.style.backgroundColor}`;
-                    
-                    container.appendChild(firework);
-                    
-                    setTimeout(() => {
-                        firework.remove();
-                    }, 1000);
-                }, i * 50);
+                    firework.remove();
+                }, 1000);
             }
+            
+            fireworksInterval = setInterval(createSingleFirework, 100);
+            
+            setTimeout(() => {
+                clearInterval(fireworksInterval);
+                fireworksInterval = null;
+            }, 5000);
         }
 
         setInterval(updateCountdown, 1000);

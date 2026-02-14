@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>chrome-devtools 实践分享</title>
+    <link href="/2026/01/23/chrome-devtools/"/>
+    <url>/2026/01/23/chrome-devtools/</url>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本文主要分享使用 <a href="https://github.com/ChromeDevTools/chrome-devtools-mcp/?tab=readme-ov-file#chrome-devtools-mcp">chrome-devtools-mcp</a> 在日常开发的使用，使用该 mcp 相当于你可以直接和 chrome 对话，他可以帮助你完成你希望在 chrome 上完成的各种操作。</p><p>我主要使用该 mcp 在一下几个方面：</p><ol><li>辅助还原页面&#x2F;设计稿、修改样式</li><li>配合 apifox-mcp 快速联调接口</li><li>辅助测试页面功能</li><li>获取网页性能数据</li></ol><h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>需要注意的是，该 mcp 需要 node 版本在 22.12.0 及以上</p><p>如果因为项目需要，node版本较低，可以通过以下脚本来使用 nvm 来切换 node 版本</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-meta">#!/bin/bash</span><br><span class="hljs-built_in">export</span> NVM_DIR=<span class="hljs-string">&quot;<span class="hljs-variable">$HOME</span>/.nvm&quot;</span><br>[ -s <span class="hljs-string">&quot;<span class="hljs-variable">$NVM_DIR</span>/nvm.sh&quot;</span> ] &amp;&amp; \. <span class="hljs-string">&quot;<span class="hljs-variable">$NVM_DIR</span>/nvm.sh&quot;</span><br>nvm use 20.19.2 &gt; /dev/null 2&gt;&amp;1<br><span class="hljs-built_in">exec</span> npx chrome-devtools-mcp@latest <span class="hljs-string">&quot;<span class="hljs-variable">$@</span>&quot;</span><br></code></pre></td></tr></table></figure><p>然后在你的 mcp.json 配置里 </p><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;mcpServers&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;chrome-devtools&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;command&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;上面脚本的位置，一般放在 ~/.cursor/scripts/chrome-devtools-mcp.sh&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;args&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">]</span><br>    <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure><h2 id="还原设计稿、修改样式"><a href="#还原设计稿、修改样式" class="headerlink" title="还原设计稿、修改样式"></a>还原设计稿、修改样式</h2><p>其实严格来说，该 chrome-devtools-mcp 主要还是来获取你当前页面的状态，这样相当于让你的模型根据图片还原设计稿时有了一双眼睛，可以对比当前页面和你提供给他的设计稿之间的差异。</p><p>（目前蓝湖还没有官方的mcp，如果希望使用蓝湖专门的mcp可以尝试下<a href="https://github.com/dsphper/lanhu-mcp">lanhu-mcp</a>这个开源的项目。）</p><p>实际体验下来，把设计稿导出图片喂给 AI 加上 chrome-devtools-mcp 的加持，页面还原度也只能到 70%～80%，并且也和使用的模型有关。想要完全还原设计稿还需要多轮对话，补充一些细节的修改点。</p><h2 id="配合-apifox-mcp-快速联调接口"><a href="#配合-apifox-mcp-快速联调接口" class="headerlink" title="配合 apifox-mcp 快速联调接口"></a>配合 apifox-mcp 快速联调接口</h2><p>prompt 如下</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs awk">@src<span class="hljs-regexp">/js/</span>new_merchandise/create.js <br><br>新品创建的接口为 xxxxxx ，任务清单如下：<br><span class="hljs-number">1</span>. 使用 apifox-mcp查询这个接口的文档，完善表单字段名<br><span class="hljs-number">2</span>. 使用 chrome-devtools-mcp 在该页面填入表单数据创建<span class="hljs-number">2</span>条数据<br></code></pre></td></tr></table></figure><p>首先会使用 apifox-mcp 会找到这个后端维护的这个接口文档，然后帮助我们根据文档的字段来修改我们表单对应的字段，然后 chrome-devtools-mcp 会打开一个测试浏览器页面，输入表单数据并调用接口，完成联调。</p><h2 id="自动化测试页面功能"><a href="#自动化测试页面功能" class="headerlink" title="自动化测试页面功能"></a>自动化测试页面功能</h2><figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs md">使用 chrome-dev-tools 测试下http://localhost:8080/#/new<span class="hljs-emphasis">_merchandise 这个页面，测试的功能清单如下</span><br><span class="hljs-emphasis">1. 测试商品名称搜索、提交时间、状态、商户筛选是否生效</span><br><span class="hljs-emphasis">2. 测试页面滚动加载功能是否生效</span><br><span class="hljs-emphasis">3. 是否有控制台error或者接口报错</span><br><span class="hljs-emphasis"></span><br><span class="hljs-emphasis">并将测试项和结果列出</span><br></code></pre></td></tr></table></figure><p>测试中实际效果<br><img src="/img/chrome-test.png" alt="测试效果"></p><p>测试结果<br><img src="/img/chrome-test-res.png" alt="测试结果反馈"></p><p>缺点：只能处理一些基础的交互功能，</p><h2 id="测试网页性能和SEO"><a href="#测试网页性能和SEO" class="headerlink" title="测试网页性能和SEO"></a>测试网页性能和SEO</h2><p>传统我们想要获取一个网页例如某官网的性能指标数据，还需要手动打开控制台的 performance 来人工操作</p><p>利用 chrome-devtools-mcp 的的话，可以直接把网址丢给他来获取。</p><p><img src="/img/performance.png" alt="结果"></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>技术博客</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>ai</tag>
+      
+      <tag>mcp</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>patch-package 给 npm 包打补丁</title>
     <link href="/2025/12/25/patch-package/"/>
     <url>/2025/12/25/patch-package/</url>
