@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>节日祝福</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="typing-container">
+            <div id="typing-text"></div>
+        </div>
+        <div id="wishes-container"></div>
+        
+        <!-- 背景音乐控制 -->
+        <div class="music-control">
+            <audio id="bgMusic" autoplay loop muted="muted">
+                <source src="https://music.163.com/song/media/outer/url?id=1407389699.mp3" type="audio/mpeg">
+                您的浏览器不支持音频元素。
+            </audio>
+            <button id="musicToggle" class="music-btn">🔊</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

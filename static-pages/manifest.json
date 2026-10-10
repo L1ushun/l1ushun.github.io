@@ -1,0 +1,26 @@
+{
+  "items": [
+    {
+      "id": "wsj_demo",
+      "title": "节日祝福",
+      "description": "",
+      "href": "/static-pages/wsj_demo/index.html",
+      "type": "directory"
+    },
+    {
+      "id": "wheel",
+      "title": "随机抽签转盘",
+      "description": "可自定义选项的随机抽签转盘，输入选项后一键抽取结果",
+      "href": "/static-pages/wheel/index.html",
+      "type": "directory"
+    },
+    {
+      "id": "new_year",
+      "title": "新年倒计时",
+      "description": "",
+      "href": "/static-pages/new_year/index.html",
+      "type": "directory"
+    }
+  ],
+  "generatedAt": "2026-10-10T06:38:10.438Z"
+}
